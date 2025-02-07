@@ -6,19 +6,14 @@ public class Laser : MonoBehaviour
 {
 
     public Satellite_Info refractionSatelliteInfo;
-
-
     public bool hitSomething;
-
-
     public LaserOrigin origin;
-
-    private Vector3 laserCoordinates;
 
     public float energy;
 
-    private LayerMask layersToHit;
+    public LayerMask layersToHit;
     private RaycastHit2D rayCast;
+    private Vector3 laserCoordinates;
 
     // Start is called before the first frame update
     void Start()

@@ -8,88 +8,104 @@ public class LaserOrigin : MonoBehaviour
 
     public LayerMask layersToHit;
     public float startingEnergy = 50f;
-
-
-    private int updateDelay = 32;
-    private int currentUpdateCount = 0;
-
-    public bool fireOnce = true;
+    public int updateDelay = 32;
 
     // First laser is placed manually, then attached
     public GameObject firstLaser;
 
+
+    private int currentUpdateCount = 0;
+
     // Laser list is created from connections to 
     private List<GameObject> listOfLasers;
 
-    public List<Vector2> listOfLaserOrigins;
+    private List<Vector2> listOfLaserOrigins;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Origin has renderer: "+gameObject.GetComponent<SpriteRenderer>() != null);
-
+        // Initialise laser related lists
         listOfLasers = new List<GameObject>();
         listOfLaserOrigins = new List<Vector2>();
-        
+
+        // Check that update delay is not less than 0.
+        if (updateDelay < 0){
+            updateDelay = 32;
+            Debug.LogWarning("WARNING: Laser Origin updateDelay cannot be less than 0. Setting to default");
+        }   
     }
  
     // Update is called once per frame
     void Update()
     {
 
+        // Delay updates by a specified amount - this is done to allow lasers time to render before being destroyed.
         if (currentUpdateCount > updateDelay)
         {
+            // Reset update count
             currentUpdateCount = 0;
-            Debug.Log("Laser Count "+listOfLaserOrigins.Count);
-            string text = "";
 
             // Delete all lasers
-            foreach (GameObject laser in listOfLasers)
-            {
-                text += laser.name + " : " + laser.transform.localScale  + "| Has Renderer: "+ (laser.GetComponent<SpriteRenderer>() != null) + "| ";
-                Destroy(laser);
-            }
+            foreach (GameObject laser in listOfLasers) Destroy(laser);
 
+            // Clear lists
             listOfLasers.Clear();
             listOfLaserOrigins.Clear();
 
+            // Fire the initial laser to begin the recursive laser chain
             Fire_Initial_Laser();
         }
         else
         {
+            // Increment count
             currentUpdateCount++;
         }
     }
 
     private void Fire_Initial_Laser()
     {
-        // Create Laser at coordinates
-        // Add to List
 
-        //Debug.Log("Firing Initial Laser");
+        // Check to make sure the firstLaser has been provided
+        if (firstLaser != null)
+        {
+            // Instantiate new laser
+            GameObject newLaser = Instantiate(firstLaser);
 
-        GameObject newLaser = Instantiate(firstLaser);
-        newLaser.transform.position = this.transform.position;
-        newLaser.transform.rotation = this.transform.rotation;
-        newLaser.transform.localScale = new Vector3(1f,1f,1f);
+            // Set position and rotatation of inital laser
+            newLaser.transform.position = this.transform.position;
+            newLaser.transform.rotation = this.transform.rotation;
 
+            // Reset scale as the prefab laser may not be unscaled.
+            newLaser.transform.localScale = new Vector3(1f,1f,1f);
 
-        AddLaser(newLaser,this.transform.position);
+            // Set energy and layers to hit.
+            newLaser.GetComponent<Laser>().energy = startingEnergy;
+            newLaser.GetComponent<Laser>().layersToHit = layersToHit;
+
+            // Add laser to lists.
+            AddLaser(newLaser,this.transform.position);
+        }
+        else Debug.LogError("ERROR: Laser Origin has no connection to Prefab Laser");
 
     }
 
-    public void AddLaser(GameObject newLaser,Vector2 raycastPos)
+    public void AddLaser(GameObject newLaser,Vector2 newLaserOrigin)
     {
+        // Method to add laser to lists
 
-        if (!listOfLaserOrigins.Contains(raycastPos))
+        // Check if laser origin already exists - prevents creation of unneccary lasers
+        if (!listOfLaserOrigins.Contains(newLaserOrigin))
         {
+            // Add laser object and origin to lists respectively
             listOfLasers.Add(newLaser);
-            listOfLaserOrigins.Add(raycastPos);
+            listOfLaserOrigins.Add(newLaserOrigin);
 
+            // Change the new laser name to "Laser_X" dependning on when it was made - unneeded by helpful for debugging.
             newLaser.name = "Laser_"+listOfLasers.Count;
         }
         else
         {
+            // Destroy laser if unneeded
             Destroy(newLaser);
         }
 

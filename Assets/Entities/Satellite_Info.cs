@@ -21,10 +21,10 @@ public class Satellite_Info : MonoBehaviour
     public Interaction interaction = Interaction.Reflection;
 
     public float intialMovementMultiplier = 1f;
-    public float intialRotationMultiplier = 1f;
+    public float intialRotationMultiplier = 0.01f;
 
     public float maxMovementMultiplier = 5f;
-    public float maxRotationMultiplier = 5f;
+    public float maxRotationMultiplier = 1f;
 
 
     public float reflectiveIndex;

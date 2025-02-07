@@ -123,16 +123,36 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Mirror_Satellite
     originalName: 
-    pivot: {x: 0.50393707, y: 0}
+    pivot: {x: 0.50393707, y: -0.095744684}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 120
+      width: 127
+      height: 94
+    spriteID: c39a3c9c91057f041aa8bba5ab73f9c7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 120}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5035461, y: -0.018518519}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 127
-      height: 94
-    spriteID: c39a3c9c91057f041aa8bba5ab73f9c7
+      width: 141
+      height: 108
+    spriteID: ff6976cf700a5cc4a88d12b8fabab264
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -150,15 +170,24 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Mirror_Satellite
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 8
-        y: 0
+        y: 9
         width: 127
         height: 94
       spriteId: c39a3c9c91057f041aa8bba5ab73f9c7
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 1
+        y: 2
+        width: 141
+        height: 108
+      spriteId: ff6976cf700a5cc4a88d12b8fabab264
     linkedCells: []
     parentIndex: -1
   platformSettings:
