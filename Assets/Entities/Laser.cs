@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-
+ 
     public Satellite_Info refractionSatelliteInfo;
     public bool hitSomething;
     public LaserOrigin origin;
@@ -98,7 +98,7 @@ public class Laser : MonoBehaviour
         foreach (RaycastHit2D rayCastInLoop in listOfRayCasts)
         {
 
-            if (rayCastInLoop.distance > 0.1 && (rayCastInLoop.collider is PolygonCollider2D))
+            if (rayCastInLoop.distance > 0.01 && (rayCastInLoop.collider is PolygonCollider2D))
             {
                 rayCast = rayCastInLoop;
                 break;
@@ -224,6 +224,11 @@ public class Laser : MonoBehaviour
                     // Add laser to origin
                     origin.AddLaser(newLaser,rayCast.point);                    
                 }            
+            }
+        
+            else if (interaction == Interaction.Test)
+            {
+                //Interaction_Functions.Test_Interaction(this,rayCast);
             }
         }
     }

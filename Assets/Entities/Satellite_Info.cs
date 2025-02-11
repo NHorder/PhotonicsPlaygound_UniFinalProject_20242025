@@ -2,16 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public enum Interaction
-{
-    Absorb,
-    Reflection,
-    Refraction
-}
-
-
 public class Satellite_Info : MonoBehaviour
 {
 
