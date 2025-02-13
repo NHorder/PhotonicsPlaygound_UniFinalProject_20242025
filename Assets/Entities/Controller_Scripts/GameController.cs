@@ -2,8 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Controller : MonoBehaviour
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum Language{
+    English,
+    Welsh
+}
+
+
+
+
+public class GameController : MonoBehaviour
 {
+
+    public Language activeLanguage = Language.English;
+
     // Start is called before the first frame update
     void Start()
     {

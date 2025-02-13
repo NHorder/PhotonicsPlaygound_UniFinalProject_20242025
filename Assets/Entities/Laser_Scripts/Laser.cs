@@ -5,15 +5,19 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
  
-    public Satellite_Info refractionSatelliteInfo;
     public bool hitSomething;
     public LaserOrigin origin;
 
     public float energy;
 
+    [HideInInspector]
     public LayerMask layersToHit;
+    
     private RaycastHit2D rayCast;
     private Vector3 laserCoordinates;
+
+
+    private Satellite_Info refractionSatelliteInfo;
 
     // Start is called before the first frame update
     void Start()
