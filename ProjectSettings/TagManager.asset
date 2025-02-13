@@ -8,6 +8,8 @@ TagManager:
   - UI_Controller
   - Satellite_Control_Key
   - MouseController
+  - UI_Satellite_Info
+  - UI_Satellite_Info_Obj
   layers:
   - Default
   - TransparentFX

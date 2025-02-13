@@ -88,7 +88,10 @@ public class Satellite_Controller : MonoBehaviour
                 // Will involve an animation update - as it needs to be clear which object the user has selected.
                 selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
 
+                uiController.selectedSatelliteInfo = gameObject.GetComponent<Satellite_Info>();
                 uiController.PresentPanel(UIPanel.Satellite_Controls,true);
+
+                uiController.PresentPanel(UIPanel.Satellite_Info_UI,true);
 
             }
             // If it's null, set selected to null - this assumes an object that can't be rotated has been selected or empty space has been selected.
@@ -99,6 +102,10 @@ public class Satellite_Controller : MonoBehaviour
                     selectedRigidbody2D = null;
                     selected_satellite_info = null;
                     uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+
+                    uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+
+                    uiController.selectedSatelliteInfo = null;
                 }
                 
             }
@@ -202,7 +209,7 @@ public class Satellite_Controller : MonoBehaviour
 
 
 
-    public void InteractWithSatellite(float horizontalMovement, float verticalMovement, float rotationMovement)
+    private void InteractWithSatellite(float horizontalMovement, float verticalMovement, float rotationMovement)
     {
         // if the selected body is not null
         if (selectedRigidbody2D != null)
@@ -255,10 +262,6 @@ public class Satellite_Controller : MonoBehaviour
         
         else Debug.LogError("ERROR: An error has occurred with control over selected satellites");
     }
-
-
-
-
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
