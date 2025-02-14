@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 311decf1d8979c2458fac8ec8f50b748
+guid: 31ad76bfad6e0af4287d4e8d6b063d2e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 33
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shop_UI_Sprite_0
+      name: Shop_UI_OpenButton_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 240
-        height: 360
+        x: 12
+        y: 6
+        width: 39
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60e277475c97cb14c9e5f4f4a07ce675
-      internalID: 1721285501
+      spriteID: 26a4640e313daf142be3e7eaca8a2952
+      internalID: 408919959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shop_UI_Sprite_1
+      name: Shop_UI_OpenButton_1
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 240
-        height: 360
+        x: 58
+        y: 7
+        width: 39
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6d8a405612ca0045be4a346260c3ad4
-      internalID: 1586371411
+      spriteID: 99fc2203b1f1eeb4883e44a26e7cf1de
+      internalID: -1550703600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shop_UI_Sprite_2
+      name: Shop_UI_OpenButton_2
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 240
-        height: 360
+        x: 118
+        y: 6
+        width: 39
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9230ea9daa776094fab9d695707885c5
-      internalID: 230198123
+      spriteID: 8c7fe2ed0e8d27c4c8d2992a69bed1f9
+      internalID: -1942439998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shop_UI_Sprite_3
+      name: Shop_UI_OpenButton_3
       rect:
         serializedVersion: 2
-        x: 720
-        y: 0
-        width: 240
-        height: 360
+        x: 164
+        y: 7
+        width: 39
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5c7b8236ce16da4b8da7973beb871e8
-      internalID: 567906916
+      spriteID: 05252966c0cfe3f4ea0f6d6ac94f5301
+      internalID: -1876074170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shop_UI_Sprite_4
+      name: Shop_UI_OpenButton_4
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 240
-        height: 360
+        x: 224
+        y: 6
+        width: 39
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e71c0c928ec3b0f4ca989f5ee97629c4
-      internalID: 1595190348
+      spriteID: 293030ace88926747800825262971fa9
+      internalID: -268780975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shop_UI_Sprite_5
+      name: Shop_UI_OpenButton_5
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 240
-        height: 360
+        x: 270
+        y: 7
+        width: 39
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c63febec58aabd641aa708e94e2c9e6c
-      internalID: 887757392
+      spriteID: 2ccd94f1f1f411947b22f3c2ba8f91c6
+      internalID: 187089173
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shop_UI_Sprite_0: 1721285501
-      Shop_UI_Sprite_1: 1586371411
-      Shop_UI_Sprite_2: 230198123
-      Shop_UI_Sprite_3: 567906916
-      Shop_UI_Sprite_4: 1595190348
-      Shop_UI_Sprite_5: 887757392
+      Shop_UI_OpenButton_0: 408919959
+      Shop_UI_OpenButton_1: -1550703600
+      Shop_UI_OpenButton_2: -1942439998
+      Shop_UI_OpenButton_3: -1876074170
+      Shop_UI_OpenButton_4: -268780975
+      Shop_UI_OpenButton_5: 187089173
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

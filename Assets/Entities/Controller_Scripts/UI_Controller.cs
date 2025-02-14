@@ -20,6 +20,8 @@ public class UI_Controller : MonoBehaviour
     private GameObject satelliteControlPanel;
 
     public float controlPanelMovementSpeed = 1;
+    public float controlPanelVisibleLoc = -465f;
+    public float controlPanelNotVisibleLoc = -650f;
     private bool movingSatelliteControlPanel = false;
     private float satelliteControlPanelNewYLoc;
 
@@ -27,6 +29,18 @@ public class UI_Controller : MonoBehaviour
     private GameObject[] satelliteInfoUIObjects;
 
 
+    public float shopPanelMovementSpeed = 1;
+    public float shopPanelOpenXLoc = 596f;
+    public float shopPanelCloseXLoc = 1147f;
+
+    private bool shopPanelIsOpen = false;
+    private bool shopPanelMoving = false;
+    private float shopPanelNewXLoc;
+    private GameObject shopPanel;
+    private GameObject[] shopPanelText;
+    private GameObject[] shopPanelItems;
+
+    [HideInInspector]
     public Satellite_Info selectedSatelliteInfo;
 
     // Start is called before the first frame update
@@ -37,6 +51,8 @@ public class UI_Controller : MonoBehaviour
 
         satelliteInfoUIPanel = GameObject.FindGameObjectsWithTag("UI_Satellite_Info")[0];
         satelliteInfoUIObjects = GameObject.FindGameObjectsWithTag("UI_Satellite_Info_Obj");
+
+        shopPanel = GameObject.FindGameObjectsWithTag("Shop")[0];
 
     }
 
@@ -62,9 +78,35 @@ public class UI_Controller : MonoBehaviour
             else
             {
                 movingSatelliteControlPanel = false;
-                if (satelliteControlPanelNewYLoc < -465f) satelliteControlPanel.active = false;
+                if (satelliteControlPanelNewYLoc < controlPanelVisibleLoc) satelliteControlPanel.active = false;
             }
             
+        }
+
+        // If the shop panel is moving and has a defined location
+        if (shopPanelMoving && shopPanelNewXLoc != null)
+        {
+            // Retrieve neccessary transform components and current position
+            var panelRectTransform = shopPanel.GetComponent<RectTransform>();
+            var position = panelRectTransform.anchoredPosition;
+
+            // If the X location (as the shop panel slides left and right) is less, then increase it
+            if (position.x < shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x + shopPanelMovementSpeed, position.y);
+
+            // Else decrease it if the position is more than the new location
+            else if (position.x > shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x - shopPanelMovementSpeed, position.y);
+            
+            // Once complete (else works, as it means it's at the new location - event if it overextends a bit)
+            else
+            {
+                // Set moving to false
+                movingSatelliteControlPanel = false;
+
+                // Retrieve animator
+                var shopAnimator = shopPanel.GetComponent<Animator>();
+                // Update animator based on whether in the closed or open position
+                shopAnimator.SetBool("Open",(shopPanelNewXLoc < shopPanelCloseXLoc));
+            }
         }
     }
 
@@ -83,8 +125,8 @@ public class UI_Controller : MonoBehaviour
 
             var position = satelliteControlPanel.GetComponent<RectTransform>().anchoredPosition;
 
-            if (bVisible && position.y < -465)  satelliteControlPanelNewYLoc = -465f;
-            else if (!bVisible) satelliteControlPanelNewYLoc = -650f;
+            if (bVisible && position.y < controlPanelVisibleLoc)  satelliteControlPanelNewYLoc = controlPanelVisibleLoc;
+            else if (!bVisible) satelliteControlPanelNewYLoc = controlPanelNotVisibleLoc;
             else movingSatelliteControlPanel = false;
         }
 
@@ -148,14 +190,39 @@ public class UI_Controller : MonoBehaviour
 
         }
         
-        else if (panel == UIPanel.Shop)
-        {
-
-        }
         else if (panel == UIPanel.Settings)
         {
 
         }
+
+    }
+
+    public void OpenCloseShop()
+    {
+        // If the shop is open close it, if it's closed, open it.
+        // This makes use of a manual linear interpolation to show and close it - as RectTransform doesn't support linear interpolated movement
+        // This is done mainly for animation purposes.
+        if (shopPanelIsOpen)
+        {
+            shopPanelIsOpen = false;
+            shopPanelMoving = true;
+            shopPanelNewXLoc = shopPanelCloseXLoc;
+        }
+        else
+        {
+            shopPanelIsOpen = true;
+            shopPanelMoving = true;
+            shopPanelNewXLoc = shopPanelOpenXLoc;
+        }
+    }
+
+    public void ShopPurchaseItem()
+    {
+
+    }
+
+    public void ResetLevel()
+    {
 
     }
 

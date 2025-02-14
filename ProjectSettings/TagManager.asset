@@ -10,6 +10,9 @@ TagManager:
   - MouseController
   - UI_Satellite_Info
   - UI_Satellite_Info_Obj
+  - Shop
+  - Shop_Infomation_Text
+  - Shop_Content
   layers:
   - Default
   - TransparentFX
