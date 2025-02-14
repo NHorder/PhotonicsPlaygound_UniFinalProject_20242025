@@ -60,7 +60,7 @@ public class Satellite_Info : MonoBehaviour
         {
             
             if (satelliteName == "") satelliteName = "Prometheus-"+Random.Range(1,384);
-            if (satelliteDescription == "" && language == Language.English) satelliteDescription = "A Type XII Prometheus communication output, designed for deep space communciations it boasts a powerful laser to send messages into deep space. This is where your light laser begins.";
+            if (satelliteDescription == "" && language == Language.English) satelliteDescription = "A Type XII Prometheus communication output, designed for deep space communciations it boasts a powerful beam of light to send messages into deep space. This is where your light laser begins.";
             if (satelliteDescription == "" && language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
@@ -72,7 +72,7 @@ public class Satellite_Info : MonoBehaviour
         else if (satelliteType == SatelliteType.Destination)
         {
             if (satelliteName == "") satelliteName = "Fyrefly-"+Random.Range(1,384);
-            if (satelliteDescription == "") satelliteDescription = "A Type VI Fyrefly deep space satellite, designed to withstand any and all hazards that come its way. You task is to get the light communications to this satellite's satellite dish.";
+            if (satelliteDescription == "") satelliteDescription = "A Type VI Fyrefly Deep Space Space Station, designed to withstand the harshest conditions in space. Your task is to get the light beam to this station's satellite dish.";
             if (satelliteDescription == "" && language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
