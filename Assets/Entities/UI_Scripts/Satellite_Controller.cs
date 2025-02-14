@@ -88,9 +88,15 @@ public class Satellite_Controller : MonoBehaviour
                 // Will involve an animation update - as it needs to be clear which object the user has selected.
                 selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
 
-                uiController.selectedSatelliteInfo = gameObject.GetComponent<Satellite_Info>();
-                uiController.PresentPanel(UIPanel.Satellite_Controls,true);
+                uiController.selectedSatelliteInfo = selected_satellite_info;
 
+                if (selected_satellite_info.satelliteType == SatelliteType.Origin || selected_satellite_info.satelliteType == SatelliteType.Destination)
+                {
+                    uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+                }
+                else uiController.PresentPanel(UIPanel.Satellite_Controls,true);
+                
+                
                 uiController.PresentPanel(UIPanel.Satellite_Info_UI,true);
 
             }
@@ -107,6 +113,7 @@ public class Satellite_Controller : MonoBehaviour
 
                     uiController.selectedSatelliteInfo = null;
                 }
+
                 
             }
             
@@ -152,7 +159,7 @@ public class Satellite_Controller : MonoBehaviour
         // Reason is unity rotation is postive left, negative right.
         float rotationMovement = Input.GetAxisRaw("Rotation");
 
-        InteractWithSatellite(horizontalMovement,verticalMovement,rotationMovement);
+        if (selected_satellite_info.satelliteType != SatelliteType.Origin && selected_satellite_info.satelliteType != SatelliteType.Destination) InteractWithSatellite(horizontalMovement,verticalMovement,rotationMovement);
         
     }
 

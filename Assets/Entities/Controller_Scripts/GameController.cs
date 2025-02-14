@@ -19,6 +19,10 @@ public class GameController : MonoBehaviour
 
     public Language activeLanguage = Language.English;
 
+    public int numOrigins = 1;
+    public int numDestinations = 1;
+    
+
     // Start is called before the first frame update
     void Start()
     {

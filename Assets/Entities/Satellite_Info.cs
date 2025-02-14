@@ -6,19 +6,26 @@ using UnityEngine;
 public enum SatelliteType{
     Unknown,
     SingleSideReflector,
-    GlassRefractor
+    GlassRefractor,
+    Origin,
+    Destination,
+
 }
-
-
 
 public class Satellite_Info : MonoBehaviour
 {
+    private GameController gameController;
+
     public SatelliteType satelliteType = SatelliteType.Unknown;
 
     public string satelliteName = "";
     public string satelliteDescription= "";
     public int satellitePurchasePrice = 0;
     public int satelliteSellPrice = 0;
+
+    private int satelliteNum = 0;
+
+    public LaserColour lightColor = LaserColour.White;
 
     
     public Interaction interaction;
@@ -36,25 +43,51 @@ public class Satellite_Info : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+
         this.RetreiveSatelliteText(this.satelliteType);
         absorbance = Mathf.Clamp01(absorbance);
 
         Debug.Log(interaction);
     }
 
-
-
-
     public void RetreiveSatelliteText(SatelliteType satelliteType)
     {
         Language language = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>().activeLanguage;
 
-        if (satelliteType == SatelliteType.SingleSideReflector)
+
+        if (satelliteType == SatelliteType.Origin)
+        {
+            
+            if (satelliteName == "") satelliteName = "Prometheus-"+Random.Range(1,384);
+            if (satelliteDescription == "" && language == Language.English) satelliteDescription = "A Type XII Prometheus communication output, designed for deep space communciations it boasts a powerful laser to send messages into deep space. This is where your light laser begins.";
+            if (satelliteDescription == "" && language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 0;
+            if (refractiveIndex == 0f) refractiveIndex = 0f;
+            if (absorbance == 0) absorbance = 0;
+
+        }
+
+        else if (satelliteType == SatelliteType.Destination)
+        {
+            if (satelliteName == "") satelliteName = "Fyrefly-"+Random.Range(1,384);
+            if (satelliteDescription == "") satelliteDescription = "A Type VI Fyrefly deep space satellite, designed to withstand any and all hazards that come its way. You task is to get the light communications to this satellite's satellite dish.";
+            if (satelliteDescription == "" && language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+            if (refractiveIndex == 0f) refractiveIndex = 0f;
+            if (absorbance == 0) absorbance = 0;
+
+            interaction = Interaction.Absorb;
+        }
+
+        else if (satelliteType == SatelliteType.SingleSideReflector)
         {
             if (language == Language.English)
             {
-                if (satelliteName == "") satelliteName = "Reflect-LAM-SAT";
-                if (satelliteDescription == "") satelliteDescription = "A high grade reflactance satellite. The surface has no indents and is perfectly flat, providing optimal reflection of light.";
+                if (satelliteName == "") satelliteName = "Reflect-LAM-"+satelliteNum+"-SAT";
+                if (satelliteDescription == "") satelliteDescription = "A high grade reflactance satellite. The surface has no indents and is perfectly flat, providing optimal reflection of light, a true lambertian diffuse satellite.";
                 if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
                 if (satelliteSellPrice == 0) satelliteSellPrice = 50;
                 if (refractiveIndex == 0f) refractiveIndex = 0f;
@@ -69,7 +102,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (language == Language.English)
             {
-                if (satelliteName == "") satelliteName = "Refract-GL-SAT";
+                if (satelliteName == "") satelliteName = "Refract-GL-"+satelliteNum+"SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is Glass and has a refractive index of 1.52, passing a laser through this object will alter the angle to a small degree.";
                 if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
                 if (satelliteSellPrice == 0) satelliteSellPrice = 75;

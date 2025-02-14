@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum LaserColour{
+    White,
+
+}
+
 public class Laser : MonoBehaviour
 {
  
@@ -230,10 +236,7 @@ public class Laser : MonoBehaviour
                 }            
             }
         
-            else if (interaction == Interaction.Test)
-            {
-                //Interaction_Functions.Test_Interaction(this,rayCast);
-            }
+            
         }
     }
 }

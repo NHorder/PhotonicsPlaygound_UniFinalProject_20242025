@@ -95,7 +95,7 @@ public class UI_Controller : MonoBehaviour
 
             if (bVisible)
             {
-                rectTransform.anchoredPosition = new Vector2(position.x, -368);
+                rectTransform.anchoredPosition = new Vector2(position.x, -408);
 
                 satelliteInfoUIPanel.active = true;
                 foreach (GameObject obj in satelliteInfoUIObjects)
@@ -103,17 +103,35 @@ public class UI_Controller : MonoBehaviour
                     // Type found by Stephan_B, taken from https://discussions.unity.com/t/access-textmeshpro-text-through-script/699157 
                     // then used to get the TextMeshPro Text component of the game object.
                     TMP_Text textComponent = obj.GetComponent<TMP_Text >();
-                    
+
                     if (textComponent != null && selectedSatelliteInfo != null){
-                        textComponent.text = "Hi?";
+                        textComponent.text = "";
 
                         if (obj.name == "Satellite_Name") textComponent.text = selectedSatelliteInfo.satelliteName;
                         else if (obj.name == "Satellite_Description") textComponent.text = selectedSatelliteInfo.satelliteDescription;
-                        else if (obj.name == "Sell_Text") textComponent.text = "Sell £"+selectedSatelliteInfo.satelliteSellPrice;
+                        else if (obj.name == "Sell_Text")
+                        {
+                            if (selectedSatelliteInfo.satelliteType == SatelliteType.Origin || selectedSatelliteInfo.satelliteType == SatelliteType.Destination)
+                            {
+                                textComponent.text = "Not for sale";
+                            }
+                            else textComponent.text = "Sell £"+selectedSatelliteInfo.satelliteSellPrice;
+                        }
 
+                        else if (obj.name == "LightColour") 
+                        {
+                            if (selectedSatelliteInfo.satelliteType == SatelliteType.Origin) textComponent.text = "Creates "+selectedSatelliteInfo.lightColor.ToString() + " Laser"; 
+                            
+                            else if (selectedSatelliteInfo.satelliteType == SatelliteType.Destination) textComponent.text = "Needs "+selectedSatelliteInfo.lightColor.ToString() + " Laser"; 
+                            else textComponent.text = "";
+                        }
+                    
                     }
 
                     obj.active = true;
+
+                    
+
                 }
             }
             else

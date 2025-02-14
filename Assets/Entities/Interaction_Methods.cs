@@ -7,7 +7,8 @@ public enum Interaction
     Absorb,
     Reflection,
     Refraction,
-    Test
+    Origin,
+    Destination,
 }
 
 class Interaction_Functions
@@ -46,7 +47,6 @@ class Interaction_Functions
         // Through using the inverse normal and the calculated refracted angle
         return inverseAngleOfNormal + refracted_angle;
     }
-
 
     public static float Test_Interaction(float incident_index,float refracted_index,Vector2 normal, Laser laser)
     {
