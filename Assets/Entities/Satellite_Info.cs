@@ -27,7 +27,8 @@ public class Satellite_Info : MonoBehaviour
 
     public LaserColour lightColor = LaserColour.White;
 
-    
+    public bool IsSatelliteReceivedCorrectLaser = false;
+
     public Interaction interaction;
 
     public float refractiveIndex = 0;

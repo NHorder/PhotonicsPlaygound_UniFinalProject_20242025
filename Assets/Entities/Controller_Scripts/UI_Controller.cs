@@ -167,7 +167,14 @@ public class UI_Controller : MonoBehaviour
                             else if (selectedSatelliteInfo.satelliteType == SatelliteType.Destination) textComponent.text = "Needs "+selectedSatelliteInfo.lightColor.ToString() + " Laser"; 
                             else textComponent.text = "";
                         }
-                    
+
+                        else if (obj.name == "Satellite_Status")
+                        {
+                            if (selectedSatelliteInfo.satelliteType == SatelliteType.Destination && selectedSatelliteInfo.IsSatelliteReceivedCorrectLaser) textComponent.text = "Status: Active";
+                            else if (selectedSatelliteInfo.satelliteType == SatelliteType.Destination) textComponent.text = "Status: Inactive";
+                            else textComponent.text = "";
+                        }
+
                     }
 
                     obj.active = true;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ae0062fce449f33439ffa9317de94385
+guid: 8c02fbedca8bb4541a2e712391828882
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Colour_Filter_Satellite_Selected_0
+      name: Laser_Destination_Inactive_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 156
-        height: 80
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d5802adf4f523e49a2ac88d709804b5
-      internalID: -1192898076
+      spriteID: 5ae89a0073104de4d935983a390b6c83
+      internalID: 1671906164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colour_Filter_Satellite_Selected_1
+      name: Laser_Destination_Inactive_1
       rect:
         serializedVersion: 2
-        x: 156
+        x: 354
         y: 0
-        width: 156
-        height: 80
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5141d04f606e6a4b993413697fe030c
-      internalID: 208044623
+      spriteID: afeb87d9c939bf24d96715b04cb6ed24
+      internalID: -555330037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colour_Filter_Satellite_Selected_2
+      name: Laser_Destination_Inactive_2
       rect:
         serializedVersion: 2
-        x: 312
+        x: 708
         y: 0
-        width: 156
-        height: 80
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0557303d37b1b27478e093ffc37b5de0
-      internalID: 373518908
+      spriteID: 85a5eb3f372aa8c4e9a949dd35db9d11
+      internalID: 1589578382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colour_Filter_Satellite_Selected_3
+      name: Laser_Destination_Inactive_3
       rect:
         serializedVersion: 2
-        x: 468
+        x: 1062
         y: 0
-        width: 156
-        height: 80
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b342a890691dcc04789fc2b692819e97
-      internalID: -1567253629
+      spriteID: 99a8007b888b03a42bb0a11a0155a711
+      internalID: 1778942223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colour_Filter_Satellite_Selected_4
+      name: Laser_Destination_Inactive_4
       rect:
         serializedVersion: 2
-        x: 624
+        x: 1416
         y: 0
-        width: 156
-        height: 80
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57ac05cf8938f3843a275e6ea83345a2
-      internalID: -1785396236
+      spriteID: 7372e922c04a7274e9bc8034b0a33ca6
+      internalID: 367274314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colour_Filter_Satellite_Selected_5
+      name: Laser_Destination_Inactive_5
       rect:
         serializedVersion: 2
-        x: 780
+        x: 1770
         y: 0
-        width: 156
-        height: 80
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 187cfa7b8263daf48b030dd8e41ba9f9
-      internalID: 610726859
+      spriteID: ff1d2b2ba6dded44aa3ed8bff16b0770
+      internalID: 1756833340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colour_Filter_Satellite_Selected_6
+      name: Laser_Destination_Inactive_6
       rect:
         serializedVersion: 2
-        x: 936
+        x: 2124
         y: 0
-        width: 156
-        height: 80
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,8 +250,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 175d8132ecc4e684bb50dfceffa4782c
-      internalID: -481292669
+      spriteID: 440f60fca2c0c73408f8ace73a77802f
+      internalID: 124338733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laser_Destination_Inactive_7
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 0
+        width: 354
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e55b971c6f405742ac9cc97734c1307
+      internalID: -797765292
       vertices: []
       indices: 
       edges: []
@@ -267,13 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Colour_Filter_Satellite_Selected_0: -1192898076
-      Colour_Filter_Satellite_Selected_1: 208044623
-      Colour_Filter_Satellite_Selected_2: 373518908
-      Colour_Filter_Satellite_Selected_3: -1567253629
-      Colour_Filter_Satellite_Selected_4: -1785396236
-      Colour_Filter_Satellite_Selected_5: 610726859
-      Colour_Filter_Satellite_Selected_6: -481292669
+      Laser_Destination_Inactive_0: 1671906164
+      Laser_Destination_Inactive_1: -555330037
+      Laser_Destination_Inactive_2: 1589578382
+      Laser_Destination_Inactive_3: 1778942223
+      Laser_Destination_Inactive_4: 367274314
+      Laser_Destination_Inactive_5: 1756833340
+      Laser_Destination_Inactive_6: 124338733
+      Laser_Destination_Inactive_7: -797765292
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

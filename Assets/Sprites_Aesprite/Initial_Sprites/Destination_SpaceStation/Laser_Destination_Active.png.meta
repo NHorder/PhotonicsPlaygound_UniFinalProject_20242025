@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ee45bc1d1297db4a8f714d58eaf8349
+guid: 9fb2e692cb8564e44aa7a812e2265173
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,10 +45,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_Box_Sprite_0
+      name: Laser_Destination_Active_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2553fecc20fe0a64d98794f8c05c12dc
-      internalID: -2095908579
+      spriteID: 3abcd2c2e34a32b46b0b0aa83bef71f1
+      internalID: 1763609156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Box_Sprite_1
+      name: Laser_Destination_Active_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 354
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f767a7aabc28af141837c1302cff2a0d
-      internalID: -2066524985
+      spriteID: 212c0dce5d15d7345a6a7f05f49773bb
+      internalID: -1868636079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Box_Sprite_2
+      name: Laser_Destination_Active_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 708
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41a3acf83ebb1c7458fcfa8f51601c5c
-      internalID: 2105526195
+      spriteID: 94dddc70da3e3b04887e0911e92fe837
+      internalID: -2087741458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Box_Sprite_3
+      name: Laser_Destination_Active_3
       rect:
         serializedVersion: 2
-        x: 288
+        x: 1062
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c400492c2b92a540aa89835f0b4bd9b
-      internalID: 781951660
+      spriteID: 8f503e463ffd9f74f87f96d8bee3f5c9
+      internalID: 1317633547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Box_Sprite_4
+      name: Laser_Destination_Active_4
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1416
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2f3489ae92940141900b3f83e4b2a40
-      internalID: -809861862
+      spriteID: 4e5b49f1faf685f469b63a056173172d
+      internalID: 228232003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Box_Sprite_5
+      name: Laser_Destination_Active_5
       rect:
         serializedVersion: 2
-        x: 480
+        x: 1770
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c95fe45718306e4294ffbfa0940590e
-      internalID: -1028202608
+      spriteID: ad8f59a1c6cbe854388eb41cb2a39d36
+      internalID: -1865997814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Box_Sprite_6
+      name: Laser_Destination_Active_6
       rect:
         serializedVersion: 2
-        x: 576
+        x: 2124
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d6c18c8bcd6612488803696b1e6bdfb
-      internalID: 1316291720
+      spriteID: 463ab0bf10d62584386a030e2bca2f28
+      internalID: 742928472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Box_Sprite_7
+      name: Laser_Destination_Active_7
       rect:
         serializedVersion: 2
-        x: 672
+        x: 2478
         y: 0
-        width: 96
-        height: 96
+        width: 354
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8a6c8ce76f97b94db03eb938eb6b7fc
-      internalID: 1833782660
+      spriteID: c6139f7e1570eac4d987fa9e5d10faac
+      internalID: 1627940753
       vertices: []
       indices: 
       edges: []
@@ -288,14 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI_Box_Sprite_0: -2095908579
-      UI_Box_Sprite_1: -2066524985
-      UI_Box_Sprite_2: 2105526195
-      UI_Box_Sprite_3: 781951660
-      UI_Box_Sprite_4: -809861862
-      UI_Box_Sprite_5: -1028202608
-      UI_Box_Sprite_6: 1316291720
-      UI_Box_Sprite_7: 1833782660
+      Laser_Destination_Active_0: 1763609156
+      Laser_Destination_Active_1: -1868636079
+      Laser_Destination_Active_2: -2087741458
+      Laser_Destination_Active_3: 1317633547
+      Laser_Destination_Active_4: 228232003
+      Laser_Destination_Active_5: -1865997814
+      Laser_Destination_Active_6: 742928472
+      Laser_Destination_Active_7: 1627940753
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
