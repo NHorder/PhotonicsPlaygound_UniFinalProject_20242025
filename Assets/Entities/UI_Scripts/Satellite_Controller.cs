@@ -82,8 +82,8 @@ public class Satellite_Controller : MonoBehaviour
 
                 // Update multipliers - Mutipliers are used to increase speed of rotation or movement based on how long 
                 // they are held down to a maximum limit (defined in objects satellite information)
-                currentMovementMultiplier = selected_satellite_info.intialMovementMultiplier;
-                currentRotationMultiplier = selected_satellite_info.intialRotationMultiplier;
+                currentMovementMultiplier = selected_satellite_info.satellite_Movement_Info.intialMovementMultiplier;
+                currentRotationMultiplier = selected_satellite_info.satellite_Movement_Info.intialRotationMultiplier;
 
                 // Will involve an animation update - as it needs to be clear which object the user has selected.
                 selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
@@ -231,7 +231,7 @@ public class Satellite_Controller : MonoBehaviour
             if (Input.GetButton("Rotation") ||  keyPressed == Key.Rotation){
                 
                 // Updates every 60 updates - Hardcoded update which appeared suitable, allows user good control
-                if (rotationCounter > 60 && (currentRotationMultiplier < selected_satellite_info.maxRotationMultiplier))   
+                if (rotationCounter > 60 && (currentRotationMultiplier < selected_satellite_info.satellite_Movement_Info.maxRotationMultiplier))   
                 {
                     // Reset the rotation counter
                     rotationCounter = 0;
@@ -245,13 +245,13 @@ public class Satellite_Controller : MonoBehaviour
             }
 
             // Else if the button is let go, reset it the rotation multipler back to it's intial (defined in satellite info)
-            else currentRotationMultiplier = selected_satellite_info.intialRotationMultiplier;
+            else currentRotationMultiplier = selected_satellite_info.satellite_Movement_Info.intialRotationMultiplier;
 
             // If the vertical or horizontal is held, then gradually increase the speed of movement to a limit (defined in satellite info)
             if (Input.GetButton("Vertical") || Input.GetButton("Horizontal") || keyPressed == Key.Vertical || keyPressed == Key.Horizontal){
 
                 // Updates every 60 updates - Hardcoded update which appeared suitable, allows user good control
-                if (movementCounter > 60 && (currentMovementMultiplier < selected_satellite_info.maxMovementMultiplier))   
+                if (movementCounter > 60 && (currentMovementMultiplier < selected_satellite_info.satellite_Movement_Info.maxMovementMultiplier))   
                 {
                     // Reset the rotation counter
                     movementCounter = 0;
@@ -264,7 +264,7 @@ public class Satellite_Controller : MonoBehaviour
                 movementCounter += 1;
             }
             // Else if the button is let go, reset it the rotation multipler back to it's intial (defined in satellite info)
-            else currentMovementMultiplier = selected_satellite_info.intialMovementMultiplier;
+            else currentMovementMultiplier = selected_satellite_info.satellite_Movement_Info.intialMovementMultiplier;
         }
         
         else Debug.LogError("ERROR: An error has occurred with control over selected satellites");

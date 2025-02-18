@@ -34,4 +34,10 @@ public class GameController : MonoBehaviour
     {
         
     }
+
+
+    public void PurchaseSatellite(Satellite_Info satellite_Info)
+    {
+        
+    }
 }

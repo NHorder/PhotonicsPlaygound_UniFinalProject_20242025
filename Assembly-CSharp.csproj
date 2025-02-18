@@ -66,8 +66,8 @@
   <ItemGroup>
     <Compile Include="Assets\Entities\Controller_Scripts\GameController.cs" />
     <Compile Include="Assets\Entities\Laser_Scripts\LaserOrigin.cs" />
-    <Compile Include="Assets\Entities\Satellite_Info.cs" />
     <Compile Include="Assets\Entities\Interaction_Methods.cs" />
+    <Compile Include="Assets\Entities\Satellite_Info\Satellite_Info.cs" />
     <Compile Include="Assets\Entities\Laser_Scripts\Laser.cs" />
     <Compile Include="Assets\Entities\Controller_Scripts\UI_Controller.cs" />
     <Compile Include="Assets\Entities\UI_Scripts\Satellite_Controller.cs" />

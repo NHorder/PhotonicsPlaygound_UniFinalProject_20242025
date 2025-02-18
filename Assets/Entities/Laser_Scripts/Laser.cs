@@ -178,7 +178,7 @@ public class Laser : MonoBehaviour
                     incident_index = 1;
 
                     // Collect the refractive index from the linked satellite info we hit using the rayCast earlier
-                    refractive_index = satelliteInfo.refractiveIndex;
+                    refractive_index = satelliteInfo.advanced_Satellite_Info.refractiveIndex;
 
                     // Shift if used to make sure the new raycast / laser won't rehit the exact same collider position as this raycast
                     // Assumes that the object has a HOLLOW collider - made using polygonal colliders.
@@ -198,7 +198,7 @@ public class Laser : MonoBehaviour
                 else
                 {
                     // Collect the refractive index of the satellite the laser is currently within
-                    incident_index = refractionSatelliteInfo.refractiveIndex;
+                    incident_index = refractionSatelliteInfo.advanced_Satellite_Info.refractiveIndex;
 
                     // Assumption we are exiting into a vacuum
                     refractive_index = 1;
