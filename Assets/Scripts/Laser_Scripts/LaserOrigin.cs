@@ -8,10 +8,10 @@ public class LaserOrigin : MonoBehaviour
 
     public LayerMask layersToHit;
     public float startingEnergy = 50f;
-    public int updateDelay = 32;
+    public int updateDelay = 1;
 
     // First laser is placed manually, then attached
-    public GameObject firstLaser;
+    public GameObject prefabLaser;
 
 
     private int currentUpdateCount = 0;
@@ -66,10 +66,11 @@ public class LaserOrigin : MonoBehaviour
     {
 
         // Check to make sure the firstLaser has been provided
-        if (firstLaser != null)
+        if (prefabLaser != null)
         {
             // Instantiate new laser
-            GameObject newLaser = Instantiate(firstLaser);
+            GameObject newLaser = Instantiate(prefabLaser);
+            newLaser.GetComponent<Laser>().origin = this;
 
             // Set position and rotatation of inital laser
             newLaser.transform.position = this.transform.position;

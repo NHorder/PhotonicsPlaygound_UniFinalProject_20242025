@@ -12,6 +12,7 @@ public enum UIPanel
     Satellite_Info_UI,
     Shop,
     Settings,
+    LevelComplete
 }
 
 public class UI_Controller : MonoBehaviour
@@ -19,9 +20,7 @@ public class UI_Controller : MonoBehaviour
     
     private GameObject satelliteControlPanel;
 
-    public float controlPanelMovementSpeed = 1;
-    public float controlPanelVisibleLoc = -465f;
-    public float controlPanelNotVisibleLoc = -650f;
+    public SatelliteControlPanelSettings satelliteControlPanelSettings;
     private bool movingSatelliteControlPanel = false;
     private float satelliteControlPanelNewYLoc;
 
@@ -29,23 +28,31 @@ public class UI_Controller : MonoBehaviour
     private GameObject[] satelliteInfoUIObjects;
 
 
-    public float shopPanelMovementSpeed = 1;
-    public float shopPanelOpenXLoc = 596f;
-    public float shopPanelCloseXLoc = 1147f;
-
+    public ShopPanelSettings shopPanelSettings;
     private bool shopPanelIsOpen = false;
     private bool shopPanelMoving = false;
     private float shopPanelNewXLoc;
     private GameObject shopPanel;
-    private GameObject[] shopPanelText;
-    private GameObject[] shopPanelItems;
+    private TMP_Text shopBudgetText;
+    private int knownBudget;
+
+
+    private bool userWantsToLeaveLevel = false;
+    private bool levelComplete = false;
+    private bool teachingLevel = false;
 
     [HideInInspector]
     public Satellite_Info selectedSatelliteInfo;
 
+    private GameController gameController;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        gameController.SetUIController(this);
+
         // Find and save connection to Satellite Control Panel UI Parent
         satelliteControlPanel = GameObject.FindGameObjectsWithTag("Satellite_Controls")[0];
 
@@ -54,11 +61,34 @@ public class UI_Controller : MonoBehaviour
 
         shopPanel = GameObject.FindGameObjectsWithTag("Shop")[0];
 
+
+        GameObject[] shopInformationText = GameObject.FindGameObjectsWithTag("Shop_Information_Text");
+
+        foreach (GameObject shopInfoTextObject in shopInformationText)
+        {
+            TMP_Text textComponent = shopInfoTextObject.GetComponent<TMP_Text>();
+
+            if (shopInfoTextObject.name == "LevelName") textComponent.text = gameController.levelName;
+            else if (shopInfoTextObject.name == "LevelDescription") textComponent.text = gameController.levelDescription;
+            else if (shopInfoTextObject.name == "CurrentBudget")
+            {
+                textComponent.text = "Current Budget: £"+gameController.startingBudget;
+                knownBudget = gameController.startingBudget;
+                shopBudgetText = textComponent;
+            }
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (shopBudgetText != null && knownBudget != gameController.currentBudget)
+        {
+            shopBudgetText.text = "Current Budget: £"+gameController.currentBudget;
+            knownBudget = gameController.currentBudget;
+        }
+
         // If moving satellite control panel, and the new location is not null
         if (movingSatelliteControlPanel && satelliteControlPanelNewYLoc != null)
         {
@@ -69,16 +99,16 @@ public class UI_Controller : MonoBehaviour
             {
                 if (satelliteControlPanel.active == false) satelliteControlPanel.active = true;
 
-                panelRectTransform.anchoredPosition = new Vector2(position.x, position.y + controlPanelMovementSpeed);
+                panelRectTransform.anchoredPosition = new Vector2(position.x, position.y + satelliteControlPanelSettings.controlPanelMovementSpeed);
             }
             else if (position.y > satelliteControlPanelNewYLoc)
             {
-                panelRectTransform.anchoredPosition = new Vector2(position.x, position.y - controlPanelMovementSpeed);
+                panelRectTransform.anchoredPosition = new Vector2(position.x, position.y - satelliteControlPanelSettings.controlPanelMovementSpeed);
             }
             else
             {
                 movingSatelliteControlPanel = false;
-                if (satelliteControlPanelNewYLoc < controlPanelVisibleLoc) satelliteControlPanel.active = false;
+                if (satelliteControlPanelNewYLoc < satelliteControlPanelSettings.controlPanelVisibleLoc) satelliteControlPanel.active = false;
             }
             
         }
@@ -91,21 +121,21 @@ public class UI_Controller : MonoBehaviour
             var position = panelRectTransform.anchoredPosition;
 
             // If the X location (as the shop panel slides left and right) is less, then increase it
-            if (position.x < shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x + shopPanelMovementSpeed, position.y);
+            if (position.x < shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x + shopPanelSettings.shopPanelMovementSpeed, position.y);
 
             // Else decrease it if the position is more than the new location
-            else if (position.x > shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x - shopPanelMovementSpeed, position.y);
+            else if (position.x > shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x - shopPanelSettings.shopPanelMovementSpeed, position.y);
             
             // Once complete (else works, as it means it's at the new location - event if it overextends a bit)
             else
             {
                 // Set moving to false
-                movingSatelliteControlPanel = false;
+                shopPanelMoving = false;
 
                 // Retrieve animator
                 var shopAnimator = shopPanel.GetComponent<Animator>();
                 // Update animator based on whether in the closed or open position
-                shopAnimator.SetBool("Open",(shopPanelNewXLoc < shopPanelCloseXLoc));
+                shopAnimator.SetBool("Open",(shopPanelNewXLoc < shopPanelSettings.shopPanelCloseXLoc));
             }
         }
     }
@@ -115,7 +145,7 @@ public class UI_Controller : MonoBehaviour
     {
         // If the presentation of a panel is the satellite control AND it's not already being moved
         // This is to prevent potential errors when a user spam clicks a specific satellite.
-        if (panel == UIPanel.Satellite_Controls && movingSatelliteControlPanel == false)
+        if (panel == UIPanel.Satellite_Controls)
         {
             // Update moving to true, meaning update will now move the satellite.
             movingSatelliteControlPanel = true;
@@ -125,8 +155,8 @@ public class UI_Controller : MonoBehaviour
 
             var position = satelliteControlPanel.GetComponent<RectTransform>().anchoredPosition;
 
-            if (bVisible && position.y < controlPanelVisibleLoc)  satelliteControlPanelNewYLoc = controlPanelVisibleLoc;
-            else if (!bVisible) satelliteControlPanelNewYLoc = controlPanelNotVisibleLoc;
+            if (bVisible && position.y < satelliteControlPanelSettings.controlPanelVisibleLoc)  satelliteControlPanelNewYLoc = satelliteControlPanelSettings.controlPanelVisibleLoc;
+            else if (!bVisible) satelliteControlPanelNewYLoc = satelliteControlPanelSettings.controlPanelNotVisibleLoc;
             else movingSatelliteControlPanel = false;
         }
 
@@ -201,8 +231,17 @@ public class UI_Controller : MonoBehaviour
         {
 
         }
+        else if (panel == UIPanel.LevelComplete)
+        {
+            // SceneController.To_LevelSelection()
+
+
+
+        }
 
     }
+
+    
 
     public void OpenCloseShop()
     {
@@ -213,19 +252,14 @@ public class UI_Controller : MonoBehaviour
         {
             shopPanelIsOpen = false;
             shopPanelMoving = true;
-            shopPanelNewXLoc = shopPanelCloseXLoc;
+            shopPanelNewXLoc = shopPanelSettings.shopPanelCloseXLoc;
         }
         else
         {
             shopPanelIsOpen = true;
             shopPanelMoving = true;
-            shopPanelNewXLoc = shopPanelOpenXLoc;
+            shopPanelNewXLoc = shopPanelSettings.shopPanelOpenXLoc;
         }
-    }
-
-    public void ShopPurchaseItem()
-    {
-
     }
 
     public void ResetLevel()
@@ -234,4 +268,41 @@ public class UI_Controller : MonoBehaviour
     }
 
 
+    public void SetLevelComplete(bool levelComplete)
+    {
+        // This will trigger the closure of all UI elements (but shop) if true
+        this.levelComplete = levelComplete;
+
+        if (levelComplete)
+        {
+            // Close shop UI if it's open
+            if (shopPanelIsOpen) OpenCloseShop();
+
+            // Present the LevelComplete Panel
+            PresentPanel(UIPanel.LevelComplete,true);
+        }
+        
+
+    }
+
+    public bool GetLevelComplete(){return levelComplete;}
+
+    public bool GetTeachingUser(){return teachingLevel;}
+    
+}
+
+[System.Serializable]
+public class SatelliteControlPanelSettings
+{
+    public float controlPanelMovementSpeed = 1;
+    public float controlPanelVisibleLoc = -465f;
+    public float controlPanelNotVisibleLoc = -650f;
+}
+
+[System.Serializable]
+public class ShopPanelSettings
+{
+    public float shopPanelMovementSpeed = 1;
+    public float shopPanelOpenXLoc = 596f;
+    public float shopPanelCloseXLoc = 1147f;
 }

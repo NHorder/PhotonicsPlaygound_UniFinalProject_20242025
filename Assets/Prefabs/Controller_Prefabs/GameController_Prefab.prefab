@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &757434373705611449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5628660019378774481}
+  - component: {fileID: 6208899696488686084}
+  m_Layer: 0
+  m_Name: GameController_Prefab
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5628660019378774481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757434373705611449}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6461573, y: -3.7887726, z: -0.080227874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6208899696488686084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757434373705611449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6164f69630d4f45489450d110ed8284e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeLanguage: 0
+  thisLevel: 0
+  levelName: 'Level 1: Reflections'
+  levelDescription: This level teaches about reflections. Make the best of your budget
+    to get the light beam to the destination, the more budget remaining the higher
+    your score!
+  startingBudget: 1000
+  currentBudget: 1000
+  worldInfo:
+    numOrigins: 1
+    numDestinations: 1
+    numSatellites: 0
+    newSatelliteLocationX: 0
+    newSatelliteLocationY: 0
+    satelliteBuilder: {fileID: 0}
+  satellite_Prefabs:
+    singlePanelReflectionSatellite: {fileID: 8159377607702779972, guid: 792c9818fad8b0940b3670211c3c23df, type: 3}
+    glassRefractionSatellite: {fileID: 2407986768139647972, guid: cd67f170a293ada4d935fd3076038d86, type: 3}

@@ -26,8 +26,6 @@ public class Satellite_Info : MonoBehaviour
     public int satellitePurchasePrice = 0;
     public int satelliteSellPrice = 0;
 
-    private int satelliteNum = 0;
-
     
     public Advanced_Satellite_Info advanced_Satellite_Info;
     public Satellite_Movement_Info satellite_Movement_Info;
@@ -42,13 +40,13 @@ public class Satellite_Info : MonoBehaviour
         advanced_Satellite_Info.absorbance = Mathf.Clamp01(advanced_Satellite_Info.absorbance);
 
         if (satellite_Shop_Info.IsShopItem) CreateShopItem();
-
     }
 
     public void RetreiveSatelliteText(SatelliteType satelliteType)
     {
         Language language = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>().activeLanguage;
 
+        int satelliteNum = gameController.worldInfo.numSatellites;
 
         if (satelliteType == SatelliteType.Origin)
         {
@@ -72,13 +70,14 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteName == "") satelliteName = "Fyrefly-"+Random.Range(1,384);
             if (satelliteDescription == "") satelliteDescription = "A Type VI Fyrefly Deep Space Space Station, designed to withstand the harshest conditions in space. Your task is to get the light beam to this station's satellite dish.";
             if (satelliteDescription == "" && language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
+
             if (satelliteShortDescription == "" && language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
             if (satelliteShortDescription == "" && language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
+
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
-
             interaction = Interaction.Absorb;
         }
 
@@ -89,13 +88,14 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteName == "") satelliteName = "Reflect-LAM-"+satelliteNum+"-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade reflactance satellite. The surface has no indents and is perfectly flat, providing optimal reflection of light, a true lambertian diffuse satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A single surface reflection satellite.";
-                if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
-                if (satelliteSellPrice == 0) satelliteSellPrice = 50;
-                if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-                if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
-
-                if (interaction == null) interaction = Interaction.Reflection;
             }
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+
+            if (interaction == null || interaction == Interaction.Self_Determine) interaction = Interaction.Reflection;
             
         }
 
@@ -106,14 +106,13 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteName == "") satelliteName = "Refract-GL-"+satelliteNum+"SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is Glass and has a refractive index of 1.52, passing a laser through this object will alter the angle to a small degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A glass refraction satellite.";
-                if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
-                if (satelliteSellPrice == 0) satelliteSellPrice = 75;
-                if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.52f;
-                if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
-
-
-                if (interaction == null) interaction = Interaction.Refraction;
             }
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 75;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.52f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            if (interaction == null || interaction == Interaction.Self_Determine) interaction = Interaction.Refraction;
         }
 
         else
@@ -127,24 +126,16 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteSellPrice == 0) satelliteSellPrice = 100;
                 if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1f;
                 if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
-                if (interaction == null) interaction = Interaction.Absorb;
+                if (interaction == null || interaction == Interaction.Self_Determine) interaction = Interaction.Absorb;
             }
         }
     }
 
 
-
-
     private void CreateShopItem()
     {
-
-        // Retrieve Prefab shop item
-        GameObject prefabShopItem = GameObject.FindGameObjectsWithTag("Prefab_ShopContent")[0];
-
-        //Debug.Log(prefabShopItem.name);
-
         // Get common component across children
-        RectTransform[] childrenTransforms = prefabShopItem.GetComponentsInChildren<RectTransform>();
+        RectTransform[] childrenTransforms = gameObject.GetComponentsInChildren<RectTransform>();
 
 
         // Execute creation on all child transform
@@ -155,40 +146,37 @@ public class Satellite_Info : MonoBehaviour
             if (childObject.tag != "Prefab_ShopContent" && childObject.name != "Shop_SalePriceText")
             {
 
-                // Instantiate new child object with this gameobject as it's parent - this will cause the new child to snap to it.
-                GameObject newChildObject = Instantiate(childObject,this.transform);
-
-
                 // Remove Clone brackets from the new child objects - more of a personal preference thing
-                newChildObject.name = newChildObject.name.Replace("(Clone)","");
+                childObject.name = childObject.name.Replace("(Clone)","");
 
 
                 // Retrieve text component
-                TMP_Text textComponent = newChildObject.GetComponent<TMP_Text>();
+                TMP_Text textComponent = childObject.GetComponent<TMP_Text>();
 
-                if (newChildObject.name == "Shop_SatelliteName") textComponent.text = satelliteName;
-                else if (newChildObject.name == "Shop_BriefDescription") textComponent.text = satelliteShortDescription;
+                if (childObject.name == "Shop_SatelliteName") textComponent.text = satelliteName;
+                else if (childObject.name == "Shop_ShortDescription") textComponent.text = satelliteShortDescription;
 
-                else if (newChildObject.name == "Shop_PurchaseButton")
+                else if (childObject.name == "Shop_PurchaseButton")
                 {
                     // Assign an execution script
-                    TMP_Text purchasePriceText = newChildObject.GetComponentInChildren<TMP_Text>();
+                    TMP_Text purchasePriceText = childObject.GetComponentInChildren<TMP_Text>();
                     purchasePriceText.text = "£"+satellitePurchasePrice;
                     
-
+                    childObject.GetComponent<Button>().onClick.AddListener(PurchaseSatellite);
                 }
 
-                else if (newChildObject.name == "Shop_SatelliteSprite")
+                else if (childObject.name == "Shop_SatelliteSprite")
                 {
-                    Image imageComponent = newChildObject.GetComponent<Image>();
+                    Image imageComponent = childObject.GetComponent<Image>();
                     if (satellite_Shop_Info.satelliteSprite != null) imageComponent.sprite = satellite_Shop_Info.satelliteSprite;
                 }
-
-
-                
-                
             }
         }
+
+        
+
+        
+        
     }
 
     public void PurchaseSatellite()
@@ -222,6 +210,7 @@ public class Satellite_Movement_Info
 public class Satellite_Shop_Info
 {
     public bool IsShopItem = false;
+
     public Sprite satelliteSprite;
     public float ShopSpriteWidth;
     public float ShopSpriteHeight;

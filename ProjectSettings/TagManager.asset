@@ -11,8 +11,7 @@ TagManager:
   - UI_Satellite_Info
   - UI_Satellite_Info_Obj
   - Shop
-  - Shop_Infomation_Text
-  - Prefab_ShopContent
+  - Shop_Information_Text
   layers:
   - Default
   - TransparentFX

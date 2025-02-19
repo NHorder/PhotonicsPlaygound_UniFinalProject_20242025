@@ -64,13 +64,14 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.50f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Entities\Controller_Scripts\GameController.cs" />
-    <Compile Include="Assets\Entities\Laser_Scripts\LaserOrigin.cs" />
-    <Compile Include="Assets\Entities\Interaction_Methods.cs" />
-    <Compile Include="Assets\Entities\Satellite_Info\Satellite_Info.cs" />
-    <Compile Include="Assets\Entities\Laser_Scripts\Laser.cs" />
-    <Compile Include="Assets\Entities\Controller_Scripts\UI_Controller.cs" />
-    <Compile Include="Assets\Entities\UI_Scripts\Satellite_Controller.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\Satellite_Controller.cs" />
+    <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Controller_Scripts\UI_Controller.cs" />
+    <Compile Include="Assets\Scripts\Satellite_Info.cs" />
+    <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />
+    <Compile Include="Assets\Scripts\Interaction_Methods.cs" />
+    <Compile Include="Assets\Scripts\Laser_Scripts\LaserOrigin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

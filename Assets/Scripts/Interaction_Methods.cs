@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum Interaction
 {
+    Self_Determine,
     Absorb,
     Reflection,
     Refraction,

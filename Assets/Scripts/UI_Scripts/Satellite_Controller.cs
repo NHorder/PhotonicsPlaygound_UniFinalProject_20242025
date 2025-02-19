@@ -42,20 +42,34 @@ public class Satellite_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check to see if an mouse has been clicked
-        SelectInteraction();
+        bool levelComplete = uiController.GetLevelComplete();
+        bool teachingPlayer = uiController.GetTeachingUser();
 
-        // If there is a linked object (through it's rigidbody) then allow interaction
-        if (selectedRigidbody2D != null)
+        if (levelComplete && selectedRigidbody2D != null)
         {
-            // Allow for keyboard interactions
-            KeyboardInteraction();
-
-            // Allow for control panel interactions
-            ControlPanelInteraction();
+            selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
+            selectedRigidbody2D = null;
+            selected_satellite_info = null;
+            uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+            uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+            uiController.selectedSatelliteInfo = null;
         }
 
-        // Need a check to make sure it remains with the designated border
+        else if (!(levelComplete && teachingPlayer))
+        {
+            // Check to see if an mouse has been clicked
+            SelectInteraction();
+
+            // If there is a linked object (through it's rigidbody) then allow interaction
+            if (selectedRigidbody2D != null)
+            {
+                // Allow for keyboard interactions
+                KeyboardInteraction();
+
+                // Allow for control panel interactions
+                ControlPanelInteraction();
+            }
+        }
     }
 
     private void SelectInteraction()

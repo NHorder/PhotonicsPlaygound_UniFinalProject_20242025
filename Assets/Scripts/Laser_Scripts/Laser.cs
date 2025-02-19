@@ -48,7 +48,8 @@ public class Laser : MonoBehaviour
         
 
         // Instatiate a new laser, using the prefab first laser
-        GameObject newLaser = Instantiate(origin.firstLaser);
+        GameObject newLaser = Instantiate(origin.prefabLaser);
+        newLaser.GetComponent<Laser>().origin = this.origin;
 
         // Set the new laser position at the provided position
         newLaser.transform.position = new Vector3(position.x, position.y,-2);
@@ -139,6 +140,12 @@ public class Laser : MonoBehaviour
             if (interaction == Interaction.Absorb)
             {
                 // Do Nothing
+            }
+            else if (interaction == Interaction.Self_Determine)
+            {
+                Debug.LogError("ERROR: An error has occurred when assigning this satellites interaction");
+
+                // Do Nothing, this should not occur
             }
             else if (interaction == Interaction.Reflection)
             {
