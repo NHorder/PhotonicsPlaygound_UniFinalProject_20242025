@@ -14,6 +14,7 @@ TagManager:
   - Shop_Information_Text
   - Prefab_ShopContent
   - TeachingController
+  - LevelCompleteController
   layers:
   - Default
   - TransparentFX

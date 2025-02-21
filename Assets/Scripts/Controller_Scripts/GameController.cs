@@ -25,8 +25,6 @@ public class GameController : MonoBehaviour
     public int startingBudget = 1000;
     public int currentBudget = 1000;
 
-    private int score = 0;
-
 
 
     private bool canPurchaseSatellite = true;
@@ -41,10 +39,6 @@ public class GameController : MonoBehaviour
         ui_controller = providedUIController;
     }
 
-    public int CalculateScore()
-    {
-        return score;
-    }
 
     public void PurchaseSatellite(Satellite_Info satellite_Info)
     {
@@ -130,6 +124,7 @@ public class WorldInfo
     public int numOrigins = 1;
     public int numDestinations = 1;
     public int numSatellites;
+    public int numSatellitesDestroyed;
 
 
     public float newSatelliteLocationX;

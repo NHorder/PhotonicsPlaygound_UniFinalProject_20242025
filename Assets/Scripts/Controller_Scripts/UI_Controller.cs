@@ -48,6 +48,8 @@ public class UI_Controller : MonoBehaviour
 
     private GameObject teachingControllerObject;
 
+    private GameObject levelCompleteController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,9 @@ public class UI_Controller : MonoBehaviour
             teachingControllerObject = GameObject.FindGameObjectsWithTag("TeachingController")[0];
             teachingControllerObject.GetComponent<TeachingController>().SetUIController(this);
         }
+
+        GameObject levelCompleteController = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
+        levelCompleteController.active = false;
 
         
         // Find and save connection to Satellite Control Panel UI Parent
@@ -253,22 +258,27 @@ public class UI_Controller : MonoBehaviour
         {
             if (bVisible)
             {
+                // This is simply for Developer view - meaning the developer can move the UI panel itself elsewhere to test components when editing
                 RectTransform teachingTransform = teachingControllerObject.GetComponent<RectTransform>();
+                // Moves level complete to 0,0 (of the UI) if not already there - in cases where the dev has moved it for testing purposes.
                 if (teachingTransform.anchoredPosition != new Vector2(0,0)) teachingTransform.anchoredPosition = new Vector2(0,0);
             }
 
+            // Sets whether active or not based on visbility wanted.
             teachingControllerObject.active = bVisible;
         }
 
 
         else if (panel == UIPanel.LevelComplete)
         {
-            // SceneController.To_LevelSelection()
+            // This is simply for Developer view - meaning the developer can move the UI panel itself elsewhere to test components when editing
+            RectTransform levelCompletetransform = levelCompleteController.GetComponent<RectTransform>();
+            // Moves level complete to 0,0 (of the UI) if not already there - in cases where the dev has moved it for testing purposes.
+            if (levelCompletetransform.anchoredPosition != new Vector2(0,0)) levelCompletetransform.anchoredPosition = new Vector2(0,0);
 
-
-
+            // Sets whether active or not based on visbility wanted.
+            levelCompleteController.active = bVisible;
         }
-
     }
 
     
