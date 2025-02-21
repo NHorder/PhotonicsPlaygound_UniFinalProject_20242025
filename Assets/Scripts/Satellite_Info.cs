@@ -103,7 +103,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (language == Language.English)
             {
-                if (satelliteName == "") satelliteName = "Refract-GL-"+satelliteNum+"SAT";
+                if (satelliteName == "") satelliteName = "Refract-GL-"+satelliteNum+"-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is Glass and has a refractive index of 1.52, passing a laser through this object will alter the angle to a small degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A glass refraction satellite.";
             }
@@ -184,6 +184,9 @@ public class Satellite_Info : MonoBehaviour
         gameController.PurchaseSatellite(this);
     }
 }
+
+
+
 
 [System.Serializable]
 public class Advanced_Satellite_Info

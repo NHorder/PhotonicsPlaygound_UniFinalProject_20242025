@@ -11,6 +11,7 @@ public enum UIPanel
     Satellite_Controls,
     Satellite_Info_UI,
     Shop,
+    Teaching,
     Settings,
     LevelComplete
 }
@@ -38,13 +39,14 @@ public class UI_Controller : MonoBehaviour
 
 
     private bool userWantsToLeaveLevel = false;
-    private bool levelComplete = false;
-    private bool teachingLevel = false;
+    private bool interactionEnabled = true;
 
     [HideInInspector]
     public Satellite_Info selectedSatelliteInfo;
 
     private GameController gameController;
+
+    private GameObject teachingControllerObject;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,16 @@ public class UI_Controller : MonoBehaviour
         gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         gameController.SetUIController(this);
 
+
+        GameObject[] teachingControllerObjects = GameObject.FindGameObjectsWithTag("TeachingController");
+
+        if (teachingControllerObjects.Length != 0)
+        {
+            teachingControllerObject = GameObject.FindGameObjectsWithTag("TeachingController")[0];
+            teachingControllerObject.GetComponent<TeachingController>().SetUIController(this);
+        }
+
+        
         // Find and save connection to Satellite Control Panel UI Parent
         satelliteControlPanel = GameObject.FindGameObjectsWithTag("Satellite_Controls")[0];
 
@@ -78,11 +90,14 @@ public class UI_Controller : MonoBehaviour
             }
 
         }
+
+        PresentPanel(UIPanel.Teaching,true);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (shopBudgetText != null && knownBudget != gameController.currentBudget)
         {
             shopBudgetText.text = "Current Budget: £"+gameController.currentBudget;
@@ -138,6 +153,8 @@ public class UI_Controller : MonoBehaviour
                 shopAnimator.SetBool("Open",(shopPanelNewXLoc < shopPanelSettings.shopPanelCloseXLoc));
             }
         }
+        
+        
     }
 
 
@@ -231,6 +248,19 @@ public class UI_Controller : MonoBehaviour
         {
 
         }
+
+        else if ((panel == UIPanel.Teaching) &&  (teachingControllerObject != null))
+        {
+            if (bVisible)
+            {
+                RectTransform teachingTransform = teachingControllerObject.GetComponent<RectTransform>();
+                if (teachingTransform.anchoredPosition != new Vector2(0,0)) teachingTransform.anchoredPosition = new Vector2(0,0);
+            }
+
+            teachingControllerObject.active = bVisible;
+        }
+
+
         else if (panel == UIPanel.LevelComplete)
         {
             // SceneController.To_LevelSelection()
@@ -248,48 +278,47 @@ public class UI_Controller : MonoBehaviour
         // If the shop is open close it, if it's closed, open it.
         // This makes use of a manual linear interpolation to show and close it - as RectTransform doesn't support linear interpolated movement
         // This is done mainly for animation purposes.
-        if (shopPanelIsOpen)
+
+        if (interactionEnabled)
         {
-            shopPanelIsOpen = false;
-            shopPanelMoving = true;
-            shopPanelNewXLoc = shopPanelSettings.shopPanelCloseXLoc;
-        }
-        else
-        {
-            shopPanelIsOpen = true;
-            shopPanelMoving = true;
-            shopPanelNewXLoc = shopPanelSettings.shopPanelOpenXLoc;
+            if (shopPanelIsOpen)
+            {
+                shopPanelIsOpen = false;
+                shopPanelMoving = true;
+                shopPanelNewXLoc = shopPanelSettings.shopPanelCloseXLoc;
+            }
+            else
+            {
+                shopPanelIsOpen = true;
+                shopPanelMoving = true;
+                shopPanelNewXLoc = shopPanelSettings.shopPanelOpenXLoc;
+            }
         }
     }
 
-    public void ResetLevel()
+    public void SetCompletedModeActive(bool active)
     {
-
-    }
-
-
-    public void SetLevelComplete(bool levelComplete)
-    {
-        // This will trigger the closure of all UI elements (but shop) if true
-        this.levelComplete = levelComplete;
-
-        if (levelComplete)
+        if (active)
         {
-            // Close shop UI if it's open
-            if (shopPanelIsOpen) OpenCloseShop();
-
-            // Present the LevelComplete Panel
-            PresentPanel(UIPanel.LevelComplete,true);
+            OpenCloseShop();
+            interactionEnabled = false;
         }
-        
+        else 
+        {
+            interactionEnabled = true;
+        }
 
     }
 
-    public bool GetLevelComplete(){return levelComplete;}
 
-    public bool GetTeachingUser(){return teachingLevel;}
+    public bool GetInteractionEnabled(){return interactionEnabled;}
     
 }
+
+
+
+
+
 
 [System.Serializable]
 public class SatelliteControlPanelSettings

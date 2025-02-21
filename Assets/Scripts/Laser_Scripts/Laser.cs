@@ -72,7 +72,7 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     public void FireLaser()
     {
-        Debug.Log("Firing Laser!");
+        
         this.RayCast();
 
         if (origin != null && rayCast != null)
@@ -80,7 +80,6 @@ public class Laser : MonoBehaviour
             if (rayCast.collider == null)
             {
                 hitSomething = false;
-                Debug.Log("No Object Hit!");
                 this.transform.localScale = new Vector3(1f,energy,1f);
             }
             else

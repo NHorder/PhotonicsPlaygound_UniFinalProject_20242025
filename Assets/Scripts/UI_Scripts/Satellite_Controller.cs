@@ -42,20 +42,9 @@ public class Satellite_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool levelComplete = uiController.GetLevelComplete();
-        bool teachingPlayer = uiController.GetTeachingUser();
+        bool interactionEnabled = uiController.GetInteractionEnabled();
 
-        if (levelComplete && selectedRigidbody2D != null)
-        {
-            selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
-            selectedRigidbody2D = null;
-            selected_satellite_info = null;
-            uiController.PresentPanel(UIPanel.Satellite_Controls,false);
-            uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
-            uiController.selectedSatelliteInfo = null;
-        }
-
-        else if (!(levelComplete && teachingPlayer))
+        if (interactionEnabled)
         {
             // Check to see if an mouse has been clicked
             SelectInteraction();
@@ -69,6 +58,16 @@ public class Satellite_Controller : MonoBehaviour
                 // Allow for control panel interactions
                 ControlPanelInteraction();
             }
+        }
+        else if (!interactionEnabled && selectedRigidbody2D != null) 
+        {
+
+            selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
+            selectedRigidbody2D = null;
+            selected_satellite_info = null;
+            uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+            uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+            uiController.selectedSatelliteInfo = null;
         }
     }
 

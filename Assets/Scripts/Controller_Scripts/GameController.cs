@@ -26,7 +26,8 @@ public class GameController : MonoBehaviour
     public int currentBudget = 1000;
 
     private int score = 0;
-    private bool levelWon = false;
+
+
 
     private bool canPurchaseSatellite = true;
 
@@ -35,9 +36,9 @@ public class GameController : MonoBehaviour
 
     private UI_Controller ui_controller;
 
-    public void SetUIController(UI_Controller ui_Controller)
+    public void SetUIController(UI_Controller providedUIController)
     {
-        this.ui_controller = ui_controller;
+        ui_controller = providedUIController;
     }
 
     public int CalculateScore()
@@ -104,10 +105,8 @@ public class GameController : MonoBehaviour
 
     public void LevelEnd()
     {
-        levelWon = true;
-
         // Notify UI controller of level won, and pass the score
-        if (ui_controller != null) ui_controller.SetLevelComplete(true);
+        if (ui_controller != null) ui_controller.SetCompletedModeActive(true);
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
 
     }
