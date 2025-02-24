@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Satellite_Controls
+  - UI_Controller
+  - Satellite_Control_Key
+  - MouseController
+  - UI_Satellite_Info
+  - UI_Satellite_Info_Obj
+  - Shop
+  - Shop_Information_Text
+  - Prefab_ShopContent
+  - TeachingController
+  - LevelCompleteController
   layers:
   - Default
   - TransparentFX
