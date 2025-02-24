@@ -77,6 +77,7 @@ public class Laser : MonoBehaviour
 
         if (origin != null && rayCast != null)
         {
+            
             if (rayCast.collider == null)
             {
                 hitSomething = false;

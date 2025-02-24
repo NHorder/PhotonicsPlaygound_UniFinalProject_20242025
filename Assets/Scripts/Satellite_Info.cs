@@ -202,11 +202,11 @@ public class Advanced_Satellite_Info
 [System.Serializable]
 public class Satellite_Movement_Info
 {
-    public float intialMovementMultiplier = 1f;
-    public float intialRotationMultiplier = 0.01f;
+    public float intialMovementMultiplier = 2f;
+    public float intialRotationMultiplier = 2f;
 
-    public float maxMovementMultiplier = 5f;
-    public float maxRotationMultiplier = 1f;
+    public float maxMovementMultiplier = 50f;
+    public float maxRotationMultiplier = 50f;
 }
 
 [System.Serializable]

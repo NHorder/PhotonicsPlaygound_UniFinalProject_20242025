@@ -29,10 +29,72 @@ public class GameController : MonoBehaviour
 
     private bool canPurchaseSatellite = true;
 
+
     public WorldInfo worldInfo;
     public Satellite_Prefabs satellite_Prefabs;
 
+    public FramerateRelatedSettings framerateRelatedSettings;
+
     private UI_Controller ui_controller;
+
+
+    void Start()
+    {
+
+        // Check to make sure the desired framerate is not less than or equal to 0. 
+        if (framerateRelatedSettings.desiredFramerate <= 0) 
+        {
+            Debug.LogWarning("WARNING: DesiredFramerate is less than or equal to 0. Overwriting to default.");
+
+            // Default is 60, Unity defaults to 60 for webGL projects - which this is intended to be used for.
+            framerateRelatedSettings.desiredFramerate = 60;
+        }
+
+        // Let Unity know that the ideal framerate - 60 is the default and Unity defaults to 60 for web browsers.
+        Application.targetFrameRate = framerateRelatedSettings.desiredFramerate;
+
+        if (framerateRelatedSettings.counterToHoldForLevelCompletion < 0)
+        {
+
+            // Necessary checks to prevent users from potentially having a 0 division error.
+
+            if (framerateRelatedSettings.laserCycleDelay <= 0)
+            {
+                Debug.LogWarning("WARNING: LaserCycleDelay is less than or equal to 0. Overwriting to default.");
+                framerateRelatedSettings.laserCycleDelay = 1;
+            }
+
+            if (framerateRelatedSettings.numLocksForLevelCompletion <= 1)
+            {
+                Debug.LogWarning("WARNING: Number of Locks for level completion cannot be less than 1. Overwriting to default");
+                framerateRelatedSettings.numLocksForLevelCompletion = 1;
+            }
+
+            if (framerateRelatedSettings.timeToHoldForLevelCompletion <= 0)
+            {
+                Debug.LogWarning("WARNING: TimeToHoldForLevelCompletion is less than or equal to 0. Overwriting to default");
+                framerateRelatedSettings.timeToHoldForLevelCompletion = 1;
+            }
+
+
+            int laserInteractionsPerSecond = framerateRelatedSettings.desiredFramerate / (framerateRelatedSettings.laserCycleDelay + 1);
+
+            float timePerLock = framerateRelatedSettings.numLocksForLevelCompletion / framerateRelatedSettings.timeToHoldForLevelCompletion;
+
+            if (timePerLock <= 0) 
+            {
+                Debug.LogError("ERROR: Problem with completion locks, results in timePerLock to be less than 0. Using defaults");
+                // Defaults to 1s per lock.
+                timePerLock = 1;
+            } 
+
+            // Using Mathf.ToRoundInt to make sure it rounds to the nearest correctly - if just simple cast it will ignore the
+            // float points, and just take the whole number. I.e 3.9999 would be considered 3 using casting.
+            framerateRelatedSettings.counterToHoldForLevelCompletion = Mathf.RoundToInt(laserInteractionsPerSecond * timePerLock);
+
+        }
+    }
+
 
     public void SetUIController(UI_Controller providedUIController)
     {
@@ -116,7 +178,20 @@ public class GameController : MonoBehaviour
 
 
 
+[System.Serializable]
+public class FramerateRelatedSettings
+{
+    public int desiredFramerate = 60;
+    public int laserCycleDelay = 1;
 
+    public int numLocksForLevelCompletion = 3;
+
+    public float timeToHoldForLevelCompletion = 3;
+
+    [HideInInspector]
+    public int counterToHoldForLevelCompletion = -1;
+
+}
 
 [System.Serializable]
 public class WorldInfo

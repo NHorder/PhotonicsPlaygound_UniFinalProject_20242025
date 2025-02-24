@@ -171,9 +171,9 @@ MonoBehaviour:
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
     intialMovementMultiplier: 1
-    intialRotationMultiplier: 0.01
-    maxMovementMultiplier: 5
-    maxRotationMultiplier: 1
+    intialRotationMultiplier: 1
+    maxMovementMultiplier: 20
+    maxRotationMultiplier: 20
   satellite_Shop_Info:
     IsShopItem: 0
     satelliteSprite: {fileID: 0}
@@ -1430,7 +1430,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   startingEnergy: 50
-  updateDelay: 32
   prefabLaser: {fileID: 4956329101352024174, guid: cd9b5c1f6e96df64eb24ea3a4dfdaf9a, type: 3}
 --- !u!212 &1126082428
 SpriteRenderer:
@@ -1677,6 +1676,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b00280d6148bac48bfb120c75d3be3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1581130443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1581130445}
+  - component: {fileID: 1581130444}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1581130444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581130443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ef38aaf6cf33e4daad802bdb937674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
+--- !u!4 &1581130445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581130443}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9329564, y: -3.7242708, z: -0.08218154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1879354208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,3 +2947,4 @@ SceneRoots:
   - {fileID: 515473034}
   - {fileID: 8926672910142041309}
   - {fileID: 2029422241}
+  - {fileID: 1581130445}

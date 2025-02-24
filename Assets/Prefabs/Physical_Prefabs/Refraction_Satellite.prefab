@@ -261,10 +261,10 @@ MonoBehaviour:
     lightColor: 0
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
-    intialMovementMultiplier: 1
-    intialRotationMultiplier: 0.01
-    maxMovementMultiplier: 5
-    maxRotationMultiplier: 1
+    intialMovementMultiplier: 2
+    intialRotationMultiplier: 2
+    maxMovementMultiplier: 50
+    maxRotationMultiplier: 50
   satellite_Shop_Info:
     IsShopItem: 0
     satelliteSprite: {fileID: 0}
