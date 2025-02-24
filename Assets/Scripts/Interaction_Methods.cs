@@ -49,6 +49,13 @@ class Interaction_Functions
         return inverseAngleOfNormal + refracted_angle;
     }
 
+    public static bool Destination_Interaction(Laser laser, RaycastHit2D rayCast)
+    {
+        // Check 
+        return false;
+
+    }
+
     public static float Test_Interaction(float incident_index,float refracted_index,Vector2 normal, Laser laser)
     {
         //Transform laserTransform = laser.transform;
