@@ -243,7 +243,10 @@ public class Laser : MonoBehaviour
                 }            
             }
         
-            
+            else if (interaction == Interaction.Destination)
+            {
+                Interaction_Functions.Destination_Interaction(this,rayCast);
+            }
         }
     }
 }

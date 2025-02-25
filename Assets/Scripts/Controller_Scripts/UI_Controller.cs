@@ -67,7 +67,7 @@ public class UI_Controller : MonoBehaviour
         }
 
         GameObject levelCompleteController = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
-        levelCompleteController.active = false;
+        //levelCompleteController.active = false;
 
         
         // Find and save connection to Satellite Control Panel UI Parent
@@ -310,12 +310,15 @@ public class UI_Controller : MonoBehaviour
     {
         if (active)
         {
-            OpenCloseShop();
+            if (shopPanelIsOpen) OpenCloseShop();
             interactionEnabled = false;
+
+            PresentPanel(UIPanel.LevelComplete,true);
         }
         else 
         {
             interactionEnabled = true;
+            PresentPanel(UIPanel.LevelComplete,false);
         }
 
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class Test : Satellite_Info
 {
 
     public int counter = 0;
@@ -11,17 +11,5 @@ public class Test : MonoBehaviour
     void Start()
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        counter += 1;
-
-        if (counter >= 60)
-        {
-            Debug.Log("Time!");
-            counter = 0;
-        }
     }
 }

@@ -27,6 +27,10 @@ public class GameController : MonoBehaviour
 
 
 
+    private int activeDestinations = 0;
+    
+
+
     private bool canPurchaseSatellite = true;
 
 
@@ -172,6 +176,21 @@ public class GameController : MonoBehaviour
         bool userConfirmation = true;
 
         if (userConfirmation) SceneController.To_Level(thisLevel);
+    }
+
+
+    public void DestinationTrigger(bool active)
+    {
+
+        // Update number of activated origins
+        if (active) activeDestinations += 1;
+        else activeDestinations -=1;
+
+        // if the number of activated origins is more or equal to the number of origins in the world, then the game is complete
+        if (activeDestinations >= worldInfo.numDestinations) 
+        {
+            LevelEnd();
+        }
     }
 
 }

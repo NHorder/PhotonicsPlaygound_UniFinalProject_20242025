@@ -78,7 +78,7 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
-            interaction = Interaction.Absorb;
+            interaction = Interaction.Destination;
         }
 
         else if (satelliteType == SatelliteType.SingleSideReflector)
