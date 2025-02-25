@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\UI_Scripts\TeachingController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\LaserOrigin.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\LevelProgressPanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\LevelCompleteController.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
   </ItemGroup>

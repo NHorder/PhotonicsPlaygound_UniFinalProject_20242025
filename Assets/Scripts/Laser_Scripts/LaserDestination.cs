@@ -25,13 +25,17 @@ public class LaserDestination : MonoBehaviour
     private bool allLocksOpen = false;
 
     private Animator animator;
+    private LevelProgressPanel levelProgressPanel;
 
+
+    private string satelliteName;
 
     // Start is called before the first frame update
     void Start()
     {
         gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-        gameController.worldInfo.numDestinations +=1;
+
+        levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
 
         numLocksForLevelCompletion = gameController.framerateRelatedSettings.numLocksForLevelCompletion;
         counterToHoldForLockCompletion = gameController.framerateRelatedSettings.counterToHoldForLevelCompletion;
@@ -52,6 +56,9 @@ public class LaserDestination : MonoBehaviour
             laserDelay = gameController.framerateRelatedSettings.laserCycleDelay;
         }   
 
+        // Forced update for satellite name, as the Satellite_Info start function may not be complete by this time
+        if (satelliteName == null) satelliteName = gameObject.GetComponent<Satellite_Info>().satelliteName;
+
         // Sync delay of that to laser creation and destruction - meaning it will be seen as consistent
         if (updateCounter > laserDelay)
         {
@@ -64,12 +71,16 @@ public class LaserDestination : MonoBehaviour
             }
             else 
             {
-                // If no request, then reset the locks - as the laser isn't consistently connected.
 
+                // Update UI components to announce that a locks have been reset
+                if (numUnlocks > 0) levelProgressPanel.LogCommunications(satelliteName,-1);
+                // Note: -1 indicates that the locks have been reset, as the connection is lost
+                
+
+                // If no request, then reset the locks - as the laser isn't consistently connected.
                 lockProgressionCounter = 0;
                 numUnlocks = 0;
 
-                // Update UI components to announce that a locks have been reset
 
                 // If all locks were open but have been reset, notify gameController. 
                 if (allLocksOpen) 
@@ -83,7 +94,7 @@ public class LaserDestination : MonoBehaviour
             }
 
             // if the laser has been held long enough for a lock to be opened, open lock
-            if (lockProgressionCounter > counterToHoldForLockCompletion)
+            if (lockProgressionCounter >= counterToHoldForLockCompletion)
             {
                 // Open lock
                 numUnlocks += 1;
@@ -91,24 +102,26 @@ public class LaserDestination : MonoBehaviour
                 // Reset progression counter
                 lockProgressionCounter = 0;
 
-                // Update UI components to annouce that a lock has been opened
-
-
                 // if the number of unlocks is more or equal to the number of locks being used
                 if (numUnlocks >= numLocksForLevelCompletion)
                 {
                     // Update gameObject animator if all locks open
                     animator.SetBool("Active",true);
 
+                    // By placing this here, it means it will only run once - preventing one destination from being marked as more than one
+                    if (!allLocksOpen) gameController.DestinationTrigger(true);
+
                     // Set all locks open to false and notify gamecontroller of this update
                     allLocksOpen = true;
 
-                    gameController.DestinationTrigger(true);
-
 
                     // Enforces a limit of number of unlocks - prevents ever increasing lock unlocks
-                    numUnlocks = numLocksForLevelCompletion;
+                    numUnlocks = numLocksForLevelCompletion + 1;
                 }
+
+                // Update UI components to annouce that a lock has been opened
+                if (numUnlocks <= numLocksForLevelCompletion) levelProgressPanel.LogCommunications(satelliteName,numUnlocks);
+                // This is after all other checks, as the text is related to game manager (the number of active destinations) hence it needs to go after that call
 
             }
 

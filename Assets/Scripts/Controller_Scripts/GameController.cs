@@ -26,9 +26,11 @@ public class GameController : MonoBehaviour
     public int currentBudget = 1000;
 
 
-
-    private int activeDestinations = 0;
+    [HideInInspector]
+    public int activeDestinations = 0;
     
+    [HideInInspector]
+    public bool gameEnd = false;
 
 
     private bool canPurchaseSatellite = true;
@@ -165,6 +167,7 @@ public class GameController : MonoBehaviour
 
     public void LevelEnd()
     {
+        gameEnd = true;
         // Notify UI controller of level won, and pass the score
         if (ui_controller != null) ui_controller.SetCompletedModeActive(true);
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
@@ -177,7 +180,6 @@ public class GameController : MonoBehaviour
 
         if (userConfirmation) SceneController.To_Level(thisLevel);
     }
-
 
     public void DestinationTrigger(bool active)
     {
@@ -215,8 +217,8 @@ public class FramerateRelatedSettings
 [System.Serializable]
 public class WorldInfo
 {
-    public int numOrigins = 1;
-    public int numDestinations = 0;
+    public int numOrigins;
+    public int numDestinations;
     public int numSatellites;
     public int numSatellitesDestroyed;
 

@@ -15,6 +15,7 @@ TagManager:
   - Prefab_ShopContent
   - TeachingController
   - LevelCompleteController
+  - LevelProgressPanel
   layers:
   - Default
   - TransparentFX

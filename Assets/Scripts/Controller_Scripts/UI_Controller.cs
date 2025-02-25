@@ -12,6 +12,7 @@ public enum UIPanel
     Satellite_Info_UI,
     Shop,
     Teaching,
+    LogCommunications,
     Settings,
     LevelComplete
 }
@@ -36,6 +37,10 @@ public class UI_Controller : MonoBehaviour
     private GameObject shopPanel;
     private TMP_Text shopBudgetText;
     private int knownBudget;
+
+
+    public LevelProgressPanelSettings levelProgressPanelSettings;
+
 
 
     private bool userWantsToLeaveLevel = false;
@@ -385,4 +390,12 @@ public class ShopPanelSettings
     public float shopPanelMovementSpeed = 1;
     public float shopPanelOpenXLoc = 596f;
     public float shopPanelCloseXLoc = 1147f;
+}
+
+[System.Serializable]
+public class LevelProgressPanelSettings
+{
+    public int recordRetentionNumber = 10;
+    public bool forceNoChangeOnNewCommunication = false;
+
 }
