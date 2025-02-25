@@ -216,7 +216,7 @@ public class FramerateRelatedSettings
 public class WorldInfo
 {
     public int numOrigins = 1;
-    public int numDestinations = 1;
+    public int numDestinations = 0;
     public int numSatellites;
     public int numSatellitesDestroyed;
 

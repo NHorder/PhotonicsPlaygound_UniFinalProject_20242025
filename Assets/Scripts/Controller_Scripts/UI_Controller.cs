@@ -48,7 +48,7 @@ public class UI_Controller : MonoBehaviour
 
     private GameObject teachingControllerObject;
 
-    private GameObject levelCompleteController;
+    private GameObject levelCompletePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -66,8 +66,6 @@ public class UI_Controller : MonoBehaviour
             teachingControllerObject.GetComponent<TeachingController>().SetUIController(this);
         }
 
-        GameObject levelCompleteController = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
-        //levelCompleteController.active = false;
 
         
         // Find and save connection to Satellite Control Panel UI Parent
@@ -120,10 +118,23 @@ public class UI_Controller : MonoBehaviour
                 if (satelliteControlPanel.active == false) satelliteControlPanel.active = true;
 
                 panelRectTransform.anchoredPosition = new Vector2(position.x, position.y + satelliteControlPanelSettings.controlPanelMovementSpeed);
+
+                // If it over extends, have it move back to the exact needed location.
+                if (position.y + satelliteControlPanelSettings.controlPanelMovementSpeed > satelliteControlPanelNewYLoc)
+                {
+                    panelRectTransform.anchoredPosition = new Vector2(position.x,satelliteControlPanelNewYLoc);
+                }
             }
+
             else if (position.y > satelliteControlPanelNewYLoc)
             {
                 panelRectTransform.anchoredPosition = new Vector2(position.x, position.y - satelliteControlPanelSettings.controlPanelMovementSpeed);
+
+                if (position.y - satelliteControlPanelSettings.controlPanelMovementSpeed < satelliteControlPanelNewYLoc)
+                {
+                    panelRectTransform.anchoredPosition = new Vector2(position.x,satelliteControlPanelNewYLoc);
+                }
+
             }
             else
             {
@@ -141,10 +152,31 @@ public class UI_Controller : MonoBehaviour
             var position = panelRectTransform.anchoredPosition;
 
             // If the X location (as the shop panel slides left and right) is less, then increase it
-            if (position.x < shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x + shopPanelSettings.shopPanelMovementSpeed, position.y);
+            if (position.x < shopPanelNewXLoc)
+            {
+                panelRectTransform.anchoredPosition = new Vector2(position.x + shopPanelSettings.shopPanelMovementSpeed, position.y);
+
+                // If it overextends then move it to the exact location needed
+                if (position.x - shopPanelSettings.shopPanelMovementSpeed > shopPanelNewXLoc)
+                {
+                    panelRectTransform.anchoredPosition = new Vector2(shopPanelNewXLoc,position.y);
+                }
+                
+            }
+
 
             // Else decrease it if the position is more than the new location
-            else if (position.x > shopPanelNewXLoc) panelRectTransform.anchoredPosition = new Vector2(position.x - shopPanelSettings.shopPanelMovementSpeed, position.y);
+            else if (position.x > shopPanelNewXLoc)
+            {
+                panelRectTransform.anchoredPosition = new Vector2(position.x - shopPanelSettings.shopPanelMovementSpeed, position.y);
+
+                // If it overextends then move it to the exact location needed
+                if (position.x - shopPanelSettings.shopPanelMovementSpeed < shopPanelNewXLoc)
+                {
+                    panelRectTransform.anchoredPosition = new Vector2(shopPanelNewXLoc,position.y);
+                }
+            }
+
             
             // Once complete (else works, as it means it's at the new location - event if it overextends a bit)
             else
@@ -271,13 +303,19 @@ public class UI_Controller : MonoBehaviour
 
         else if (panel == UIPanel.LevelComplete)
         {
+
+            // Retrieve levelCompletePanel
+            levelCompletePanel = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
+
             // This is simply for Developer view - meaning the developer can move the UI panel itself elsewhere to test components when editing
-            RectTransform levelCompletetransform = levelCompleteController.GetComponent<RectTransform>();
+            RectTransform levelCompletetransform = levelCompletePanel.GetComponent<RectTransform>();
             // Moves level complete to 0,0 (of the UI) if not already there - in cases where the dev has moved it for testing purposes.
             if (levelCompletetransform.anchoredPosition != new Vector2(0,0)) levelCompletetransform.anchoredPosition = new Vector2(0,0);
 
             // Sets whether active or not based on visbility wanted.
-            levelCompleteController.active = bVisible;
+            levelCompletePanel.active = bVisible;
+            
+
         }
     }
 

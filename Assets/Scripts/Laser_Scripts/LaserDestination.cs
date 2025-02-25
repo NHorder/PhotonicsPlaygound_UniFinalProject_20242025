@@ -31,6 +31,7 @@ public class LaserDestination : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        gameController.worldInfo.numDestinations +=1;
 
         numLocksForLevelCompletion = gameController.framerateRelatedSettings.numLocksForLevelCompletion;
         counterToHoldForLockCompletion = gameController.framerateRelatedSettings.counterToHoldForLevelCompletion;
@@ -102,7 +103,7 @@ public class LaserDestination : MonoBehaviour
                     // Set all locks open to false and notify gamecontroller of this update
                     allLocksOpen = true;
 
-                    //gameController.DestinationTrigger(true);
+                    gameController.DestinationTrigger(true);
 
 
                     // Enforces a limit of number of unlocks - prevents ever increasing lock unlocks
