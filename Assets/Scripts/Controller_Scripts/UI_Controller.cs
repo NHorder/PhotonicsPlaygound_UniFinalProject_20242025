@@ -89,6 +89,9 @@ public class UI_Controller : MonoBehaviour
         shopPanel = GameObject.FindGameObjectsWithTag("Shop")[0];
 
 
+        levelCompletePanel = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
+
+
         GameObject[] shopInformationText = GameObject.FindGameObjectsWithTag("Shop_Information_Text");
 
         foreach (GameObject shopInfoTextObject in shopInformationText)
@@ -389,6 +392,7 @@ public class UI_Controller : MonoBehaviour
             if (shopPanelIsOpen) OpenCloseShop();
             interactionEnabled = false;
 
+            levelCompletePanel.GetComponent<LevelCompleteController>().GameComplete();
             PresentPanel(UIPanel.LevelComplete,true);
         }
         else 

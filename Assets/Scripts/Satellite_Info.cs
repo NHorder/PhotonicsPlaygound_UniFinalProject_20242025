@@ -40,6 +40,12 @@ public class Satellite_Info : MonoBehaviour
         advanced_Satellite_Info.absorbance = Mathf.Clamp01(advanced_Satellite_Info.absorbance);
 
         if (satellite_Shop_Info.IsShopItem) CreateShopItem();
+        else
+        {
+            if (satelliteType == SatelliteType.Origin) gameController.worldInfo.numOrigins += 1;
+            else if (satelliteType == SatelliteType.Destination) gameController.worldInfo.numDestinations += 1;
+            else gameController.worldInfo.numSatellites += 1;
+        }
     }
 
     public void RetreiveSatelliteText(SatelliteType satelliteType)
@@ -205,8 +211,8 @@ public class Satellite_Movement_Info
     public float intialMovementMultiplier = 2f;
     public float intialRotationMultiplier = 2f;
 
-    public float maxMovementMultiplier = 50f;
-    public float maxRotationMultiplier = 50f;
+    public float maxMovementMultiplier = 20f;
+    public float maxRotationMultiplier = 20f;
 }
 
 [System.Serializable]

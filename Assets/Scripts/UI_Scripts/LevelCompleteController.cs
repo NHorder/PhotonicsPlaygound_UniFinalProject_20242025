@@ -7,13 +7,11 @@ using TMPro;
 public class LevelCompleteController : MonoBehaviour
 {
 
-    private int score;
-    private int rank;
+    private int score = 0;
+    private int rank = 7;
 
     private TMP_Text scoreText;
-    private TMP_Text remainingBudgetText;
-    private TMP_Text numSatelliteText;
-    private TMP_Text numSatelliteDestroyedText;
+    private TMP_Text statisticsText;
 
     private Animator rankAnimator;
 
@@ -32,9 +30,7 @@ public class LevelCompleteController : MonoBehaviour
             GameObject childObject = childTransform.gameObject;
 
             if (childObject.name == "ScoreText") scoreText = childObject.GetComponent<TMP_Text>();
-            else if (childObject.name == "BudgetRemaining") remainingBudgetText = childObject.GetComponent<TMP_Text>(); 
-            else if (childObject.name == "NumberSatellites") numSatelliteText = childObject.GetComponent<TMP_Text>();
-            else if (childObject.name == "NumSatellitesDestroyed") numSatelliteDestroyedText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "StatisticsText") statisticsText = childObject.GetComponent<TMP_Text>(); 
             else if (childObject.name == "FinalRatingSprite") rankAnimator = childObject.GetComponent<Animator>();
         }
     }
@@ -50,10 +46,14 @@ public class LevelCompleteController : MonoBehaviour
         CalculateRank();
 
         scoreText.text  = "Score: "+score;
-        remainingBudgetText.text = "Remaining Budget: "+currentBudget;
-        numSatelliteText.text = "Number of Satellites Purchased: "+numSatellites;
-        numSatelliteDestroyedText.text  = "Number of Satellites Destroyed: "+numSatellitesDestroyed;
-        rankAnimator.SetInteger("rank",rank);
+
+        string text = "";
+        text += "- Remaining Budget: "+currentBudget + "\n";
+        text += "- Number of Satellites Purchased: "+numSatellites + "\n";
+        text += "- Number of Satellites Destroyed: "+numSatellitesDestroyed;
+
+        statisticsText.text = text;
+        rankAnimator.SetInteger("Rank",rank);
 
 
 
@@ -62,7 +62,7 @@ public class LevelCompleteController : MonoBehaviour
 
     public void CalculateScore(int startingBudget,int currentBudget,int numSatellites,int numSatellitesDestroyed)
     {   
-        score = 1000;
+        score = 0;
 
     }
 

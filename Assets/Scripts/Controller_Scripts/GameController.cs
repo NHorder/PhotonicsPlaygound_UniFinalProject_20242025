@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     private bool canPurchaseSatellite = true;
 
 
-    public WorldInfo worldInfo;
+    public WorldInfo worldInfo = new WorldInfo();
     public Satellite_Prefabs satellite_Prefabs;
 
     public FramerateRelatedSettings framerateRelatedSettings;
@@ -139,7 +139,6 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log("Making new Satellite!");
                 currentBudget -= satPrice;
-                worldInfo.numSatellites += 1;
 
                 GameObject newSatellite = Instantiate(purchasedSatellite);
                 newSatellite.layer = LayerMask.NameToLayer("Object");
@@ -214,13 +213,13 @@ public class FramerateRelatedSettings
 
 }
 
-[System.Serializable]
+
 public class WorldInfo
 {
-    public int numOrigins;
-    public int numDestinations;
-    public int numSatellites;
-    public int numSatellitesDestroyed;
+    public int numOrigins = 0;
+    public int numDestinations = 0;
+    public int numSatellites = 0;
+    public int numSatellitesDestroyed = 0;
 
 
     public float newSatelliteLocationX;
