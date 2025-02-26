@@ -23,6 +23,8 @@ public class LevelProgressPanel : MonoBehaviour
 
     private int numLocks;
 
+    private bool panelOpen = false;
+
     
     // Start is called before the first frame update
     void Start()
@@ -48,11 +50,17 @@ public class LevelProgressPanel : MonoBehaviour
         // Inital trigger to remove default text
         UpdateUIComponents();
 
+        ui_Controller.PresentPanel(UIPanel.LogCommunications,false);
+
     }
 
 
     public void LogCommunications(string satellite_name, float numUnlocks)
     {
+        // If the user has not specified in settings that this should not appear each time communications are made
+        // and if it isn't expanded, then open it.
+        if (!forceNoChangeOnNewCommunication) ui_Controller.PresentPanel(UIPanel.LogCommunications,true);
+
         string logText = satellite_name;
 
         if (numUnlocks <= 0) logText += ": Connection Lost";
@@ -79,11 +87,6 @@ public class LevelProgressPanel : MonoBehaviour
 
     private void UpdateUIComponents()
     {
-
-        // If the user has not specified in settings that this should not appear each time communications are made
-        // and if it isn't expanded, then open it.
-        if (!forceNoChangeOnNewCommunication) ui_Controller.PresentPanel(UIPanel.LogCommunications,true);
-
         string loopText = "";
 
         // Loop through logs and create a string to update the log with
@@ -93,13 +96,21 @@ public class LevelProgressPanel : MonoBehaviour
         }
 
         // Update the log text
-        if (!gameController.gameEnd) logText.text = loopText;
+        logText.text = loopText;
+        UpdateSuccessText();
+    }
 
+    public void UpdateSuccessText()
+    {
         // Update the progress text
         progressText.text = "Connections Established: "+gameController.activeDestinations +" / "+gameController.worldInfo.numDestinations;
     }
 
-
+    public void HideExpandCommunicationsPanel()
+    {
+        panelOpen = !panelOpen;
+        ui_Controller.PresentPanel(UIPanel.LogCommunications,panelOpen);
+    }
 
 
 }

@@ -23,7 +23,7 @@ public class UI_Controller : MonoBehaviour
     private GameObject satelliteControlPanel;
 
     public SatelliteControlPanelSettings satelliteControlPanelSettings;
-    private bool movingSatelliteControlPanel = false;
+    private bool satelliteControlPanelMoving = false;
     private float satelliteControlPanelNewYLoc;
 
     private GameObject satelliteInfoUIPanel;
@@ -40,11 +40,17 @@ public class UI_Controller : MonoBehaviour
 
 
     public LevelProgressPanelSettings levelProgressPanelSettings;
+    private bool levelProgressIsOpen = false;
+    private bool levelProgressMoving = false;
+    private float levelProgressNewYLoc;
+    private GameObject levelProgressPanel;
 
 
 
     private bool userWantsToLeaveLevel = false;
     private bool interactionEnabled = true;
+
+
 
     [HideInInspector]
     public Satellite_Info selectedSatelliteInfo;
@@ -72,6 +78,7 @@ public class UI_Controller : MonoBehaviour
         }
 
 
+        levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0];
         
         // Find and save connection to Satellite Control Panel UI Parent
         satelliteControlPanel = GameObject.FindGameObjectsWithTag("Satellite_Controls")[0];
@@ -106,98 +113,112 @@ public class UI_Controller : MonoBehaviour
     void Update()
     {
 
+        // If the object is not null and the known budget is not what should be
         if (shopBudgetText != null && knownBudget != gameController.currentBudget)
         {
+            // Retrieve the budget, update the shop budget text.
             shopBudgetText.text = "Current Budget: £"+gameController.currentBudget;
             knownBudget = gameController.currentBudget;
         }
 
+
         // If moving satellite control panel, and the new location is not null
-        if (movingSatelliteControlPanel && satelliteControlPanelNewYLoc != null)
+        if (satelliteControlPanelMoving && satelliteControlPanelNewYLoc != null)
         {
-            var panelRectTransform = satelliteControlPanel.GetComponent<RectTransform>();
-            var position = panelRectTransform.anchoredPosition;
+            // Retrieve transform and current position of the panel
+            var rectTransform = satelliteControlPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
 
-            if (position.y < satelliteControlPanelNewYLoc)
-            {
-                if (satelliteControlPanel.active == false) satelliteControlPanel.active = true;
+            // Call move panel, moving to the wanted location
+            MovePanel(rectTransform,currentPosition,currentPosition.x, satelliteControlPanelNewYLoc,satelliteControlPanelSettings.controlPanelMovementSpeed,satelliteControlPanelMoving);
 
-                panelRectTransform.anchoredPosition = new Vector2(position.x, position.y + satelliteControlPanelSettings.controlPanelMovementSpeed);
-
-                // If it over extends, have it move back to the exact needed location.
-                if (position.y + satelliteControlPanelSettings.controlPanelMovementSpeed > satelliteControlPanelNewYLoc)
-                {
-                    panelRectTransform.anchoredPosition = new Vector2(position.x,satelliteControlPanelNewYLoc);
-                }
-            }
-
-            else if (position.y > satelliteControlPanelNewYLoc)
-            {
-                panelRectTransform.anchoredPosition = new Vector2(position.x, position.y - satelliteControlPanelSettings.controlPanelMovementSpeed);
-
-                if (position.y - satelliteControlPanelSettings.controlPanelMovementSpeed < satelliteControlPanelNewYLoc)
-                {
-                    panelRectTransform.anchoredPosition = new Vector2(position.x,satelliteControlPanelNewYLoc);
-                }
-
-            }
-            else
-            {
-                movingSatelliteControlPanel = false;
-                if (satelliteControlPanelNewYLoc < satelliteControlPanelSettings.controlPanelVisibleLoc) satelliteControlPanel.active = false;
-            }
-            
+            // If it has stopped moving and in the close location - set active to false, this the rendering of unseen panels
+            if (!satelliteControlPanelMoving && (satelliteControlPanelNewYLoc < satelliteControlPanelSettings.controlPanelVisibleLoc)) satelliteControlPanel.active = false;
         }
 
         // If the shop panel is moving and has a defined location
         if (shopPanelMoving && shopPanelNewXLoc != null)
         {
-            // Retrieve neccessary transform components and current position
-            var panelRectTransform = shopPanel.GetComponent<RectTransform>();
-            var position = panelRectTransform.anchoredPosition;
+            // Retrieve the transform and current position of the panel
+            var rectTransform = shopPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
 
-            // If the X location (as the shop panel slides left and right) is less, then increase it
-            if (position.x < shopPanelNewXLoc)
-            {
-                panelRectTransform.anchoredPosition = new Vector2(position.x + shopPanelSettings.shopPanelMovementSpeed, position.y);
+            // Move to wantted location
+            MovePanel(rectTransform,currentPosition,shopPanelNewXLoc,currentPosition.y,shopPanelSettings.shopPanelMovementSpeed,shopPanelMoving);
 
-                // If it overextends then move it to the exact location needed
-                if (position.x - shopPanelSettings.shopPanelMovementSpeed > shopPanelNewXLoc)
-                {
-                    panelRectTransform.anchoredPosition = new Vector2(shopPanelNewXLoc,position.y);
-                }
-                
-            }
+            // Retrieve animator
+            var shopAnimator = shopPanel.GetComponent<Animator>();
+
+            //Update animator based on whether in the closed or open position
+            shopAnimator.SetBool("Open",(shopPanelNewXLoc < shopPanelSettings.shopPanelCloseXLoc));
+        }
+        
+        if (levelProgressMoving && levelProgressNewYLoc != null)
+        {
+            // Retrieve transform and current position
+            var rectTransform = levelProgressPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
+
+            // Move to wanted location
+            MovePanel(rectTransform,currentPosition, currentPosition.x, levelProgressNewYLoc,levelProgressPanelSettings.levelProgressPanelMovementSpeed,levelProgressMoving);
+        }
+        
+    }
 
 
-            // Else decrease it if the position is more than the new location
-            else if (position.x > shopPanelNewXLoc)
-            {
-                panelRectTransform.anchoredPosition = new Vector2(position.x - shopPanelSettings.shopPanelMovementSpeed, position.y);
 
-                // If it overextends then move it to the exact location needed
-                if (position.x - shopPanelSettings.shopPanelMovementSpeed < shopPanelNewXLoc)
-                {
-                    panelRectTransform.anchoredPosition = new Vector2(shopPanelNewXLoc,position.y);
-                }
-            }
 
+    private void MovePanel(RectTransform rectTransform, Vector3 currentPosition,float newXLoc,float newYLoc,float moveSpeed, bool isMovingRef)
+    {
+
+        // Check Y positions, move if needed
+        if (currentPosition.y < newYLoc)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x, currentPosition.y + moveSpeed);
+
+            // If overshot location in this move, then set to the position
+            if (currentPosition.y + moveSpeed > newYLoc) rectTransform.anchoredPosition = new Vector2(currentPosition.x,newYLoc);
             
-            // Once complete (else works, as it means it's at the new location - event if it overextends a bit)
-            else
-            {
-                // Set moving to false
-                shopPanelMoving = false;
+        }
 
-                // Retrieve animator
-                var shopAnimator = shopPanel.GetComponent<Animator>();
-                // Update animator based on whether in the closed or open position
-                shopAnimator.SetBool("Open",(shopPanelNewXLoc < shopPanelSettings.shopPanelCloseXLoc));
-            }
+        else if (currentPosition.y > newYLoc)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x, currentPosition.y - moveSpeed);
+
+            // If overshot location in this move, then set to the position
+            if (currentPosition.y - moveSpeed < newYLoc) rectTransform.anchoredPosition = new Vector2(currentPosition.x,newYLoc);
+            
         }
         
         
+        // Check X positions, move if needed
+        if (currentPosition.x < newXLoc)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x + moveSpeed, currentPosition.y);
+
+            // If it overextends then move it to the exact location needed
+            if (currentPosition.x - moveSpeed > newXLoc) rectTransform.anchoredPosition = new Vector2(newXLoc,currentPosition.y);
+            
+        }
+
+        else if (currentPosition.x > newXLoc)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x - moveSpeed, currentPosition.y);
+
+            // If it overextends then move it to the exact location needed
+            if (currentPosition.x - moveSpeed < newXLoc) rectTransform.anchoredPosition = new Vector2(newXLoc,currentPosition.y);
+            
+        }
+
+        // If at correct location, set the moving reference to false - announces that movement is no longer occuring
+        else isMovingRef = false;
+        
     }
+
 
 
     public void PresentPanel(UIPanel panel, bool bVisible)
@@ -207,7 +228,7 @@ public class UI_Controller : MonoBehaviour
         if (panel == UIPanel.Satellite_Controls)
         {
             // Update moving to true, meaning update will now move the satellite.
-            movingSatelliteControlPanel = true;
+            satelliteControlPanelMoving = true;
 
             // If the satellite is not on screen, move it onto the screen, else move it off screen
             // It is hard coded, in the update, when moved offscreen it will be disabled.
@@ -216,7 +237,7 @@ public class UI_Controller : MonoBehaviour
 
             if (bVisible && position.y < satelliteControlPanelSettings.controlPanelVisibleLoc)  satelliteControlPanelNewYLoc = satelliteControlPanelSettings.controlPanelVisibleLoc;
             else if (!bVisible) satelliteControlPanelNewYLoc = satelliteControlPanelSettings.controlPanelNotVisibleLoc;
-            else movingSatelliteControlPanel = false;
+            else satelliteControlPanelMoving = false;
         }
 
         else if (panel == UIPanel.Satellite_Info_UI)
@@ -305,6 +326,18 @@ public class UI_Controller : MonoBehaviour
             teachingControllerObject.active = bVisible;
         }
 
+        else if (panel == UIPanel.LogCommunications && levelProgressPanel != null)
+        {
+    
+            levelProgressMoving = true;
+
+            var position = levelProgressPanel.GetComponent<RectTransform>().anchoredPosition;
+
+            if (bVisible && position.y > levelProgressPanelSettings.levelProgressPanelOpenYLoc)  levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelOpenYLoc;
+            else if (!bVisible) levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelCloseYLoc;
+            else levelProgressMoving = false;
+            
+        }
 
         else if (panel == UIPanel.LevelComplete)
         {
@@ -397,5 +430,10 @@ public class LevelProgressPanelSettings
 {
     public int recordRetentionNumber = 10;
     public bool forceNoChangeOnNewCommunication = false;
+
+    public float levelProgressPanelMovementSpeed = 1;
+
+    public float levelProgressPanelOpenYLoc = 376.7f;
+    public float levelProgressPanelCloseYLoc = 646.0f;
 
 }

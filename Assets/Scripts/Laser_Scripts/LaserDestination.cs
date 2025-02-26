@@ -89,6 +89,9 @@ public class LaserDestination : MonoBehaviour
                     animator.SetBool("Active",false);
 
                     gameController.DestinationTrigger(false);
+
+                    levelProgressPanel.UpdateSuccessText();
+
                     allLocksOpen = false;
                 }
             }
@@ -102,6 +105,9 @@ public class LaserDestination : MonoBehaviour
                 // Reset progression counter
                 lockProgressionCounter = 0;
 
+                // Update UI components to annouce that a lock has been opened
+                if (numUnlocks <= numLocksForLevelCompletion) levelProgressPanel.LogCommunications(satelliteName,numUnlocks);
+
                 // if the number of unlocks is more or equal to the number of locks being used
                 if (numUnlocks >= numLocksForLevelCompletion)
                 {
@@ -109,7 +115,11 @@ public class LaserDestination : MonoBehaviour
                     animator.SetBool("Active",true);
 
                     // By placing this here, it means it will only run once - preventing one destination from being marked as more than one
-                    if (!allLocksOpen) gameController.DestinationTrigger(true);
+                    if (!allLocksOpen)
+                    {
+                        gameController.DestinationTrigger(true);
+                        levelProgressPanel.UpdateSuccessText();
+                    }
 
                     // Set all locks open to false and notify gamecontroller of this update
                     allLocksOpen = true;
@@ -118,11 +128,6 @@ public class LaserDestination : MonoBehaviour
                     // Enforces a limit of number of unlocks - prevents ever increasing lock unlocks
                     numUnlocks = numLocksForLevelCompletion + 1;
                 }
-
-                // Update UI components to annouce that a lock has been opened
-                if (numUnlocks <= numLocksForLevelCompletion) levelProgressPanel.LogCommunications(satelliteName,numUnlocks);
-                // This is after all other checks, as the text is related to game manager (the number of active destinations) hence it needs to go after that call
-
             }
 
             // Reset update counter
