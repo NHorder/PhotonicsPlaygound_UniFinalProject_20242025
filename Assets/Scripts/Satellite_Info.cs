@@ -198,6 +198,7 @@ public class Satellite_Info : MonoBehaviour
 public class Advanced_Satellite_Info
 {
     public float refractiveIndex = 0;
+    public float percentageOfReflectedLightWhenRefracted = 0;
     public float surfaceColor;
     public float absorbance = 0;
     public LaserColour lightColor = LaserColour.White;

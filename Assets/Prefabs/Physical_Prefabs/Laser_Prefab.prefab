@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSomething: 0
   origin: {fileID: 0}
-  energy: 0
+  maxDistance: 0
   layersToHit:
     serializedVersion: 2
     m_Bits: 0

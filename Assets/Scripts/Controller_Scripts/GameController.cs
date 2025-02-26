@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
 
     public FramerateRelatedSettings framerateRelatedSettings;
 
+    public SpecializedInteractionSettings specializedInteractionSettings;
+
     private UI_Controller ui_controller;
 
 
@@ -211,6 +213,15 @@ public class FramerateRelatedSettings
     [HideInInspector]
     public int counterToHoldForLevelCompletion = -1;
 
+}
+
+
+[System.Serializable]
+public class SpecializedInteractionSettings
+{
+    public bool allowReflectionDuringRefraction = false;
+    public float minimumTransparencyNeededForDestinationRecognition = 0.5f;
+    public float minimumTransparencyForReflectionDuringRefraction = 0.02f;
 }
 
 
