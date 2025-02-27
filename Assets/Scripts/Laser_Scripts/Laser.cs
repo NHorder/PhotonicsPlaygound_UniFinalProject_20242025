@@ -14,7 +14,8 @@ public class Laser : MonoBehaviour
     public bool hitSomething;
     public LaserOrigin origin;
 
-    public float energy;
+    public float maxDistance;
+    private float transparency = 1;
 
     [HideInInspector]
     public LayerMask layersToHit;
@@ -25,13 +26,26 @@ public class Laser : MonoBehaviour
 
     private Satellite_Info refractionSatelliteInfo;
 
+
+
+    private bool allowReflectionDuringRefraction;
+
+    private float minimumTransparencyNeededForDestinationRecognition;
+    private float minimumTransparencyForReflectionDuringRefraction;
+
     // Start is called before the first frame update
     void Start()
     {
         if (origin != null)
         {
             this.layersToHit = origin.layersToHit;
-            this.energy = origin.startingEnergy;
+            this.maxDistance = origin.maxDistance;
+
+            GameController gameController = origin.GetGameController();
+
+            allowReflectionDuringRefraction = gameController.specializedInteractionSettings.allowReflectionDuringRefraction;
+            minimumTransparencyNeededForDestinationRecognition = gameController.specializedInteractionSettings.minimumTransparencyNeededForDestinationRecognition;
+            minimumTransparencyForReflectionDuringRefraction = gameController.specializedInteractionSettings.minimumTransparencyForReflectionDuringRefraction;
         }
         else
         {
@@ -43,13 +57,20 @@ public class Laser : MonoBehaviour
         FireLaser();
     }
 
-    public GameObject InstantiateNewLaser(Vector2 position, float angle)
+    public GameObject InstantiateNewLaser(Vector2 position, float angle, float remainingEnergy)
     {
-        
 
         // Instatiate a new laser, using the prefab first laser
         GameObject newLaser = Instantiate(origin.prefabLaser);
         newLaser.GetComponent<Laser>().origin = this.origin;
+        newLaser.GetComponent<Laser>().transparency = remainingEnergy;
+
+        Color overwrittenColor =newLaser.GetComponent<SpriteRenderer>().color;
+
+
+        overwrittenColor.a = remainingEnergy;
+        newLaser.GetComponent<SpriteRenderer>().color = overwrittenColor;
+
 
         // Set the new laser position at the provided position
         newLaser.transform.position = new Vector3(position.x, position.y,-2);
@@ -77,15 +98,14 @@ public class Laser : MonoBehaviour
 
         if (origin != null && rayCast != null)
         {
+            
             if (rayCast.collider == null)
             {
                 hitSomething = false;
-                this.transform.localScale = new Vector3(1f,energy,1f);
+                this.transform.localScale = new Vector3(1f,maxDistance,1f);
             }
             else
             {
-                //Debug.Log(rayCast.collider is PolygonCollider2D);
-
                 hitSomething = true;
                 this.transform.localScale = new Vector3(1f,rayCast.distance,1f);
 
@@ -103,7 +123,7 @@ public class Laser : MonoBehaviour
     private void RayCast()
     {
         // Cast a ray and determine what objects (if any) are hit
-        var listOfRayCasts= Physics2D.RaycastAll(transform.position,transform.up,energy,layersToHit);
+        var listOfRayCasts= Physics2D.RaycastAll(transform.position,transform.up,maxDistance,layersToHit);
 
         foreach (RaycastHit2D rayCastInLoop in listOfRayCasts)
         {
@@ -119,44 +139,59 @@ public class Laser : MonoBehaviour
     }
 
 
-    private void HitObject()
+    private void HitObject(float remainingLightStrength = -1, Interaction interaction = Interaction.Self_Determine)
     {
+        // Has defaults in order to allow for more complex interactions to occur, I.e Fresnel Equations (refraction and reflection)
+        // within the same interaction cycle. Plus it allows for changing the remaining 'light strength' (transparency) of the second
+        // or more interaction laser.
+
+
         GameObject hitObject = rayCast.collider.gameObject;
         Satellite_Info satelliteInfo = null;
 
         try{
             satelliteInfo = hitObject.GetComponent<Satellite_Info>();
         }
-        catch
-        {
-            // Do Nothing
-        }
+        catch {}
 
         if (satelliteInfo != null)
         {
-            Interaction interaction = satelliteInfo.interaction;
+            // If the interaction is a default (Self_Determine) then retrieve the interaction from satellite info
+            if (interaction == Interaction.Self_Determine) interaction = satelliteInfo.interaction;
+
+            // Calcualte the opacity for the new laser - assumes absorption is between 0 - 1, clamp limits it to 2dp for effiecincy purposes (prevents large 
+            // amounts of data allocated for a single number)
+            if (remainingLightStrength == -1) remainingLightStrength = Mathf.Clamp01(transparency * (1- satelliteInfo.advanced_Satellite_Info.absorbance));
+
+            GameObject newLaser = null;
 
             if (interaction == Interaction.Absorb)
             {
                 // Do Nothing
             }
+            
             else if (interaction == Interaction.Self_Determine)
             {
                 Debug.LogError("ERROR: An error has occurred when assigning this satellites interaction");
 
                 // Do Nothing, this should not occur
             }
+            
             else if (interaction == Interaction.Reflection)
             {
 
-                // Calculate the rotation angle
-                var rotateAngle = Interaction_Functions. Reflection_Interaction(this.transform,rayCast);
+                if (remainingLightStrength > 0)
+                {
+                    // Calculate the rotation angle
+                    var rotateAngle = Interaction_Functions.Reflection_Interaction(this.transform,rayCast);
 
-                // Instantiate new laser
-                GameObject newLaser = InstantiateNewLaser(new Vector3(rayCast.point.x, rayCast.point.y,-2), rotateAngle);
+                    // Instantiate new laser
+                    newLaser = InstantiateNewLaser(new Vector3(rayCast.point.x, rayCast.point.y,-2), rotateAngle,remainingLightStrength);
 
-                // Connect new laser to the origin
-                origin.AddLaser(newLaser,rayCast.point);
+                    // Connect new laser to the origin
+                    origin.AddLaser(newLaser,rayCast.point);
+                }
+        
             }
 
             else if (interaction == Interaction.Refraction)
@@ -226,23 +261,47 @@ public class Laser : MonoBehaviour
                 if (!float.IsNaN(refracted_angle))
                 {
 
-                    // THIS ROTATION ANGLE IS WRONG - the refracted angle is correct. But I don't know what I need to do to calculate how to get to the right rotation angle.
-                    //var rotateAngle = this.transform.eulerAngles.z + refracted_angle;
+                    float reflectedLightStrength = 0;
+
+                    // If the setting is allowed, then calculate the reflected light strength (transparency)
+                    if (allowReflectionDuringRefraction && refractionSatelliteInfo == null)
+                    {
+                        float reflectedPower = Mathf.Pow(Mathf.Abs((incident_index - refractive_index) / (incident_index + refractive_index)),2);
+
+                        reflectedLightStrength = Mathf.Clamp01(remainingLightStrength * reflectedPower);
+                    }
+
+                    // Calcualte the refracted light strength (transparency)
+                    float refractedLightStrength = Mathf.Clamp01(remainingLightStrength - reflectedLightStrength);
 
 
                     // Instantiate a new laser
-                    GameObject newLaser = InstantiateNewLaser(point,refracted_angle);
+                    newLaser = InstantiateNewLaser(point,refracted_angle,refractedLightStrength);
 
                     // Update the laser satellite info - based on whether leaving or entering
                     // This may be redundant when leaving, as the prefab laser doesn't have any links to satellites. I think of it as confirmation that it's doing what it should be.
                     newLaser.GetComponent<Laser>().refractionSatelliteInfo = newSatelliteInfo;
 
                     // Add laser to origin
-                    origin.AddLaser(newLaser,rayCast.point);                    
+                    origin.AddLaser(newLaser,point);//rayCast.point);             
+
+                    // If setting is allowed and the strength is not below the minimum needed for reflection during refraction
+                    // Defaults to 0.02f  (2% transparency)
+                    if (allowReflectionDuringRefraction && reflectedLightStrength > minimumTransparencyForReflectionDuringRefraction)
+                    {
+                        HitObject(reflectedLightStrength,Interaction.Reflection);
+                    }
+
+
                 }            
             }
         
-            
+            else if (interaction == Interaction.Destination)
+            {
+                
+                if (transparency >= minimumTransparencyNeededForDestinationRecognition) Interaction_Functions.Destination_Interaction(this,rayCast);
+            }
+
         }
     }
 }

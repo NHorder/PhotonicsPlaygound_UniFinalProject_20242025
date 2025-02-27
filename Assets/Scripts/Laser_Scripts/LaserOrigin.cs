@@ -7,8 +7,8 @@ public class LaserOrigin : MonoBehaviour
 {
 
     public LayerMask layersToHit;
-    public float startingEnergy = 50f;
-    public int updateDelay = 1;
+    public float maxDistance = 50f;
+    private int updateDelay = 1;
 
     // First laser is placed manually, then attached
     public GameObject prefabLaser;
@@ -21,9 +21,14 @@ public class LaserOrigin : MonoBehaviour
 
     private List<Vector2> listOfLaserOrigins;
 
+    private GameController gameController;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        updateDelay = gameController.framerateRelatedSettings.laserCycleDelay;
+
         // Initialise laser related lists
         listOfLasers = new List<GameObject>();
         listOfLaserOrigins = new List<Vector2>();
@@ -80,7 +85,7 @@ public class LaserOrigin : MonoBehaviour
             newLaser.transform.localScale = new Vector3(1f,1f,1f);
 
             // Set energy and layers to hit.
-            newLaser.GetComponent<Laser>().energy = startingEnergy;
+            newLaser.GetComponent<Laser>().maxDistance = maxDistance;
             newLaser.GetComponent<Laser>().layersToHit = layersToHit;
 
             // Add laser to lists.
@@ -111,5 +116,7 @@ public class LaserOrigin : MonoBehaviour
         }
 
     }
+
+    public GameController GetGameController(){return gameController;}
 
 }

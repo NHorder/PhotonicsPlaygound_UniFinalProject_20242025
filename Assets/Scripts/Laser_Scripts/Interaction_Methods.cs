@@ -49,35 +49,13 @@ class Interaction_Functions
         return inverseAngleOfNormal + refracted_angle;
     }
 
-    public static bool Destination_Interaction(Laser laser, RaycastHit2D rayCast)
+    public static void Destination_Interaction(Laser laser, RaycastHit2D rayCast)
     {
-        // Check 
-        return false;
+        // Retrieve destination script
+        LaserDestination destination = rayCast.collider.gameObject.GetComponent<LaserDestination>();
 
-    }
-
-    public static float Test_Interaction(float incident_index,float refracted_index,Vector2 normal, Laser laser)
-    {
-        //Transform laserTransform = laser.transform;
-
-
-        float angleOfNormal = Vector2.SignedAngle(Vector2.up,normal);
-
-        float inverseNormalAngle = angleOfNormal + 180f;
-
-        //Debug.Log("Angle of Normal :"+angleOfNormal);
-
-
-
-        float incident_angle = Vector2.SignedAngle(laser.transform.up,normal);
-
-        float incident = Mathf.Sin(incident_angle * (Mathf.PI / 180)) * incident_index;
-
-        float refracted_angle = Mathf.Asin( (incident / refracted_index)) * (180 / Mathf.PI);
-
-        Debug.Log("Incident Angle:" +incident_angle +" | Refracted Angle: "+refracted_angle);
-
-        return inverseNormalAngle + refracted_angle;
+        // Call to advance lock, as interaction has occurred.
+        if (destination != null) destination.AdvanceLock();
 
     }
 
