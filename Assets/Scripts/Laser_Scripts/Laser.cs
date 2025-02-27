@@ -59,7 +59,6 @@ public class Laser : MonoBehaviour
 
     public GameObject InstantiateNewLaser(Vector2 position, float angle, float remainingEnergy)
     {
-        
 
         // Instatiate a new laser, using the prefab first laser
         GameObject newLaser = Instantiate(origin.prefabLaser);
@@ -153,10 +152,7 @@ public class Laser : MonoBehaviour
         try{
             satelliteInfo = hitObject.GetComponent<Satellite_Info>();
         }
-        catch
-        {
-            // Do Nothing
-        }
+        catch {}
 
         if (satelliteInfo != null)
         {
@@ -305,11 +301,6 @@ public class Laser : MonoBehaviour
                 
                 if (transparency >= minimumTransparencyNeededForDestinationRecognition) Interaction_Functions.Destination_Interaction(this,rayCast);
             }
-
-
-            
-
-
 
         }
     }
