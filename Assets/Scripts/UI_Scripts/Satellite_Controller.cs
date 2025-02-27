@@ -35,7 +35,8 @@ public class Satellite_Controller : MonoBehaviour
     void Start()
     {
         uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UI_Controller>();
-        satelliteControlPanelKeys = GameObject.FindGameObjectsWithTag("Satellite_Control_Key");
+        
+        if (uiController.uiExpectations.expectSatelliteControlsAndInfoPanels) satelliteControlPanelKeys = GameObject.FindGameObjectsWithTag("Satellite_Control_Key");
 
     }
 
@@ -56,7 +57,7 @@ public class Satellite_Controller : MonoBehaviour
                 KeyboardInteraction();
 
                 // Allow for control panel interactions
-                ControlPanelInteraction();
+                if (uiController.uiExpectations.expectSatelliteControlsAndInfoPanels) ControlPanelInteraction();
             }
         }
         else if (!interactionEnabled && selectedRigidbody2D != null) 
@@ -85,33 +86,47 @@ public class Satellite_Controller : MonoBehaviour
             // Check if there are any UI objects found, if there is don't select a satellite
             bool uiObjectFound = (MouseOverUIObject().Count != 0);
 
+            // Check that there are no UI objects and the last found rigidbody is not null
             if (!uiObjectFound && lastFoundRigidBody2D != null){
 
                 // Make the previous selected and set to false (not selected)
                 if (selected_satellite_info != null) selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
 
-                selectedRigidbody2D = lastFoundRigidBody2D;
-                selected_satellite_info = lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
+                // Collect the satellite info for the last found rigid body.
+                Satellite_Info sat_info = lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
 
-                // Update multipliers - Mutipliers are used to increase speed of rotation or movement based on how long 
-                // they are held down to a maximum limit (defined in objects satellite information)
-                currentMovementMultiplier = selected_satellite_info.satellite_Movement_Info.intialMovementMultiplier;
-                currentRotationMultiplier = selected_satellite_info.satellite_Movement_Info.intialRotationMultiplier;
-
-                // Will involve an animation update - as it needs to be clear which object the user has selected.
-                selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
-
-                uiController.selectedSatelliteInfo = selected_satellite_info;
-
-                if (selected_satellite_info.satelliteType == SatelliteType.Origin || selected_satellite_info.satelliteType == SatelliteType.Destination)
+                // If this satellite info says that it's a selectable object, then proceed.
+                // This is checked, as some satellites may not be selectable.
+                if (sat_info.advanced_Satellite_Info.isSelectable)
                 {
-                    uiController.PresentPanel(UIPanel.Satellite_Controls,false);
-                }
-                else uiController.PresentPanel(UIPanel.Satellite_Controls,true);
-                
-                
-                uiController.PresentPanel(UIPanel.Satellite_Info_UI,true);
+                    selectedRigidbody2D = lastFoundRigidBody2D;
+                    selected_satellite_info = lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
 
+                    // Update multipliers - Mutipliers are used to increase speed of rotation or movement based on how long 
+                    // they are held down to a maximum limit (defined in objects satellite information)
+                    currentMovementMultiplier = selected_satellite_info.satellite_Movement_Info.intialMovementMultiplier;
+                    currentRotationMultiplier = selected_satellite_info.satellite_Movement_Info.intialRotationMultiplier;
+
+                    // Will involve an animation update - as it needs to be clear which object the user has selected.
+                    selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
+
+                    uiController.selectedSatelliteInfo = selected_satellite_info;
+
+                    if (uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
+                    {
+                        // If the selected satellite panel is type Origin or Destination, hide the controls.
+                        if (selected_satellite_info.satelliteType == SatelliteType.Origin || selected_satellite_info.satelliteType == SatelliteType.Destination)
+                        {
+                            uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+                        }
+
+                        // Else present them
+                        else uiController.PresentPanel(UIPanel.Satellite_Controls,true);
+
+                        // Present the satellite info panel
+                        uiController.PresentPanel(UIPanel.Satellite_Info_UI,true);
+                    }
+                }
             }
             // If it's null, set selected to null - this assumes an object that can't be rotated has been selected or empty space has been selected.
             else{
@@ -120,9 +135,13 @@ public class Satellite_Controller : MonoBehaviour
                     selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
                     selectedRigidbody2D = null;
                     selected_satellite_info = null;
-                    uiController.PresentPanel(UIPanel.Satellite_Controls,false);
 
-                    uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+                    if (uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
+                    {
+                        uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+                        uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+
+                    }
 
                     uiController.selectedSatelliteInfo = null;
                 }

@@ -55,7 +55,7 @@ class Interaction_Functions
         LaserDestination destination = rayCast.collider.gameObject.GetComponent<LaserDestination>();
 
         // Call to advance lock, as interaction has occurred.
-        destination.AdvanceLock();
+        if (destination != null) destination.AdvanceLock();
 
     }
 

@@ -46,19 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeLanguage: 0
   thisLevel: 0
-  levelName: 'Level 1: Reflections'
-  levelDescription: This level teaches about reflections. Make the best of your budget
-    to get the light beam to the destination, the more budget remaining the higher
-    your score!
-  startingBudget: 1000
-  currentBudget: 1000
-  worldInfo:
-    numOrigins: 1
-    numDestinations: 1
-    numSatellites: 0
-    newSatelliteLocationX: 0
-    newSatelliteLocationY: 0
-    satelliteBuilder: {fileID: 0}
+  levelName: 'Level -1: Testing Area'
+  levelDescription: This level is used for testing purposes. You should be a developer,
+    if you're not.. how did you get here?
+  startingBudget: 9999
+  currentBudget: 9999
+  activeDestinations: 0
+  gameEnd: 0
   satellite_Prefabs:
     singlePanelReflectionSatellite: {fileID: 8159377607702779972, guid: 792c9818fad8b0940b3670211c3c23df, type: 3}
     glassRefractionSatellite: {fileID: 2407986768139647972, guid: cd67f170a293ada4d935fd3076038d86, type: 3}
+  framerateRelatedSettings:
+    desiredFramerate: 60
+    laserCycleDelay: 1
+    numLocksForLevelCompletion: 3
+    timeToHoldForLevelCompletion: 3
+    counterToHoldForLevelCompletion: -1
+  specializedInteractionSettings:
+    allowReflectionDuringRefraction: 1
+    minimumTransparencyNeededForDestinationRecognition: 0.5
+    minimumTransparencyForReflectionDuringRefraction: 0.02

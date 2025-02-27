@@ -109,6 +109,7 @@ public class GameController : MonoBehaviour
         ui_controller = providedUIController;
     }
 
+    public UI_Controller GetUIController(){return ui_controller;}
 
     public void PurchaseSatellite(Satellite_Info satellite_Info)
     {
@@ -154,6 +155,11 @@ public class GameController : MonoBehaviour
             // This is not my own coroutine activation code
             StartCoroutine(LockSatellitePurchase_Coroutine());
         }
+    }
+
+    public void DestroyedSatellite()
+    {
+        worldInfo.numSatellitesDestroyed += 1;
     }
 
     private IEnumerator  LockSatellitePurchase_Coroutine()

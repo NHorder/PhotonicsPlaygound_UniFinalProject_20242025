@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2407986768139647972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,12 +250,15 @@ MonoBehaviour:
   satelliteType: 2
   interaction: 0
   satelliteName: 
+  satelliteHealth: 100
   satelliteDescription: 
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   satelliteSellPrice: 0
   advanced_Satellite_Info:
+    isSelectable: 1
     refractiveIndex: 0
+    percentageOfReflectedLightWhenRefracted: 0
     surfaceColor: 0
     absorbance: 0
     lightColor: 0

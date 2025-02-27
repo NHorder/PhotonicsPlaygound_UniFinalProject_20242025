@@ -44,12 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e39c05d6dc678408d94454479ab7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiExpectations:
+    expectShopUIPanel: 1
+    expectTeachingUIPanel: 1
+    expectSatelliteControlsAndInfoPanels: 1
+    expectLevelCompletePanel: 1
+    expectSettingsPanel: 1
+    expectSatelliteComms_LevelProgress_Panel: 1
   satelliteControlPanelSettings:
-    controlPanelMovementSpeed: 1
+    controlPanelMovementSpeed: 8
     controlPanelVisibleLoc: -465
     controlPanelNotVisibleLoc: -650
   shopPanelSettings:
-    shopPanelMovementSpeed: 1
+    shopPanelMovementSpeed: 8
     shopPanelOpenXLoc: 596
     shopPanelCloseXLoc: 1147
+  levelProgressPanelSettings:
+    recordRetentionNumber: 10
+    forceNoChangeOnNewCommunication: 0
+    levelProgressPanelMovementSpeed: 10
+    levelProgressPanelOpenYLoc: 376.7
+    levelProgressPanelCloseYLoc: 646
   selectedSatelliteInfo: {fileID: 0}

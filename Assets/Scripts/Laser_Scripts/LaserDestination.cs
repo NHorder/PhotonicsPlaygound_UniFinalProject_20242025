@@ -35,7 +35,10 @@ public class LaserDestination : MonoBehaviour
     {
         gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
-        levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
+        try{
+            levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
+        }
+        catch{}
 
         numLocksForLevelCompletion = gameController.framerateRelatedSettings.numLocksForLevelCompletion;
         counterToHoldForLockCompletion = gameController.framerateRelatedSettings.counterToHoldForLevelCompletion;
@@ -60,9 +63,9 @@ public class LaserDestination : MonoBehaviour
         if (satelliteName == null) satelliteName = gameObject.GetComponent<Satellite_Info>().satelliteName;
 
         // Sync delay of that to laser creation and destruction - meaning it will be seen as consistent
-        if (updateCounter > laserDelay)
+        if (updateCounter > laserDelay && levelProgressPanel != null)
         {
-        
+
             // If lock advance request received, then update the lockProgressionCounter, and reset the lock advance request
             if (lockAdvanceRequest)
             {

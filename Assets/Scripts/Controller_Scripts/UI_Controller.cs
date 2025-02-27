@@ -19,6 +19,8 @@ public enum UIPanel
 
 public class UI_Controller : MonoBehaviour
 {
+
+    public UI_Expectations uiExpectations;
     
     private GameObject satelliteControlPanel;
 
@@ -65,51 +67,64 @@ public class UI_Controller : MonoBehaviour
     void Start()
     {
 
+        // Find and connect to gameController
         gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         gameController.SetUIController(this);
 
-
-        GameObject[] teachingControllerObjects = GameObject.FindGameObjectsWithTag("TeachingController");
-
-        if (teachingControllerObjects.Length != 0)
+        // If expecting satellite communication panel (displays level progress)
+        if (uiExpectations.expectSatelliteComms_LevelProgress_Panel )levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0];
+        
+        // if expecting satellite control and info panel
+        if (uiExpectations.expectSatelliteControlsAndInfoPanels)
         {
-            teachingControllerObject = GameObject.FindGameObjectsWithTag("TeachingController")[0];
-            teachingControllerObject.GetComponent<TeachingController>().SetUIController(this);
+            // Find and save connection to Satellite Control Panel UI Parent
+            satelliteControlPanel = GameObject.FindGameObjectsWithTag("Satellite_Controls")[0];
+
+            satelliteInfoUIPanel = GameObject.FindGameObjectsWithTag("UI_Satellite_Info")[0];
+            satelliteInfoUIObjects = GameObject.FindGameObjectsWithTag("UI_Satellite_Info_Obj");
         }
 
-
-        levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0];
-        
-        // Find and save connection to Satellite Control Panel UI Parent
-        satelliteControlPanel = GameObject.FindGameObjectsWithTag("Satellite_Controls")[0];
-
-        satelliteInfoUIPanel = GameObject.FindGameObjectsWithTag("UI_Satellite_Info")[0];
-        satelliteInfoUIObjects = GameObject.FindGameObjectsWithTag("UI_Satellite_Info_Obj");
-
-        shopPanel = GameObject.FindGameObjectsWithTag("Shop")[0];
-
-
-        levelCompletePanel = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
-
-
-        GameObject[] shopInformationText = GameObject.FindGameObjectsWithTag("Shop_Information_Text");
-
-        foreach (GameObject shopInfoTextObject in shopInformationText)
+        // If expecting shop UI, collect relevant inforamation
+        if (uiExpectations.expectShopUIPanel)
         {
-            TMP_Text textComponent = shopInfoTextObject.GetComponent<TMP_Text>();
+            shopPanel = GameObject.FindGameObjectsWithTag("Shop")[0];
 
-            if (shopInfoTextObject.name == "LevelName") textComponent.text = gameController.levelName;
-            else if (shopInfoTextObject.name == "LevelDescription") textComponent.text = gameController.levelDescription;
-            else if (shopInfoTextObject.name == "CurrentBudget")
+            GameObject[] shopInformationText = GameObject.FindGameObjectsWithTag("Shop_Information_Text");
+
+            foreach (GameObject shopInfoTextObject in shopInformationText)
             {
-                textComponent.text = "Current Budget: £"+gameController.startingBudget;
-                knownBudget = gameController.startingBudget;
-                shopBudgetText = textComponent;
+                TMP_Text textComponent = shopInfoTextObject.GetComponent<TMP_Text>();
+
+                if (shopInfoTextObject.name == "LevelName") textComponent.text = gameController.levelName;
+                else if (shopInfoTextObject.name == "LevelDescription") textComponent.text = gameController.levelDescription;
+                else if (shopInfoTextObject.name == "CurrentBudget")
+                {
+                    textComponent.text = "Current Budget: £"+gameController.startingBudget;
+                    knownBudget = gameController.startingBudget;
+                    shopBudgetText = textComponent;
+                }
+
             }
 
         }
 
-        PresentPanel(UIPanel.Teaching,true);
+        // If expecting level complete panel, retrieve information
+        if (uiExpectations.expectLevelCompletePanel) levelCompletePanel = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
+
+        // If expecting teaching UI Panel, then retrieve needed information
+        if (uiExpectations.expectTeachingUIPanel)
+        {
+            GameObject[] teachingControllerObjects = GameObject.FindGameObjectsWithTag("TeachingController");
+
+            if (teachingControllerObjects.Length != 0)
+            {
+                teachingControllerObject = GameObject.FindGameObjectsWithTag("TeachingController")[0];
+                teachingControllerObject.GetComponent<TeachingController>().SetUIController(this);
+            }
+
+            PresentPanel(UIPanel.Teaching,true);
+        }
+
     }
 
     // Update is called once per frame
@@ -117,7 +132,7 @@ public class UI_Controller : MonoBehaviour
     {
 
         // If the object is not null and the known budget is not what should be
-        if (shopBudgetText != null && knownBudget != gameController.currentBudget)
+        if (uiExpectations.expectShopUIPanel && shopBudgetText != null && knownBudget != gameController.currentBudget)
         {
             // Retrieve the budget, update the shop budget text.
             shopBudgetText.text = "Current Budget: £"+gameController.currentBudget;
@@ -126,7 +141,7 @@ public class UI_Controller : MonoBehaviour
 
 
         // If moving satellite control panel, and the new location is not null
-        if (satelliteControlPanelMoving && satelliteControlPanelNewYLoc != null)
+        if (uiExpectations.expectSatelliteControlsAndInfoPanels && satelliteControlPanelMoving && satelliteControlPanelNewYLoc != null)
         {
             // Retrieve transform and current position of the panel
             var rectTransform = satelliteControlPanel.GetComponent<RectTransform>();
@@ -140,7 +155,7 @@ public class UI_Controller : MonoBehaviour
         }
 
         // If the shop panel is moving and has a defined location
-        if (shopPanelMoving && shopPanelNewXLoc != null)
+        if (uiExpectations.expectShopUIPanel && shopPanelMoving && shopPanelNewXLoc != null)
         {
             // Retrieve the transform and current position of the panel
             var rectTransform = shopPanel.GetComponent<RectTransform>();
@@ -156,7 +171,7 @@ public class UI_Controller : MonoBehaviour
             shopAnimator.SetBool("Open",(shopPanelNewXLoc < shopPanelSettings.shopPanelCloseXLoc));
         }
         
-        if (levelProgressMoving && levelProgressNewYLoc != null)
+        if (uiExpectations.expectSatelliteComms_LevelProgress_Panel && levelProgressMoving && levelProgressNewYLoc != null)
         {
             // Retrieve transform and current position
             var rectTransform = levelProgressPanel.GetComponent<RectTransform>();
@@ -228,7 +243,7 @@ public class UI_Controller : MonoBehaviour
     {
         // If the presentation of a panel is the satellite control AND it's not already being moved
         // This is to prevent potential errors when a user spam clicks a specific satellite.
-        if (panel == UIPanel.Satellite_Controls)
+        if (uiExpectations.expectSatelliteControlsAndInfoPanels && panel == UIPanel.Satellite_Controls)
         {
             // Update moving to true, meaning update will now move the satellite.
             satelliteControlPanelMoving = true;
@@ -243,7 +258,7 @@ public class UI_Controller : MonoBehaviour
             else satelliteControlPanelMoving = false;
         }
 
-        else if (panel == UIPanel.Satellite_Info_UI)
+        else if (uiExpectations.expectSatelliteControlsAndInfoPanels && panel == UIPanel.Satellite_Info_UI)
         {
             var rectTransform = satelliteInfoUIPanel.GetComponent<RectTransform>();
             var position = rectTransform.anchoredPosition;
@@ -310,12 +325,12 @@ public class UI_Controller : MonoBehaviour
 
         }
         
-        else if (panel == UIPanel.Settings)
+        else if (uiExpectations.expectSettingsPanel && panel == UIPanel.Settings)
         {
 
         }
 
-        else if ((panel == UIPanel.Teaching) &&  (teachingControllerObject != null))
+        else if (uiExpectations.expectTeachingUIPanel && (panel == UIPanel.Teaching) &&  (teachingControllerObject != null))
         {
             if (bVisible)
             {
@@ -329,7 +344,7 @@ public class UI_Controller : MonoBehaviour
             teachingControllerObject.active = bVisible;
         }
 
-        else if (panel == UIPanel.LogCommunications && levelProgressPanel != null)
+        else if (uiExpectations.expectSatelliteComms_LevelProgress_Panel && panel == UIPanel.LogCommunications && levelProgressPanel != null)
         {
     
             levelProgressMoving = true;
@@ -342,7 +357,7 @@ public class UI_Controller : MonoBehaviour
             
         }
 
-        else if (panel == UIPanel.LevelComplete)
+        else if (uiExpectations.expectLevelCompletePanel && panel == UIPanel.LevelComplete)
         {
 
             // Retrieve levelCompletePanel
@@ -368,7 +383,7 @@ public class UI_Controller : MonoBehaviour
         // This makes use of a manual linear interpolation to show and close it - as RectTransform doesn't support linear interpolated movement
         // This is done mainly for animation purposes.
 
-        if (interactionEnabled)
+        if (uiExpectations.expectShopUIPanel && interactionEnabled)
         {
             if (shopPanelIsOpen)
             {
@@ -387,20 +402,22 @@ public class UI_Controller : MonoBehaviour
 
     public void SetCompletedModeActive(bool active)
     {
-        if (active)
+        if (uiExpectations.expectLevelCompletePanel)
         {
-            if (shopPanelIsOpen) OpenCloseShop();
-            interactionEnabled = false;
+            if (active)
+            {
+                if (shopPanelIsOpen) OpenCloseShop();
+                interactionEnabled = false;
 
-            levelCompletePanel.GetComponent<LevelCompleteController>().GameComplete();
-            PresentPanel(UIPanel.LevelComplete,true);
+                levelCompletePanel.GetComponent<LevelCompleteController>().GameComplete();
+                PresentPanel(UIPanel.LevelComplete,true);
+            }
+            else 
+            {
+                interactionEnabled = true;
+                PresentPanel(UIPanel.LevelComplete,false);
+            }
         }
-        else 
-        {
-            interactionEnabled = true;
-            PresentPanel(UIPanel.LevelComplete,false);
-        }
-
     }
 
 
@@ -411,7 +428,16 @@ public class UI_Controller : MonoBehaviour
 
 
 
-
+[System.Serializable]
+public class UI_Expectations
+{
+    public bool expectShopUIPanel = true;
+    public bool expectTeachingUIPanel  = true;
+    public bool expectSatelliteControlsAndInfoPanels = true;
+    public bool expectLevelCompletePanel  = true;
+    public bool expectSettingsPanel  = true;
+    public bool expectSatelliteComms_LevelProgress_Panel  = true;
+}
 
 [System.Serializable]
 public class SatelliteControlPanelSettings
