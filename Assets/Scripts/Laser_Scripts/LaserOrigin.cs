@@ -8,34 +8,36 @@ public class LaserOrigin : MonoBehaviour
 
     public LayerMask layersToHit;
     public float maxDistance = 50f;
-    private int updateDelay = 1;
 
     // First laser is placed manually, then attached
     public GameObject prefabLaser;
 
 
-    private int currentUpdateCount = 0;
+    private int _updateDelay = 1;
+
+    private int _currentUpdateCount = 0;
 
     // Laser list is created from connections to 
-    private List<GameObject> listOfLasers;
+    private List<GameObject> _listOfLaserObjects;
 
-    private List<Vector2> listOfLaserOrigins;
+    private List<Vector2> _listOfLaserOrigins;
 
-    private GameController gameController;
+    private GameController _gameController;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-        updateDelay = gameController.framerateRelatedSettings.laserCycleDelay;
+        // Collect game controller and update delay settings
+        _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        _updateDelay = _gameController.framerateRelatedSettings.laserCycleDelay;
 
         // Initialise laser related lists
-        listOfLasers = new List<GameObject>();
-        listOfLaserOrigins = new List<Vector2>();
+        _listOfLaserObjects = new List<GameObject>();
+        _listOfLaserOrigins = new List<Vector2>();
 
         // Check that update delay is not less than 0.
-        if (updateDelay < 0){
-            updateDelay = 32;
+        if (_updateDelay < 0){
+            _updateDelay = 32;
             Debug.LogWarning("WARNING: Laser Origin updateDelay cannot be less than 0. Setting to default");
         }   
     }
@@ -44,18 +46,19 @@ public class LaserOrigin : MonoBehaviour
     void Update()
     {
 
-        // Delay updates by a specified amount - this is done to allow lasers time to render before being destroyed.
-        if (currentUpdateCount > updateDelay)
+        // Delay updates by a specified amount
+        // This is done to allow the laser time to render before deletion
+        if (_currentUpdateCount > _updateDelay)
         {
             // Reset update count
-            currentUpdateCount = 0;
+            _currentUpdateCount = 0;
 
             // Delete all lasers
-            foreach (GameObject laser in listOfLasers) Destroy(laser);
+            foreach (GameObject laser in _listOfLaserObjects) Destroy(laser);
 
             // Clear lists
-            listOfLasers.Clear();
-            listOfLaserOrigins.Clear();
+            _listOfLaserObjects.Clear();
+            _listOfLaserOrigins.Clear();
 
             // Fire the initial laser to begin the recursive laser chain
             Fire_Initial_Laser();
@@ -63,18 +66,18 @@ public class LaserOrigin : MonoBehaviour
         else
         {
             // Increment count
-            currentUpdateCount++;
+            _currentUpdateCount++;
         }
     }
 
     private void Fire_Initial_Laser()
     {
 
-        // Check to make sure the firstLaser has been provided
+        // Check to make sure the prefab laser has been provided
         if (prefabLaser != null)
         {
-            // Instantiate new laser
-            GameObject newLaser = Instantiate(prefabLaser);
+            // Instantiate the first laser
+            var newLaser = Instantiate(prefabLaser);
             newLaser.GetComponent<Laser>().origin = this;
 
             // Set position and rotatation of inital laser
@@ -100,14 +103,14 @@ public class LaserOrigin : MonoBehaviour
         // Method to add laser to lists
 
         // Check if laser origin already exists - prevents creation of unneccary lasers
-        if (!listOfLaserOrigins.Contains(newLaserOrigin))
+        if (!_listOfLaserOrigins.Contains(newLaserOrigin))
         {
             // Add laser object and origin to lists respectively
-            listOfLasers.Add(newLaser);
-            listOfLaserOrigins.Add(newLaserOrigin);
+            _listOfLaserObjects.Add(newLaser);
+            _listOfLaserOrigins.Add(newLaserOrigin);
 
             // Change the new laser name to "Laser_X" dependning on when it was made - unneeded by helpful for debugging.
-            newLaser.name = "Laser_"+listOfLasers.Count;
+            newLaser.name = "Laser_"+_listOfLaserObjects.Count;
         }
         else
         {
@@ -117,6 +120,9 @@ public class LaserOrigin : MonoBehaviour
 
     }
 
-    public GameController GetGameController(){return gameController;}
+    public GameController GetGameController()
+    {
+        return _gameController;
+    }
 
 }

@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public enum Language{
     English,
     Welsh
@@ -33,17 +29,17 @@ public class GameController : MonoBehaviour
     public bool gameEnd = false;
 
 
-    private bool canPurchaseSatellite = true;
+    private bool _canPurchaseSatellite = true;
 
 
     public WorldInfo worldInfo = new WorldInfo();
-    public Satellite_Prefabs satellite_Prefabs;
+    public SatellitePrefabs satellitePrefabs;
 
     public FramerateRelatedSettings framerateRelatedSettings;
 
     public SpecializedInteractionSettings specializedInteractionSettings;
 
-    private UI_Controller ui_controller;
+    private UIController _uiController;
 
 
     void Start()
@@ -84,11 +80,13 @@ public class GameController : MonoBehaviour
                 framerateRelatedSettings.timeToHoldForLevelCompletion = 1;
             }
 
-
+            // Calcualte the number of laser interactions per second - round to nearest full number. This is used for destination interactions
             int laserInteractionsPerSecond = framerateRelatedSettings.desiredFramerate / (framerateRelatedSettings.laserCycleDelay + 1);
 
+            // Calculate the time (s) needed per lock
             float timePerLock = framerateRelatedSettings.numLocksForLevelCompletion / framerateRelatedSettings.timeToHoldForLevelCompletion;
 
+            // If time per lock is less than or equal to 0, something has gone wrong, log error
             if (timePerLock <= 0) 
             {
                 Debug.LogError("ERROR: Problem with completion locks, results in timePerLock to be less than 0. Using defaults");
@@ -104,56 +102,64 @@ public class GameController : MonoBehaviour
     }
 
 
-    public void SetUIController(UI_Controller providedUIController)
+    public void SetUIController(UIController providedUIController)
     {
-        ui_controller = providedUIController;
+        _uiController = providedUIController;
     }
 
-    public UI_Controller GetUIController(){return ui_controller;}
-
-    public void PurchaseSatellite(Satellite_Info satellite_Info)
+    public UIController GetUIController()
     {
+        return _uiController;
+    }
 
-        Debug.Log("Satellite Purchase Request Received!");
+    public void PurchaseSatellite(Satellite_Info satelliteInfo)
+    {
+        // Collect the satellite type and find it's price
+        SatelliteType satType = satelliteInfo.satelliteType;
+        var satPrice = satelliteInfo.satellitePurchasePrice;
 
-        SatelliteType satType = satellite_Info.satelliteType;
-        int satPrice = satellite_Info.satellitePurchasePrice;
-
-        if (satPrice > 0 && canPurchaseSatellite)
+        // If the price is more than 0 (meaning it can be purchased) identify which satellite to purchase.
+        if (satPrice > 0 && _canPurchaseSatellite)
         {
-            canPurchaseSatellite = false;
+            // Lock the ability to purchase a satellite until this program has executed.
+            _canPurchaseSatellite = false;
 
+            // Prepare variable
             GameObject purchasedSatellite = null;
 
+            // Determine the satellite
             if (satType == SatelliteType.SingleSideReflector)
             {
-                if (satellite_Prefabs.singlePanelReflectionSatellite != null) purchasedSatellite = satellite_Prefabs.singlePanelReflectionSatellite; 
+                if (satellitePrefabs.singlePanelReflectionSatellite != null) purchasedSatellite = satellitePrefabs.singlePanelReflectionSatellite; 
                 else Debug.LogError("ERROR: No linked Single Panel Reflection Satellite found");
             }
 
             else if (satType == SatelliteType.GlassRefractor)
             {
-                if (satellite_Prefabs.glassRefractionSatellite != null) purchasedSatellite = satellite_Prefabs.glassRefractionSatellite; 
+                if (satellitePrefabs.glassRefractionSatellite != null) purchasedSatellite = satellitePrefabs.glassRefractionSatellite; 
                 else Debug.LogError("ERROR: No linked Glass Refraction Satellite found");
             }
 
 
             if (purchasedSatellite != null)
             {
-                Debug.Log("Making new Satellite!");
+                // Decrease budget
                 currentBudget -= satPrice;
 
-                GameObject newSatellite = Instantiate(purchasedSatellite);
+                // Instantiate new satellite and set it's location and collision layers.
+                var newSatellite = Instantiate(purchasedSatellite);
                 newSatellite.layer = LayerMask.NameToLayer("Object");
 
                 newSatellite.transform.position = new Vector3(worldInfo.newSatelliteLocationX,worldInfo.newSatelliteLocationY,0f);
 
+                // Apply a force to move the satellite away from spawn to prevent satellite clipping.
                 newSatellite.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f,100f));
             }
+            else
+            {
+                Debug.LogWarning("WARNING: Satellite Type not recognised (Purchase)");
+            }
 
-            // Coroutine follows very similarly to https://docs.unity3d.com/6000.0/Documentation/ScriptReference/WaitForSeconds.html#:~:text=Start%20waiting%20at%20the%20end,seconds%20after%20it%20was%20called. 
-            // This is not my own coroutine activation code
-            StartCoroutine(LockSatellitePurchase_Coroutine());
         }
     }
 
@@ -162,30 +168,20 @@ public class GameController : MonoBehaviour
         worldInfo.numSatellitesDestroyed += 1;
     }
 
-    private IEnumerator  LockSatellitePurchase_Coroutine()
-    {
-        // Coroutine follows very similarly to https://docs.unity3d.com/6000.0/Documentation/ScriptReference/WaitForSeconds.html#:~:text=Start%20waiting%20at%20the%20end,seconds%20after%20it%20was%20called. 
-        // This is not my own coroutine activation code, adapted to wait for 1 second which is all I need
-        yield return new WaitForSeconds(1);
-
-        // Set can purchase satellite to true;
-        canPurchaseSatellite = true;
-    }
-
     public void LevelEnd()
     {
         gameEnd = true;
         // Notify UI controller of level won, and pass the score
-        if (ui_controller != null) ui_controller.SetCompletedModeActive(true);
+        if (_uiController != null) _uiController.SetCompletedModeActive(true);
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
-
     }
 
     public void ResetLevel()
     {
-        bool userConfirmation = true;
+        // Would collect user confirmation from a menu
+        var userConfirmation = true;
 
-        if (userConfirmation) SceneController.To_Level(thisLevel);
+        if (userConfirmation) SceneController.ToLevel(thisLevel);
     }
 
     public void DestinationTrigger(bool active)
@@ -196,10 +192,7 @@ public class GameController : MonoBehaviour
         else activeDestinations -=1;
 
         // if the number of activated origins is more or equal to the number of origins in the world, then the game is complete
-        if (activeDestinations >= worldInfo.numDestinations) 
-        {
-            LevelEnd();
-        }
+        if (activeDestinations >= worldInfo.numDestinations) LevelEnd();
     }
 
 }
@@ -246,7 +239,7 @@ public class WorldInfo
 }
 
 [System.Serializable]
-public class Satellite_Prefabs
+public class SatellitePrefabs
 {
     public GameObject singlePanelReflectionSatellite;
     public GameObject glassRefractionSatellite;

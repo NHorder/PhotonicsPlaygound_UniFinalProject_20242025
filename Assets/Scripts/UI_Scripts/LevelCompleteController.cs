@@ -7,84 +7,88 @@ using TMPro;
 public class LevelCompleteController : MonoBehaviour
 {
 
-    private int score = 0;
-    private int rank = 7;
+    private int _score = 0;
+    private int _rank = 7;
 
-    private TMP_Text scoreText;
-    private TMP_Text statisticsText;
+    private TMP_Text _scoreText;
+    private TMP_Text _statisticsText;
 
-    private Animator rankAnimator;
+    private Animator _rankAnimator;
 
-    private GameController gameController;
+    private GameController _gameController;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        // Collect game controller
+        _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
-        RectTransform[] childTransforms = gameObject.GetComponentsInChildren<RectTransform>();
+        // Collect child gameObjects
+        var childTransformsList = gameObject.GetComponentsInChildren<RectTransform>();
 
-        foreach (RectTransform childTransform in childTransforms)
+        // Loop through and sort to find needed objects to update 
+        foreach (RectTransform childTransform in childTransformsList)
         {
-            GameObject childObject = childTransform.gameObject;
+            var childObject = childTransform.gameObject;
 
-            if (childObject.name == "ScoreText") scoreText = childObject.GetComponent<TMP_Text>();
-            else if (childObject.name == "StatisticsText") statisticsText = childObject.GetComponent<TMP_Text>(); 
-            else if (childObject.name == "FinalRatingSprite") rankAnimator = childObject.GetComponent<Animator>();
+            if (childObject.name == "ScoreText") _scoreText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "StatisticsText") _statisticsText = childObject.GetComponent<TMP_Text>(); 
+            else if (childObject.name == "FinalRatingSprite") _rankAnimator = childObject.GetComponent<Animator>();
         }
     }
 
     public void GameComplete()
     {
-        int startingBudget = gameController.startingBudget;
-        int currentBudget = gameController.currentBudget;
-        int numSatellites = gameController.worldInfo.numSatellites;
-        int numSatellitesDestroyed = gameController.worldInfo.numSatellitesDestroyed;
+        // Collect information from game controller needed to clacualte the score
+        var startingBudget = _gameController.startingBudget;
+        var currentBudget = _gameController.currentBudget;
+        var numSatellites = _gameController.worldInfo.numSatellites;
+        var numSatellitesDestroyed = _gameController.worldInfo.numSatellitesDestroyed;
 
+        // Calculate score and rank - score is saved as private variable
         CalculateScore(startingBudget,currentBudget,numSatellites,numSatellitesDestroyed);
         CalculateRank();
 
-        scoreText.text  = "Score: "+score;
+        // Update the score text
+        _scoreText.text  = $"Score: {_score}";
 
-        string text = "";
-        text += "- Remaining Budget: "+currentBudget + "\n";
-        text += "- Number of Satellites Purchased: "+numSatellites + "\n";
-        text += "- Number of Satellites Destroyed: "+numSatellitesDestroyed;
-
-        statisticsText.text = text;
-        rankAnimator.SetInteger("Rank",rank);
-
-
-
+        // Update the satistics text
+        _statisticsText.text = $"- Remaining Budget: {currentBudget}\n- Number of Satellites Purchased: {numSatellites}\n- Number of Satellites Destroyed: {numSatellitesDestroyed}";
+        
+        // Notify animator to change visual dependent on rank (1 = S, 2 = A, 3 = B, 4 = C, 5 = D, 6 = E, > 7 = F)
+        _rankAnimator.SetInteger("Rank",_rank);
 
     }
 
     public void CalculateScore(int startingBudget,int currentBudget,int numSatellites,int numSatellitesDestroyed)
     {   
-        score = 0;
-
+        // Calculate score using an equation
+        _score = 0;
     }
 
     private void CalculateRank()
     {
-        if (score > 900) rank = 1;
-        else if (score > 800) rank = 2;
-        else if (score > 700) rank = 3;
-        else if (score > 600) rank = 4;
-        else if (score > 500) rank = 5;
-        else if (score > 400) rank = 6;
-        else rank = 7;
+        // Calcualte rank based on score
+        if (_score > 900) _rank = 1;
+        else if (_score > 800) _rank = 2;
+        else if (_score > 700) _rank = 3;
+        else if (_score > 600) _rank = 4;
+        else if (_score > 500) _rank = 5;
+        else if (_score > 400) _rank = 6;
+        else _rank = 7;
     }
 
     public void ToLevelSelect()
     {
-        SceneController.To_LevelSelection();
+        // Transition to level selection scene - called by button
+        SceneController.ToLevelSelection();
     }
 
     public void Retry()
     {
-        gameController.ResetLevel();
+        // Call to game controller to reset the level - called by a button
+        _gameController.ResetLevel();
     }
 
 
