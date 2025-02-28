@@ -22,8 +22,10 @@ class InteractionFunctions
         
         float laserAngle = laserTransform.eulerAngles.z;
 
-
+        // Calculate the reflected vector
         var reflect = Vector2.Reflect(rayCast.normal,laserTransform.up);
+
+        // Convert the reflected normal into an angle from laser transform.up
         var angle = Vector2.SignedAngle(laserTransform.up,reflect);
 
 
@@ -39,10 +41,13 @@ class InteractionFunctions
         // internal or external normal from the collision location.
         float inverseAngleOfNormal = Vector2.SignedAngle(Vector2.up,normal) + 180f;
 
+        // Calculate the incident angle, based on the surface hit and the laser up vectors
         float incident_angle = Vector2.SignedAngle(laser.transform.up,normal);
 
+        // Calculate the incident (after converting angle to radians)
         float incident = Mathf.Sin(incident_angle * (Mathf.PI / 180)) * incidentIndex;
 
+        // Calculate the refracted angle (and convert from radians to angle)
         float refracted_angle = Mathf.Asin( (incident / refractedIndex)) * (180 / Mathf.PI);
 
         // Through using the inverse normal and the calculated refracted angle
@@ -56,7 +61,6 @@ class InteractionFunctions
 
         // Call to advance lock, as interaction has occurred.
         if (destination != null) destination.AdvanceLock();
-
     }
 
 }

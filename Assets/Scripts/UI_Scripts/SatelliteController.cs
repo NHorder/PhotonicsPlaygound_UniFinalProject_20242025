@@ -27,24 +27,20 @@ public class SatelliteController : MonoBehaviour
     private Rigidbody2D _selectedRigidbody2D = null;
     private Satellite_Info _selectedSatelliteInfo = null;
 
-    private GameObject[] _satelliteControlPanelKeys;
-
     private Key _keyPressed = Key.None;
 
 
     void Start()
     {
+        // Retrieve UI controller
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
-        
-        if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels) _satelliteControlPanelKeys = GameObject.FindGameObjectsWithTag("Satellite_Control_Key");
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Check that interaction is enabled
         var interactionEnabled = _uiController.GetInteractionEnabled();
-
         if (interactionEnabled)
         {
             // Check to see if an mouse has been clicked
@@ -56,17 +52,26 @@ public class SatelliteController : MonoBehaviour
                 // Allow for keyboard interactions
                 KeyboardInteraction();
 
-                // Allow for control panel interactions
+                // Allow for control panel interactions if the panel is expeccted
                 if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels) ControlPanelInteraction();
             }
         }
+
+        // If interaction is disabled, but the selected rigid body is not null
         else if (!interactionEnabled && _selectedRigidbody2D != null) 
         {
+            // Update the items animator to show unselected
             _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
+
+            // Disconnect from the selected satellite
             _selectedRigidbody2D = null;
             _selectedSatelliteInfo = null;
+
+            // Hide the controls and information UI, as not item is selected
             _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
             _uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+            
+            // Notify UI Controller that nothing is selected
             _uiController.selectedSatelliteInfo = null;
         }
     }
@@ -109,8 +114,10 @@ public class SatelliteController : MonoBehaviour
                     // Will involve an animation update - as it needs to be clear which object the user has selected.
                     _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
 
+                    // Notify ui controller of new satellite selection
                     _uiController.selectedSatelliteInfo = _selectedSatelliteInfo;
 
+                    // If expecting the controls and info panel, update and present the panels
                     if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
                     {
                         // If the selected satellite panel is type Origin or Destination, hide the controls.
@@ -156,7 +163,7 @@ public class SatelliteController : MonoBehaviour
 
     private List<RaycastResult> MouseOverUIObject()
     {
-        // Code taken and adapted from Krishx007
+        // Code taken and adapted from Krishx007  (last viewed 2025/02/12)
         // within the discussion: https://discussions.unity.com/t/detect-mouseover-click-for-ui-canvas-object/152611/5 
         // Adaptions include comments and final return statement.
 
@@ -172,10 +179,9 @@ public class SatelliteController : MonoBehaviour
         // Use the EventSystem RaycastAll to retrieve all UI elements beneath the mouse.
         EventSystem.current.RaycastAll( eventData, raycastResults );
 
+        // Return the results
         return raycastResults;
     }
-
-
 
 
     private void KeyboardInteraction()
@@ -190,8 +196,12 @@ public class SatelliteController : MonoBehaviour
         // Reason is unity rotation is postive left, negative right.
         var rotationMovement = Input.GetAxisRaw("Rotation");
 
-        if (_selectedSatelliteInfo.satelliteType != SatelliteType.Origin && _selectedSatelliteInfo.satelliteType != SatelliteType.Destination) InteractWithSatellite(horizontalMovement,verticalMovement,rotationMovement);
-        
+        // If the seleccted satellite IS NOT Origin or Destination, allow movement
+        // Reasoning, it would be way to easy to win if you move the destination to the origin or vice versa.
+        if (_selectedSatelliteInfo.satelliteType != SatelliteType.Origin && _selectedSatelliteInfo.satelliteType != SatelliteType.Destination)
+        {
+            InteractWithSatellite(horizontalMovement,verticalMovement,rotationMovement);
+        }
     }
 
     private void ControlPanelInteraction()
@@ -203,55 +213,56 @@ public class SatelliteController : MonoBehaviour
         // Retrieve what objects the mouse is over
         List<RaycastResult> rayCastResults = MouseOverUIObject();
 
-        // Instantiate new list for game objects
-        var raycastKeysFound = new List<GameObject>();
-
         // As UI object lists can get very large, loop through all and check if the object tag is a control key, if not ignore it
         foreach (RaycastResult raycastResult in rayCastResults)
         {
-            if (raycastResult.gameObject.tag == "Satellite_Control_Key") raycastKeysFound.Add(raycastResult.gameObject);
-        }
-
-        // Check if left mouse click is pressed down
-        if (Input.GetMouseButton(0))
-        {
-            // Loop through all control key objects
-            foreach (GameObject key in _satelliteControlPanelKeys)
+            // If the raycast result has a control key AND the mouse is down
+            if (raycastResult.gameObject.tag == "Satellite_Control_Key" && Input.GetMouseButton(0))
             {
-                // Check if the key exists within the list
-                if(raycastKeysFound.Contains(key))
-                {
-                    // Depending on the key name, increase respective movement and set keyPressed to the key axis
-                    // Used Else if here, as only one key can be pressed at a given time, and if none are pressed, then set keyPressed to None.
+                // Collect the game object
+                var key = raycastResult.gameObject;
 
-                    if (key.name == "ForwardKey") {verticalMovement +=1; _keyPressed = Key.Vertical;}
-                    else if (key.name == "DownKey") {verticalMovement -=1; _keyPressed = Key.Vertical;}
+                // Depending on the key name, increase respective movement and set keyPressed to the key axis
+                // Used Else if here, as only one key can be pressed at a given time, and if none are pressed, then set keyPressed to None.
+                if (key.name == "ForwardKey") {verticalMovement +=1; _keyPressed = Key.Vertical;}
+                else if (key.name == "DownKey") {verticalMovement -=1; _keyPressed = Key.Vertical;}
 
-                    else if (key.name == "LeftKey") {horizontalMovement -=1; _keyPressed = Key.Horizontal;}
-                    else if (key.name == "RightKey") {horizontalMovement +=1; _keyPressed = Key.Horizontal;}
+                else if (key.name == "LeftKey") {horizontalMovement -=1; _keyPressed = Key.Horizontal;}
+                else if (key.name == "RightKey") {horizontalMovement +=1; _keyPressed = Key.Horizontal;}
 
+                else if (key.name == "RotateLeftKey") {rotationMovement +=1; _keyPressed = Key.Rotation;}
+                else if (key.name == "RotateRightKey") {rotationMovement -=1; _keyPressed = Key.Rotation;}
 
-                    else if (key.name == "RotateLeftKey") {rotationMovement +=1; _keyPressed = Key.Rotation;}
-                    else if (key.name == "RotateRightKey") {rotationMovement -=1; _keyPressed = Key.Rotation;}
+                // Else nothing was pressed
+                else _keyPressed = Key.None;   
 
-                    else _keyPressed = Key.None;
-                }
+                // Break Loop
+                // Assumes the player cannot have multiple mice on the screen at once
+                break;
+            }
+
+            // Else if the key was found but the mouse button was not down, break the loop early.
+            // Assumes the player cannot have multiple miceon the screen at once
+            else if (raycastResult.gameObject.tag == "Satellite_Control_Key" && !Input.GetMouseButton(0))
+            {
+                // Break Loop
+                break;
             }
         }
-
+       
         // Call interact with satellite passing on the movement types
         InteractWithSatellite(horizontalMovement,verticalMovement,rotationMovement);
-
     }
-
-
-
 
     private void InteractWithSatellite(float horizontalMovement, float verticalMovement, float rotationMovement)
     {
         // if the selected body is not null
         if (_selectedRigidbody2D != null)
         {
+            // Vertical, Horizontal and Rotation movement are either -1, 0 or 1. As that is how Unity input works
+
+
+
             // Add force based on movement multiplier
             _selectedRigidbody2D.AddForce(new Vector2(horizontalMovement * _currentMovementMultiplier, verticalMovement * _currentMovementMultiplier));
 
@@ -294,10 +305,12 @@ public class SatelliteController : MonoBehaviour
 
                 _movementCounter += 1;
             }
+
             // Else if the button is let go, reset it the rotation multipler back to it's intial (defined in satellite info)
             else _currentMovementMultiplier = _selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
         }
         
+        // If nothing is selected, but attempts to interact with a selected item occurs, throw an error, this should not be reached
         else Debug.LogError("ERROR: An error has occurred with control over selected satellites");
     }
 

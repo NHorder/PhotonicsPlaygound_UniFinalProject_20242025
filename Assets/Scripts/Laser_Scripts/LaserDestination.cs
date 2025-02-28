@@ -28,26 +28,33 @@ public class LaserDestination : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Find the game controller, establish link
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
-        try{
+
+        // Try to collect the level progress panel - as it may not exist / not be used
+        // Cannot use UIController checks, as UIController may not have attached itself to the gamecontroller yet
+        // Cannot be moved to Update, as it would repeatedly check and collect the UI controller, regardless
+        // of whether the level progress panel is intended Not to exist
+        try
+        {
             _levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
+        } 
+        catch
+        {
+            // No error or log, this is expected for Title Screen and Level Selection scenes
         }
-        catch{}
 
-        _numLocksForLevelCompletion = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
-        _counterToHoldForLockCompletion = _gameController.framerateRelatedSettings.counterToHoldForLevelCompletion;
-        _laserDelay = _gameController.framerateRelatedSettings.laserCycleDelay;
-
+        // Retrieve this game objects animator - used to visually change the destination sprite when activated.
         _animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Force retrieval of information from gameController if the counterToHoldForLockCompletion is less than or equal to 0
-        // Can occur when the gameController hasn't done the framerate maths before this is run.
-        if (_counterToHoldForLockCompletion <= 0)
+        // Retrieve game controller framerate settings
+        // Present here instead of Start, as maths is not always complete during the initialisation of this component
+        if (_numLocksForLevelCompletion <= 0)
         {
             _numLocksForLevelCompletion = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
             _counterToHoldForLockCompletion = _gameController.framerateRelatedSettings.counterToHoldForLevelCompletion;
@@ -60,25 +67,24 @@ public class LaserDestination : MonoBehaviour
         // Sync delay of that to laser creation and destruction - meaning it will be seen as consistent
         if (_updateCounter > _laserDelay && _levelProgressPanel != null)
         {
-
             // If lock advance request received, then update the lockProgressionCounter, and reset the lock advance request
             if (_lockAdvanceRequest)
             {
+                // Reset the advance request - in order to get the next request
                 _lockAdvanceRequest = false;
+                
+                // Increase the progression counter
                 _lockProgressionCounter += 1;
             }
             else 
             {
-
                 // Update UI components to announce that a locks have been reset
                 if (_numUnlocks > 0) _levelProgressPanel.LogCommunications(_satelliteName,-1);
                 // Note: -1 indicates that the locks have been reset, as the connection is lost
                 
-
                 // If no request, then reset the locks - as the laser isn't consistently connected.
                 _lockProgressionCounter = 0;
                 _numUnlocks = 0;
-
 
                 // If all locks were open but have been reset, notify gameController. 
                 if (_allLocksOpen) 
@@ -86,10 +92,13 @@ public class LaserDestination : MonoBehaviour
                     // Update gameObject animator if locks reset, but they were open
                     _animator.SetBool("Active",false);
 
+                    // Notify game controller
                     _gameController.DestinationTrigger(false);
 
+                    // Update the level progress panel text - this states "<SATNAME>: Connection Lost"
                     _levelProgressPanel.UpdateSuccessText();
 
+                    // Set all locks open to false
                     _allLocksOpen = false;
                 }
             }
@@ -115,13 +124,15 @@ public class LaserDestination : MonoBehaviour
                     // By placing this here, it means it will only run once - preventing one destination from being marked as more than one
                     if (!_allLocksOpen)
                     {
+                        // Notify Game Controller that a destination has become active
                         _gameController.DestinationTrigger(true);
+
+                        // Update text to show success
                         _levelProgressPanel.UpdateSuccessText();
                     }
 
                     // Set all locks open to false and notify gamecontroller of this update
                     _allLocksOpen = true;
-
 
                     // Enforces a limit of number of unlocks - prevents ever increasing lock unlocks
                     _numUnlocks = _numLocksForLevelCompletion + 1;
@@ -137,6 +148,7 @@ public class LaserDestination : MonoBehaviour
 
     public void AdvanceLock()
     {
+        // Call from Laser interaction to advance the lock
         _lockAdvanceRequest = true;
     }
 

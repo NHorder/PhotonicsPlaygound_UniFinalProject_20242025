@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public enum Language{
     English,
     Welsh
@@ -84,11 +80,13 @@ public class GameController : MonoBehaviour
                 framerateRelatedSettings.timeToHoldForLevelCompletion = 1;
             }
 
-
+            // Calcualte the number of laser interactions per second - round to nearest full number. This is used for destination interactions
             int laserInteractionsPerSecond = framerateRelatedSettings.desiredFramerate / (framerateRelatedSettings.laserCycleDelay + 1);
 
+            // Calculate the time (s) needed per lock
             float timePerLock = framerateRelatedSettings.numLocksForLevelCompletion / framerateRelatedSettings.timeToHoldForLevelCompletion;
 
+            // If time per lock is less than or equal to 0, something has gone wrong, log error
             if (timePerLock <= 0) 
             {
                 Debug.LogError("ERROR: Problem with completion locks, results in timePerLock to be less than 0. Using defaults");
@@ -109,22 +107,27 @@ public class GameController : MonoBehaviour
         _uiController = providedUIController;
     }
 
-    public UIController GetUIController(){return _uiController;}
+    public UIController GetUIController()
+    {
+        return _uiController;
+    }
 
     public void PurchaseSatellite(Satellite_Info satelliteInfo)
     {
-
-        Debug.Log("Satellite Purchase Request Received!");
-
+        // Collect the satellite type and find it's price
         SatelliteType satType = satelliteInfo.satelliteType;
         var satPrice = satelliteInfo.satellitePurchasePrice;
 
+        // If the price is more than 0 (meaning it can be purchased) identify which satellite to purchase.
         if (satPrice > 0 && _canPurchaseSatellite)
         {
+            // Lock the ability to purchase a satellite until this program has executed.
             _canPurchaseSatellite = false;
 
+            // Prepare variable
             GameObject purchasedSatellite = null;
 
+            // Determine the satellite
             if (satType == SatelliteType.SingleSideReflector)
             {
                 if (satellitePrefabs.singlePanelReflectionSatellite != null) purchasedSatellite = satellitePrefabs.singlePanelReflectionSatellite; 
@@ -140,15 +143,21 @@ public class GameController : MonoBehaviour
 
             if (purchasedSatellite != null)
             {
-                Debug.Log("Making new Satellite!");
+                // Decrease budget
                 currentBudget -= satPrice;
 
+                // Instantiate new satellite and set it's location and collision layers.
                 var newSatellite = Instantiate(purchasedSatellite);
                 newSatellite.layer = LayerMask.NameToLayer("Object");
 
                 newSatellite.transform.position = new Vector3(worldInfo.newSatelliteLocationX,worldInfo.newSatelliteLocationY,0f);
 
+                // Apply a force to move the satellite away from spawn to prevent satellite clipping.
                 newSatellite.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f,100f));
+            }
+            else
+            {
+                Debug.LogWarning("WARNING: Satellite Type not recognised (Purchase)");
             }
 
         }
@@ -165,11 +174,11 @@ public class GameController : MonoBehaviour
         // Notify UI controller of level won, and pass the score
         if (_uiController != null) _uiController.SetCompletedModeActive(true);
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
-
     }
 
     public void ResetLevel()
     {
+        // Would collect user confirmation from a menu
         var userConfirmation = true;
 
         if (userConfirmation) SceneController.ToLevel(thisLevel);

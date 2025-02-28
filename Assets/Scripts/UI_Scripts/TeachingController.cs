@@ -41,8 +41,10 @@ public class TeachingController : MonoBehaviour
 
         // Otherwise collect the neccarary components and begin!
         {
+
             var childTransformList = gameObject.GetComponentsInChildren<RectTransform>();
 
+            // Loop through all children and filter for wanted objects
             foreach (RectTransform childTransform in childTransformList)
             {
                 GameObject childObject = childTransform.gameObject;
@@ -53,10 +55,9 @@ public class TeachingController : MonoBehaviour
                 else if (childObject.name =="TeachingNextSprite") _nextSpriteButton = childObject;
                 else if (childObject.name =="TeachingPreviousSprite") _previousSpriteButton = childObject;
                 else if (childObject.name =="TeachingPrevious") _previousTeachingElementButton = childObject;
-
             }
 
-
+            // Displayt the teaching elements
             DisplayTeachingElement();
         }
     }
@@ -68,6 +69,7 @@ public class TeachingController : MonoBehaviour
 
     private void DisplayTeachingElement()
     {
+        // If the current teaching element is 0, then disable the previous teaching element button
         if (_currentElementNum == 0)
         {
             _previousTeachingElementButton.active = false;
@@ -77,16 +79,22 @@ public class TeachingController : MonoBehaviour
             _previousTeachingElementButton.active = true;
         }
 
+        // Check that the current teaching element number is less than the length
         if (_currentElementNum < _teachingElementList.Length)
         {
+            // If so display elements
+
             // Display Elements
             _title.text = _teachingElementList[_currentElementNum].title;
             _description.text = _teachingElementList[_currentElementNum].description;
 
+            // Set sprite to 0, then update the sprite
+            // Dev Note: Teaching elements can contain 0 to many sprites
             _currentSpriteNum = 0;
             UpdateSprite();
 
-            if (_teachingElementList[_currentElementNum].teachingSprites.Length > 1)
+            // If there are more than one sprite, show previous and next sprite buttons.
+            if (_teachingElementList[_currentElementNum].teachingSprites.Length >= 1)
             {
                 _nextSpriteButton.active = true;
                 _previousSpriteButton.active = true;
@@ -98,7 +106,7 @@ public class TeachingController : MonoBehaviour
             }
         
         }
-        // Assumes end of teaching elements
+        // Else assume the end of teaching elements
         else
         {
             HideTeaching();
@@ -109,20 +117,30 @@ public class TeachingController : MonoBehaviour
     private void UpdateSprite()
     {
         // Updates the sprite if possible using current element
+        // Dev Note: Specifically does not involve =, has to be less. As length can be 0 same with element which would throw errors.
         if (_currentElementNum < _teachingElementList.Length)
         {
+            // Check current number is valid, and that the sprite exists, update the sprite
             if (_currentSpriteNum >= 0 && _currentSpriteNum < _teachingElementList[_currentElementNum].teachingSprites.Length)
             {
                 _image.sprite = _teachingElementList[_currentElementNum].teachingSprites[_currentSpriteNum];
             }
 
+
+            // The below two "else if" statements are used to create an array loop
+
+
+            // Check if the number is more than the number of elements
             else if ( _currentSpriteNum >= _teachingElementList[_currentElementNum].teachingSprites.Length){
+                // Set current sprite num to 0
                 _currentSpriteNum = 0;
                 _image.sprite = _teachingElementList[_currentElementNum].teachingSprites[_currentSpriteNum];
             }
 
+            // Check number is less than 0
             else if (_currentSpriteNum < 0 && _teachingElementList[_currentElementNum].teachingSprites.Length > 0)
             {
+                // Set current sprite to size -1, getting the last sprite
                 _currentSpriteNum = _teachingElementList[_currentElementNum].teachingSprites.Length - 1;
                 _image.sprite = _teachingElementList[_currentElementNum].teachingSprites[_currentSpriteNum];
             }
@@ -132,29 +150,42 @@ public class TeachingController : MonoBehaviour
 
     public void HideTeaching()
     {
+        // Hide teaching element, check to make sure ui controller is not null
         if (_uiController != null) _uiController.PresentPanel(UIPanel.Teaching,false);
     }
 
     public void NextTeachingElement()
     {
+        // Called by a UI Button, hence no arguments
+
+        // Update the teaching element
         _currentElementNum += 1;
         DisplayTeachingElement();
     }
 
     public void PreviousTeachingElement()
     {
+        // Called by a UI Button, hence no arguments
+
+        // Update the teaching element
         _currentElementNum -=1;
         DisplayTeachingElement();
     }
 
     public void NextSprite()
     {
+        // Called by a UI Button, hence no arguments
+
+        // Update the teaching sprite
         _currentSpriteNum += 1;
         UpdateSprite();
     }
 
     public void PreviousSprite()
     {
+        // Called by a UI Button, hence no arguments
+
+        // Update the teaching sprite
         _currentSpriteNum -=1;
         UpdateSprite();
     }

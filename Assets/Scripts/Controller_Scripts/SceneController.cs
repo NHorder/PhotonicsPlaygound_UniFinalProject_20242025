@@ -17,6 +17,9 @@ public class SceneController: MonoBehaviour
 {   
     public static void ToLevel(Level level)
     {
+        /// Reason for this function, is for resetting the level - which only the game controller knows what the level is
+        /// and for adaptability, so the game controller can reset scenes regardless of where it was created (as in developed)
+
         if (level == Level.TestingLevel) ToTestLevel();
         else if (level == Level.LevelOne_Reflections) ToLevelOneReflections();
         else if (level == Level.LevelTwo_Refractions) ToLevelTwoRefractions();

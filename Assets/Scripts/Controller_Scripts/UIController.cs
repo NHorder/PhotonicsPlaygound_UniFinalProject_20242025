@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 using TMPro;
 
 public enum UIPanel
@@ -42,7 +40,6 @@ public class UIController : MonoBehaviour
 
 
     public LevelProgressPanelSettings levelProgressPanelSettings;
-    private bool _levelProgressIsOpen = false;
     private bool _levelProgressMoving = false;
     private float _levelProgressNewYLoc;
     private GameObject _levelProgressPanel;
@@ -120,9 +117,8 @@ public class UIController : MonoBehaviour
             {
                 _teachingControllerObject = GameObject.FindGameObjectsWithTag("TeachingController")[0];
                 _teachingControllerObject.GetComponent<TeachingController>().SetUIController(this);
+                PresentPanel(UIPanel.Teaching,true);
             }
-
-            PresentPanel(UIPanel.Teaching,true);
         }
 
     }
@@ -382,6 +378,9 @@ public class UIController : MonoBehaviour
 
     public void OpenCloseShop()
     {
+        // This is not present with in the PresentPanel function in order for it to be accessible to buttons
+        // Buttons can call functions when clicked, with the condition the function does not have arguments
+
         // If the shop is open close it, if it's closed, open it.
         // This makes use of a manual linear interpolation to show and close it - as RectTransform doesn't support linear interpolated movement
         // This is done mainly for animation purposes.
@@ -407,17 +406,28 @@ public class UIController : MonoBehaviour
     {
         if (uiExpectations.expectLevelCompletePanel)
         {
+            // If the level is won, then close all panels, and present the LevelComplete panel
             if (active)
             {
+
+                // Close the shop if it's open
                 if (_shopPanelIsOpen) OpenCloseShop();
+
+                // Disable further UI interaction - prevents user continuing play whilst Level is Completed.
                 _interactionEnabled = false;
 
+                // Notify LevelCompletePanel
                 _levelCompletePanel.GetComponent<LevelCompleteController>().GameComplete();
+
+                // Present the levelComplete panel
                 PresentPanel(UIPanel.LevelComplete,true);
             }
             else 
             {
+                // Enable / re-enable interactions
                 _interactionEnabled = true;
+
+                // Hide the level complete panel
                 PresentPanel(UIPanel.LevelComplete,false);
             }
         }

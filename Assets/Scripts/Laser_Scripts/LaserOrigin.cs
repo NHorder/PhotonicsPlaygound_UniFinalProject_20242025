@@ -27,6 +27,7 @@ public class LaserOrigin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Collect game controller and update delay settings
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _updateDelay = _gameController.framerateRelatedSettings.laserCycleDelay;
 
@@ -45,7 +46,8 @@ public class LaserOrigin : MonoBehaviour
     void Update()
     {
 
-        // Delay updates by a specified amount - this is done to allow lasers time to render before being destroyed.
+        // Delay updates by a specified amount
+        // This is done to allow the laser time to render before deletion
         if (_currentUpdateCount > _updateDelay)
         {
             // Reset update count
@@ -71,10 +73,10 @@ public class LaserOrigin : MonoBehaviour
     private void Fire_Initial_Laser()
     {
 
-        // Check to make sure the firstLaser has been provided
+        // Check to make sure the prefab laser has been provided
         if (prefabLaser != null)
         {
-            // Instantiate new laser
+            // Instantiate the first laser
             var newLaser = Instantiate(prefabLaser);
             newLaser.GetComponent<Laser>().origin = this;
 
