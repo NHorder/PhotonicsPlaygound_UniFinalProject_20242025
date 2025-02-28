@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &324712875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2704520289404696487, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+  m_PrefabInstance: {fileID: 2776409096740086437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &387262718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9188970156520038958, guid: 792c9818fad8b0940b3670211c3c23df, type: 3}
@@ -543,6 +548,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &784397655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067916814420480008, guid: 4ab8cd24392dc044a978aa144c058bc9, type: 3}
+  m_PrefabInstance: {fileID: 1335211145772254846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &784397659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784397655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a56d849e4290c64fbcefccfd8d23d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &801006172 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 649296006621822417, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
@@ -793,17 +815,40 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1165942848 stripped
+--- !u!114 &1165942850
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8420402664904695683, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
-  m_PrefabInstance: {fileID: 2776409096740086437}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 324712875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e39c05d6dc678408d94454479ab7a5, type: 3}
+  m_Script: {fileID: 11500000, guid: d13163297db1cef46a229a876781cec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiExpectations:
+    expectShopUIPanel: 1
+    expectTeachingUIPanel: 1
+    expectSatelliteControlsAndInfoPanels: 1
+    expectLevelCompletePanel: 1
+    expectSettingsPanel: 1
+    expectSatelliteCommsLevelProgressPanel: 1
+  satelliteControlPanelSettings:
+    controlPanelMovementSpeed: 10
+    controlPanelVisibleLoc: -465
+    controlPanelNotVisibleLoc: -650
+  shopPanelSettings:
+    shopPanelMovementSpeed: 10
+    shopPanelOpenXLoc: 596
+    shopPanelCloseXLoc: 1147
+  levelProgressPanelSettings:
+    recordRetentionNumber: 10
+    forceNoChangeOnNewCommunication: 0
+    levelProgressPanelMovementSpeed: 10
+    levelProgressPanelOpenYLoc: 376.7
+    levelProgressPanelCloseYLoc: 646
+  selectedSatelliteInfo: {fileID: 0}
 --- !u!1001 &1217010978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -919,79 +964,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2011774037}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1581130443
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1581130445}
-  - component: {fileID: 1581130444}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1581130444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581130443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ef38aaf6cf33e4daad802bdb937674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  satelliteType: 0
-  interaction: 0
-  satelliteName: 
-  satelliteHealth: 100
-  satelliteDescription: 
-  satelliteShortDescription: 
-  satellitePurchasePrice: 0
-  satelliteSellPrice: 0
-  advanced_Satellite_Info:
-    isSelectable: 1
-    refractiveIndex: 0
-    percentageOfReflectedLightWhenRefracted: 0
-    surfaceColor: 0
-    absorbance: 0
-    lightColor: 0
-    IsSatelliteReceivedCorrectLaser: 0
-  satellite_Movement_Info:
-    intialMovementMultiplier: 2
-    intialRotationMultiplier: 2
-    maxMovementMultiplier: 50
-    maxRotationMultiplier: 50
-  satellite_Shop_Info:
-    IsShopItem: 0
-    satelliteSprite: {fileID: 0}
-    ShopSpriteWidth: 0
-    ShopSpriteHeight: 0
-    ShopItemXLoc: 0
-    ShopItemYLoc: 0
-  counter: 0
---- !u!4 &1581130445
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581130443}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9329564, y: -3.7242708, z: -0.08218154}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1882229314
@@ -2654,12 +2626,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067916814420480008, guid: 4ab8cd24392dc044a978aa144c058bc9, type: 3}
       propertyPath: m_Name
-      value: Satellite_Controller
+      value: SatelliteController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4316176422412103207, guid: 4ab8cd24392dc044a978aa144c058bc9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7067916814420480008, guid: 4ab8cd24392dc044a978aa144c058bc9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 784397659}
   m_SourcePrefab: {fileID: 100100000, guid: 4ab8cd24392dc044a978aa144c058bc9, type: 3}
 --- !u!1001 &2776409096740086437
 PrefabInstance:
@@ -2671,7 +2647,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2704520289404696487, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
       propertyPath: m_Name
-      value: UI_Controller
+      value: UIController
       objectReference: {fileID: 0}
     - target: {fileID: 7481936202271020311, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2725,10 +2701,14 @@ PrefabInstance:
       propertyPath: levelProgressPanelSettings.levelProgressPanelMovementSpeed
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8420402664904695683, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2704520289404696487, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1165942850}
   m_SourcePrefab: {fileID: 100100000, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
 --- !u!1001 &4947794896749833169
 PrefabInstance:
@@ -2800,8 +2780,16 @@ PrefabInstance:
         if you're not.. how did you get here?
       objectReference: {fileID: 0}
     - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
+      propertyPath: satellitePrefabs.glassRefractionSatellite
+      value: 
+      objectReference: {fileID: 2407986768139647972, guid: cd67f170a293ada4d935fd3076038d86, type: 3}
+    - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
+      propertyPath: satellitePrefabs.singlePanelReflectionSatellite
+      value: 
+      objectReference: {fileID: 8159377607702779972, guid: 792c9818fad8b0940b3670211c3c23df, type: 3}
+    - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
       propertyPath: specializedInteractionSettings.allowReflectionDuringRefraction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
       propertyPath: specializedInteractionSettings.minimumTransparencyForReflectionDuringRefraction
@@ -2877,6 +2865,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 58954789120068420, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SatelliteName
+      objectReference: {fileID: 0}
     - target: {fileID: 1156185421544388923, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2951,6 +2943,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4385240391723826101, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SatelliteDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 4528623565495709447, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000030517578
@@ -2970,6 +2966,14 @@ PrefabInstance:
     - target: {fileID: 5652869446967869186, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681451153356773522, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SellText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703431620019276592, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SatelliteInformationPanel
       objectReference: {fileID: 0}
     - target: {fileID: 7892726507123739495, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_Pivot.x
@@ -3054,7 +3058,23 @@ PrefabInstance:
     - target: {fileID: 8079036813817581318, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1165942848}
+      objectReference: {fileID: 1165942850}
+    - target: {fileID: 8079036813817581318, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenCloseShop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079036813817581318, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771826727813308013, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SellButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805112707388193209, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: ShopPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 8906280016925849868, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3071,6 +3091,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1342698122}
+    - target: {fileID: 9104689488943272699, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: ShopContentPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141573609641673509, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SatelliteStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174147420160571179, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: TeachingDescription
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3088,5 +3120,4 @@ SceneRoots:
   - {fileID: 515473034}
   - {fileID: 8926672910142041309}
   - {fileID: 2029422241}
-  - {fileID: 1581130445}
   - {fileID: 1385712682}

@@ -7,52 +7,52 @@ using TMPro;
 
 public class TeachingController : MonoBehaviour
 {
-    private UI_Controller ui_Controller;
+    private UIController _uiController;
 
 
-    public Teaching_Element[] teaching_Elements;
+    public TeachingElement[] _teachingElementList;
 
 
-    private int currentElementNum = 0;
-    private int currentSpriteNum;
+    private int _currentElementNum = 0;
+    private int _currentSpriteNum;
 
 
-    private TMP_Text title;
-    private TMP_Text description;
-    private Image image;
+    private TMP_Text _title;
+    private TMP_Text _description;
+    private Image _image;
 
 
-    private GameObject previousTeachingElementButton;
+    private GameObject _previousTeachingElementButton;
 
-    private GameObject nextSpriteButton;
-    private GameObject previousSpriteButton;
+    private GameObject _nextSpriteButton;
+    private GameObject _previousSpriteButton;
 
     // Start is called before the first frame update
     void Start()
     {
 
         // If there are no teaching elements, disable this and give a warning
-        if (teaching_Elements.Length == 0)
+        if (_teachingElementList.Length == 0)
         {
             Debug.LogWarning("Warning: Teaching in use, but no elements to be taught!");
-            if (teaching_Elements.Length == 0) this.gameObject.active = false;
+            if (_teachingElementList.Length == 0) this.gameObject.active = false;
         }
         else
 
         // Otherwise collect the neccarary components and begin!
         {
-            RectTransform[] childTransforms = gameObject.GetComponentsInChildren<RectTransform>();
+            var childTransformList = gameObject.GetComponentsInChildren<RectTransform>();
 
-            foreach (RectTransform childTransform in childTransforms)
+            foreach (RectTransform childTransform in childTransformList)
             {
                 GameObject childObject = childTransform.gameObject;
 
-                if (childObject.name == "TeachingName") title = childObject.GetComponent<TMP_Text>();
-                else if (childObject.name == "TeachingDescription") description = childObject.GetComponent<TMP_Text>();
-                else if (childObject.name == "TeachingImage") image = childObject.GetComponent<Image>();
-                else if (childObject.name =="TeachingNextSprite") nextSpriteButton = childObject;
-                else if (childObject.name =="TeachingPreviousSprite") previousSpriteButton = childObject;
-                else if (childObject.name =="TeachingPrevious") previousTeachingElementButton = childObject;
+                if (childObject.name == "TeachingName") _title = childObject.GetComponent<TMP_Text>();
+                else if (childObject.name == "TeachingDescription") _description = childObject.GetComponent<TMP_Text>();
+                else if (childObject.name == "TeachingImage") _image = childObject.GetComponent<Image>();
+                else if (childObject.name =="TeachingNextSprite") _nextSpriteButton = childObject;
+                else if (childObject.name =="TeachingPreviousSprite") _previousSpriteButton = childObject;
+                else if (childObject.name =="TeachingPrevious") _previousTeachingElementButton = childObject;
 
             }
 
@@ -61,40 +61,40 @@ public class TeachingController : MonoBehaviour
         }
     }
     
-    public void SetUIController(UI_Controller ui_Controller)
+    public void SetUIController(UIController uiController)
     {
-        this.ui_Controller = ui_Controller;
+        this._uiController = uiController;
     }
 
     private void DisplayTeachingElement()
     {
-        if (currentElementNum == 0)
+        if (_currentElementNum == 0)
         {
-            previousTeachingElementButton.active = false;
+            _previousTeachingElementButton.active = false;
         }
         else
         {
-            previousTeachingElementButton.active = true;
+            _previousTeachingElementButton.active = true;
         }
 
-        if (currentElementNum < teaching_Elements.Length)
+        if (_currentElementNum < _teachingElementList.Length)
         {
             // Display Elements
-            title.text = teaching_Elements[currentElementNum].title;
-            description.text = teaching_Elements[currentElementNum].description;
+            _title.text = _teachingElementList[_currentElementNum].title;
+            _description.text = _teachingElementList[_currentElementNum].description;
 
-            currentSpriteNum = 0;
+            _currentSpriteNum = 0;
             UpdateSprite();
 
-            if (teaching_Elements[currentElementNum].teachingSprites.Length > 1)
+            if (_teachingElementList[_currentElementNum].teachingSprites.Length > 1)
             {
-                nextSpriteButton.active = true;
-                previousSpriteButton.active = true;
+                _nextSpriteButton.active = true;
+                _previousSpriteButton.active = true;
             }
             else 
             {
-                nextSpriteButton.active = false;
-                previousSpriteButton.active = false;
+                _nextSpriteButton.active = false;
+                _previousSpriteButton.active = false;
             }
         
         }
@@ -109,71 +109,62 @@ public class TeachingController : MonoBehaviour
     private void UpdateSprite()
     {
         // Updates the sprite if possible using current element
-        if (currentElementNum < teaching_Elements.Length)
+        if (_currentElementNum < _teachingElementList.Length)
         {
-            
-
-            if (currentSpriteNum >= 0 && currentSpriteNum < teaching_Elements[currentElementNum].teachingSprites.Length)
+            if (_currentSpriteNum >= 0 && _currentSpriteNum < _teachingElementList[_currentElementNum].teachingSprites.Length)
             {
-                image.sprite = teaching_Elements[currentElementNum].teachingSprites[currentSpriteNum];
+                _image.sprite = _teachingElementList[_currentElementNum].teachingSprites[_currentSpriteNum];
             }
 
-            else if ( currentSpriteNum >= teaching_Elements[currentElementNum].teachingSprites.Length){
-                currentSpriteNum = 0;
-                image.sprite = teaching_Elements[currentElementNum].teachingSprites[currentSpriteNum];
+            else if ( _currentSpriteNum >= _teachingElementList[_currentElementNum].teachingSprites.Length){
+                _currentSpriteNum = 0;
+                _image.sprite = _teachingElementList[_currentElementNum].teachingSprites[_currentSpriteNum];
             }
 
-            else if (currentSpriteNum < 0 && teaching_Elements[currentElementNum].teachingSprites.Length > 0)
+            else if (_currentSpriteNum < 0 && _teachingElementList[_currentElementNum].teachingSprites.Length > 0)
             {
-                currentSpriteNum = teaching_Elements[currentElementNum].teachingSprites.Length - 1;
-                image.sprite = teaching_Elements[currentElementNum].teachingSprites[currentSpriteNum];
+                _currentSpriteNum = _teachingElementList[_currentElementNum].teachingSprites.Length - 1;
+                _image.sprite = _teachingElementList[_currentElementNum].teachingSprites[_currentSpriteNum];
             }
 
         }
     }
 
-
-
-
-
     public void HideTeaching()
     {
-        if (ui_Controller != null) ui_Controller.PresentPanel(UIPanel.Teaching,false);
+        if (_uiController != null) _uiController.PresentPanel(UIPanel.Teaching,false);
     }
 
     public void NextTeachingElement()
     {
-        currentElementNum += 1;
+        _currentElementNum += 1;
         DisplayTeachingElement();
     }
 
     public void PreviousTeachingElement()
     {
-        currentElementNum -=1;
+        _currentElementNum -=1;
         DisplayTeachingElement();
     }
 
     public void NextSprite()
     {
-        currentSpriteNum += 1;
+        _currentSpriteNum += 1;
         UpdateSprite();
     }
 
     public void PreviousSprite()
     {
-        currentSpriteNum -=1;
+        _currentSpriteNum -=1;
         UpdateSprite();
     }
-
-
-
 
 }
 
 
 
 [System.Serializable]
-public class Teaching_Element
+public class TeachingElement
 {
     public string title;
     public string description;

@@ -15,22 +15,22 @@ public enum Level{
 
 public class SceneController: MonoBehaviour
 {   
-    public static void To_Level(Level level)
+    public static void ToLevel(Level level)
     {
-        if (level == Level.TestingLevel) To_TestLevel();
-        else if (level == Level.LevelOne_Reflections) To_LevelOne_Reflections();
-        else if (level == Level.LevelTwo_Refractions) To_LevelTwo_Refractions();
+        if (level == Level.TestingLevel) ToTestLevel();
+        else if (level == Level.LevelOne_Reflections) ToLevelOneReflections();
+        else if (level == Level.LevelTwo_Refractions) ToLevelTwoRefractions();
         else Debug.LogError("ERROR: Level not recognised");
     }
 
 
-    public static void To_TestLevel() {SceneManager.LoadScene("TestLevel");}
+    public static void ToTestLevel() {SceneManager.LoadScene("TestLevel");}
 
-    public static void To_TitleScreen() {SceneManager.LoadScene("Titlescreen");}
+    public static void ToTitleScreen() {SceneManager.LoadScene("Titlescreen");}
 
-    public static void To_LevelSelection() {SceneManager.LoadScene("LevelSelection");}
+    public static void ToLevelSelection() {SceneManager.LoadScene("LevelSelection");}
 
-    public static void To_LevelOne_Reflections() {SceneManager.LoadScene("LevelOne_Reflections");}
+    public static void ToLevelOneReflections() {SceneManager.LoadScene("LevelOne_Reflections");}
 
-    public static void To_LevelTwo_Refractions() {SceneManager.LoadScene("LevelTwo_Refractions");}
+    public static void ToLevelTwoRefractions() {SceneManager.LoadScene("LevelTwo_Refractions");}
 }

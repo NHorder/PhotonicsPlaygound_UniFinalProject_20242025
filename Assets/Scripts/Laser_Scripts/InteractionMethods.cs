@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Interaction
 {
-    Self_Determine,
+    SelfDetermine,
     Absorb,
     Reflection,
     Refraction,
@@ -12,9 +12,9 @@ public enum Interaction
     Destination,
 }
 
-class Interaction_Functions
+class InteractionFunctions
 {
-    public static float Reflection_Interaction(Transform laserTransform, RaycastHit2D rayCast)
+    public static float ReflectionInteraction(Transform laserTransform, RaycastHit2D rayCast)
     {
 
         // Handles rotation about the normal, instead of surface area as previous
@@ -31,28 +31,28 @@ class Interaction_Functions
         return angleOfNormal - angle;
     }
 
-    public static float Refraction_Interaction(float incident_index,float refracted_index,Vector2 normal, Laser laser)
+    public static float RefractionInteraction(float incidentIndex,float refractedIndex,Vector2 normal, Laser laser)
     {
 
         // Using the normal vector that the raycast provides, we can get an angle through the use of Vector2.up 
         // which is assumed to be 0 degree rotation. Hence, as this is refraction, we can invert it to get the 
         // internal or external normal from the collision location.
-        float inverseAngleOfNormal = Vector2.SignedAngle(Vector2.up,normal) + 180f;;
+        float inverseAngleOfNormal = Vector2.SignedAngle(Vector2.up,normal) + 180f;
 
         float incident_angle = Vector2.SignedAngle(laser.transform.up,normal);
 
-        float incident = Mathf.Sin(incident_angle * (Mathf.PI / 180)) * incident_index;
+        float incident = Mathf.Sin(incident_angle * (Mathf.PI / 180)) * incidentIndex;
 
-        float refracted_angle = Mathf.Asin( (incident / refracted_index)) * (180 / Mathf.PI);
+        float refracted_angle = Mathf.Asin( (incident / refractedIndex)) * (180 / Mathf.PI);
 
         // Through using the inverse normal and the calculated refracted angle
         return inverseAngleOfNormal + refracted_angle;
     }
 
-    public static void Destination_Interaction(Laser laser, RaycastHit2D rayCast)
+    public static void DestinationInteraction(Laser laser, RaycastHit2D rayCast)
     {
         // Retrieve destination script
-        LaserDestination destination = rayCast.collider.gameObject.GetComponent<LaserDestination>();
+        var destination = rayCast.collider.gameObject.GetComponent<LaserDestination>();
 
         // Call to advance lock, as interaction has occurred.
         if (destination != null) destination.AdvanceLock();

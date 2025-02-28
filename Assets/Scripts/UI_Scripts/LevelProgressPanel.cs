@@ -8,66 +8,68 @@ using TMPro;
 
 public class LevelProgressPanel : MonoBehaviour
 {
-    private bool forceNoChangeOnNewCommunication = false;
+    private bool _forceNoChangeOnNewCommunication = false;
 
-    private TMP_Text logText;
-    private TMP_Text progressText;
+    private TMP_Text _logText;
+    private TMP_Text _progressText;
 
-    private List<string> logTextList;
+    private List<string> _logTextList;
 
-    private int recordRetentionNumber = 10;
+    private int _recordRetentionNumber = 10;
 
-    private UI_Controller ui_Controller;
-    private GameController gameController;
+    private UIController _uiController;
+    private GameController _gameController;
 
 
-    private int numLocks;
+    private int _numLocks;
 
-    private bool panelOpen = false;
+    private bool _panelOpen = false;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-        numLocks = gameController.framerateRelatedSettings.numLocksForLevelCompletion;
         
-        ui_Controller = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UI_Controller>();
-        forceNoChangeOnNewCommunication = ui_Controller.levelProgressPanelSettings.forceNoChangeOnNewCommunication;
-        recordRetentionNumber = ui_Controller.levelProgressPanelSettings.recordRetentionNumber;
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        _gameController = _uiController.GetGameController();
 
-        logTextList = new List<string>();
+        _numLocks = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
 
-        RectTransform[] childTransforms = gameObject.GetComponentsInChildren<RectTransform>();
-        foreach (RectTransform childTransform in childTransforms)
+        _forceNoChangeOnNewCommunication = _uiController.levelProgressPanelSettings.forceNoChangeOnNewCommunication;
+        _recordRetentionNumber = _uiController.levelProgressPanelSettings.recordRetentionNumber;
+
+        _logTextList = new List<string>();
+
+        var childTransformList = gameObject.GetComponentsInChildren<RectTransform>();
+        foreach (RectTransform childTransform in childTransformList)
         {
-            GameObject childObject = childTransform.gameObject;
+            var childObject = childTransform.gameObject;
 
-            if (childObject.name == "LevelProgressLogText") logText = childObject.GetComponent<TMP_Text>();
-            else if (childObject.name == "LevelProgressProgressText") progressText = childObject.GetComponent<TMP_Text>();
+            if (childObject.name == "LevelProgressLogText") _logText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "LevelProgressProgressText") _progressText = childObject.GetComponent<TMP_Text>();
         }
 
         // Inital trigger to remove default text
         UpdateUIComponents();
 
-        ui_Controller.PresentPanel(UIPanel.LogCommunications,false);
+        _uiController.PresentPanel(UIPanel.LogCommunications,false);
 
     }
 
 
-    public void LogCommunications(string satellite_name, float numUnlocks)
+    public void LogCommunications(string satelliteName, float numUnlocks)
     {
         // If the user has not specified in settings that this should not appear each time communications are made
         // and if it isn't expanded, then open it.
-        if (!forceNoChangeOnNewCommunication) ui_Controller.PresentPanel(UIPanel.LogCommunications,true);
+        if (!_forceNoChangeOnNewCommunication) _uiController.PresentPanel(UIPanel.LogCommunications,true);
 
-        string logText = satellite_name;
+        var logText = satelliteName;
 
         if (numUnlocks <= 0) logText += ": Connection Lost";
         else
         {
             // Using a percentage allows for more locks to be in place
-            float unlockPercentage = (numUnlocks / numLocks);
+            var unlockPercentage = (numUnlocks / _numLocks);
 
             if (unlockPercentage > 0.95f) logText += ": Connection Established";
             else if (unlockPercentage > 0.75f) logText += ": Confirming Permissions....";
@@ -76,10 +78,10 @@ public class LevelProgressPanel : MonoBehaviour
             else logText += ": Connection Found";
         }
 
-        logTextList.Add(logText);
+        _logTextList.Add(logText);
 
         // Trims list to wanted size
-        if (logTextList.Count > recordRetentionNumber) logTextList.RemoveAt(0);
+        if (_logTextList.Count > _recordRetentionNumber) _logTextList.RemoveAt(0);
 
         UpdateUIComponents();
     }
@@ -87,29 +89,29 @@ public class LevelProgressPanel : MonoBehaviour
 
     private void UpdateUIComponents()
     {
-        string loopText = "";
+        var loopText = "";
 
         // Loop through logs and create a string to update the log with
-        foreach (string record in logTextList)
+        foreach (string record in _logTextList)
         {
-            loopText += record + "\n";
+            loopText += $"{record}\n";
         }
 
         // Update the log text
-        logText.text = loopText;
+        _logText.text = loopText;
         UpdateSuccessText();
     }
 
     public void UpdateSuccessText()
     {
         // Update the progress text
-        progressText.text = "Connections Established: "+gameController.activeDestinations +" / "+gameController.worldInfo.numDestinations;
+        _progressText.text = $"Connections Established: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
     }
 
     public void HideExpandCommunicationsPanel()
     {
-        panelOpen = !panelOpen;
-        ui_Controller.PresentPanel(UIPanel.LogCommunications,panelOpen);
+        _panelOpen = !_panelOpen;
+        _uiController.PresentPanel(UIPanel.LogCommunications,_panelOpen);
     }
 
 

@@ -15,8 +15,6 @@ public enum SatelliteType{
 
 public class Satellite_Info : MonoBehaviour
 {
-    private GameController gameController;
-
     public SatelliteType satelliteType = SatelliteType.Unknown;
     public Interaction interaction;
     public string satelliteName = "";
@@ -29,14 +27,16 @@ public class Satellite_Info : MonoBehaviour
     public int satelliteSellPrice = 0;
 
     
-    public Advanced_Satellite_Info advanced_Satellite_Info;
-    public Satellite_Movement_Info satellite_Movement_Info;
-    public Satellite_Shop_Info satellite_Shop_Info;
+    public AdvancedSatelliteInfo advanced_Satellite_Info;
+    public SatelliteMovementInfo satellite_Movement_Info;
+    public SatelliteShopInfo satellite_Shop_Info;
+
+    private GameController _gameController;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
         this.RetreiveSatelliteText(this.satelliteType);
         advanced_Satellite_Info.absorbance = Mathf.Clamp01(advanced_Satellite_Info.absorbance);
@@ -44,9 +44,9 @@ public class Satellite_Info : MonoBehaviour
         if (satellite_Shop_Info.IsShopItem) CreateShopItem();
         else
         {
-            if (satelliteType == SatelliteType.Origin) gameController.worldInfo.numOrigins += 1;
-            else if (satelliteType == SatelliteType.Destination) gameController.worldInfo.numDestinations += 1;
-            else gameController.worldInfo.numSatellites += 1;
+            if (satelliteType == SatelliteType.Origin) _gameController.worldInfo.numOrigins += 1;
+            else if (satelliteType == SatelliteType.Destination) _gameController.worldInfo.numDestinations += 1;
+            else _gameController.worldInfo.numSatellites += 1;
         }
     }
 
@@ -63,9 +63,9 @@ public class Satellite_Info : MonoBehaviour
 
     public void RetreiveSatelliteText(SatelliteType satelliteType)
     {
-        Language language = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>().activeLanguage;
+        Language language = _gameController.activeLanguage;
 
-        int satelliteNum = gameController.worldInfo.numSatellites;
+        var satelliteNum = _gameController.worldInfo.numSatellites;
 
         if (satelliteType == SatelliteType.Origin)
         {
@@ -124,7 +124,7 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
 
-            if (interaction == null || interaction == Interaction.Self_Determine) interaction = Interaction.Reflection;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Reflection;
             
         }
 
@@ -144,7 +144,7 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteSellPrice == 0) satelliteSellPrice = 75;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.52f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
-            if (interaction == null || interaction == Interaction.Self_Determine) interaction = Interaction.Refraction;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
         }
 
         else
@@ -160,7 +160,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteSellPrice == 0) satelliteSellPrice = 100;
                 if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1f;
                 if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
-                if (interaction == null || interaction == Interaction.Self_Determine) interaction = Interaction.Absorb;
+                if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
             }
         }
     }
@@ -169,13 +169,13 @@ public class Satellite_Info : MonoBehaviour
     private void CreateShopItem()
     {
         // Get common component across children
-        RectTransform[] childrenTransforms = gameObject.GetComponentsInChildren<RectTransform>();
+        var childrenTransformList = gameObject.GetComponentsInChildren<RectTransform>();
 
 
         // Execute creation on all child transform
-        foreach(RectTransform childTransform in childrenTransforms)
+        foreach(RectTransform childTransform in childrenTransformList)
         {
-            GameObject childObject = childTransform.gameObject;
+            var childObject = childTransform.gameObject;
 
             if (childObject.tag != "Prefab_ShopContent" && childObject.name != "Shop_SalePriceText")
             {
@@ -185,7 +185,7 @@ public class Satellite_Info : MonoBehaviour
 
 
                 // Retrieve text component
-                TMP_Text textComponent = childObject.GetComponent<TMP_Text>();
+                var textComponent = childObject.GetComponent<TMP_Text>();
 
                 if (childObject.name == "Shop_SatelliteName") textComponent.text = satelliteName;
                 else if (childObject.name == "Shop_ShortDescription") textComponent.text = satelliteShortDescription;
@@ -193,7 +193,7 @@ public class Satellite_Info : MonoBehaviour
                 else if (childObject.name == "Shop_PurchaseButton")
                 {
                     // Assign an execution script
-                    TMP_Text purchasePriceText = childObject.GetComponentInChildren<TMP_Text>();
+                    var purchasePriceText = childObject.GetComponentInChildren<TMP_Text>();
                     purchasePriceText.text = "£"+satellitePurchasePrice;
                     
                     childObject.GetComponent<Button>().onClick.AddListener(PurchaseSatellite);
@@ -201,33 +201,29 @@ public class Satellite_Info : MonoBehaviour
 
                 else if (childObject.name == "Shop_SatelliteSprite")
                 {
-                    Image imageComponent = childObject.GetComponent<Image>();
+                    var imageComponent = childObject.GetComponent<Image>();
                     if (satellite_Shop_Info.satelliteSprite != null) imageComponent.sprite = satellite_Shop_Info.satelliteSprite;
                 }
             }
         }
 
-        
-
-        
-        
     }
 
     public void PurchaseSatellite()
     {
-        gameController.PurchaseSatellite(this);
+        _gameController.PurchaseSatellite(this);
     }
 
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject colliderObject = collision.gameObject;
+        var colliderObject = collision.gameObject;
 
 
         // Try to get satellite info of the object.
         try
         {
-            Satellite_Info satInfo = colliderObject.GetComponent<Satellite_Info>();
+            var satInfo = colliderObject.GetComponent<Satellite_Info>();
 
             // Satellites cannot interact with origin
             if (satInfo.satelliteType == SatelliteType.Origin) {}
@@ -274,7 +270,7 @@ public class Satellite_Info : MonoBehaviour
 
 
 [System.Serializable]
-public class Advanced_Satellite_Info
+public class AdvancedSatelliteInfo
 {
     public bool isSelectable = true;
     public float refractiveIndex = 0;
@@ -287,7 +283,7 @@ public class Advanced_Satellite_Info
 }
 
 [System.Serializable]
-public class Satellite_Movement_Info
+public class SatelliteMovementInfo
 {
     public float intialMovementMultiplier = 2f;
     public float intialRotationMultiplier = 2f;
@@ -297,7 +293,7 @@ public class Satellite_Movement_Info
 }
 
 [System.Serializable]
-public class Satellite_Shop_Info
+public class SatelliteShopInfo
 {
     public bool IsShopItem = false;
 
