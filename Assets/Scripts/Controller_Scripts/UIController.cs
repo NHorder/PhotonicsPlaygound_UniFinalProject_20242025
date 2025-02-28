@@ -11,6 +11,7 @@ public enum UIPanel
     Shop,
     Teaching,
     LogCommunications,
+    ConfirmAction,
     Settings,
     LevelComplete
 }
@@ -43,6 +44,10 @@ public class UIController : MonoBehaviour
     private bool _levelProgressMoving = false;
     private float _levelProgressNewYLoc;
     private GameObject _levelProgressPanel;
+
+
+    public ConfirmationPanelSettings confirmationPanelSettings;
+    private ConfirmationPanel _confirmationPanel;
 
 
 
@@ -121,6 +126,13 @@ public class UIController : MonoBehaviour
             }
         }
 
+        // If expecting the confirmation panel, then retrieve the needed information
+        if (uiExpectations.expectConfirmationPanel)
+        {
+            _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
+            PresentPanel(UIPanel.ConfirmAction, false);
+        }
+        
     }
 
     // Update is called once per frame
@@ -369,11 +381,18 @@ public class UIController : MonoBehaviour
 
             // Sets whether active or not based on visbility wanted.
             _levelCompletePanel.active = bVisible;
-            
+        
+        }
 
+        else if (uiExpectations.expectConfirmationPanel && panel == UIPanel.ConfirmAction)
+        {
+            var rectTransform = _confirmationPanel.gameObject.GetComponent<RectTransform>();
+
+            if (rectTransform.anchoredPosition != new Vector2(0,0)) rectTransform.anchoredPosition = new Vector2(0,0);
+
+            _confirmationPanel.gameObject.active = bVisible;
         }
     }
-
     
 
     public void OpenCloseShop()
@@ -438,7 +457,20 @@ public class UIController : MonoBehaviour
     {
         return _interactionEnabled;
     }
-    
+
+    public void ResetLevel()
+    {
+        PresentPanel(UIPanel.ConfirmAction,true);
+        _confirmationPanel.UpdateUIComponents(ConfirmAction.ResetLevel);
+    }
+
+    public void LeaveLevel()
+    {
+        PresentPanel(UIPanel.ConfirmAction,true);
+        _confirmationPanel.UpdateUIComponents(ConfirmAction.LeaveLevel);
+    }
+
+
 }
 
 
@@ -453,6 +485,7 @@ public class UIExpectations
     public bool expectLevelCompletePanel  = true;
     public bool expectSettingsPanel  = true;
     public bool expectSatelliteCommsLevelProgressPanel  = true;
+    public bool expectConfirmationPanel = true;
 }
 
 [System.Serializable]
@@ -481,5 +514,12 @@ public class LevelProgressPanelSettings
 
     public float levelProgressPanelOpenYLoc = 376.7f;
     public float levelProgressPanelCloseYLoc = 646.0f;
+}
 
+[System.Serializable]
+public class ConfirmationPanelSettings
+{
+    public bool forceSkipConfirmation = false;
+    public float confirmationPanelXLoc = 0;
+    public float confirmationPanelYLoc = 0;
 }

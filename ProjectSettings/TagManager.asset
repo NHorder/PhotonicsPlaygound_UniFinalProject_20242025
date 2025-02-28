@@ -16,6 +16,7 @@ TagManager:
   - TeachingController
   - LevelCompleteController
   - LevelProgressPanel
+  - ConfirmationPanel
   layers:
   - Default
   - TransparentFX

@@ -847,6 +847,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Controller_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3904509052690452454, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      propertyPath: uiExpectations.expectShopUIPanel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904509052690452454, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      propertyPath: uiExpectations.expectSettingsPanel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904509052690452454, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      propertyPath: uiExpectations.expectTeachingUIPanel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904509052690452454, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      propertyPath: uiExpectations.expectConfirmationPanel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904509052690452454, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      propertyPath: uiExpectations.expectLevelCompletePanel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904509052690452454, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      propertyPath: uiExpectations.expectSatelliteControlsAndInfoPanels
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904509052690452454, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
+      propertyPath: uiExpectations.expectSatelliteCommsLevelProgressPanel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7481936202271020311, guid: 4184a9af1e67bf1408be993208399be0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.6461573

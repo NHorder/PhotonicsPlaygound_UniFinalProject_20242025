@@ -35,7 +35,7 @@ public class TeachingController : MonoBehaviour
         if (_teachingElementList.Length == 0)
         {
             Debug.LogWarning("Warning: Teaching in use, but no elements to be taught!");
-            if (_teachingElementList.Length == 0) this.gameObject.active = false;
+            this.gameObject.active = false;
         }
         else
 
@@ -131,7 +131,7 @@ public class TeachingController : MonoBehaviour
 
 
             // Check if the number is more than the number of elements
-            else if ( _currentSpriteNum >= _teachingElementList[_currentElementNum].teachingSprites.Length){
+            else if ( _currentSpriteNum > _teachingElementList[_currentElementNum].teachingSprites.Length){
                 // Set current sprite num to 0
                 _currentSpriteNum = 0;
                 _image.sprite = _teachingElementList[_currentElementNum].teachingSprites[_currentSpriteNum];
