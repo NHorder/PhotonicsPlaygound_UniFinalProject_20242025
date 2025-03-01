@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b754b8389c4b5464d8d34801ffbbdab3
+guid: 36f7985780488b5499359bc1f5b93a39
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -130,9 +130,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 196
-      height: 128
-    spriteID: c1ad9888640ea3646aadf77632c3c4e2
+      width: 144
+      height: 144
+    spriteID: d85ead04f73f8c1499783ae9e3934277
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,24 +141,53 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 156
+      width: 144
+      height: 144
+    spriteID: 13d554dd7b86ca648810a735c9e2c96c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 156}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -831280093
-    name: Colour_Filter_Satellite
+    guid: -30104571
+    name: Splitter_Satellite
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Colour_Filter_Satellite
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 196
-        height: 128
-      spriteId: c1ad9888640ea3646aadf77632c3c4e2
+        width: 144
+        height: 144
+      spriteId: d85ead04f73f8c1499783ae9e3934277
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 144
+        height: 144
+      spriteId: 13d554dd7b86ca648810a735c9e2c96c
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -177,4 +206,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 196, y: 128}
+  canvasSize: {x: 144, y: 144}

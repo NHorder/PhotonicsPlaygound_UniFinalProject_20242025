@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b754b8389c4b5464d8d34801ffbbdab3
+guid: d7d4f5b585e216e4ba132e2acbd80f82
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Frame_0
+  - name: Satellite_Creator
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,9 +130,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 196
-      height: 128
-    spriteID: c1ad9888640ea3646aadf77632c3c4e2
+      width: 1152
+      height: 320
+    spriteID: 3d37868d513418d4b9060c4125f1d604
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,21 +144,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -831280093
-    name: Colour_Filter_Satellite
+    guid: 2037938292
+    name: Satellite_Creator
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Colour_Filter_Satellite
+    - name: Satellite_Creator
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 196
-        height: 128
-      spriteId: c1ad9888640ea3646aadf77632c3c4e2
+        width: 1152
+        height: 320
+      spriteId: 3d37868d513418d4b9060c4125f1d604
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -177,4 +177,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 196, y: 128}
+  canvasSize: {x: 1152, y: 320}
