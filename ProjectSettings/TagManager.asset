@@ -17,6 +17,7 @@ TagManager:
   - LevelCompleteController
   - LevelProgressPanel
   - ConfirmationPanel
+  - SatelliteCreator
   layers:
   - Default
   - TransparentFX

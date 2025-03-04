@@ -33,13 +33,14 @@ public class GameController : MonoBehaviour
 
 
     public WorldInfo worldInfo = new WorldInfo();
-    public SatellitePrefabs satellitePrefabs;
 
     public FramerateRelatedSettings framerateRelatedSettings;
 
     public SpecializedInteractionSettings specializedInteractionSettings;
 
     private UIController _uiController;
+
+    private SatelliteCreator satelliteCreator;
 
 
     void Start()
@@ -118,48 +119,25 @@ public class GameController : MonoBehaviour
         SatelliteType satType = satelliteInfo.satelliteType;
         var satPrice = satelliteInfo.satellitePurchasePrice;
 
+
+
+        if (satelliteCreator == null)
+        {
+            satelliteCreator = GameObject.FindGameObjectsWithTag("SatelliteCreator")[0].GetComponent<SatelliteCreator>();
+        }
+
         // If the price is more than 0 (meaning it can be purchased) identify which satellite to purchase.
         if (satPrice > 0 && _canPurchaseSatellite)
         {
-            // Lock the ability to purchase a satellite until this program has executed.
-            _canPurchaseSatellite = false;
+            bool purchased = false;
 
-            // Prepare variable
-            GameObject purchasedSatellite = null;
+            if (satelliteCreator != null) purchased = satelliteCreator.CreateSatellite(satType);
 
-            // Determine the satellite
-            if (satType == SatelliteType.SingleSideReflector)
-            {
-                if (satellitePrefabs.singlePanelReflectionSatellite != null) purchasedSatellite = satellitePrefabs.singlePanelReflectionSatellite; 
-                else Debug.LogError("ERROR: No linked Single Panel Reflection Satellite found");
-            }
-
-            else if (satType == SatelliteType.GlassRefractor)
-            {
-                if (satellitePrefabs.glassRefractionSatellite != null) purchasedSatellite = satellitePrefabs.glassRefractionSatellite; 
-                else Debug.LogError("ERROR: No linked Glass Refraction Satellite found");
-            }
-
-
-            if (purchasedSatellite != null)
+            if (purchased)
             {
                 // Decrease budget
                 currentBudget -= satPrice;
-
-                // Instantiate new satellite and set it's location and collision layers.
-                var newSatellite = Instantiate(purchasedSatellite);
-                newSatellite.layer = LayerMask.NameToLayer("Object");
-
-                newSatellite.transform.position = new Vector3(worldInfo.newSatelliteLocationX,worldInfo.newSatelliteLocationY,0f);
-
-                // Apply a force to move the satellite away from spawn to prevent satellite clipping.
-                newSatellite.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f,100f));
             }
-            else
-            {
-                Debug.LogWarning("WARNING: Satellite Type not recognised (Purchase)");
-            }
-
         }
     }
 
@@ -238,9 +216,3 @@ public class WorldInfo
     public GameObject satelliteBuilder;
 }
 
-[System.Serializable]
-public class SatellitePrefabs
-{
-    public GameObject singlePanelReflectionSatellite;
-    public GameObject glassRefractionSatellite;
-}

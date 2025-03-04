@@ -1,0 +1,1491 @@
+fileFormatVersion: 2
+guid: 76dd161ded079af45ac18a9adc531e8e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Combiner_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc15cc7038248d4684c01830110087c
+      internalID: 1370945144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_1
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa34955e2301f8c44908b4c8d15b419f
+      internalID: -587495959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_2
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93cac77656911c94aaf912e2bea2ebd1
+      internalID: 766275401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_3
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732f85b82b4752041858c3910f503dbf
+      internalID: -394729564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_4
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb2efd76fc18d543b1c1f97077af2cd
+      internalID: 2127795374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_5
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 948e00d80cb53494ab4ffe05cf3d972f
+      internalID: -1480961357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_6
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d6d6682f9edf64483d660fbc4efcd1
+      internalID: -486986536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_7
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac0168192027ef4bb79ff28ca63060d
+      internalID: 1916063079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6111bbed933075b46a2198927ff26604
+      internalID: -138082482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_9
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a8d2132c5959443a0ea48a45bb8201
+      internalID: -1288224041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_10
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8ac6e8480c9c844a9a4e028c9bf4488
+      internalID: 320719181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_11
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11758c62d170f14b8fe3d3d24e9390c
+      internalID: -1475941299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_12
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b60fe1d9de20d44198eea1ec62af97e
+      internalID: -563398953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_13
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f45f49e2c2e3224fadd07aafb46e6bb
+      internalID: -427137544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_14
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973d6ac55e6a63a4db963ed2d7fe4c8c
+      internalID: -154791644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_15
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4c12ab2c648cd4a91adc93141542f2
+      internalID: -889765930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff80c24661e0e6e4fba3bb31b04a4937
+      internalID: -770861683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_17
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd6e569359a4c24da9929a8769ebc4e
+      internalID: 1664437050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_18
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75edb8caf65e0c042b0e2dc8e7397044
+      internalID: -73759440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_19
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551f2756786da3446bbd4d87aba5f5be
+      internalID: 1960551794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_20
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde30f10b5a3e0a4abf11a712174261a
+      internalID: 535665720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_21
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97d2bb62c400a724eb729b4660869696
+      internalID: 1985623657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_22
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb3749249aaf4040a30408f759ac691
+      internalID: 227484074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_23
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db54cf2b2f8ab0f46a06ea467e0e49a2
+      internalID: 1666511186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_24
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 437b2e9cf7d56e948a868110be4df396
+      internalID: -542499168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_25
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffd66764455b2d41ad3bfb2b6b66250
+      internalID: -970642451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_26
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9765730100965eb43b9180d57a0a76f2
+      internalID: -775217779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_27
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78d35b5ec5ac6ca409095b6dde84fd41
+      internalID: -1468485982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_28
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa632d3c559c544b8d54498bbe38cf9
+      internalID: -876053271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_29
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0566092e454650d469ea45663c16deb5
+      internalID: 1955592889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_30
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad40b58481f75b439b376dc4b12a745
+      internalID: 1395659576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_31
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f52e0ac6a3e1b4bb04ee73624c08c8
+      internalID: 425858986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6bd54f82075a8c4e9fc341c32eb1d04
+      internalID: 2053938619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_33
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a42ed7a6f67b54aa5f318390e80e92
+      internalID: -926160310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_34
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb72560d7ef7d24e8753e04a8d787b4
+      internalID: -570203758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_35
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 860030b66d7001c4b84c9e43b7108181
+      internalID: -271592238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_36
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96b66a6348a29244baf7cb62c47c5f4
+      internalID: 816839795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_37
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e927aa6db0b489a4fabad47efb195e43
+      internalID: 781817713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_38
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9240598f926df6d4db4cb709c2f01337
+      internalID: -1726675759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_39
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953937085beb9fd4eb322fa1c3d29601
+      internalID: -1514605110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_40
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2f8c291f8c53d499bd114da611ffdb
+      internalID: 1062028895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_41
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c38ff3654db174b9c2f07e12296741
+      internalID: 1354404746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_42
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230a6d1a2d85bfb43bd2201922a21562
+      internalID: 1392153837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_43
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a12f184a1772d4f88dc520175941c7
+      internalID: 1952214705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_44
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3262b8c25cb99b4e88ff6fef1716dd5
+      internalID: 1769869495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_45
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5517e9aaab7bc4994fed3d3b9f027e
+      internalID: -1972964689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_46
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7ce6375f7c14347a70338a799b125c
+      internalID: 534043738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_47
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6012300a6d8e5f347b3bd866028bec9b
+      internalID: 596117859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_48
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4205004df3201da4c9dc5b987f7ed766
+      internalID: -1450934496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_49
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea1dfadd2b6de9f4aa075642e2785772
+      internalID: 733042312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_50
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 418b0c6a38d37534f83b3bf625a182b0
+      internalID: -1905724778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_51
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84dbb201b2d15f0449b5f52aa1aabdf5
+      internalID: -168109427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_52
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d71f054b1a1fb4f8fe2b8065e392be
+      internalID: -1882810607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_53
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdcfd630f55baf34bb743122a2e613b1
+      internalID: 646956246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_54
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981a5f780a383d74eb9bb0d8a1a9fd47
+      internalID: -1994608199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_55
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c7d863d6610ff4a98d7149ffeb42d7
+      internalID: -311060671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_56
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c89d88c7b79e0e4dba2787c3314c705
+      internalID: 808417303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_57
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b3e38cfc98514a44a9792df7702d920
+      internalID: -1530153369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_58
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 064808128c37f4e4cb4c4ff68ad64712
+      internalID: 1002295692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_59
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7b7783577a855488e4c038d01e079e
+      internalID: -1869787960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_60
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6f87f9e892d294fbdac674cd8c48fb
+      internalID: 1094009609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Combiner_61
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6488e9e72ce7a4aa6cc3d444f08339
+      internalID: 1777879244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Combiner_0: 1370945144
+      Combiner_1: -587495959
+      Combiner_10: 320719181
+      Combiner_11: -1475941299
+      Combiner_12: -563398953
+      Combiner_13: -427137544
+      Combiner_14: -154791644
+      Combiner_15: -889765930
+      Combiner_16: -770861683
+      Combiner_17: 1664437050
+      Combiner_18: -73759440
+      Combiner_19: 1960551794
+      Combiner_2: 766275401
+      Combiner_20: 535665720
+      Combiner_21: 1985623657
+      Combiner_22: 227484074
+      Combiner_23: 1666511186
+      Combiner_24: -542499168
+      Combiner_25: -970642451
+      Combiner_26: -775217779
+      Combiner_27: -1468485982
+      Combiner_28: -876053271
+      Combiner_29: 1955592889
+      Combiner_3: -394729564
+      Combiner_30: 1395659576
+      Combiner_31: 425858986
+      Combiner_32: 2053938619
+      Combiner_33: -926160310
+      Combiner_34: -570203758
+      Combiner_35: -271592238
+      Combiner_36: 816839795
+      Combiner_37: 781817713
+      Combiner_38: -1726675759
+      Combiner_39: -1514605110
+      Combiner_4: 2127795374
+      Combiner_40: 1062028895
+      Combiner_41: 1354404746
+      Combiner_42: 1392153837
+      Combiner_43: 1952214705
+      Combiner_44: 1769869495
+      Combiner_45: -1972964689
+      Combiner_46: 534043738
+      Combiner_47: 596117859
+      Combiner_48: -1450934496
+      Combiner_49: 733042312
+      Combiner_5: -1480961357
+      Combiner_50: -1905724778
+      Combiner_51: -168109427
+      Combiner_52: -1882810607
+      Combiner_53: 646956246
+      Combiner_54: -1994608199
+      Combiner_55: -311060671
+      Combiner_56: 808417303
+      Combiner_57: -1530153369
+      Combiner_58: 1002295692
+      Combiner_59: -1869787960
+      Combiner_6: -486986536
+      Combiner_60: 1094009609
+      Combiner_61: 1777879244
+      Combiner_7: 1916063079
+      Combiner_8: -138082482
+      Combiner_9: -1288224041
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

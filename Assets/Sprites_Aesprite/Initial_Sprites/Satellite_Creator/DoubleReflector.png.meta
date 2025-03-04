@@ -1,0 +1,1491 @@
+fileFormatVersion: 2
+guid: 8ca0fe38e6fd8f041a04b98b529ff58d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DoubleReflector_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270de4891d0c27f4da98dd12ff232556
+      internalID: 1007182389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_1
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9b16c65528265c4db8592bf5a4269d7
+      internalID: 664231554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_2
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305772752c81a4a964396657c10201
+      internalID: 1944175552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_3
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad8dcf70d9a5d14bb20e6f82df2c58a
+      internalID: -1106445387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_4
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf68d4a4e1a22474480bd4860271796f
+      internalID: -695193226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_5
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf619ef0fca44e4687deaa90f4da5c8
+      internalID: 370851271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_6
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e456a6f7137da1141a7d9edce8400761
+      internalID: -2133182852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_7
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277ecb8a3b4e2124a816ae746721287a
+      internalID: 367905173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ed5f9b03bf63646bbe1f354fe90bac
+      internalID: -1378680297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_9
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5baa02143889742438e00fbd99408c1f
+      internalID: -1075968404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_10
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50354dbbd058ee40a625433b4a4c11b
+      internalID: -864878065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_11
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bd66eb7599baf40af9acf390d668c8
+      internalID: 417781905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_12
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a192164a8750bce4ea22507db4973f1c
+      internalID: 1596498263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_13
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce64888d58e50e499b7f5cc90458c80
+      internalID: 1764096528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_14
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac3ecd9b8182ac148a7ac22f6f04d1d2
+      internalID: 655981828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_15
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d149ad84a92e6f4a8d39efc5349a3f8
+      internalID: 183693078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b910b15b70c50a429895eeb4bc5380a
+      internalID: -1857005609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_17
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ead5e4fafd995f45a127dea128b5b26
+      internalID: 1122617577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_18
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 881c5efdaff7e864895d6bdc47d2ba60
+      internalID: -484824130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_19
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208ff2e8a808b8a4bbdc0bbb4355f2db
+      internalID: -333277605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_20
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef4824bbb56dc1244b05561341098b50
+      internalID: 1705873501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_21
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd6c640a62aa4084d804e17d326cca6b
+      internalID: 826740064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_22
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a27a7953f2b2e4cbd3bb786686912c
+      internalID: 1670882961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_23
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 910e00dfee7939142b7a9a10e9613c69
+      internalID: -435875225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_24
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27131b724f9e003489c4a207ff9f30f9
+      internalID: 143861593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_25
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac92e6ccfc7d1374f8549bed28823676
+      internalID: -1164811156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_26
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99fa18ee31e32b84d9658edbf4d3ea96
+      internalID: 1518905896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_27
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0368ca9b9a2e0a4ba0f46b66a975580
+      internalID: -1271652597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_28
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 227bd82acf007d444bbe5c7b3a98cb5d
+      internalID: -1772653487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_29
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654198e4b7e28c5448fdf195dbb14708
+      internalID: -1591096932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_30
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d7fe0862136fe347b51606da15f4a6f
+      internalID: 1481149903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_31
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6744a4dbf77ff2749a16d126d3b1e311
+      internalID: -1906490007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453d1614d9e6d0e45adec02885e2d8ab
+      internalID: -1732926984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_33
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4414e0b2b8374b64ab5990dfc67d2709
+      internalID: -1840829479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_34
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb52da726daba04e9860dbf57e20a2b
+      internalID: 457917518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_35
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80bf60893da7d824c8a5baa46982f6ff
+      internalID: 1789726401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_36
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208738f273d92c04eb2b94429725075d
+      internalID: -1297074190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_37
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68d83143fdc012d4982c0b0b75bbda14
+      internalID: 1870524307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_38
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce477080a58e8ff42a58dab9695e2357
+      internalID: 535701194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_39
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e43baa9ace5564a9db1cd2b552ab86
+      internalID: -1962332885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_40
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b59179220b9d44c91897017e5e7335
+      internalID: -1545310940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_41
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9a4195347c9e043b7f49be4eabe99f
+      internalID: -119163100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_42
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1fe064ec3aa25418141f83895516e0
+      internalID: -664961602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_43
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b73a6e448ff6434b98259054cf1cc5f
+      internalID: -105007774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_44
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db9fbfc128027e449859690c234afd60
+      internalID: 1046102764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_45
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f4cdfda454c35442b63aeb3d212dc1c
+      internalID: 1235511945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_46
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424a8942aee65414eb3ce6fd78f29afd
+      internalID: 620915263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_47
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd0e1a204cc96f4294695bd2c05634a
+      internalID: 46276226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_48
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b79431c82186e498b8fd56e06721cc
+      internalID: -1124872958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_49
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f98f5c3c18937e48a2e5bb4ab1c9bf7
+      internalID: -119493314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_50
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35dc28b7c2b1f554b8aad2a92f266f36
+      internalID: 884046390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_51
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b680b4d9058c324fac9502f0a088174
+      internalID: -1229942742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_52
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aca521981d284a4cb3100648de489d5
+      internalID: 790914360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_53
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2106a89ee74c2a24188d0862a161f026
+      internalID: -1304538661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_54
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f5961c52d7cb342a5d83653ac7337b
+      internalID: 790580503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_55
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4e628296cbca14381c79a74920e58b
+      internalID: 136598317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_56
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e48f4572c9c90844a3006637a734b82
+      internalID: -1429607840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_57
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91dec4872871c164392f397f24e66de3
+      internalID: 208017578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_58
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1323e9e6ed993a43b04fd5439dc7fe3
+      internalID: 1188532937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_59
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5fd0520e9bb7e046b48f23fac098dce
+      internalID: -2058386756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_60
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48fb89b079745714cb715de82e265193
+      internalID: 1933093085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoubleReflector_61
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 004c3a002bc01f648a244113fc065fd8
+      internalID: -286297611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DoubleReflector_0: 1007182389
+      DoubleReflector_1: 664231554
+      DoubleReflector_10: -864878065
+      DoubleReflector_11: 417781905
+      DoubleReflector_12: 1596498263
+      DoubleReflector_13: 1764096528
+      DoubleReflector_14: 655981828
+      DoubleReflector_15: 183693078
+      DoubleReflector_16: -1857005609
+      DoubleReflector_17: 1122617577
+      DoubleReflector_18: -484824130
+      DoubleReflector_19: -333277605
+      DoubleReflector_2: 1944175552
+      DoubleReflector_20: 1705873501
+      DoubleReflector_21: 826740064
+      DoubleReflector_22: 1670882961
+      DoubleReflector_23: -435875225
+      DoubleReflector_24: 143861593
+      DoubleReflector_25: -1164811156
+      DoubleReflector_26: 1518905896
+      DoubleReflector_27: -1271652597
+      DoubleReflector_28: -1772653487
+      DoubleReflector_29: -1591096932
+      DoubleReflector_3: -1106445387
+      DoubleReflector_30: 1481149903
+      DoubleReflector_31: -1906490007
+      DoubleReflector_32: -1732926984
+      DoubleReflector_33: -1840829479
+      DoubleReflector_34: 457917518
+      DoubleReflector_35: 1789726401
+      DoubleReflector_36: -1297074190
+      DoubleReflector_37: 1870524307
+      DoubleReflector_38: 535701194
+      DoubleReflector_39: -1962332885
+      DoubleReflector_4: -695193226
+      DoubleReflector_40: -1545310940
+      DoubleReflector_41: -119163100
+      DoubleReflector_42: -664961602
+      DoubleReflector_43: -105007774
+      DoubleReflector_44: 1046102764
+      DoubleReflector_45: 1235511945
+      DoubleReflector_46: 620915263
+      DoubleReflector_47: 46276226
+      DoubleReflector_48: -1124872958
+      DoubleReflector_49: -119493314
+      DoubleReflector_5: 370851271
+      DoubleReflector_50: 884046390
+      DoubleReflector_51: -1229942742
+      DoubleReflector_52: 790914360
+      DoubleReflector_53: -1304538661
+      DoubleReflector_54: 790580503
+      DoubleReflector_55: 136598317
+      DoubleReflector_56: -1429607840
+      DoubleReflector_57: 208017578
+      DoubleReflector_58: 1188532937
+      DoubleReflector_59: -2058386756
+      DoubleReflector_6: -2133182852
+      DoubleReflector_60: 1933093085
+      DoubleReflector_61: -286297611
+      DoubleReflector_7: 367905173
+      DoubleReflector_8: -1378680297
+      DoubleReflector_9: -1075968404
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

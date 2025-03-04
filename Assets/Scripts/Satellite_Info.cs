@@ -4,14 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public enum SatelliteType{
-    Unknown,
-    SingleSideReflector,
-    GlassRefractor,
-    Origin,
-    Destination,
-
-}
 
 public class Satellite_Info : MonoBehaviour
 {
@@ -124,6 +116,27 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
             interaction = Interaction.Destination;
+        }
+
+        else if (satelliteType == SatelliteType.SatelliteCreator)
+        {
+            // If destination, name is generated with a random number
+            if (satelliteName == "") satelliteName = "Elysia-003";
+
+            // Destination satellites are destroyable, unlike origin
+            if (satelliteHealth == 100) satelliteHealth = 3000;
+
+            if (satelliteDescription == "") satelliteDescription = "A cutting edge Elysian Matter Printer. One of the three exisitng matter printers, this space craft has been outfitted with the highest end equipment to create a number of satellites on request.";
+            if (satelliteDescription == "" && language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
+
+            if (satelliteShortDescription == "" && language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
+            if (satelliteShortDescription == "" && language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            interaction = Interaction.Absorb;
         }
 
         else if (satelliteType == SatelliteType.SingleSideReflector)
@@ -258,7 +271,7 @@ public class Satellite_Info : MonoBehaviour
         }
 
         // Satellites cannot interact with origin
-        if (opposingSatellite.satelliteType == SatelliteType.Origin) {}
+        if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator ) {}
 
         // Satellites are easily destroyed when interacting with destination
         else if (opposingSatellite.satelliteType == SatelliteType.Destination)

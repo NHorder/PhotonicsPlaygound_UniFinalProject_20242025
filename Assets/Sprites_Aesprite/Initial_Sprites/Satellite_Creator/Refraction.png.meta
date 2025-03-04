@@ -1,0 +1,1491 @@
+fileFormatVersion: 2
+guid: 7661ed99acdb5c045bb514be9d7e9a75
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Refraction_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3beedf624a5d4a44fba65333cfb8ecc9
+      internalID: 1803738228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_1
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db92e0e52c8dbf54eaeab11eb8e9dac1
+      internalID: -1941386122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_2
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ebe9b9440b5e5478d9bf9cb569b197
+      internalID: 421244473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_3
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ba311aa1960154395f5de00374bbbf
+      internalID: 422549308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_4
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82eb6e30ffb02784fabd202eaa7e72e2
+      internalID: -825965314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_5
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e98ba421863883942b290aa87cd5a73d
+      internalID: -508158957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_6
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f32ea7d35f15e4e4289f751f100eadd4
+      internalID: 1440996765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_7
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 2247
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47684119e20aed74ab18feaa7ac3c089
+      internalID: 1197508415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a8da698418072e40a008ae06a3fa738
+      internalID: 954154386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_9
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74f4371e63909d45bcbee8590de4e5c
+      internalID: 863508428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_10
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e750ebf58660b49a5f4b3dab4fdbce
+      internalID: 73717682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_11
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161086eea1c909e48a2ba9f046fbebc1
+      internalID: -1626045405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_12
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a268907c4b28241b356decdb6ac742
+      internalID: -834775949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_13
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c910c71260621cf43bc1833409aaf526
+      internalID: -1238251251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_14
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ff52b5f82c3554ebb45aa9b4a6746f
+      internalID: -1871342106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_15
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1928
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc05b7ad7c78dc549a768a33248a49ef
+      internalID: -879149809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f1c77798d923c84eb7ace215e6fc016
+      internalID: -325161213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_17
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5ec5ae3609308488153b999ec6c32a
+      internalID: 1526905730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_18
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e216bb1566e1936439dd2686d1c101c6
+      internalID: 501891354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_19
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf3b2d31549d3a146808956018233bc7
+      internalID: 1093373861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_20
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df655fef83a899b4e98ba22bc39529ec
+      internalID: -1004583957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_21
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e24d9c043589b04bb8cd9684fc66da0
+      internalID: -1621253461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_22
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a2d7c211edc8e44a3184cbfba799f1
+      internalID: 2626674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_23
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1607
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e0988160a83ef84b96710d81c71894d
+      internalID: 448830883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_24
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2189c98578e8df243b289448793081c5
+      internalID: 852296677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_25
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7de6e3c2856524595b66acc737a235
+      internalID: 839861235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_26
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc3e2f6a9355b84a932e89e83bd8f25
+      internalID: 2024993039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_27
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf38e170c26a4d409736e159b40737f
+      internalID: 1212502343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_28
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f9aef6b20cbf7e4195645c16d69e869
+      internalID: -1968016106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_29
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c30b86738f0b7448660dcdf34e340c
+      internalID: -1485083840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_30
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88425c4572e2cf64eb02e54b10572875
+      internalID: -1038323944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_31
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 1287
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9e04cf2ae4f514b872dddab69b123f
+      internalID: 1911583617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d379a02f1e4181744978d24fb4278870
+      internalID: -2055172265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_33
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a00788230a3a441b97d0f0c6c3e6ef
+      internalID: -835719697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_34
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 077871e3c7539df4c905222f40ba60c6
+      internalID: 648724932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_35
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3367c776eef2b44a6a2365fdf1fc17
+      internalID: -1615324113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_36
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e809e780ab4aa8542bca210f0b4f83e8
+      internalID: 1467736678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_37
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c15c4048847264eac7bd38444ebb15
+      internalID: 618804802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_38
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 034f752e31468bb459eb0bbcf5dd12d0
+      internalID: -1932041803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_39
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 967
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1b877e71ba93c149af28f9804740c85
+      internalID: -1131552819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_40
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0183f89cec64f764dba073e80150c102
+      internalID: 193825903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_41
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 579d102797bce824cb7ee460851015ea
+      internalID: 1111924636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_42
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e99822e4c9608d4f9979fab328fabda
+      internalID: 149860283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_43
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83bd0f11836f9bd4faf3e52c50364c05
+      internalID: 118077702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_44
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e466dda360484434db7604dc3c34b150
+      internalID: -1663021974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_45
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f52b6fef61aba4398674de73b300db
+      internalID: -1860836496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_46
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d16bc6297958ac343bba4b8f268ad0d6
+      internalID: 916344579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_47
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 647
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ff7abc3ebed8f4dbe6b84e3058a02f
+      internalID: 140459647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_48
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1120fb8e717f3f844829d76f565c0451
+      internalID: -2023850261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_49
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fec7530782392a4c90a8164b0d9de1a
+      internalID: 425954717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_50
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80027303e27eceb469d81ef30dff89a0
+      internalID: 1361845480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_51
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680d2eb8b3b2bde488d29a6763163d00
+      internalID: -1683954541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_52
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515f8b656f4300b40b1efd0819a615f6
+      internalID: -992439138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_53
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05d08d23b7a07f43a593b6e31c7b5a9
+      internalID: -1860660011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_54
+      rect:
+        serializedVersion: 2
+        x: 6920
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5acafd3f5dead643a36950aa2f88252
+      internalID: -6120572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_55
+      rect:
+        serializedVersion: 2
+        x: 8072
+        y: 327
+        width: 1054
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a0fb2f598e0d8e4c96d13e3da32d200
+      internalID: 1180082181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_56
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cbbc5bd534b684c964134fb683b8fe
+      internalID: 1213966452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_57
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b5bfa550ad77ac44b52404f7dfa72e8
+      internalID: 1735418347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_58
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d367caf2926ae438282b6dadf43a91
+      internalID: 1260573986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_59
+      rect:
+        serializedVersion: 2
+        x: 3464
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a15dfbd5945c5741bcb752379c213ea
+      internalID: 1546295496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_60
+      rect:
+        serializedVersion: 2
+        x: 4616
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1214712c9edaf45bdadab04a722696
+      internalID: -917883228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_61
+      rect:
+        serializedVersion: 2
+        x: 5768
+        y: 8
+        width: 1054
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5274087, y: 0.6497993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e59fa98a3c9b0b4cac6d2375f6dd6d6
+      internalID: 1763488878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Refraction_0: 1803738228
+      Refraction_1: -1941386122
+      Refraction_10: 73717682
+      Refraction_11: -1626045405
+      Refraction_12: -834775949
+      Refraction_13: -1238251251
+      Refraction_14: -1871342106
+      Refraction_15: -879149809
+      Refraction_16: -325161213
+      Refraction_17: 1526905730
+      Refraction_18: 501891354
+      Refraction_19: 1093373861
+      Refraction_2: 421244473
+      Refraction_20: -1004583957
+      Refraction_21: -1621253461
+      Refraction_22: 2626674
+      Refraction_23: 448830883
+      Refraction_24: 852296677
+      Refraction_25: 839861235
+      Refraction_26: 2024993039
+      Refraction_27: 1212502343
+      Refraction_28: -1968016106
+      Refraction_29: -1485083840
+      Refraction_3: 422549308
+      Refraction_30: -1038323944
+      Refraction_31: 1911583617
+      Refraction_32: -2055172265
+      Refraction_33: -835719697
+      Refraction_34: 648724932
+      Refraction_35: -1615324113
+      Refraction_36: 1467736678
+      Refraction_37: 618804802
+      Refraction_38: -1932041803
+      Refraction_39: -1131552819
+      Refraction_4: -825965314
+      Refraction_40: 193825903
+      Refraction_41: 1111924636
+      Refraction_42: 149860283
+      Refraction_43: 118077702
+      Refraction_44: -1663021974
+      Refraction_45: -1860836496
+      Refraction_46: 916344579
+      Refraction_47: 140459647
+      Refraction_48: -2023850261
+      Refraction_49: 425954717
+      Refraction_5: -508158957
+      Refraction_50: 1361845480
+      Refraction_51: -1683954541
+      Refraction_52: -992439138
+      Refraction_53: -1860660011
+      Refraction_54: -6120572
+      Refraction_55: 1180082181
+      Refraction_56: 1213966452
+      Refraction_57: 1735418347
+      Refraction_58: 1260573986
+      Refraction_59: 1546295496
+      Refraction_6: 1440996765
+      Refraction_60: -917883228
+      Refraction_61: 1763488878
+      Refraction_7: 1197508415
+      Refraction_8: 954154386
+      Refraction_9: 863508428
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

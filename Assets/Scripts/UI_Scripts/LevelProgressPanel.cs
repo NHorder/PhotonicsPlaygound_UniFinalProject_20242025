@@ -63,7 +63,7 @@ public class LevelProgressPanel : MonoBehaviour
     }
 
 
-    public void LogCommunications(string satelliteName, float numUnlocks)
+    public void LogCommunications(string satelliteName, float numUnlocks, string otherText = "")
     {
         // If the user has not specified in settings that this should not appear each time communications are made
         // and if it isn't expanded, then open it.
@@ -71,8 +71,15 @@ public class LevelProgressPanel : MonoBehaviour
         
         var logText = "";
 
+
+        if (numUnlocks <= 0 && otherText != "")
+        {
+            logText =  $"{satelliteName}: {otherText}";
+
+        }
         // If the number of unlocks is less than or equal to zero, assume the connection was lost.
-        if (numUnlocks <= 0) logText = $"{satelliteName}: Connection Lost\n";
+        else if (numUnlocks <= 0) logText = $"{satelliteName}: Connection Lost\n";
+        
         else
         {
             // Using a percentage allows for more locks to be in place
