@@ -11,6 +11,7 @@ public enum UIPanel
     Shop,
     Teaching,
     LogCommunications,
+    ConfirmAction,
     Settings,
     LevelComplete
 }
@@ -43,6 +44,10 @@ public class UIController : MonoBehaviour
     private bool _levelProgressMoving = false;
     private float _levelProgressNewYLoc;
     private GameObject _levelProgressPanel;
+
+
+    public ConfirmationPanelSettings confirmationPanelSettings;
+    private ConfirmationPanel _confirmationPanel;
 
 
 
@@ -121,6 +126,8 @@ public class UIController : MonoBehaviour
             }
         }
 
+        
+        
     }
 
     // Update is called once per frame
@@ -144,7 +151,9 @@ public class UIController : MonoBehaviour
             var currentPosition = rectTransform.anchoredPosition;
 
             // Call move panel, moving to the wanted location
-            MovePanel(rectTransform,currentPosition,currentPosition.x, _satelliteControlPanelNewYLoc,satelliteControlPanelSettings.controlPanelMovementSpeed,_satelliteControlPanelMoving);
+            MovePanel(rectTransform,currentPosition,currentPosition.x, _satelliteControlPanelNewYLoc,satelliteControlPanelSettings.controlPanelMovementSpeed);
+
+            if (currentPosition.y == _satelliteControlPanelNewYLoc) _satelliteControlPanelMoving = false;
 
             // If it has stopped moving and in the close location - set active to false, this the rendering of unseen panels
             if (!_satelliteControlPanelMoving && (_satelliteControlPanelNewYLoc < satelliteControlPanelSettings.controlPanelVisibleLoc)) _satelliteControlPanel.active = false;
@@ -158,13 +167,15 @@ public class UIController : MonoBehaviour
             var currentPosition = rectTransform.anchoredPosition;
 
             // Move to wantted location
-            MovePanel(rectTransform,currentPosition,_shopPanelNewXLoc,currentPosition.y,shopPanelSettings.shopPanelMovementSpeed,_shopPanelMoving);
+            MovePanel(rectTransform,currentPosition,_shopPanelNewXLoc,currentPosition.y,shopPanelSettings.shopPanelMovementSpeed);
 
             // Retrieve animator
             var shopAnimator = _shopPanel.GetComponent<Animator>();
 
             //Update animator based on whether in the closed or open position
             shopAnimator.SetBool("Open",(_shopPanelNewXLoc < shopPanelSettings.shopPanelCloseXLoc));
+
+            //if (currentPosition.x == _shopPanelNewXLoc) _shopPanelMoving = false;
         }
         
         if (uiExpectations.expectSatelliteCommsLevelProgressPanel && _levelProgressMoving && _levelProgressNewYLoc != null)
@@ -174,7 +185,9 @@ public class UIController : MonoBehaviour
             var currentPosition = rectTransform.anchoredPosition;
 
             // Move to wanted location
-            MovePanel(rectTransform,currentPosition, currentPosition.x, _levelProgressNewYLoc,levelProgressPanelSettings.levelProgressPanelMovementSpeed,_levelProgressMoving);
+            MovePanel(rectTransform,currentPosition, currentPosition.x, _levelProgressNewYLoc,levelProgressPanelSettings.levelProgressPanelMovementSpeed);
+
+            if (currentPosition.y == _levelProgressNewYLoc) _levelProgressMoving = false;
         }
         
     }
@@ -185,7 +198,7 @@ public class UIController : MonoBehaviour
     }
 
 
-    private void MovePanel(RectTransform rectTransform, Vector3 currentPosition,float newXLoc,float newYLoc,float moveSpeed, bool isMovingRef)
+    private void MovePanel(RectTransform rectTransform, Vector3 currentPosition,float newXLoc,float newYLoc,float moveSpeed)
     {
 
         // Check Y positions, move if needed
@@ -231,8 +244,6 @@ public class UIController : MonoBehaviour
             
         }
 
-        // If at correct location, set the moving reference to false - announces that movement is no longer occuring
-        else isMovingRef = false;
         
     }
 
@@ -345,13 +356,14 @@ public class UIController : MonoBehaviour
 
         else if (uiExpectations.expectSatelliteCommsLevelProgressPanel && panel == UIPanel.LogCommunications && _levelProgressPanel != null)
         {
-    
             _levelProgressMoving = true;
 
             var position = _levelProgressPanel.GetComponent<RectTransform>().anchoredPosition;
 
             if (bVisible && position.y > levelProgressPanelSettings.levelProgressPanelOpenYLoc)  _levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelOpenYLoc;
-            else if (!bVisible) _levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelCloseYLoc;
+            
+            else if (!bVisible ) _levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelCloseYLoc;
+            
             else _levelProgressMoving = false;
             
         }
@@ -369,11 +381,25 @@ public class UIController : MonoBehaviour
 
             // Sets whether active or not based on visbility wanted.
             _levelCompletePanel.active = bVisible;
-            
+        
+        }
 
+        else if (uiExpectations.expectConfirmationPanel && panel == UIPanel.ConfirmAction)
+        {
+            // If expecting the confirmation panel, then retrieve the needed information
+            if (_confirmationPanel == null)
+            {
+                _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
+                PresentPanel(UIPanel.ConfirmAction, false);
+            }
+
+            var rectTransform = _confirmationPanel.gameObject.GetComponent<RectTransform>();
+
+            if (rectTransform.anchoredPosition != new Vector2(0,0)) rectTransform.anchoredPosition = new Vector2(0,0);
+
+            _confirmationPanel.gameObject.active = bVisible;
         }
     }
-
     
 
     public void OpenCloseShop()
@@ -438,7 +464,20 @@ public class UIController : MonoBehaviour
     {
         return _interactionEnabled;
     }
-    
+
+    public void ResetLevel()
+    {
+        PresentPanel(UIPanel.ConfirmAction,true);
+        _confirmationPanel.UpdateUIComponents(ConfirmAction.ResetLevel);
+    }
+
+    public void LeaveLevel()
+    {
+        PresentPanel(UIPanel.ConfirmAction,true);
+        _confirmationPanel.UpdateUIComponents(ConfirmAction.LeaveLevel);
+    }
+
+
 }
 
 
@@ -453,12 +492,13 @@ public class UIExpectations
     public bool expectLevelCompletePanel  = true;
     public bool expectSettingsPanel  = true;
     public bool expectSatelliteCommsLevelProgressPanel  = true;
+    public bool expectConfirmationPanel = true;
 }
 
 [System.Serializable]
 public class SatelliteControlPanelSettings
 {
-    public float controlPanelMovementSpeed = 1;
+    public float controlPanelMovementSpeed = 10f;
     public float controlPanelVisibleLoc = -465f;
     public float controlPanelNotVisibleLoc = -650f;
 }
@@ -466,7 +506,7 @@ public class SatelliteControlPanelSettings
 [System.Serializable]
 public class ShopPanelSettings
 {
-    public float shopPanelMovementSpeed = 1;
+    public float shopPanelMovementSpeed = 10f;
     public float shopPanelOpenXLoc = 596f;
     public float shopPanelCloseXLoc = 1147f;
 }
@@ -477,9 +517,16 @@ public class LevelProgressPanelSettings
     public int recordRetentionNumber = 10;
     public bool forceNoChangeOnNewCommunication = false;
 
-    public float levelProgressPanelMovementSpeed = 1;
+    public float levelProgressPanelMovementSpeed = 10f;
 
     public float levelProgressPanelOpenYLoc = 376.7f;
     public float levelProgressPanelCloseYLoc = 646.0f;
+}
 
+[System.Serializable]
+public class ConfirmationPanelSettings
+{
+    public bool forceSkipConfirmation = false;
+    public float confirmationPanelXLoc = 0;
+    public float confirmationPanelYLoc = 0;
 }

@@ -121,7 +121,8 @@ public class SatelliteController : MonoBehaviour
                     if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
                     {
                         // If the selected satellite panel is type Origin or Destination, hide the controls.
-                        if (_selectedSatelliteInfo.satelliteType == SatelliteType.Origin || _selectedSatelliteInfo.satelliteType == SatelliteType.Destination)
+                        if (_selectedSatelliteInfo.satelliteType == SatelliteType.Origin || _selectedSatelliteInfo.satelliteType == SatelliteType.Destination || 
+                        _selectedSatelliteInfo.satelliteType == SatelliteType.SatelliteCreator)
                         {
                             _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
                         }
