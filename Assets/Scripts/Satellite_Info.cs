@@ -38,7 +38,12 @@ public class Satellite_Info : MonoBehaviour
     public string satelliteDescription= "";
     public string satelliteShortDescription = "";
     public int satellitePurchasePrice = 0;
+
+    public bool canBeSold = true;
     public int satelliteSellPrice = 0;
+
+
+    public bool canbeMoved = true;
 
     
     public AdvancedSatelliteInfo advanced_Satellite_Info;
@@ -66,6 +71,9 @@ public class Satellite_Info : MonoBehaviour
             // Update game controller of satellite, and it's type
             if (satelliteType == SatelliteType.Origin) _gameController.worldInfo.numOrigins += 1;
             else if (satelliteType == SatelliteType.Destination) _gameController.worldInfo.numDestinations += 1;
+            else if (isDebris){
+                // Do Nothing
+            }
             else _gameController.worldInfo.numSatellites += 1;
         }
     }
@@ -98,6 +106,8 @@ public class Satellite_Info : MonoBehaviour
 
         if (satelliteType == SatelliteType.Origin)
         {
+            canbeMoved = false;
+            canBeSold = false;
             // if origin, name is determined randomly
             if (satelliteName == "") satelliteName = "Prometheus-"+Random.Range(1,384);
 
@@ -119,7 +129,8 @@ public class Satellite_Info : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.Destination)
         {
-
+            canbeMoved = false;
+            canBeSold = false;
             // If destination, name is generated with a random number
             if (satelliteName == "") satelliteName = "Fyrefly-"+Random.Range(1,384);
 
@@ -140,6 +151,8 @@ public class Satellite_Info : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.SatelliteCreator)
         {
+            canbeMoved = false;
+            canBeSold = false;
             // If destination, name is generated with a random number
             if (satelliteName == "") satelliteName = "Elysia-003";
 
@@ -275,13 +288,15 @@ public class Satellite_Info : MonoBehaviour
         // Satellite debris and asteroids are counted here, allowing user's to information about them
         else if (satelliteType == SatelliteType.Debris_Absorb)
         {
+            canbeMoved = false;
+            canBeSold = false;
             isDebris = true;
             if (language == Language.English)
             {
                 if (satelliteName == "") satelliteName = $"Asteroid";
                 if (satelliteHealth == 100) satelliteHealth = 300;
 
-                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid will absorb all light that hits it.";
+                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid will absorb all light that hits it. It is recommended to not direct light beams at this satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs all incoming light";
             }
 
@@ -295,13 +310,15 @@ public class Satellite_Info : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.Debris_Reflect)
         {
+            canbeMoved = false;
+            canBeSold = false;
             isDebris = true;
             if (language == Language.English)
             {
                 if (satelliteName == "") satelliteName = $"Asteroid";
                 if (satelliteHealth == 100) satelliteHealth = 300;
 
-                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid is partially reflective.";
+                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid is partially reflective but will absorb a signficant amount of light. It is advised to not direct light beams at this satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs most incoming light, reflecting a small amount";
             }
 
@@ -313,35 +330,17 @@ public class Satellite_Info : MonoBehaviour
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Reflection;
             
         }
-        else if (satelliteType == SatelliteType.Debris_Refract)
-        {
-            isDebris = true;
-            if (language == Language.English)
-            {
-                if (satelliteName == "") satelliteName = $"Asteroid";
-                if (satelliteHealth == 100) satelliteHealth = 300;
-
-                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid is partially refractive.";
-                if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs most incoming light, refracting a small amount";
-            }
-
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 0;
-            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 2.6f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.6f;
-
-            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
-            
-        }
         else if (satelliteType == SatelliteType.Debris_Splitter)
         {
+            canbeMoved = false;
+            canBeSold = false;
             isDebris = true;
             if (language == Language.English)
             {
                 if (satelliteName == "") satelliteName = $"Asteroid";
                 if (satelliteHealth == 100) satelliteHealth = 300;
 
-                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid can split light.";
+                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid can split light and absorbs a signficant amount of energy. It is recommended to not direct light beams at this satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs most incoming light, splitting the remaining light";
             }
 
@@ -354,13 +353,15 @@ public class Satellite_Info : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.Debris_Filter)
         {
+            canbeMoved = false;
+            canBeSold = false;
             isDebris = true;
             if (language == Language.English)
             {
                 if (satelliteName == "") satelliteName = $"Asteroid";
                 if (satelliteHealth == 100) satelliteHealth = 300;
 
-                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid can change the colour of light that passes through it.";
+                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid can change the colour of light that passes through it. It has high absorbance and will signifcantly reduce a light beams strength. It is recommended to not direct light at this satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs most incoming light, changes the colour of passing light";
             }
 

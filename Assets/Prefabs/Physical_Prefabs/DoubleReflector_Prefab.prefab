@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4279933061389300841}
   - component: {fileID: 4508122786947588055}
   - component: {fileID: 3975646809958847301}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoubleReflector_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6339632074429853780}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.899, y: 3.733, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -181,14 +181,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.29617882, y: 1.3621905}
-      - {x: 1.2243214, y: 0.41938806}
-      - {x: 1.1686907, y: 0.3770721}
-      - {x: 0.23372412, y: 1.2850924}
-    - - {x: -0.23694515, y: 1.2883558}
-      - {x: -1.1372085, y: 0.39199805}
-      - {x: -1.2274556, y: 0.44286346}
-      - {x: -0.28788805, y: 1.3493857}
+    - - {x: 0.2948165, y: 1.3605573}
+      - {x: 1.2096643, y: 0.44816947}
+      - {x: 1.1414461, y: 0.39231348}
+      - {x: 0.24467325, y: 1.2947378}
+    - - {x: -0.24091911, y: 1.2964077}
+      - {x: -1.1350422, y: 0.39451814}
+      - {x: -1.2147341, y: 0.44651604}
+      - {x: -0.2964406, y: 1.3606534}
   m_UseDelaunayMesh: 0
 --- !u!61 &4508122786947588055
 BoxCollider2D:
@@ -219,10 +219,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010976315, y: 0.56788385}
+  m_Offset: {x: -0.010976315, y: 0.51264894}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.225}
@@ -233,7 +233,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8567944, y: 2.289903}
+  m_Size: {x: 2.8567944, y: 2.3172915}
   m_EdgeRadius: 0
 --- !u!114 &3975646809958847301
 MonoBehaviour:
@@ -247,8 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 0
+  satelliteType: 2
   interaction: 0
+  isDebris: 0
   satelliteName: 
   satelliteHealth: 100
   satelliteDescription: 

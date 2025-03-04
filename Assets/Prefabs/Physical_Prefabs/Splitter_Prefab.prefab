@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6599090769842411839}
   - component: {fileID: 1243653118022887358}
   - component: {fileID: 942743048704587442}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Splitter_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472795792725707194}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.18, y: -4.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -249,8 +249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 0
+  satelliteType: 6
   interaction: 0
+  isDebris: 0
   satelliteName: 
   satelliteHealth: 100
   satelliteDescription: 
