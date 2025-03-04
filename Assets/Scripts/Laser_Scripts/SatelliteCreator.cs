@@ -39,46 +39,82 @@ public class SatelliteCreator : MonoBehaviour
             return false;
         }
 
+        levelProgressPanel.LogCommunications("Elysia",-1,"Creating satellite\n");
 
         if (satelliteType == SatelliteType.SingleSideReflector)
         {
-            levelProgressPanel.LogCommunications("Elysia-003",-1,"Creating satellite\n");
             _chosenPrefab = satellitePrefabs.singlePanelReflectionSatellite;
 
             _canCreateNewSatellite = false;
 
             _animator.SetBool("Animating",true);
             _animator.Play("SingleReflector");
-
-            return true;
-
         }
+        
+        else if (satelliteType == SatelliteType.DoubleSideReflector)
+        {
+
+            _chosenPrefab = satellitePrefabs.doublePanelReflectionSatellite;
+            _canCreateNewSatellite = false;
+
+            _animator.SetBool("Animating",true);
+            _animator.Play("DoubleReflector");
+        }
+        
         else if (satelliteType == SatelliteType.GlassRefractor)
         {
-            levelProgressPanel.LogCommunications("Elysia-003",-1,"Creating satellite\n");
 
             _chosenPrefab = satellitePrefabs.glassRefractionSatellite;
             _canCreateNewSatellite = false;
 
             _animator.SetBool("Animating",true);
             _animator.Play("Refractor");
+        }
 
-            return true;
-            
+        else if (satelliteType == SatelliteType.ColourFilter)
+        {
+
+            _chosenPrefab = satellitePrefabs.filterSatellite;
+            _canCreateNewSatellite = false;
+
+            _animator.SetBool("Animating",true);
+            _animator.Play("Filter");
+        }
+
+        else if (satelliteType == SatelliteType.Combiner)
+        {
+
+            _chosenPrefab = satellitePrefabs.combinerSatellite;
+            _canCreateNewSatellite = false;
+
+            _animator.SetBool("Animating",true);
+            _animator.Play("Combiner");
         }
         
+        else if (satelliteType == SatelliteType.Splitter) 
+        {
+
+            _chosenPrefab = satellitePrefabs.splitterSatellite;
+            _canCreateNewSatellite = false;
+
+            _animator.SetBool("Animating",true);
+            _animator.Play("Splitter");
+        }
+    
         else{
-            levelProgressPanel.LogCommunications("Elysia-003",-1,"Satellite not recognised\n");
+            levelProgressPanel.LogCommunications("Elysia",-1,"Satellite not recognised\n");
             Debug.LogWarning("WARNING: Satellite type not recognised");
             return false;
         }
+
+        return true;
     }
 
     public void InstantiateSatellite()
     {
         if (_chosenPrefab != null)
         {
-            levelProgressPanel.LogCommunications("Elysia-003",-1,"Satellite created\n");
+            levelProgressPanel.LogCommunications("Elysia",-1,"Satellite created\n");
             var newSatellite = Instantiate(_chosenPrefab);
             newSatellite.layer = LayerMask.NameToLayer("Object");
             newSatellite.transform.position = this.transform.position;
@@ -106,5 +142,9 @@ public class SatelliteCreator : MonoBehaviour
 public class SatellitePrefabs
 {
     public GameObject singlePanelReflectionSatellite;
+    public GameObject doublePanelReflectionSatellite;
     public GameObject glassRefractionSatellite;
+    public GameObject splitterSatellite;
+    public GameObject combinerSatellite;
+    public GameObject filterSatellite;
 }

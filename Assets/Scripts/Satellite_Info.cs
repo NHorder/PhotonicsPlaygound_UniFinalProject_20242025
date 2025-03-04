@@ -153,19 +153,19 @@ public class Satellite_Info : MonoBehaviour
             canbeMoved = false;
             canBeSold = false;
             // If destination, name is generated with a random number
-            if (satelliteName == "") satelliteName = "Elysia-003";
+            if (satelliteName == "") satelliteName = "Elysia";
 
             // Destination satellites are destroyable, unlike origin
             if (satelliteHealth == 100) satelliteHealth = 3000;
 
-            if (satelliteDescription == "") satelliteDescription = "A cutting edge Elysian Matter Printer. One of the three exisitng matter printers, this space craft has been outfitted with the highest end equipment to create a number of satellites on request.";
+            if (satelliteDescription == "") satelliteDescription = "Elysia is a cutting edge Elysian Matter Printer. One of the three in existence. It makes use of space-time manipulator lasers and drones to construct satellites of any type.";
             if (satelliteDescription == "" && language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
 
             if (satelliteShortDescription == "" && language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
             if (satelliteShortDescription == "" && language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
 
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 12000000;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 12000000;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
             interaction = Interaction.Absorb;

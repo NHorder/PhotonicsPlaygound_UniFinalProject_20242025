@@ -255,7 +255,9 @@ MonoBehaviour:
   satelliteDescription: 
   satelliteShortDescription: 
   satellitePurchasePrice: 0
+  canBeSold: 1
   satelliteSellPrice: 0
+  canbeMoved: 1
   advanced_Satellite_Info:
     isSelectable: 1
     refractiveIndex: 0
@@ -266,9 +268,9 @@ MonoBehaviour:
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
     intialMovementMultiplier: 2
-    intialRotationMultiplier: 2
+    intialRotationMultiplier: 0.25
     maxMovementMultiplier: 20
-    maxRotationMultiplier: 20
+    maxRotationMultiplier: 2
   satellite_Shop_Info:
     IsShopItem: 0
     satelliteSprite: {fileID: 0}
