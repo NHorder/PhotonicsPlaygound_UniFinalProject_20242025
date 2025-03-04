@@ -2,15 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SatelliteType{
-    Unknown,
-    SingleSideReflector,
-    GlassRefractor,
-    Origin,
-    Destination,
-    SatelliteCreator,
-
-}
 
 public class SatelliteCreator : MonoBehaviour
 {
