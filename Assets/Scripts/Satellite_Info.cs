@@ -19,7 +19,6 @@ public enum SatelliteType{
 
     Debris_Absorb,
     Debris_Reflect,
-    Debris_Refract,
     Debris_Splitter,
     Debris_Filter
 
