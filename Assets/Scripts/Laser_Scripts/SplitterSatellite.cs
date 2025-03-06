@@ -20,8 +20,6 @@ public class SplitterSatellite : MonoBehaviour
     private RaycastHit2D _raycast;
 
     private List<LaserColour> _laserColours;
-    private List<float>_outputXOffset;
-    private List<float> _outputYOffset;
     private List<float> _outputAngles;
 
 
@@ -42,8 +40,6 @@ public class SplitterSatellite : MonoBehaviour
     void Start()
     {
         _laserColours = new List<LaserColour>();
-        _outputXOffset = new List<float>();
-        _outputYOffset = new List<float>();
         _outputAngles = new List<float>();
 
         // Retrieve the absorbance of the satellite.
@@ -62,12 +58,7 @@ public class SplitterSatellite : MonoBehaviour
             //twoOutputWhiteColourA
             //twoOutputWhiteColourB
 
-            _outputXOffset.Add(twoOutputSplitterSettings.offsetAlphaX);
-            _outputYOffset.Add(twoOutputSplitterSettings.offsetAlphaY);
             _outputAngles.Add(twoOutputSplitterSettings.angleAlpha);
-
-            _outputXOffset.Add(twoOutputSplitterSettings.offsetBetaX);
-            _outputYOffset.Add(twoOutputSplitterSettings.offsetBetaY);
             _outputAngles.Add(twoOutputSplitterSettings.angleBeta);
 
 
@@ -77,54 +68,19 @@ public class SplitterSatellite : MonoBehaviour
         {
             _numExpectedOutput = 3;
 
-            // Alpha offsets and angle to lists (Output 1)
-            _outputXOffset.Add(threeOutputSplitterSettings.offsetAlphaX);
-            _outputYOffset.Add(threeOutputSplitterSettings.offsetAlphaY);
             _outputAngles.Add(threeOutputSplitterSettings.angleAlpha);
-
-            // Beta offsets and angle to lists (Output 2)
-            _outputXOffset.Add(threeOutputSplitterSettings.offsetBetaX);
-            _outputYOffset.Add(threeOutputSplitterSettings.offsetBetaY);
             _outputAngles.Add(threeOutputSplitterSettings.angleBeta);
-
-            // Gamma offsets and angle to lists (Output 3)
-            _outputXOffset.Add(threeOutputSplitterSettings.offsetGammaX);
-            _outputYOffset.Add(threeOutputSplitterSettings.offsetGammaY);
             _outputAngles.Add(threeOutputSplitterSettings.angleGamma);
         }
 
         else if (splitterType == SplitterType.SixOutput)
         {
             _numExpectedOutput = 6;
-
-            // Alpha offsets and angle to lists (Output 1)
-            _outputXOffset.Add(sixOutputSplitterSettings.offsetAlphaX);
-            _outputYOffset.Add(sixOutputSplitterSettings.offsetAlphaY);
             _outputAngles.Add(sixOutputSplitterSettings.angleAlpha);
-
-            // Beta offsets and angle to lists (Output 2)
-            _outputXOffset.Add(sixOutputSplitterSettings.offsetBetaX);
-            _outputYOffset.Add(sixOutputSplitterSettings.offsetBetaY);
             _outputAngles.Add(sixOutputSplitterSettings.angleBeta);
-
-            // Gamma offsets and angle to lists (Output 3)
-            _outputXOffset.Add(sixOutputSplitterSettings.offsetGammaX);
-            _outputYOffset.Add(sixOutputSplitterSettings.offsetGammaY);
             _outputAngles.Add(sixOutputSplitterSettings.angleGamma);
-
-            // Delta offsets and angle to lists (Output 4)
-            _outputXOffset.Add(sixOutputSplitterSettings.offsetDeltaX);
-            _outputYOffset.Add(sixOutputSplitterSettings.offsetDeltaY);
             _outputAngles.Add(sixOutputSplitterSettings.angleDelta);
-
-            // Epsilon offsets and angle to lists (Output 5)
-            _outputXOffset.Add(sixOutputSplitterSettings.offsetEpsilonX);
-            _outputYOffset.Add(sixOutputSplitterSettings.offsetEpsilonY);
             _outputAngles.Add(sixOutputSplitterSettings.angleEpsilon);
-
-            // Zeta offsets and angle to lists (Output 6)
-            _outputXOffset.Add(sixOutputSplitterSettings.offsetZetaX);
-            _outputYOffset.Add(sixOutputSplitterSettings.offsetZetaY);
             _outputAngles.Add(sixOutputSplitterSettings.angleZeta);
 
 
@@ -285,12 +241,7 @@ public class SplitterSatellite : MonoBehaviour
 [System.Serializable]
 public class TwoOutputSplitterSettings
 {
-    public float offsetAlphaX = -0.515f;
-    public float offsetAlphaY = 0.609f;
     public float angleAlpha = 38f;
-
-    public float offsetBetaX = 0.515f;
-    public float offsetBetaY = 0.609f;
     public float angleBeta = -38f;
 
 }
@@ -298,51 +249,19 @@ public class TwoOutputSplitterSettings
 [System.Serializable]
 public class ThreeOutputSplitterSettings
 {
-    public float offsetAlphaX;
-    public float offsetAlphaY;
     public float angleAlpha;
-
-
-    public float offsetBetaX;
-    public float offsetBetaY;
     public float angleBeta;
-
-
-    public float offsetGammaX;
-    public float offsetGammaY;
     public float angleGamma;
 }
 
 [System.Serializable]
 public class SixOutputSplitterSettings
 {
-    public float offsetAlphaX;
-    public float offsetAlphaY;
     public float angleAlpha;
-
-
-    public float offsetBetaX;
-    public float offsetBetaY;
     public float angleBeta;
-
-
-    public float offsetGammaX;
-    public float offsetGammaY;
     public float angleGamma;
-
-
-    public float offsetDeltaX;
-    public float offsetDeltaY;
     public float angleDelta;
-
-
-    public float offsetEpsilonX;
-    public float offsetEpsilonY;
     public float angleEpsilon;
-
-
-    public float offsetZetaX;
-    public float offsetZetaY;
     public float angleZeta;
 
 }
