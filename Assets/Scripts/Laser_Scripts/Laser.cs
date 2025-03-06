@@ -5,12 +5,19 @@ using UnityEngine;
 
 public enum LaserColour{
     White,
+    Red,
+    Green,
+    Blue,
+    Cyan,
+    Yellow,
+    Magenta,
 
 }
 
 public class Laser : MonoBehaviour
 {
     public LaserOrigin origin;
+    public LaserColour laserColour;
 
     public float maxDistance;
 
@@ -294,6 +301,11 @@ public class Laser : MonoBehaviour
                 if (_transparency >= _minimumTransparencyNeededForDestinationRecognition) InteractionFunctions.DestinationInteraction(this,_raycast);
             }
 
+            else if (interaction == Interaction.Splitter)
+            {
+                InteractionFunctions.SplitterInteraction(this,_raycast);
+            }
+
         }
     }
 
@@ -332,4 +344,10 @@ public class Laser : MonoBehaviour
         // by specific interactions, I.e refraction changing the satellite info, as such this allows a brief delay to update that before adding it
         // it prevents bugs / unexpected events from occuring.
     }
+
+    public float GetTransparency()
+    {
+        return _transparency;
+    }
+
 }

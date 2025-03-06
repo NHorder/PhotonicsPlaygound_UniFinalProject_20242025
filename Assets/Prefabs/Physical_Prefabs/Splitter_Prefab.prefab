@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6599090769842411839}
   - component: {fileID: 1243653118022887358}
   - component: {fileID: 942743048704587442}
+  - component: {fileID: 7425578733073757520}
   m_Layer: 3
   m_Name: Splitter_Prefab
   m_TagString: Untagged
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   satelliteType: 6
-  interaction: 0
+  interaction: 4
   isDebris: 0
   satelliteName: 
   satelliteHealth: 100
@@ -280,3 +281,52 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
+--- !u!114 &7425578733073757520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472795792725707194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bafd16635f2b5641b188702efd0c11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitterType: 0
+  twoOutputSplitterSettings:
+    offsetAlphaX: -0.515
+    offsetAlphaY: 0.609
+    angleAlpha: 38
+    offsetBetaX: 0.515
+    offsetBetaY: 0.609
+    angleBeta: -38
+  threeOutputSplitterSettings:
+    offsetAlphaX: 0
+    offsetAlphaY: 0
+    angleAlpha: 0
+    offsetBetaX: 0
+    offsetBetaY: 0
+    angleBeta: 0
+    offsetGammaX: 0
+    offsetGammaY: 0
+    angleGamma: 0
+  sixOutputSplitterSettings:
+    offsetAlphaX: 0
+    offsetAlphaY: 0
+    angleAlpha: 0
+    offsetBetaX: 0
+    offsetBetaY: 0
+    angleBeta: 0
+    offsetGammaX: 0
+    offsetGammaY: 0
+    angleGamma: 0
+    offsetDeltaX: 0
+    offsetDeltaY: 0
+    angleDelta: 0
+    offsetEpsilonX: 0
+    offsetEpsilonY: 0
+    angleEpsilon: 0
+    offsetZetaX: 0
+    offsetZetaY: 0
+    angleZeta: 0

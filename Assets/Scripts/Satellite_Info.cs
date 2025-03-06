@@ -280,7 +280,7 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
 
-            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Splitter;
 
         }
 

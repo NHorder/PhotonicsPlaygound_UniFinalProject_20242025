@@ -8,22 +8,23 @@ public enum Interaction
     Absorb,
     Reflection,
     Refraction,
+    Splitter,
     Origin,
     Destination,
 }
 
 class InteractionFunctions
 {
-    public static float ReflectionInteraction(Transform laserTransform, RaycastHit2D rayCast)
+    public static float ReflectionInteraction(Transform laserTransform, RaycastHit2D raycast)
     {
 
         // Handles rotation about the normal, instead of surface area as previous
-        float angleOfNormal = Vector2.SignedAngle(Vector2.up,rayCast.normal);
+        float angleOfNormal = Vector2.SignedAngle(Vector2.up,raycast.normal);
         
         float laserAngle = laserTransform.eulerAngles.z;
 
         // Calculate the reflected vector
-        var reflect = Vector2.Reflect(rayCast.normal,laserTransform.up);
+        var reflect = Vector2.Reflect(raycast.normal,laserTransform.up);
 
         // Convert the reflected normal into an angle from laser transform.up
         var angle = Vector2.SignedAngle(laserTransform.up,reflect);
@@ -54,13 +55,21 @@ class InteractionFunctions
         return inverseAngleOfNormal + refracted_angle;
     }
 
-    public static void DestinationInteraction(Laser laser, RaycastHit2D rayCast)
+    public static void DestinationInteraction(Laser laser, RaycastHit2D raycast)
     {
         // Retrieve destination script
-        var destination = rayCast.collider.gameObject.GetComponent<LaserDestination>();
+        var destination = raycast.collider.gameObject.GetComponent<LaserDestination>();
 
         // Call to advance lock, as interaction has occurred.
         if (destination != null) destination.AdvanceLock();
+    }
+
+    public static void SplitterInteraction(Laser laser, RaycastHit2D raycast)
+    {
+
+        SplitterSatellite splitterSatellite = raycast.collider.gameObject.GetComponent<SplitterSatellite>();
+        splitterSatellite.SetLaser(laser,raycast);
+
     }
 
 }

@@ -72,9 +72,11 @@
     <Compile Include="Assets\Scripts\Laser_Scripts\InteractionMethods.cs" />
     <Compile Include="Assets\Scripts\Satellite_Info.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\Laser_Scripts\SplitterSatellite.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\SatelliteCreator.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\TeachingController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />
+    <Compile Include="Assets\Scripts\Laser_Scripts\CombinerSatellite.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\LaserOrigin.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\LevelProgressPanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\LevelCompleteController.cs" />
