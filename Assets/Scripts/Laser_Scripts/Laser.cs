@@ -16,7 +16,7 @@ public enum LaserColour{
 
 public class Laser : MonoBehaviour
 {
-    public LaserOrigin origin;
+    public OriginSatellite origin;
     public LaserColour laserColour;
 
     public float maxDistance;
@@ -188,10 +188,14 @@ public class Laser : MonoBehaviour
                 refractionSatellite.SetActive(this,_raycast);
             }
         
-            else if (interaction == Interaction.Destination)
+            else if (interaction == Interaction.Destination && _transparency >= _minimumTransparencyNeededForDestinationRecognition)
             {
+                // Retrieve destination script
+                var destination = _raycast.collider.gameObject.GetComponent<DestinationSatellite>();
+
+                // Call to advance lock, as interaction has occurred.
+                if (destination != null) destination.AdvanceLock();
                 
-                if (_transparency >= _minimumTransparencyNeededForDestinationRecognition) InteractionFunctions.DestinationInteraction(this,_raycast);
             }
 
             else if (interaction == Interaction.Splitter)

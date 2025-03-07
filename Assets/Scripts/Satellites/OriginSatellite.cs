@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class LaserOrigin : MonoBehaviour
+public class OriginSatellite : MonoBehaviour
 {
 
     public LayerMask layersToHit;

@@ -6,7 +6,7 @@ public class SatelliteParent : MonoBehaviour
 {
     protected int _numLaser = 0;
 
-    protected LaserOrigin _trueOrigin;
+    protected OriginSatellite _trueOrigin;
     protected bool _active;
 
     protected GameController _gameController;

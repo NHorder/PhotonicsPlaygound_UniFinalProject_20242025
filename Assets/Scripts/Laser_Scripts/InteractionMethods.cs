@@ -61,14 +61,4 @@ class InteractionFunctions
         return inverseAngleOfNormal + refracted_angle;
     }
 
-    public static void DestinationInteraction(Laser laser, RaycastHit2D raycast)
-    {
-        // Retrieve destination script
-        var destination = raycast.collider.gameObject.GetComponent<LaserDestination>();
-
-        // Call to advance lock, as interaction has occurred.
-        if (destination != null) destination.AdvanceLock();
-    }
-
-
 }
