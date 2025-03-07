@@ -263,13 +263,19 @@ public class UIController : MonoBehaviour
 
             var position = _satelliteControlPanel.GetComponent<RectTransform>().anchoredPosition;
 
-            if (bVisible && position.y < satelliteControlPanelSettings.controlPanelVisibleLoc)  _satelliteControlPanelNewYLoc = satelliteControlPanelSettings.controlPanelVisibleLoc;
+            if (bVisible && position.y < satelliteControlPanelSettings.controlPanelVisibleLoc) 
+            {
+                _satelliteControlPanelNewYLoc = satelliteControlPanelSettings.controlPanelVisibleLoc;
+                _satelliteControlPanel.active = true;
+            }
+
             else if (!bVisible) _satelliteControlPanelNewYLoc = satelliteControlPanelSettings.controlPanelNotVisibleLoc;
             else _satelliteControlPanelMoving = false;
         }
 
         else if (uiExpectations.expectSatelliteControlsAndInfoPanels && panel == UIPanel.Satellite_Info_UI)
         {
+
             var rectTransform = _satelliteInfoUIPanel.GetComponent<RectTransform>();
             var position = rectTransform.anchoredPosition;
 
@@ -291,11 +297,8 @@ public class UIController : MonoBehaviour
                         else if (obj.name == "SatelliteDescription") textComponent.text = selectedSatelliteInfo.satelliteDescription;
                         else if (obj.name == "SellText")
                         {
-                            if (selectedSatelliteInfo.satelliteType == SatelliteType.Origin || selectedSatelliteInfo.satelliteType == SatelliteType.Destination)
-                            {
-                                textComponent.text = "Not for sale";
-                            }
-                            else textComponent.text = $"Sell £{selectedSatelliteInfo.satelliteSellPrice}";
+                            if (selectedSatelliteInfo.canBeSold) textComponent.text = $"Sell £{selectedSatelliteInfo.satelliteSellPrice}";
+                            else textComponent.text = "Not for sale";
                         }
 
                         else if (obj.name == "LightColour") 
@@ -360,7 +363,7 @@ public class UIController : MonoBehaviour
 
             var position = _levelProgressPanel.GetComponent<RectTransform>().anchoredPosition;
 
-            if (bVisible && position.y > levelProgressPanelSettings.levelProgressPanelOpenYLoc)  _levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelOpenYLoc;
+            if (bVisible && position.y > levelProgressPanelSettings.levelProgressPanelOpenYLoc) _levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelOpenYLoc;
             
             else if (!bVisible ) _levelProgressNewYLoc = levelProgressPanelSettings.levelProgressPanelCloseYLoc;
             

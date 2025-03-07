@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class LaserOrigin : MonoBehaviour
+public class OriginSatellite : MonoBehaviour
 {
 
     public LayerMask layersToHit;
@@ -114,6 +114,7 @@ public class LaserOrigin : MonoBehaviour
         }
         else
         {
+            Debug.Log("Destroying Laser!");
             // Destroy laser if unneeded
             Destroy(newLaser);
         }

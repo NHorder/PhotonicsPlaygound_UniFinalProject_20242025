@@ -120,15 +120,13 @@ public class SatelliteController : MonoBehaviour
                     // If expecting the controls and info panel, update and present the panels
                     if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
                     {
-                        // If the selected satellite panel is type Origin or Destination, hide the controls.
-                        if (_selectedSatelliteInfo.satelliteType == SatelliteType.Origin || _selectedSatelliteInfo.satelliteType == SatelliteType.Destination || 
-                        _selectedSatelliteInfo.satelliteType == SatelliteType.SatelliteCreator)
-                        {
-                            _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
-                        }
 
-                        // Else present them
-                        else _uiController.PresentPanel(UIPanel.Satellite_Controls,true);
+                        Debug.Log(_selectedSatelliteInfo.canbeMoved);
+
+                        // If the selected satellite can be moved, then present the movement panel, else hide it.
+                        if (_selectedSatelliteInfo.canbeMoved) _uiController.PresentPanel(UIPanel.Satellite_Controls,true);
+                        
+                        else _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
 
                         // Present the satellite info panel
                         _uiController.PresentPanel(UIPanel.Satellite_Info_UI,true);

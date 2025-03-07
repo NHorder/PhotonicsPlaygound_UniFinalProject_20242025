@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6343213271170247932}
   - component: {fileID: 8634325560550560757}
   - component: {fileID: 9110513624975738105}
+  - component: {fileID: 6588945143312817787}
   m_Layer: 3
   m_Name: Reflection_Satellite
   m_TagString: Untagged
@@ -172,7 +173,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.6}
+    pivot: {x: 0.5, y: 0.4222591}
     oldSize: {x: 2.25, y: 2.25}
     newSize: {x: 2.25, y: 2.25}
     adaptiveTilingThreshold: 0.5
@@ -181,10 +182,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.7616549, y: 0.21157205}
-      - {x: -0.7837479, y: 0.20878382}
-      - {x: -0.78318256, y: 0.13549848}
-      - {x: 0.756764, y: 0.1405591}
+    - - {x: 0.76566106, y: 0.5818156}
+      - {x: -0.7837479, y: 0.57502097}
+      - {x: -0.7831823, y: 0.50240296}
+      - {x: 0.75609714, y: 0.5077976}
   m_UseDelaunayMesh: 0
 --- !u!61 &8634325560550560757
 BoxCollider2D:
@@ -218,10 +219,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004829645, y: -0.48338974}
+  m_Offset: {x: -0.004829645, y: 0.04812777}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.6}
+    pivot: {x: 0.5, y: 0.4222591}
     oldSize: {x: 2.25, y: 2.25}
     newSize: {x: 2.25, y: 2.25}
     adaptiveTilingThreshold: 0.5
@@ -229,7 +230,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.134087, y: 1.6752644}
+  m_Size: {x: 2.134087, y: 1.7281225}
   m_EdgeRadius: 0
 --- !u!114 &9110513624975738105
 MonoBehaviour:
@@ -245,12 +246,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   satelliteType: 1
   interaction: 0
+  isDebris: 0
   satelliteName: 
   satelliteHealth: 100
   satelliteDescription: 
   satelliteShortDescription: 
   satellitePurchasePrice: 0
+  canBeSold: 1
   satelliteSellPrice: 0
+  canbeMoved: 1
   advanced_Satellite_Info:
     isSelectable: 1
     refractiveIndex: 0
@@ -261,9 +265,9 @@ MonoBehaviour:
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
     intialMovementMultiplier: 1
-    intialRotationMultiplier: 0.5
+    intialRotationMultiplier: 0.25
     maxMovementMultiplier: 10
-    maxRotationMultiplier: 10
+    maxRotationMultiplier: 2
   satellite_Shop_Info:
     IsShopItem: 0
     satelliteSprite: {fileID: 0}
@@ -271,3 +275,15 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
+--- !u!114 &6588945143312817787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159377607702779972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6aa863658c9914bab06b96d63c031b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
