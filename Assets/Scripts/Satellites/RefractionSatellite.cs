@@ -67,6 +67,7 @@ public class RefractionSatellite : SatelliteParent
             newOutgoingLaser.angle = refractedAngle;
             newOutgoingLaser.raycastPosition = incomingLaser.raycast.point;
             newOutgoingLaser.satelliteInfo = newSatelliteInfo;
+            newOutgoingLaser.laserColour = incomingLaser.laser.GetLaserColour();
 
             newOutgoingLaser.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance; 
 

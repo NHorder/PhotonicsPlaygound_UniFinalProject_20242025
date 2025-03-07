@@ -9,6 +9,8 @@ public class OriginSatellite : MonoBehaviour
     public LayerMask layersToHit;
     public float maxDistance = 50f;
 
+    public LaserColour laserColour;
+
     // First laser is placed manually, then attached
     public GameObject prefabLaser;
 
@@ -77,22 +79,26 @@ public class OriginSatellite : MonoBehaviour
         if (prefabLaser != null)
         {
             // Instantiate the first laser
-            var newLaser = Instantiate(prefabLaser);
-            newLaser.GetComponent<Laser>().origin = this;
+            var newLaserObj = Instantiate(prefabLaser);
+            var newLaser = newLaserObj.GetComponent<Laser>();
+            
+            newLaser.origin = this;
 
             // Set position and rotatation of inital laser
-            newLaser.transform.position = this.transform.position;
-            newLaser.transform.rotation = this.transform.rotation;
+            newLaserObj.transform.position = this.transform.position;
+            newLaserObj.transform.rotation = this.transform.rotation;
 
             // Reset scale as the prefab laser may not be unscaled.
-            newLaser.transform.localScale = new Vector3(1f,1f,1f);
+            newLaserObj.transform.localScale = new Vector3(1f,1f,1f);
 
             // Set energy and layers to hit.
-            newLaser.GetComponent<Laser>().maxDistance = maxDistance;
-            newLaser.GetComponent<Laser>().layersToHit = layersToHit;
+            newLaser.maxDistance = maxDistance;
+            newLaser.layersToHit = layersToHit;
+
+            newLaser.SetLaserColour(laserColour);
 
             // Add laser to lists.
-            AddLaser(newLaser,this.transform.position);
+            AddLaser(newLaserObj,this.transform.position);
         }
         else Debug.LogError("ERROR: Laser Origin has no connection to Prefab Laser");
 

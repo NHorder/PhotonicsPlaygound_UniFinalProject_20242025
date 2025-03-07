@@ -87,29 +87,34 @@ public class SatelliteParent : MonoBehaviour
         if (_trueOrigin.prefabLaser != null)
         {
             // Instantiate the first laser
-            var newLaser = Instantiate(_trueOrigin.prefabLaser);
-            newLaser.GetComponent<Laser>().origin = _trueOrigin;
+            var newLaserObj = Instantiate(_trueOrigin.prefabLaser);
 
-            newLaser.GetComponent<Laser>().refractionSatelliteInfo = laserInfo.satelliteInfo;
+            var newLaser = newLaserObj.GetComponent<Laser>();
+
+            newLaser.origin = _trueOrigin;
+
+            newLaser.refractionSatelliteInfo = laserInfo.satelliteInfo;
 
             Vector3 modifiedAngles = this.transform.eulerAngles;
             modifiedAngles.z = laserInfo.angle;
-            newLaser.transform.eulerAngles = modifiedAngles;
+            newLaserObj.transform.eulerAngles = modifiedAngles;
 
-            newLaser.GetComponent<Laser>().SetTransparency(laserInfo.laserTransparency);
+            newLaser.SetTransparency(laserInfo.laserTransparency);
 
             // Set position and rotatation of inital laser
-            newLaser.transform.position = laserInfo.origin;
+            newLaserObj.transform.position = laserInfo.origin;
 
             // Reset scale as the prefab laser may not be unscaled.
-            newLaser.transform.localScale = new Vector3(1f,1f,1f);
+            newLaserObj.transform.localScale = new Vector3(1f,1f,1f);
 
             // Set energy and layers to hit.
-            newLaser.GetComponent<Laser>().maxDistance = _trueOrigin.maxDistance;
-            newLaser.GetComponent<Laser>().layersToHit = _trueOrigin.layersToHit;
+            newLaser.maxDistance = _trueOrigin.maxDistance;
+            newLaser.layersToHit = _trueOrigin.layersToHit;
+
+            newLaser.SetLaserColour(laserInfo.laserColour);
 
             // Add laser to lists.
-            AddLaser(newLaser,laserInfo.raycastPosition);
+            AddLaser(newLaserObj,laserInfo.raycastPosition);
         }
     }
 

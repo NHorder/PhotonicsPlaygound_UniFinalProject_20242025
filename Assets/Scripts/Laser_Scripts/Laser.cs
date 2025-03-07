@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 public enum LaserColour{
+    Null,
     White,
     Red,
     Green,
@@ -17,7 +18,7 @@ public enum LaserColour{
 public class Laser : MonoBehaviour
 {
     public OriginSatellite origin;
-    public LaserColour laserColour;
+    public LaserColour _laserColour;
 
     public float maxDistance;
 
@@ -25,14 +26,13 @@ public class Laser : MonoBehaviour
     public LayerMask layersToHit;
 
 
-    private float _transparency = 1;
+    public float _transparency = 1;
     
     private RaycastHit2D _raycast;
 
     public Satellite_Info refractionSatelliteInfo;
     private bool _allowReflectionDuringRefraction;
 
-    private float _minimumTransparencyNeededForDestinationRecognition;
     private float _minimumTransparencyForReflectionDuringRefraction;
 
     // Start is called before the first frame update
@@ -52,7 +52,6 @@ public class Laser : MonoBehaviour
 
             // Retrieve Specialized interactions and settings from game controller.
             _allowReflectionDuringRefraction = gameController.specializedInteractionSettings.allowReflectionDuringRefraction;
-            _minimumTransparencyNeededForDestinationRecognition = gameController.specializedInteractionSettings.minimumTransparencyNeededForDestinationRecognition;
             _minimumTransparencyForReflectionDuringRefraction = gameController.specializedInteractionSettings.minimumTransparencyForReflectionDuringRefraction;
 
             // Force reset the scale, as the prefab laser may have different scales
@@ -188,13 +187,13 @@ public class Laser : MonoBehaviour
                 refractionSatellite.SetActive(this,_raycast);
             }
         
-            else if (interaction == Interaction.Destination && _transparency >= _minimumTransparencyNeededForDestinationRecognition)
+            else if (interaction == Interaction.Destination)
             {
                 // Retrieve destination script
                 var destination = _raycast.collider.gameObject.GetComponent<DestinationSatellite>();
 
                 // Call to advance lock, as interaction has occurred.
-                if (destination != null) destination.AdvanceLock();
+                if (destination != null) destination.AdvanceLock(_laserColour,_transparency);
                 
             }
 
@@ -210,7 +209,11 @@ public class Laser : MonoBehaviour
                 combinerSatellite.SetActive(this,_raycast);
             }
 
-
+            else if (interaction == Interaction.ColourFilter)
+            {
+                ColourFilterSatellite colourFilterSatellite = _raycast.collider.gameObject.GetComponent<ColourFilterSatellite>();
+                colourFilterSatellite.SetActive(this,_raycast);
+            }
         }
     }
 
@@ -231,6 +234,33 @@ public class Laser : MonoBehaviour
         modifiedColour.a = transparency;
 
         spriteRenderer.color = modifiedColour;
+
+    }
+
+    public LaserColour GetLaserColour()
+    {
+        return _laserColour;
+    }
+
+    public void SetLaserColour(LaserColour laserColour)
+    {
+        _laserColour = laserColour;
+
+        var colourID = 0;
+
+        if (laserColour == LaserColour.Null) SetTransparency(0f);
+        else if (laserColour == LaserColour.White) colourID = 0;
+        else if (laserColour == LaserColour.Red) colourID = 1;
+        else if (laserColour == LaserColour.Blue) colourID = 2;
+        else if (laserColour == LaserColour.Green) colourID = 3;
+        else if (laserColour == LaserColour.Cyan) colourID = 4;
+        else if (laserColour == LaserColour.Yellow) colourID = 5;
+        else if (laserColour == LaserColour.Magenta) colourID = 6;
+        else Debug.LogWarning("WARNING: Laser colour not known");
+
+        Animator animator = gameObject.GetComponent<Animator>();
+        animator.SetInteger("colourID",colourID);
+
 
     }
 

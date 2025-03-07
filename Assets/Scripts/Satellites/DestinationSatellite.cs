@@ -5,6 +5,8 @@ using UnityEngine;
 public class DestinationSatellite : MonoBehaviour
 {
 
+    public LaserColour neededLaserColour = LaserColour.White;
+
     private GameController _gameController;
     private string _satelliteName;
 
@@ -19,6 +21,15 @@ public class DestinationSatellite : MonoBehaviour
     private int _numUnlocks = 0;
     private bool _allLocksOpen = false;
 
+    private bool _colourAccepted = false;
+    private bool _newColourSeen = false;
+    private LaserColour _previousLaserColour;
+
+    private bool _newTransparencySeen = false;
+    private bool _transparencyAccepted = false;
+    private float _previousTransparency;
+    private float _neededTransparency = 0.5f;
+
 
     private int _laserDelay;
     private Animator _animator;
@@ -30,7 +41,7 @@ public class DestinationSatellite : MonoBehaviour
     {
         // Find the game controller, establish link
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-
+        _neededTransparency = _gameController.specializedInteractionSettings.minimumTransparencyNeededForDestinationRecognition;
 
         // Try to collect the level progress panel - as it may not exist / not be used
         // Cannot use UIController checks, as UIController may not have attached itself to the gamecontroller yet
@@ -68,7 +79,7 @@ public class DestinationSatellite : MonoBehaviour
         if (_updateCounter > _laserDelay && _levelProgressPanel != null)
         {
             // If lock advance request received, then update the lockProgressionCounter, and reset the lock advance request
-            if (_lockAdvanceRequest)
+            if (_lockAdvanceRequest && _colourAccepted && _transparencyAccepted)
             {
                 // Reset the advance request - in order to get the next request
                 _lockAdvanceRequest = false;
@@ -78,8 +89,23 @@ public class DestinationSatellite : MonoBehaviour
             }
             else 
             {
+
+                if (_lockAdvanceRequest && !_colourAccepted && _newColourSeen)
+                {
+                    _levelProgressPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
+            
+                    _newColourSeen = false;
+                }
+
+                else if (_lockAdvanceRequest && !_transparencyAccepted && _newTransparencySeen)
+                {
+                    _levelProgressPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
+                    _newTransparencySeen = false;
+                }
+
+
                 // Update UI components to announce that a locks have been reset
-                if (_numUnlocks > 0) _levelProgressPanel.LogCommunications(_satelliteName,-1);
+                else if (_numUnlocks > 0) _levelProgressPanel.LogCommunications(_satelliteName,-1);
                 // Note: -1 indicates that the locks have been reset, as the connection is lost
                 
                 // If no request, then reset the locks - as the laser isn't consistently connected.
@@ -146,10 +172,28 @@ public class DestinationSatellite : MonoBehaviour
     }
 
 
-    public void AdvanceLock()
+    public void AdvanceLock(LaserColour laserColour, float transparency)
     {
         // Call from Laser interaction to advance the lock
         _lockAdvanceRequest = true;
+
+
+        if (transparency != _previousTransparency)
+        {
+            _newTransparencySeen = true;
+            _previousTransparency = transparency;
+        }
+
+        if (transparency >= _neededTransparency) _transparencyAccepted = true;
+
+        if (laserColour != _previousLaserColour)
+        {
+            _newColourSeen = true;
+            _previousLaserColour = laserColour;
+        }
+        
+        if (neededLaserColour == LaserColour.White) _colourAccepted = true;
+        else if (neededLaserColour == laserColour) _colourAccepted = true;
     }
 
 

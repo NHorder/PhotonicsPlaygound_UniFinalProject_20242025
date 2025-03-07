@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Satellites\SatelliteParent.cs" />
     <Compile Include="Assets\Scripts\Satellites\CombinerSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\LevelProgressPanel.cs" />
+    <Compile Include="Assets\Scripts\Satellites\ColourFilterSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\LevelCompleteController.cs" />
     <Compile Include="Assets\Scripts\Satellites\SplitterSatellite.cs" />
   </ItemGroup>

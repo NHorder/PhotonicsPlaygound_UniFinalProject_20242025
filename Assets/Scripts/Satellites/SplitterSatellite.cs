@@ -115,7 +115,6 @@ public class SplitterSatellite : SatelliteParent
 
     override public void SetActive(Laser laser, RaycastHit2D raycast)
     {
-        Debug.Log("Boo!");
 
         if (_trueOrigin == null) _trueOrigin = laser.origin;
 
@@ -131,7 +130,7 @@ public class SplitterSatellite : SatelliteParent
             _incomingLasers.Add(newIncomingLaser);
 
 
-            LaserColour laserOriginColour = laser.laserColour;
+            LaserColour laserOriginColour = laser.GetLaserColour();
 
             if (_numExpectedOutput == 2) DetermineTwoOutputs(laserOriginColour);
             else if (_numExpectedOutput == 3) DetermineThreeOutputs(laserOriginColour);

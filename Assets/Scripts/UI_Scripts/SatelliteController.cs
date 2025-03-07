@@ -121,8 +121,6 @@ public class SatelliteController : MonoBehaviour
                     if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
                     {
 
-                        Debug.Log(_selectedSatelliteInfo.canbeMoved);
-
                         // If the selected satellite can be moved, then present the movement panel, else hide it.
                         if (_selectedSatelliteInfo.canbeMoved) _uiController.PresentPanel(UIPanel.Satellite_Controls,true);
                         
