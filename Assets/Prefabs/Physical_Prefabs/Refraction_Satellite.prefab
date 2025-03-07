@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6972008128632226578}
   - component: {fileID: 779540735960490585}
   - component: {fileID: 3873609283655435960}
+  - component: {fileID: 6681935678447856795}
   m_Layer: 3
   m_Name: Refraction_Satellite
   m_TagString: Untagged
@@ -164,10 +165,10 @@ PolygonCollider2D:
       - {x: -1.750911, y: -0.9847039}
       - {x: 1.7588465, y: -0.9837619}
       - {x: 1.7500054, y: 1.0156473}
-    - - {x: -1.7473761, y: 1.0133256}
-      - {x: 1.7482862, y: 1.0138093}
-      - {x: 1.7514685, y: -0.9748519}
-      - {x: -1.7427794, y: -0.9776652}
+    - - {x: -1.7455031, y: 1.0112187}
+      - {x: 1.7398157, y: 1.0050148}
+      - {x: 1.7470368, y: -0.9719006}
+      - {x: -1.7450873, y: -0.97802496}
   m_UseDelaunayMesh: 0
 --- !u!61 &6972008128632226578
 BoxCollider2D:
@@ -247,20 +248,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 2
+  satelliteType: 3
   interaction: 0
+  isDebris: 0
   satelliteName: 
   satelliteHealth: 100
   satelliteDescription: 
   satelliteShortDescription: 
   satellitePurchasePrice: 0
+  canBeSold: 1
   satelliteSellPrice: 0
+  canbeMoved: 1
   advanced_Satellite_Info:
     isSelectable: 1
     refractiveIndex: 0
     percentageOfReflectedLightWhenRefracted: 0
     surfaceColor: 0
-    absorbance: 0
+    absorbance: 0.1
     lightColor: 0
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
@@ -275,3 +279,15 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
+--- !u!114 &6681935678447856795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407986768139647972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0297db18b679f24eb9202c2934755d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -114,6 +114,7 @@ public class LaserOrigin : MonoBehaviour
         }
         else
         {
+            Debug.Log("Destroying Laser!");
             // Destroy laser if unneeded
             Destroy(newLaser);
         }

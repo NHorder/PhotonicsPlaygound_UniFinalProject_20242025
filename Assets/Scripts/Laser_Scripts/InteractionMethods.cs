@@ -9,8 +9,14 @@ public enum Interaction
     Reflection,
     Refraction,
     Splitter,
+    Combiner,
     Origin,
     Destination,
+
+
+    Overseer,
+    Elysian
+
 }
 
 class InteractionFunctions
@@ -64,12 +70,5 @@ class InteractionFunctions
         if (destination != null) destination.AdvanceLock();
     }
 
-    public static void SplitterInteraction(Laser laser, RaycastHit2D raycast)
-    {
-
-        SplitterSatellite splitterSatellite = raycast.collider.gameObject.GetComponent<SplitterSatellite>();
-        splitterSatellite.SetLaser(laser,raycast);
-
-    }
 
 }

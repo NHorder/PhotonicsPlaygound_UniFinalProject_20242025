@@ -10,9 +10,9 @@ public enum SplitterType
     SixOutput
 }
 
-public class SplitterSatellite : MonoBehaviour
-{
 
+public class SplitterSatellite : SatelliteParent
+{
     public SplitterType splitterType;
     private int _numExpectedOutput;
 
@@ -35,10 +35,12 @@ public class SplitterSatellite : MonoBehaviour
     public ThreeOutputSplitterSettings threeOutputSplitterSettings;
     public SixOutputSplitterSettings sixOutputSplitterSettings;
 
-
     // Start is called before the first frame update
     void Start()
     {
+
+        base.Start();
+
         _laserColours = new List<LaserColour>();
         _outputAngles = new List<float>();
 
@@ -92,53 +94,62 @@ public class SplitterSatellite : MonoBehaviour
     {
         if (_laserColours.Count != 0)
         {
-            // Retrieve Prefab Laser
-            GameObject prefab = _laser.origin.prefabLaser;
-
             for (int i = 0; i < _laserColours.Count;i++)
             {
-
-                Vector2 position = this.transform.position;
-
-                float angle = this.transform.eulerAngles.z + _outputAngles[i]; 
-
-                // Instantiate new laser at position
-                GameObject newLaser = _laser.InstantiateNewLaser(position,angle, _energyPerLaser);
-
-
                 Vector3 raycastPoint = _raycast.point;
 
                 // If I is more than one, then add a minor offset to allow creation of X laser
                 if (i > 0) raycastPoint.x += (0.00001f * i);
 
-                // Connect new laser to the origin
-                _laser.origin.AddLaser(newLaser,raycastPoint);
+                OutgoingLaserInfo outgoingLaserInfo = new OutgoingLaserInfo();
+                outgoingLaserInfo.angle = this.transform.eulerAngles.z + _outputAngles[i];
+                outgoingLaserInfo.origin = this.transform.position;
+                outgoingLaserInfo.raycastPosition = raycastPoint;
+                outgoingLaserInfo.laserTransparency = 1f;
+
+                outgoingLaserInfo.laserColour = _laserColours[i]; 
+
+                _outgoingLaserInfo.Add(outgoingLaserInfo);
+
             }
-
             _laserColours.Clear();
+        }
 
+        base.Update();
+    }
+
+    override public void SetActive(Laser laser, RaycastHit2D raycast)
+    {
+        Debug.Log("Boo!");
+
+        if (_trueOrigin == null) _trueOrigin = laser.origin;
+
+        _active = true;
+
+        // Restricts input to only one laser
+        if (_incomingLasers.Count == 0)
+        {
+            IncomingLaser newIncomingLaser = new IncomingLaser();
+            newIncomingLaser.laser = laser;
+            newIncomingLaser.raycast = raycast;
+
+            _incomingLasers.Add(newIncomingLaser);
+
+
+            LaserColour laserOriginColour = laser.laserColour;
+
+            if (_numExpectedOutput == 2) DetermineTwoOutputs(laserOriginColour);
+            else if (_numExpectedOutput == 3) DetermineThreeOutputs(laserOriginColour);
+            else if (_numExpectedOutput == 6) DetermineSixOutputs(laserOriginColour);
+            else Debug.LogError("ERROR: An error has occurred when splitting the laser");
         }
     }
 
-    public void SetLaser(Laser laser, RaycastHit2D raycast)
-    {
-        Debug.Log("Interaction Occuring!");
-
-        _laser = laser;
-        _raycast = raycast;
-        LaserColour laserOriginColour = _laser.laserColour;
-
-        if (_numExpectedOutput == 2) DetermineTwoOutputs(laserOriginColour);
-        else if (_numExpectedOutput == 3) DetermineThreeOutputs(laserOriginColour);
-        else if (_numExpectedOutput == 6) DetermineSixOutputs(laserOriginColour);
-        else Debug.LogError("ERROR: An error has occurred when splitting the laser");
-    }
-
-
+    
     private void DetermineTwoOutputs(LaserColour laserOriginColour, bool allocatedEnergyPerLaser = false)
     {
         // If the energy has not been already allocated, then calcualte it for two outputs
-        if (!allocatedEnergyPerLaser) _energyPerLaser = Mathf.Clamp01((_laser.GetTransparency() - _thisSatelliteAbsorbance) / 2);
+        if (!allocatedEnergyPerLaser) _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() - _thisSatelliteAbsorbance) / 2);
 
         // If a white laser, then use the pre-defined random colours
         // This is pre-defined to prervent strobe effects as the laser is repeatedly created and destroyed.
@@ -188,7 +199,7 @@ public class SplitterSatellite : MonoBehaviour
     private void DetermineThreeOutputs(LaserColour laserOriginColour)
     {
         // Calcualte energy per laser for three outputs
-        _energyPerLaser = Mathf.Clamp01((_laser.GetTransparency() - _thisSatelliteAbsorbance) / 3);
+        _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() - _thisSatelliteAbsorbance) / 3);
 
         // Determine two colours based on the origin laser colour
         DetermineTwoOutputs(laserOriginColour,true);
@@ -204,7 +215,7 @@ public class SplitterSatellite : MonoBehaviour
     private void DetermineSixOutputs(LaserColour laserOriginColour)
     {
         // Calculate energy needed for all six lasers
-        _energyPerLaser = Mathf.Clamp01((_laser.GetTransparency() - _thisSatelliteAbsorbance) / 6);
+        _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() - _thisSatelliteAbsorbance) / 6);
 
         // This type of 6 origin laser 
         if (laserOriginColour == LaserColour.White)
@@ -236,6 +247,8 @@ public class SplitterSatellite : MonoBehaviour
     }
 
 }
+
+
 
 
 [System.Serializable]

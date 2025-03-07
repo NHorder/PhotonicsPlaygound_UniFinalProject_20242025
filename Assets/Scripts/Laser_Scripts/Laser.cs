@@ -29,7 +29,7 @@ public class Laser : MonoBehaviour
     
     private RaycastHit2D _raycast;
     private Vector3 _laserCoordinates;
-    private Satellite_Info _refractionSatelliteInfo;
+    public Satellite_Info refractionSatelliteInfo;
     private bool _allowReflectionDuringRefraction;
 
     private float _minimumTransparencyNeededForDestinationRecognition;
@@ -113,7 +113,7 @@ public class Laser : MonoBehaviour
 
             // Check that the distance from the ray origin and the object is more than minimum (defined in gameController)
             // AND that the collider is of type polygon2d 
-            if (rayCastInLoop.distance > 0.01 && (rayCastInLoop.collider is PolygonCollider2D))
+            if (rayCastInLoop.distance > 0.05 && (rayCastInLoop.collider is PolygonCollider2D))
             {
                 // Set the raycast and break the loop, as it's the first found
                 _raycast = rayCastInLoop;
@@ -179,120 +179,14 @@ public class Laser : MonoBehaviour
 
             else if (interaction == Interaction.Reflection)
             {
-                // Calculate the rotation angle
-                float rotateAngle = InteractionFunctions.ReflectionInteraction(this.transform,_raycast);
-
-                // Instantiate new laser
-                GameObject newLaser = InstantiateNewLaser(new Vector3(_raycast.point.x, _raycast.point.y,-2), rotateAngle,remainingLightStrength);
-
-                // Connect new laser to the origin
-                origin.AddLaser(newLaser,_raycast.point);
+                ReflectionSatellite reflectionSatellite = _raycast.collider.gameObject.GetComponent<ReflectionSatellite>();
+                reflectionSatellite.SetActive(this,_raycast);
             }
 
             else if (interaction == Interaction.Refraction)
             {
-                // Defines a small minimal offset, this is to make sure the raycast does not re-collide the same collider
-                // Assumes collider is hollow and thickness is small.
-                var yOffset = 0.01f;
-                var xOffset = 0.01f;
-
-                // Definition of some intial information that's needed regardless of rerfraction type       
-                float incidentIndex;
-                float refractiveIndex; 
-                var point = _raycast.point;
-                Vector3 normal;
-
-                // This is default to null as assumption made is that the laser incident or refraction is in a vacuum. Hence it links to a satellite's info, the new
-                // laser should not have associated satellite info. Null checks are done, so it doesn't cause problems.
-                Satellite_Info newSatelliteInfo = null;
-
-                // Diffraction when entering a refracton satellite with a higher refractive index than a vacuum
-                if (_refractionSatelliteInfo == null)
-                {
-                    // Assumption that we are in a vacuum
-                    incidentIndex = 1;
-
-                    // Collect the refractive index from the linked satellite info we hit using the rayCast earlier
-                    refractiveIndex = satelliteInfo.advanced_Satellite_Info.refractiveIndex;
-
-                    // Shift if used to make sure the new raycast / laser won't rehit the exact same collider position as this raycast
-                    // Assumes that the object has a HOLLOW collider - made using polygonal colliders.
-
-                    // Apply a shift on the y axis as needed
-                    if (point.y < hitObject.transform.position.y) point.y += yOffset;
-                    else if (point.y > hitObject.transform.position.y) point.y -= yOffset;
-                    
-                    // Apply a shift on the x axis as needed
-                    if (point.x < hitObject.transform.position.x) point.x += xOffset;
-                    else if (point.x > hitObject.transform.position.x) point.x -= xOffset;               
-
-                    // Set satellite info
-                    newSatelliteInfo = satelliteInfo;
-                }
-
-                // Diffraction when exiting a satellite with a higher refractive index than a vacuum
-                else
-                {
-                    // Collect the refractive index of the satellite the laser is currently within
-                    incidentIndex = _refractionSatelliteInfo.advanced_Satellite_Info.refractiveIndex;
-
-                    // Assumption we are exiting into a vacuum
-                    refractiveIndex = 1;
-
-                    // Shift if used to make sure the new raycast / laser won't rehit the exact same collider position as this raycast
-                    // Assumes that the object has a HOLLOW collider - made using polygonal colliders.
-
-                    // Apply a shift on the y axis if needed
-                    if (point.y < hitObject.transform.position.y) point.y -= yOffset;
-                    else if (point.y > hitObject.transform.position.y) point.y +=yOffset;
-                    
-                    // Apply a shift on the x axis if needed
-                    if (point.x < hitObject.transform.position.x) point.x -= xOffset;
-                    else if (point.x > hitObject.transform.position.x) point.x += xOffset;     
-                }
-
-                // Calculate the refracted angle through interaction functions
-                var refractedAngle = InteractionFunctions.RefractionInteraction(incidentIndex,refractiveIndex,_raycast.normal,this);
-
-                // If the refracted angle is not NaN - NaN occurs when total internal reflection occurs.
-                if (!float.IsNaN(refractedAngle))
-                {
-
-                    // Default reflected light strength
-                    float reflectedLightStrength = 0;
-
-                    // If the setting is allowed, then calculate the reflected light strength (transparency)
-                    // The light setting is used to show Fresnel Equations, which determines reflections during refraction
-                    if (_allowReflectionDuringRefraction && _refractionSatelliteInfo == null)
-                    {
-                        // Calculate the reflected power using 'normal incidence' Fresnel Equation - as polarisation of the light is not considered.
-                        float reflectedPower = Mathf.Pow(Mathf.Abs((incidentIndex - refractiveIndex) / (incidentIndex + refractiveIndex)),2);
-
-                        // Determine the relected light strength.
-                        reflectedLightStrength = Mathf.Clamp01(remainingLightStrength * reflectedPower);
-                    }
-
-                    // Calculate the refracted light strength (transparency)
-                    float refractedLightStrength = Mathf.Clamp01(remainingLightStrength - reflectedLightStrength);
-
-                    // Instantiate a new laser
-                    GameObject newLaser = InstantiateNewLaser(point,refractedAngle,refractedLightStrength);
-
-                    // Update the laser satellite info - based on whether leaving or entering
-                    // This may be redundant when leaving, as the prefab laser doesn't have any links to satellites. I think of it as confirmation that it's doing what it should be.
-                    newLaser.GetComponent<Laser>()._refractionSatelliteInfo = newSatelliteInfo;
-
-                    // Add laser to origin
-                    origin.AddLaser(newLaser,point);//rayCast.point);             
-
-                    // If setting is allowed and the strength is not below the minimum needed for reflection during refraction
-                    // Defaults to 0.02f  (2% transparency)
-                    if (_allowReflectionDuringRefraction && reflectedLightStrength > _minimumTransparencyForReflectionDuringRefraction)
-                    {
-                        // Call HitObject again, this time overwriting the interaction and strength - forcing this interaction type to occur
-                        HitObject(reflectedLightStrength,Interaction.Reflection);
-                    }
-                }            
+                RefractionSatellite refractionSatellite = _raycast.collider.gameObject.GetComponent<RefractionSatellite>();
+                refractionSatellite.SetActive(this,_raycast);
             }
         
             else if (interaction == Interaction.Destination)
@@ -301,10 +195,22 @@ public class Laser : MonoBehaviour
                 if (_transparency >= _minimumTransparencyNeededForDestinationRecognition) InteractionFunctions.DestinationInteraction(this,_raycast);
             }
 
+
+
+
+
             else if (interaction == Interaction.Splitter)
             {
-                InteractionFunctions.SplitterInteraction(this,_raycast);
+                SplitterSatellite splitterSatellite = _raycast.collider.gameObject.GetComponent<SplitterSatellite>();
+                splitterSatellite.SetActive(this,_raycast);
             }
+
+            else if (interaction == Interaction.Combiner)
+            {
+                CombinerSatellite combinerSatellite = _raycast.collider.gameObject.GetComponent<CombinerSatellite>();
+                combinerSatellite.SetActive(this,_raycast);
+            }
+
 
         }
     }
@@ -348,6 +254,11 @@ public class Laser : MonoBehaviour
     public float GetTransparency()
     {
         return _transparency;
+    }
+
+    public void SetTransparency(float transparency)
+    {
+        _transparency = transparency;
     }
 
 }

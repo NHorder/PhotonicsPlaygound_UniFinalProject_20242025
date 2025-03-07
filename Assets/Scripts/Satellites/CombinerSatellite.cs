@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombinerSatellite : MonoBehaviour
+public class CombinerSatellite : SatelliteParent
 {
     // Start is called before the first frame update
     void Start()

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4279933061389300841}
   - component: {fileID: 4508122786947588055}
   - component: {fileID: 3975646809958847301}
+  - component: {fileID: 7745112948253160205}
   m_Layer: 3
   m_Name: DoubleReflector_Prefab
   m_TagString: Untagged
@@ -278,3 +279,15 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
+--- !u!114 &7745112948253160205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339632074429853780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6aa863658c9914bab06b96d63c031b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

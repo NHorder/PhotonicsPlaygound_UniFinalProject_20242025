@@ -64,22 +64,26 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.50f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Satellites\RefractionSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\LaserDestination.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\ConfirmationPanel.cs" />
+    <Compile Include="Assets\Scripts\Laser_Scripts\ConbineHarvester.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\UIController.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\SatelliteController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\InteractionMethods.cs" />
     <Compile Include="Assets\Scripts\Satellite_Info.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
-    <Compile Include="Assets\Scripts\Laser_Scripts\SplitterSatellite.cs" />
+    <Compile Include="Assets\Scripts\Satellites\ReflectionSatellite.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\SatelliteCreator.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\TeachingController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />
-    <Compile Include="Assets\Scripts\Laser_Scripts\CombinerSatellite.cs" />
+    <Compile Include="Assets\Scripts\Satellites\SatelliteParent.cs" />
+    <Compile Include="Assets\Scripts\Satellites\CombinerSatellite.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\LaserOrigin.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\LevelProgressPanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\LevelCompleteController.cs" />
+    <Compile Include="Assets\Scripts\Satellites\SplitterSatellite.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

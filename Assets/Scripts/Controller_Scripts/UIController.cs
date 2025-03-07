@@ -255,9 +255,6 @@ public class UIController : MonoBehaviour
         // This is to prevent potential errors when a user spam clicks a specific satellite.
         if (uiExpectations.expectSatelliteControlsAndInfoPanels && panel == UIPanel.Satellite_Controls)
         {
-
-            Debug.Log("Hi?");
-
             // Update moving to true, meaning update will now move the satellite.
             _satelliteControlPanelMoving = true;
 
@@ -265,8 +262,6 @@ public class UIController : MonoBehaviour
             // It is hard coded, in the update, when moved offscreen it will be disabled.
 
             var position = _satelliteControlPanel.GetComponent<RectTransform>().anchoredPosition;
-
-            Debug.Log("Current Pos : "+position + " | Expected: "+_satelliteControlPanelNewYLoc);
 
             if (bVisible && position.y < satelliteControlPanelSettings.controlPanelVisibleLoc) 
             {
