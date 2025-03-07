@@ -116,13 +116,7 @@ public class SatelliteParent : MonoBehaviour
 
     private void AddLaser(GameObject newLaser,Vector2 newLaserOrigin)
     {
-        // Method to add laser to lists
-
-        //Check if laser origin already exists - prevents creation of unneccary lasers
-
-
-        Debug.Log("Laser being added!");
-
+        
         if (!_outgoingLaserOrigins.Contains(newLaserOrigin))
         {
             // Add laser object and origin to lists respectively

@@ -61,7 +61,6 @@ public class RefractionSatellite : SatelliteParent
 
         if (!float.IsNaN(refractedAngle))
         {
-            Debug.Log("Refracted Angle: "+refractedAngle);
 
             OutgoingLaserInfo newOutgoingLaser = new OutgoingLaserInfo();
             newOutgoingLaser.origin = point;

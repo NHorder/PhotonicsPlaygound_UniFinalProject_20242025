@@ -7,8 +7,6 @@ public class ReflectionSatellite : SatelliteParent
     override public void Interaction(IncomingLaser incomingLaser)
     {
 
-        Debug.Log("Interaction occurring!");
-
         float reflected_angle = InteractionFunctions.ReflectionInteraction(incomingLaser.laser.transform,incomingLaser.raycast);
 
         OutgoingLaserInfo outgoingLaserInfo = new OutgoingLaserInfo();
