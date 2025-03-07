@@ -144,7 +144,7 @@ public class Satellite_Info : MonoBehaviour
 
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
-            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0.1f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
             interaction = Interaction.Destination;
         }
@@ -185,7 +185,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Reflection;
             
@@ -204,7 +204,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
             if (satelliteSellPrice == 0) satelliteSellPrice = 75;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Reflection;
 
@@ -224,7 +224,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
             if (satelliteSellPrice == 0) satelliteSellPrice = 75;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.52f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.033f;
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
         }
         else if (satelliteType == SatelliteType.ColourFilter)
@@ -241,7 +241,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 75;
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
         }
@@ -259,7 +259,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
             if (satelliteSellPrice == 0) satelliteSellPrice = 250;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.15f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
 
@@ -278,7 +278,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 350;
             if (satelliteSellPrice == 0) satelliteSellPrice = 250;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Splitter;
 

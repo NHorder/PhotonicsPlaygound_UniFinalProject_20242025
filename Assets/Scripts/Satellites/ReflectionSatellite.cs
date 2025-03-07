@@ -16,9 +16,9 @@ public class ReflectionSatellite : SatelliteParent
         outgoingLaserInfo.origin = incomingLaser.raycast.point;
         outgoingLaserInfo.raycastPosition = incomingLaser.raycast.point;
 
+        outgoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
+
         _outgoingLaserInfo.Add(outgoingLaserInfo);
-
-        
+   
     }
-
 }

@@ -24,6 +24,7 @@ public class SatelliteParent : MonoBehaviour
 
     protected List<OutgoingLaserInfo> _outgoingLaserInfo;
 
+    protected Satellite_Info _thisSatelliteInfo;
 
 
 
@@ -32,6 +33,8 @@ public class SatelliteParent : MonoBehaviour
     {
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _updateDelay = _gameController.framerateRelatedSettings.laserCycleDelay;
+
+        _thisSatelliteInfo = gameObject.GetComponent<Satellite_Info>();
 
         _incomingLasers = new List<IncomingLaser>();
         _outgoingLaserInfo = new List<OutgoingLaserInfo>();
@@ -94,7 +97,6 @@ public class SatelliteParent : MonoBehaviour
             newLaser.transform.eulerAngles = modifiedAngles;
 
             newLaser.GetComponent<Laser>().SetTransparency(laserInfo.laserTransparency);
-            
 
             // Set position and rotatation of inital laser
             newLaser.transform.position = laserInfo.origin;

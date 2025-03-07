@@ -21,7 +21,7 @@ public class CombinerSatellite : SatelliteParent
     {
         if (_incomingLasers.Count > 0)
         {
-            float energyPerLaser = _incomingLasers[0].laser.GetTransparency();
+            float energyPerLaser = _incomingLasers[0].laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
 
             if (_incomingLasers.Count > 1)
             {
@@ -50,7 +50,7 @@ public class CombinerSatellite : SatelliteParent
     }
 
 
-        private void CalculateOutputLaserColour(Laser firstLaser, Laser secondLaser = null)
+    private void CalculateOutputLaserColour(Laser firstLaser, Laser secondLaser = null)
     {
         if (_redLaser && _blueLaser) _outputLaserColour = LaserColour.Magenta;
         else if (_redLaser && _greenLaser) _outputLaserColour = LaserColour.Yellow;

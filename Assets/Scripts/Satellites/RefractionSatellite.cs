@@ -5,16 +5,6 @@ using UnityEngine;
 public class RefractionSatellite : SatelliteParent
 {
 
-    private Satellite_Info _thisSatelliteInfo;
-
-
-    public void Start()
-    {
-        base.Start();
-
-        _thisSatelliteInfo = this.gameObject.GetComponent<Satellite_Info>();
-    }
-
     override public void Interaction(IncomingLaser incomingLaser)
     {
         var yOffset = 0.02f;
@@ -78,6 +68,8 @@ public class RefractionSatellite : SatelliteParent
             newOutgoingLaser.angle = refractedAngle;
             newOutgoingLaser.raycastPosition = incomingLaser.raycast.point;
             newOutgoingLaser.satelliteInfo = newSatelliteInfo;
+
+            newOutgoingLaser.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance; 
 
             _outgoingLaserInfo.Add(newOutgoingLaser);
         }

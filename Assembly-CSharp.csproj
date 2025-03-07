@@ -68,7 +68,6 @@
     <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\LaserDestination.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\ConfirmationPanel.cs" />
-    <Compile Include="Assets\Scripts\Laser_Scripts\ConbineHarvester.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\UIController.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\SatelliteController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\InteractionMethods.cs" />

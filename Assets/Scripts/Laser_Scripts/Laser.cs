@@ -28,7 +28,7 @@ public class Laser : MonoBehaviour
     private float _transparency = 1;
     
     private RaycastHit2D _raycast;
-    private Vector3 _laserCoordinates;
+
     public Satellite_Info refractionSatelliteInfo;
     private bool _allowReflectionDuringRefraction;
 
@@ -128,7 +128,6 @@ public class Laser : MonoBehaviour
         Debug.DrawRay(transform.position, transform.up, Color.black, 0.01f, true);
     }
 
-
     private void HitObject(float remainingLightStrength = -1, Interaction interaction = Interaction.SelfDetermine)
     {
         // Has defaults in order to allow for more complex interactions to occur, I.e Fresnel Equations (refraction and reflection)
@@ -195,10 +194,6 @@ public class Laser : MonoBehaviour
                 if (_transparency >= _minimumTransparencyNeededForDestinationRecognition) InteractionFunctions.DestinationInteraction(this,_raycast);
             }
 
-
-
-
-
             else if (interaction == Interaction.Splitter)
             {
                 SplitterSatellite splitterSatellite = _raycast.collider.gameObject.GetComponent<SplitterSatellite>();
@@ -216,41 +211,6 @@ public class Laser : MonoBehaviour
     }
 
     
-    public GameObject InstantiateNewLaser(Vector2 position, float angle, float remainingEnergy)
-    {
-
-        // Instatiate a new laser, using the prefab laser
-        var newLaser = Instantiate(origin.prefabLaser);
-
-        // Update it's components based on this laser's private variables
-        newLaser.GetComponent<Laser>().origin = this.origin;
-        newLaser.GetComponent<Laser>()._transparency = remainingEnergy;
-
-        // Collect the new lasers colour and overwrite it results in the new laser being 
-        // more transparent
-        // NOTE: The actual Hex colour values are NOT changed, only thte alpha value
-        var overwrittenColor =newLaser.GetComponent<SpriteRenderer>().color;
-        overwrittenColor.a = remainingEnergy;
-        newLaser.GetComponent<SpriteRenderer>().color = overwrittenColor;
-
-
-        // Set the new laser position at the provided position
-        newLaser.transform.position = new Vector3(position.x, position.y,-2);
-
-        // Rotate new laser by the provided angle
-        newLaser.transform.Rotate(0f,0f,angle);
-
-        // Reset the scale - scale is modified during execution to ensure correct size of the laser
-        newLaser.transform.localScale = new Vector3(1f,1f,1f);
-
-        // Return new laser object
-        return newLaser;
-
-        // NOTE: Adding the new laser to the origin is not included in this instantiation as some additional modifications may be needed
-        // by specific interactions, I.e refraction changing the satellite info, as such this allows a brief delay to update that before adding it
-        // it prevents bugs / unexpected events from occuring.
-    }
-
     public float GetTransparency()
     {
         return _transparency;
@@ -259,6 +219,15 @@ public class Laser : MonoBehaviour
     public void SetTransparency(float transparency)
     {
         _transparency = transparency;
+
+        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        Color modifiedColour = spriteRenderer.color;
+
+        modifiedColour.a = transparency;
+
+        spriteRenderer.color = modifiedColour;
+
     }
 
 }
