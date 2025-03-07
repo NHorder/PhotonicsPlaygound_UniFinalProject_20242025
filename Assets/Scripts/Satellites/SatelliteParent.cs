@@ -37,7 +37,6 @@ public class SatelliteParent : MonoBehaviour
         _outgoingLaserInfo = new List<OutgoingLaserInfo>();
         _outgoingLaserOrigins = new List<Vector3>();
         _outgoingLaserObjects = new List<GameObject>();
-
             
     }
 
@@ -81,8 +80,6 @@ public class SatelliteParent : MonoBehaviour
 
     private void FireLaser(OutgoingLaserInfo laserInfo)
     {
-
-        Debug.Log("Prefab:" +_trueOrigin.prefabLaser);
 
         if (_trueOrigin.prefabLaser != null)
         {
