@@ -5982,6 +5982,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 515473034}
     m_Modifications:
+    - target: {fileID: 4508122786947588055, guid: 0e600e0de2e54284ebbcab083f626959, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6339632074429853780, guid: 0e600e0de2e54284ebbcab083f626959, type: 3}
       propertyPath: m_Name
       value: DoubleReflector_Satellite
