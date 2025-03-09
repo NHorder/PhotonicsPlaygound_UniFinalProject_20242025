@@ -41,6 +41,7 @@ public class CombinerSatellite : SatelliteParent
 
             newOutgoingLaser.satelliteInfo = null;
             newOutgoingLaser.laserTransparency = energyPerLaser;
+            newOutgoingLaser.laserColour = _outputLaserColour;
 
 
             _outgoingLaserInfo.Add(newOutgoingLaser);
@@ -71,16 +72,16 @@ public class CombinerSatellite : SatelliteParent
         else if (secondLaser != null)
         {
             // If they're equal to each other, then take the first laser colour
-            if (firstLaser.laserColour == secondLaser.laserColour) _outputLaserColour = firstLaser.laserColour;
+            if (firstLaser.GetLaserColour() == secondLaser.GetLaserColour()) _outputLaserColour = firstLaser.GetLaserColour();
 
             // If one of the laser colours is white, take the other laser colour
-            else if (firstLaser.laserColour != LaserColour.White && secondLaser.laserColour == LaserColour.White) _outputLaserColour = firstLaser.laserColour;
-            else if (firstLaser.laserColour == LaserColour.White && secondLaser.laserColour != LaserColour.White)  _outputLaserColour = secondLaser.laserColour;
+            else if (firstLaser.GetLaserColour() != LaserColour.White && secondLaser.GetLaserColour() == LaserColour.White) _outputLaserColour = firstLaser.GetLaserColour();
+            else if (firstLaser.GetLaserColour() == LaserColour.White && secondLaser.GetLaserColour() != LaserColour.White)  _outputLaserColour = secondLaser.GetLaserColour();
             
         }
         
         // If there is only one laser
-        else if (secondLaser == null) _outputLaserColour = firstLaser.laserColour;
+        else if (secondLaser == null) _outputLaserColour = firstLaser.GetLaserColour();
         
         // Else soemthing went wrong
         else  Debug.Log("Something went wrong");
@@ -116,13 +117,13 @@ public class CombinerSatellite : SatelliteParent
 
         if (assigned)
         {
-            _whiteLaser = (laser.laserColour == LaserColour.White);
-            _redLaser = (laser.laserColour == LaserColour.Red);
-            _greenLaser = (laser.laserColour == LaserColour.Green);
-            _blueLaser = (laser.laserColour == LaserColour.Blue);
-            _cyanLaser = (laser.laserColour == LaserColour.Cyan);
-            _yellowLaser = (laser.laserColour == LaserColour.Yellow);
-            _magentaLaser = (laser.laserColour == LaserColour.Magenta);
+            if (laser.GetLaserColour() == LaserColour.White) _whiteLaser = true;
+            else if (laser.GetLaserColour()  == LaserColour.Red) _redLaser = true;
+            else if (laser.GetLaserColour()  == LaserColour.Green) _greenLaser = true;
+            else if (laser.GetLaserColour()  == LaserColour.Blue) _blueLaser = true;
+            else if (laser.GetLaserColour() == LaserColour.Cyan) _cyanLaser = true;
+            else if (laser.GetLaserColour() == LaserColour.Yellow) _yellowLaser = true;
+            else if (laser.GetLaserColour() == LaserColour.Magenta) _magentaLaser = true;
         }
     }
 }

@@ -34,12 +34,10 @@ public class SatelliteCreator : MonoBehaviour
         if (!_canCreateNewSatellite)
         {
             // Notify comns panel about text
-            levelProgressPanel.LogCommunications("Elysia-003",-1,"Printer space occupied, please move satellite in printer space before making another request\n");
+            levelProgressPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space before making another request\n");
 
             return false;
         }
-
-        levelProgressPanel.LogCommunications("Elysia",-1,"Creating satellite\n");
 
         if (satelliteType == SatelliteType.SingleSideReflector)
         {
@@ -114,7 +112,7 @@ public class SatelliteCreator : MonoBehaviour
     {
         if (_chosenPrefab != null)
         {
-            levelProgressPanel.LogCommunications("Elysia",-1,"Satellite created\n");
+            levelProgressPanel.LogCommunications("Elysia",-1,"Satellite created, you can find it in the printing bay\n");
             var newSatellite = Instantiate(_chosenPrefab);
             newSatellite.layer = LayerMask.NameToLayer("Object");
             newSatellite.transform.position = this.transform.position;

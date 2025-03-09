@@ -61,13 +61,13 @@ public class RefractionSatellite : SatelliteParent
 
         if (!float.IsNaN(refractedAngle))
         {
-            Debug.Log("Refracted Angle: "+refractedAngle);
 
             OutgoingLaserInfo newOutgoingLaser = new OutgoingLaserInfo();
             newOutgoingLaser.origin = point;
             newOutgoingLaser.angle = refractedAngle;
             newOutgoingLaser.raycastPosition = incomingLaser.raycast.point;
             newOutgoingLaser.satelliteInfo = newSatelliteInfo;
+            newOutgoingLaser.laserColour = incomingLaser.laser.GetLaserColour();
 
             newOutgoingLaser.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance; 
 

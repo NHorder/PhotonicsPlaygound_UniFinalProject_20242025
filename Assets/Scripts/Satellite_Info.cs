@@ -83,12 +83,12 @@ public class Satellite_Info : MonoBehaviour
         if (satelliteHealth <= 0)
         {
             // Play satellite destruction animation
-            // This animation is forced, as it creates a delay before the object is deleted
+            // The animation contains a destroy trigger - which when reached will call this DestroyObject function.
+            // Forcing a animation delay before destruction.
 
-            // Destroy satellite
-            Destroy(this.gameObject);
+            var animator = this.gameObject.GetComponent<Animator>();
+            animator.SetBool("Destroy",true);
 
-            // Create fragments and scatter them
         }
     }
 
@@ -259,7 +259,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
             if (satelliteSellPrice == 0) satelliteSellPrice = 250;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.15f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.0f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
 
@@ -278,7 +278,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 350;
             if (satelliteSellPrice == 0) satelliteSellPrice = 250;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Splitter;
 
@@ -445,6 +445,12 @@ public class Satellite_Info : MonoBehaviour
         _gameController.PurchaseSatellite(this);
     }
 
+    public void DestroyObject()
+    {
+        _gameController.DestroyedSatellite();
+
+        DestroyObject(this.gameObject);
+    }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {

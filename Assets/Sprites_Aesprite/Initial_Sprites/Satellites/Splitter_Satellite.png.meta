@@ -113,12 +113,12 @@ TextureImporter:
       name: Splitter_Satellite_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 19
-        width: 134
-        height: 99
+        x: 36
+        y: 41
+        width: 125
+        height: 105
       alignment: 9
-      pivot: {x: 0.4935283, y: 0.5496381}
+      pivot: {x: 0.50174046, y: 0.75073284}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: Splitter_Satellite_1
       rect:
         serializedVersion: 2
-        x: 144
-        y: 13
-        width: 144
-        height: 114
+        x: 223
+        y: 34
+        width: 142
+        height: 121
       alignment: 9
-      pivot: {x: 0.49152067, y: 0.5293524}
+      pivot: {x: 0.50335133, y: 0.71041}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,6 +147,90 @@ TextureImporter:
       bones: []
       spriteID: c362408346e301943a3fcd165b4c49ef
       internalID: 1834720730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splitter_Satellite_2
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 41
+        width: 129
+        height: 105
+      alignment: 9
+      pivot: {x: 0.50571555, y: 0.7492952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ab378c3c302884da1227fdc15f4d0a
+      internalID: 7844291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splitter_Satellite_3
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 34
+        width: 142
+        height: 121
+      alignment: 9
+      pivot: {x: 0.49271318, y: 0.71236354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0905483dd0c4a254ab028de491a26fd0
+      internalID: 1326611518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splitter_Satellite_4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 12
+        width: 170
+        height: 176
+      alignment: 9
+      pivot: {x: 0.49581513, y: 0.49898937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b28226dedd0bab489746337753b23ad
+      internalID: -1459242210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splitter_Satellite_5
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 4
+        width: 182
+        height: 190
+      alignment: 9
+      pivot: {x: 0.50199133, y: 0.5025432}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb9ce437f66452e48983e6826f4e1325
+      internalID: -1407826606
       vertices: []
       indices: 
       edges: []
@@ -164,6 +248,10 @@ TextureImporter:
     nameFileIdTable:
       Splitter_Satellite_0: -947047648
       Splitter_Satellite_1: 1834720730
+      Splitter_Satellite_2: 7844291
+      Splitter_Satellite_3: 1326611518
+      Splitter_Satellite_4: -1459242210
+      Splitter_Satellite_5: -1407826606
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

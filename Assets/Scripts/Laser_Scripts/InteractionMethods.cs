@@ -10,12 +10,12 @@ public enum Interaction
     Refraction,
     Splitter,
     Combiner,
+    ColourFilter,
+
+
     Origin,
     Destination,
 
-
-    Overseer,
-    Elysian
 
 }
 

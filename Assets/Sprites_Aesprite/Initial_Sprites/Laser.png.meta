@@ -124,7 +124,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1af2211ad71f514a9c1fa0190ca51f5
+      spriteID: 4f690455c389c2f43ac074ccf0eadc65
       internalID: -120155555
       vertices: []
       indices: 
@@ -145,7 +145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebb5ad58d49eacd40a6acfafc990abcb
+      spriteID: 6e5fc4908f528cf4aa104aa8f3b11dee
       internalID: -50495841
       vertices: []
       indices: 
@@ -166,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43b1881a4c016df499b7fbcc540ec6b2
+      spriteID: 1b31bf160adf1314ab7f48976edcd65c
       internalID: -136435744
       vertices: []
       indices: 
@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50e420b616285724886a5e944d2bd18a
+      spriteID: 9495820b7b42d574087cf105a72f08c4
       internalID: 1099226972
       vertices: []
       indices: 
@@ -208,7 +208,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc97577f4e7b66f48954e6f29ef7d107
+      spriteID: 9716305e2560cce4e8807d54934fc850
       internalID: 326971433
       vertices: []
       indices: 
@@ -229,7 +229,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83be6c1eb9df52e4594d8b05b011e6bf
+      spriteID: 46a71151e760e75488ddf78521536f21
       internalID: 809045697
       vertices: []
       indices: 
@@ -250,50 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 357aad183880eea4b890f66b30d228c2
+      spriteID: ba782ad439290d04488b2f7eed36ed87
       internalID: 2140550112
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Laser_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4567c1362c736a43986bcabd2ac80d9
-      internalID: 1588137213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Laser_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0cb7e56134d09142bd2b11c60fbabd5
-      internalID: 1947284281
       vertices: []
       indices: 
       edges: []
@@ -316,8 +274,6 @@ TextureImporter:
       Laser_4: 326971433
       Laser_5: 809045697
       Laser_6: 2140550112
-      Laser_7: 1588137213
-      Laser_8: 1947284281
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

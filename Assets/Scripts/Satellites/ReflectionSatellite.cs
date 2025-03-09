@@ -7,18 +7,17 @@ public class ReflectionSatellite : SatelliteParent
     override public void Interaction(IncomingLaser incomingLaser)
     {
 
-        Debug.Log("Interaction occurring!");
-
         float reflected_angle = InteractionFunctions.ReflectionInteraction(incomingLaser.laser.transform,incomingLaser.raycast);
 
-        OutgoingLaserInfo outgoingLaserInfo = new OutgoingLaserInfo();
-        outgoingLaserInfo.angle = reflected_angle;
-        outgoingLaserInfo.origin = incomingLaser.raycast.point;
-        outgoingLaserInfo.raycastPosition = incomingLaser.raycast.point;
+        OutgoingLaserInfo newOutGoingLaserInfo = new OutgoingLaserInfo();
+        newOutGoingLaserInfo.angle = reflected_angle;
+        newOutGoingLaserInfo.origin = incomingLaser.raycast.point;
+        newOutGoingLaserInfo.raycastPosition = incomingLaser.raycast.point;
 
-        outgoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
+        newOutGoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
+        newOutGoingLaserInfo.laserColour = incomingLaser.laser.GetLaserColour();
 
-        _outgoingLaserInfo.Add(outgoingLaserInfo);
+        _outgoingLaserInfo.Add(newOutGoingLaserInfo);
    
     }
 }
