@@ -58,6 +58,18 @@ public class DestinationSatellite : MonoBehaviour
 
         // Retrieve this game objects animator - used to visually change the destination sprite when activated.
         _animator = gameObject.GetComponent<Animator>();
+
+        var colourID = 0;
+
+        if (neededLaserColour == LaserColour.Red) colourID = 1;
+        else if (neededLaserColour == LaserColour.Blue) colourID = 2;
+        else if (neededLaserColour == LaserColour.Green) colourID = 3;
+        else if (neededLaserColour == LaserColour.Yellow) colourID = 4;
+        else if (neededLaserColour == LaserColour.Cyan) colourID = 5;
+        else if (neededLaserColour == LaserColour.Magenta) colourID = 6; 
+        
+
+        _animator.SetInteger("ColourID",colourID);
     }
 
     // Update is called once per frame

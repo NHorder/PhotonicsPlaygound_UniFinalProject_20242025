@@ -193,7 +193,7 @@ public class SplitterSatellite : SatelliteParent
     private void DetermineThreeOutputs(LaserColour laserOriginColour)
     {
         // Calcualte energy per laser for three outputs
-        _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance) / 3);
+        _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance) / 2);
 
         // Determine two colours based on the origin laser colour
         DetermineTwoOutputs(laserOriginColour,true);
@@ -208,12 +208,11 @@ public class SplitterSatellite : SatelliteParent
 
     private void DetermineSixOutputs(LaserColour laserOriginColour)
     {
-        // Calculate energy needed for all six lasers
-        _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance) / 6);
 
         // This type of 6 origin laser 
         if (laserOriginColour == LaserColour.White)
         {
+            _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() / 2));
             // Adds all six colours available
             _laserColours.Add(LaserColour.Red);
             _laserColours.Add(LaserColour.Magenta);
@@ -224,6 +223,8 @@ public class SplitterSatellite : SatelliteParent
         }
         else
         {
+            _energyPerLaser = Mathf.Clamp01((_incomingLasers[0].laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance) / 2);
+
             // Determine the two colours that have been split into
             DetermineTwoOutputs(laserOriginColour,true);
 
@@ -256,20 +257,20 @@ public class TwoOutputSplitterSettings
 [System.Serializable]
 public class ThreeOutputSplitterSettings
 {
-    public float angleAlpha;
-    public float angleBeta;
-    public float angleGamma;
+    public float angleAlpha = 45f;
+    public float angleBeta = 0f; 
+    public float angleGamma = -45f;
 }
 
 [System.Serializable]
 public class SixOutputSplitterSettings
 {
-    public float angleAlpha;
-    public float angleBeta;
-    public float angleGamma;
-    public float angleDelta;
-    public float angleEpsilon;
-    public float angleZeta;
+    public float angleAlpha = 67.5f;
+    public float angleBeta = 45f;
+    public float angleGamma = 14.5f;
+    public float angleDelta = -14.5f;
+    public float angleEpsilon = -45f;
+    public float angleZeta = -67.5f;
 
 }
 
