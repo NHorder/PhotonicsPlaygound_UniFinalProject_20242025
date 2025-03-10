@@ -45,6 +45,8 @@ public class CombinerSatellite : SatelliteParent
 
 
             _outgoingLaserInfo.Add(newOutgoingLaser);
+
+            Debug.Log(_outgoingLaserInfo.Count);
         }
 
         base.Update();

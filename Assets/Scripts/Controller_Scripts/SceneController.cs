@@ -26,6 +26,7 @@ public class SceneController: MonoBehaviour
         else Debug.LogError("ERROR: Level not recognised");
     }
 
+    public static void ToColourDemo() {SceneManager.LoadScene("LightDemo");}
 
     public static void ToTestLevel() {SceneManager.LoadScene("TestLevel");}
 

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3906623957253927979}
   - component: {fileID: 7150929243196712285}
   - component: {fileID: 5096924931145487316}
+  - component: {fileID: 1962765776892826206}
   m_Layer: 3
   m_Name: Destination_Satellite
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 6969042322482137714}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.09, y: 7.57, z: -1}
+  m_LocalPosition: {x: 14.09, y: 7.57, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1763609156, guid: 9fb2e692cb8564e44aa7a812e2265173, type: 3}
+  m_Sprite: {fileID: 1671906164, guid: 8c02fbedca8bb4541a2e712391828882, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 11.0625, y: 7.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,9 +102,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 60
+  m_LinearDrag: 20
+  m_AngularDrag: 20
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -153,14 +154,19 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 11.0625, y: 7.625}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 11.0625, y: 7.625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.7192984, y: -1.292191}
+    - - {x: -1.5293036, y: -1.1343894}
+      - {x: -1.7432079, y: -1.9938378}
+      - {x: -1.8216896, y: -2.094472}
+      - {x: -1.9318848, y: -1.9962516}
+      - {x: -2.117425, y: -1.1056132}
+      - {x: -2.7192984, y: -1.292191}
       - {x: -2.690156, y: -0.8503585}
       - {x: -0.93806076, y: -0.84235716}
       - {x: -0.90532684, y: -1.3030934}
@@ -194,7 +200,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.16398573, y: -0.010249615}
@@ -202,7 +208,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 11.0625, y: 7.625}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 11.0625, y: 7.625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -243,14 +249,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 4
+  satelliteType: 8
   interaction: 0
+  isDebris: 0
   satelliteName: 
   satelliteHealth: 100
   satelliteDescription: 
   satelliteShortDescription: 
   satellitePurchasePrice: 0
+  canBeSold: 1
   satelliteSellPrice: 0
+  canbeMoved: 1
   advanced_Satellite_Info:
     isSelectable: 1
     refractiveIndex: 0
@@ -271,3 +280,16 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
+--- !u!114 &1962765776892826206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969042322482137714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3535250a1ab86dc4a873b8be9c2eb2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neededLaserColour: 1

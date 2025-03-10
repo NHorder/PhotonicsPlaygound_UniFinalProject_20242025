@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 993299691738373022}
   - component: {fileID: 1727689172875749490}
   - component: {fileID: 7910637435947024921}
+  - component: {fileID: 7968090441484763683}
   m_Layer: 3
   m_Name: Combiner_Prefab
   m_TagString: Untagged
@@ -172,7 +173,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51290476, y: 0.49999994}
+    pivot: {x: 0.5103237, y: 0.8613368}
     oldSize: {x: 2.3333333, y: 2.5833333}
     newSize: {x: 2.3333333, y: 2.5833333}
     adaptiveTilingThreshold: 0.5
@@ -181,22 +182,28 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.6041014, y: -0.2622857}
-      - {x: 0.41529703, y: -0.44438338}
-      - {x: 0.34389567, y: -0.61185884}
-      - {x: 0.37588835, y: -0.75167537}
-      - {x: 0.7260978, y: -0.39090657}
-      - {x: 1.1125609, y: -0.1779384}
-      - {x: 0.99905646, y: -0.09638691}
-      - {x: 0.8526194, y: -0.13680713}
-    - - {x: -0.8975673, y: -0.1489191}
-      - {x: -1.116113, y: -0.11425161}
-      - {x: -1.2013257, y: -0.2219634}
-      - {x: -0.78924346, y: -0.44406366}
-      - {x: -0.442178, y: -0.7839997}
-      - {x: -0.40532947, y: -0.6956589}
-      - {x: -0.40815163, y: -0.5787486}
-      - {x: -0.6481378, y: -0.3019415}
+    - - {x: 0.59491277, y: -1.1903486}
+      - {x: 0.4658351, y: -1.3265026}
+      - {x: 0.36227345, y: -1.480195}
+      - {x: 0.4585867, y: -1.711899}
+      - {x: 0.6177292, y: -1.384309}
+      - {x: 0.9692745, y: -1.7014396}
+      - {x: 1.0212398, y: -1.6441004}
+      - {x: 0.75366426, y: -1.3005917}
+      - {x: 1.1309384, y: -1.1703224}
+      - {x: 0.99905646, y: -1.0106668}
+      - {x: 0.7928927, y: -1.0602757}
+    - - {x: -0.8654065, y: -1.0631986}
+      - {x: -1.1344907, y: -1.0515032}
+      - {x: -1.1691649, y: -1.2189422}
+      - {x: -0.84072113, y: -1.3240914}
+      - {x: -1.071929, y: -1.6553066}
+      - {x: -1.0317206, y: -1.672209}
+      - {x: -0.71113944, y: -1.3996925}
+      - {x: -0.4238007, y: -1.6936848}
+      - {x: -0.41911244, y: -1.476702}
+      - {x: -0.5413885, y: -1.3322257}
+      - {x: -0.67570376, y: -1.1794664}
   m_UseDelaunayMesh: 0
 --- !u!61 &1727689172875749490
 BoxCollider2D:
@@ -230,10 +237,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.041043162, y: -0.010932088}
+  m_Offset: {x: -0.041043162, y: -0.89807}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51290476, y: 0.49999994}
+    pivot: {x: 0.5103237, y: 0.8613368}
     oldSize: {x: 2.3333333, y: 2.5833333}
     newSize: {x: 2.3333333, y: 2.5833333}
     adaptiveTilingThreshold: 0.5
@@ -241,7 +248,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5957048, y: 2.8894336}
+  m_Size: {x: 2.5957048, y: 2.778352}
   m_EdgeRadius: 0
 --- !u!114 &7910637435947024921
 MonoBehaviour:
@@ -256,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   satelliteType: 5
-  interaction: 0
+  interaction: 5
   isDebris: 0
   satelliteName: 
   satelliteHealth: 100
@@ -286,3 +293,15 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
+--- !u!114 &7968090441484763683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298249285035803575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60f953330d852541a1b3112cccc13a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
