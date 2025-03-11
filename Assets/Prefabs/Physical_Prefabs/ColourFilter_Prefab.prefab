@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 4
-  interaction: 6
+  satelliteType: 7
+  interaction: 0
   isDebris: 0
   satelliteName: 
   satelliteHealth: 100

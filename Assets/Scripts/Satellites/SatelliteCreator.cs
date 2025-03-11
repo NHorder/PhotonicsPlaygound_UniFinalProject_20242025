@@ -69,7 +69,7 @@ public class SatelliteCreator : MonoBehaviour
             _animator.Play("Refractor");
         }
 
-        else if (satelliteType == SatelliteType.ColourFilter)
+        else if (satelliteType == SatelliteType.BasicColourFilter)
         {
 
             _chosenPrefab = satellitePrefabs.filterSatellite;
@@ -89,7 +89,7 @@ public class SatelliteCreator : MonoBehaviour
             _animator.Play("Combiner");
         }
         
-        else if (satelliteType == SatelliteType.Splitter) 
+        else if (satelliteType == SatelliteType.DuelSplitter) 
         {
 
             _chosenPrefab = satellitePrefabs.splitterSatellite;
