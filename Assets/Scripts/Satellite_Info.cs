@@ -522,6 +522,9 @@ public class Satellite_Info : MonoBehaviour
     {
         _gameController.DestroyedSatellite();
 
+        var satelliteScript = gameObject.GetComponent<SatelliteParent>();
+        satelliteScript.DeleteLasers();
+    
         DestroyObject(this.gameObject);
     }
 
