@@ -200,7 +200,8 @@ public class Laser : MonoBehaviour
             else if (interaction == Interaction.Splitter)
             {
                 SplitterSatellite splitterSatellite = _raycast.collider.gameObject.GetComponent<SplitterSatellite>();
-                splitterSatellite.SetActive(this,_raycast);
+                if (splitterSatellite != null) splitterSatellite.SetActive(this,_raycast);
+                else Debug.LogError("Interaction deteccted, could not find component");
             }
 
             else if (interaction == Interaction.Combiner)

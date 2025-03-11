@@ -161,6 +161,14 @@ public class SatelliteParent : MonoBehaviour
     }
 
 
+    public void DeleteLasers()
+    {
+        foreach (GameObject laser in _outgoingLaserObjects) Destroy(laser);
+        
+        _outgoingLaserObjects.Clear();
+        _outgoingLaserOrigins.Clear();
+    }
+
 }
 
 

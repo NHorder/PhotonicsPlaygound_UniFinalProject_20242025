@@ -9,9 +9,15 @@ public enum SatelliteType{
     SingleSideReflector,
     DoubleSideReflector,
     GlassRefractor,
-    ColourFilter,
+    SapphireRefractor,
+    SiliconRefractor,
+    WaterRefractor,
+    BasicColourFilter,
+    CustomColourFilter,
     Combiner,
-    Splitter,
+    DuelSplitter,
+    TrioSplitter,
+    HexSplitter,
     Origin,
     Destination,
     SatelliteCreator,
@@ -197,7 +203,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteName == "") satelliteName = $"Reflect-Double-LAM-{satelliteNum}-SAT";
                 if (satelliteHealth == 100) satelliteHealth = 250;
 
-                if (satelliteDescription == "") satelliteDescription = "A high grade reflectance satellite. Upgraded from it's predecessor, this include to panels for lambertian reflection.";
+                if (satelliteDescription == "") satelliteDescription = "A high grade reflectance satellite. Upgraded from it's predecessor, this includes two panels for lambertian reflection.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A two surface reflection satellite.";
             }
 
@@ -227,7 +233,60 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.033f;
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
         }
-        else if (satelliteType == SatelliteType.ColourFilter)
+        else if (satelliteType == SatelliteType.SapphireRefractor){
+             if (language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"Refract-SAP-{satelliteNum}-SAT";
+
+                if (satelliteHealth == 100) satelliteHealth = 120;
+
+                if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is crystal sapphire and has a refractive index of 1.78, passing a laser through this object will alter the angle to a large degree.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "A sapphire refraction satellite";
+            }
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 300;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 250;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.78f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.033f;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
+        }
+        else if (satelliteType == SatelliteType.SiliconRefractor){
+             if (language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"Refract-S-{satelliteNum}-SAT";
+
+                if (satelliteHealth == 100) satelliteHealth = 120;
+
+                if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is silicon and has a refractive index of 3.4, passing a laser through this object will alter the angle to a large degree.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "A silicon refraction satellite";
+            }
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 250;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 200;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 3.4f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.033f;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
+        }
+        else if (satelliteType == SatelliteType.WaterRefractor){
+             if (language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"Refract-Water-{satelliteNum}-SAT";
+
+                if (satelliteHealth == 100) satelliteHealth = 50;
+
+                if (satelliteDescription == "") satelliteDescription = "A cutting edge prototype satellite, capable of maintaining water in a liquid space in deep space and keeping it contained. It has a refractive index of 1.33, passing a laser through this object will alter the angle to a small degree. ";
+                if (satelliteShortDescription == "") satelliteShortDescription = "A water refraction satellite.";
+            }
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 300;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.33f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.033f;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
+        }
+        
+        
+        else if (satelliteType == SatelliteType.BasicColourFilter)
         {
             if (language == Language.English)
             {
@@ -235,7 +294,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteHealth == 100) satelliteHealth = 125;
 
                 if (satelliteDescription == "") satelliteDescription = "A simple colour filter. This will change the colour of light beams that pass through it. Cheaply made, not too durable but suitable for the task.";
-                if (satelliteShortDescription == "") satelliteShortDescription = "A coloured filter";
+                if (satelliteShortDescription == "") satelliteShortDescription = "A fixed coloured filter";
             }
 
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 75;
@@ -243,7 +302,7 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
-            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.ColourFilter;
         }
         else if (satelliteType == SatelliteType.Combiner)
         {
@@ -261,14 +320,14 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.0f;
 
-            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Combiner;
 
         }
-        else if (satelliteType == SatelliteType.Splitter)
+        else if (satelliteType == SatelliteType.DuelSplitter)
         {
             if (language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Splitter-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Duel-Splitter-{satelliteNum}-SAT";
                 if (satelliteHealth == 100) satelliteHealth = 250;
 
                 if (satelliteDescription == "") satelliteDescription = "A must have in satellite communications, it can split a beam of light in two. Note: resulting beams will have less energy and may vary in colour.";
@@ -282,6 +341,42 @@ public class Satellite_Info : MonoBehaviour
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Splitter;
 
+        }
+        else if (satelliteType == SatelliteType.TrioSplitter)
+        {
+            if (language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"Trio-Splitter-{satelliteNum}-SAT";
+                if (satelliteHealth == 100) satelliteHealth = 250;
+
+                if (satelliteDescription == "") satelliteDescription = "An advanced variant of the Duel-Splitter, it can split a beam of light into three. Note: resulting beams will have less energy and may vary in colour";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light into three";
+            }
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 300;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
+
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Splitter;
+        }
+        else if (satelliteType == SatelliteType.HexSplitter)
+        {
+            if (language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"Hex-Splitter-{satelliteNum}-SAT";
+                if (satelliteHealth == 100) satelliteHealth = 250;
+
+                if (satelliteDescription == "") satelliteDescription = "A cutting edge prototype splitter, capable of splitting a single beam of light into six output lasers. Note: Resulting beams will have less energy and may vary in colour. ";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light into six";
+            }
+
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 450;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 350;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
+
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Splitter;
         }
 
         // Satellite debris and asteroids are counted here, allowing user's to information about them
@@ -314,7 +409,7 @@ public class Satellite_Info : MonoBehaviour
             isDebris = true;
             if (language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Asteroid";
+                if (satelliteName == "") satelliteName = $"Asteroid-Reflect";
                 if (satelliteHealth == 100) satelliteHealth = 300;
 
                 if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid is partially reflective but will absorb a signficant amount of light. It is advised to not direct light beams at this satellite.";
@@ -336,7 +431,7 @@ public class Satellite_Info : MonoBehaviour
             isDebris = true;
             if (language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Asteroid";
+                if (satelliteName == "") satelliteName = $"Asteroid-Splitter";
                 if (satelliteHealth == 100) satelliteHealth = 300;
 
                 if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid can split light and absorbs a signficant amount of energy. It is recommended to not direct light beams at this satellite.";
@@ -349,28 +444,6 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.8f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
-        }
-        else if (satelliteType == SatelliteType.Debris_Filter)
-        {
-            canbeMoved = false;
-            canBeSold = false;
-            isDebris = true;
-            if (language == Language.English)
-            {
-                if (satelliteName == "") satelliteName = $"Asteroid";
-                if (satelliteHealth == 100) satelliteHealth = 300;
-
-                if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid can change the colour of light that passes through it. It has high absorbance and will signifcantly reduce a light beams strength. It is recommended to not direct light at this satellite.";
-                if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs most incoming light, changes the colour of passing light";
-            }
-
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 0;
-            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.8f;
-
-            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
-
         }
 
 
@@ -449,6 +522,9 @@ public class Satellite_Info : MonoBehaviour
     {
         _gameController.DestroyedSatellite();
 
+        var satelliteScript = gameObject.GetComponent<SatelliteParent>();
+        satelliteScript.DeleteLasers();
+    
         DestroyObject(this.gameObject);
     }
 

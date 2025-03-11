@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6603663416980471087}
   - component: {fileID: 2296255184564457911}
   - component: {fileID: 1832206938883850742}
-  - component: {fileID: 8415990197887160677}
-  - component: {fileID: 6149680264067595449}
   - component: {fileID: 1405036155314506625}
   - component: {fileID: 1544823237011915237}
+  - component: {fileID: 8415990197887160677}
+  - component: {fileID: 6149680264067595449}
   m_Layer: 0
   m_Name: Origin_Satellite
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6983718676597646489}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.67, y: -6.85, z: -1}
+  m_LocalPosition: {x: -13.55, y: -10.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,6 +110,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1405036155314506625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983718676597646489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fd283f86d93684f88cb06cb1710517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layersToHit:
+    serializedVersion: 2
+    m_Bits: 8
+  maxDistance: 50
+  laserColour: 1
+  prefabLaser: {fileID: 4956329101352024174, guid: cd9b5c1f6e96df64eb24ea3a4dfdaf9a, type: 3}
+--- !u!114 &1544823237011915237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983718676597646489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  satelliteType: 13
+  interaction: 0
+  isDebris: 0
+  satelliteName: 
+  satelliteHealth: 100
+  satelliteDescription: 
+  satelliteShortDescription: 
+  satellitePurchasePrice: 0
+  canBeSold: 1
+  satelliteSellPrice: 0
+  canbeMoved: 1
+  advanced_Satellite_Info:
+    isSelectable: 1
+    refractiveIndex: 0
+    percentageOfReflectedLightWhenRefracted: 0
+    surfaceColor: 0
+    absorbance: 0
+    lightColor: 0
+    IsSatelliteReceivedCorrectLaser: 0
+  satellite_Movement_Info:
+    intialMovementMultiplier: 1
+    intialRotationMultiplier: 0.01
+    maxMovementMultiplier: 5
+    maxRotationMultiplier: 1
+  satellite_Shop_Info:
+    IsShopItem: 0
+    satelliteSprite: {fileID: 0}
+    ShopSpriteWidth: 0
+    ShopSpriteHeight: 0
+    ShopItemXLoc: 0
+    ShopItemYLoc: 0
 --- !u!61 &8415990197887160677
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +200,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.22408295, y: -0.7872114}
@@ -182,60 +243,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1405036155314506625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6983718676597646489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1fd283f86d93684f88cb06cb1710517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layersToHit:
-    serializedVersion: 2
-    m_Bits: 8
-  maxDistance: 50
-  prefabLaser: {fileID: 4956329101352024174, guid: cd9b5c1f6e96df64eb24ea3a4dfdaf9a, type: 3}
---- !u!114 &1544823237011915237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6983718676597646489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  satelliteType: 3
-  interaction: 0
-  satelliteName: 
-  satelliteHealth: 100
-  satelliteDescription: 
-  satelliteShortDescription: 
-  satellitePurchasePrice: 0
-  satelliteSellPrice: 0
-  advanced_Satellite_Info:
-    isSelectable: 1
-    refractiveIndex: 0
-    percentageOfReflectedLightWhenRefracted: 0
-    surfaceColor: 0
-    absorbance: 0
-    lightColor: 0
-    IsSatelliteReceivedCorrectLaser: 0
-  satellite_Movement_Info:
-    intialMovementMultiplier: 1
-    intialRotationMultiplier: 0.01
-    maxMovementMultiplier: 5
-    maxRotationMultiplier: 1
-  satellite_Shop_Info:
-    IsShopItem: 0
-    satelliteSprite: {fileID: 0}
-    ShopSpriteWidth: 0
-    ShopSpriteHeight: 0
-    ShopItemXLoc: 0
-    ShopItemYLoc: 0
