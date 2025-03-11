@@ -26,7 +26,10 @@ public enum SatelliteType{
     Debris_Absorb,
     Debris_Reflect,
     Debris_Splitter,
-    Debris_Filter
+    Debris_Filter,
+
+
+    CameraDrone,
 
 }
 
@@ -447,6 +450,27 @@ public class Satellite_Info : MonoBehaviour
         }
 
 
+        else if (satelliteType == SatelliteType.CameraDrone)
+        {
+            canBeSold = false;
+
+            if (language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"The Eye of Zeta";
+
+                if (satelliteDescription == "") satelliteDescription = "The Eye of Zeta provides you with a real time visual feed, allowing you to traverse space within an allowed area. They contain highly classified technology and are astronomically expensive. Do not break it.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Not an item in the shop";
+            }
+            
+            if (satelliteHealth == 100) satelliteHealth = 900000;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 9999;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 0;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
+
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
+        }
+
         else
         {
             // if the satellite is unknown then set it to a default health and have it absorb all light, also notify developer
@@ -547,29 +571,30 @@ public class Satellite_Info : MonoBehaviour
             // Do nothing, as expected occurance
         }
 
-        // Satellites cannot interact with origin
-        if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator ) {}
-
-        // Satellites are easily destroyed when interacting with destination
-        else if (opposingSatellite.satelliteType == SatelliteType.Destination)
+        if (opposingSatellite != null)
         {
-            satelliteHealth -= 80;
-            if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 10;
-        }
+            // Satellites cannot interact with origin
+            if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) {}
 
-        // Glass refractors take more damage upon hitting opposing satellites
-        else if (this.satelliteType == SatelliteType.GlassRefractor)
-        {
-            satelliteHealth -= 40;
-            if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
-        }
+            // Satellites are easily destroyed when interacting with destination
+            else if (opposingSatellite.satelliteType == SatelliteType.Destination)
+            {
+                satelliteHealth -= 80;
+                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 10;
+            }
 
-        else
-        {
-            satelliteHealth -= 25;
-            if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+            // Glass refractors take more damage upon hitting opposing satellites
+            else if (this.satelliteType == SatelliteType.GlassRefractor)
+            {
+                satelliteHealth -= 40;
+                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+            }
+            else
+            {
+                satelliteHealth -= 25;
+                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+            }
         }
-        
     }
 }
 
