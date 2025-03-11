@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public string levelDescription = "";
     public int startingBudget = 1000;
     public int currentBudget = 1000;
+    public int maxBudget = 9999;
 
 
     [HideInInspector]

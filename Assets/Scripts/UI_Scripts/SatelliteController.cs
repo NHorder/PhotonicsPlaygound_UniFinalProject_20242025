@@ -133,30 +133,29 @@ public class SatelliteController : MonoBehaviour
             }
             // If it's null, set selected to null - this assumes an object that can't be rotated has been selected or empty space has been selected.
             else{
-                if (_selectedRigidbody2D != null && !uiObjectFound)
-                {
-                    _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
-                    _selectedRigidbody2D = null;
-                    _selectedSatelliteInfo = null;
-
-                    if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
-                    {
-                        _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
-                        _uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
-
-                    }
-
-                    _uiController.selectedSatelliteInfo = null;
-                }
-
-                
+                CloseInformation(uiObjectFound);
             }
-            
-            
         }
-            
     }
 
+    private void CloseInformation(bool uiObjectFound = false)
+    {
+        if (_selectedRigidbody2D != null && !uiObjectFound)
+        {
+            _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
+            _selectedRigidbody2D = null;
+            _selectedSatelliteInfo = null;
+
+            if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
+            {
+                _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+                _uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+
+            }
+
+            _uiController.selectedSatelliteInfo = null;
+        }
+    }
 
     private List<RaycastResult> MouseOverUIObject()
     {
@@ -324,6 +323,26 @@ public class SatelliteController : MonoBehaviour
         // When exiting another collider, reset the last rigidbody found
         // Specifically set to watch for box colliders, as all light interactions interact with polygon colliders
         if (collider is BoxCollider2D) _lastFoundRigidBody2D = null;
+    }
+
+
+    public void SellSatellite()
+    {
+        if (_selectedSatelliteInfo.canBeSold)
+        {
+            int price = _selectedSatelliteInfo.satelliteSellPrice;
+
+            var gameController = _uiController.GetGameController();
+
+            if (gameController.currentBudget + price <= gameController.maxBudget)
+            {
+                gameController.currentBudget += price;
+            }
+
+            _selectedSatelliteInfo.DestroyObject();
+            CloseInformation();
+
+        }
     }
 
 }
