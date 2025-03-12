@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Satellites\OriginSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\TeachingController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\ShopVarientHandler.cs" />
     <Compile Include="Assets\Scripts\Satellites\SatelliteParent.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\CameraDrone.cs" />
     <Compile Include="Assets\Scripts\Satellites\CombinerSatellite.cs" />

@@ -12,12 +12,19 @@ public enum SatelliteType{
     SapphireRefractor,
     SiliconRefractor,
     WaterRefractor,
-    BasicColourFilter,
-    CustomColourFilter,
     Combiner,
     DuelSplitter,
     TrioSplitter,
     HexSplitter,
+    WhiteBasicColourFilter,
+    RedBasicColourFilter,
+    BlueBasicColourFilter,
+    GreenBasicColourFilter,
+    YellowBasicColourFilter,
+    CyanBasicColourFilter,
+    MagentaBasicColourFilter,
+    CustomColourFilter,
+
     Origin,
     Destination,
     SatelliteCreator,
@@ -67,7 +74,7 @@ public class Satellite_Info : MonoBehaviour
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
         // Fill out satellite information
-        this.RetreiveSatelliteText(this.satelliteType);
+        this.RetreiveSatelliteText();
 
         // Clamp the absorbance of the satellite
         advanced_Satellite_Info.absorbance = Mathf.Clamp01(advanced_Satellite_Info.absorbance);
@@ -101,7 +108,7 @@ public class Satellite_Info : MonoBehaviour
         }
     }
 
-    public void RetreiveSatelliteText(SatelliteType satelliteType)
+    public void RetreiveSatelliteText()
     {
         //// This method serves as the "database" where all satellites have their related information
 
@@ -288,8 +295,15 @@ public class Satellite_Info : MonoBehaviour
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
         }
         
-        
-        else if (satelliteType == SatelliteType.BasicColourFilter)
+        // If a colour filter then grant same name to all.
+        else if ( satelliteType == SatelliteType.WhiteBasicColourFilter ||
+                satelliteType == SatelliteType.RedBasicColourFilter ||
+                satelliteType == SatelliteType.BlueBasicColourFilter ||
+                satelliteType == SatelliteType.GreenBasicColourFilter ||
+                satelliteType == SatelliteType.YellowBasicColourFilter ||
+                satelliteType == SatelliteType.CyanBasicColourFilter ||
+                satelliteType == SatelliteType.MagentaBasicColourFilter
+        )
         {
             if (language == Language.English)
             {
@@ -306,7 +320,37 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.ColourFilter;
+
+            if (!satellite_Shop_Info.IsShopItem)
+            {
+                Animator animator = gameObject.GetComponent<Animator>();
+
+                // Get the animator and set the animation to be played (base animation is just colour change)
+                if (satelliteType == SatelliteType.WhiteBasicColourFilter) animator.SetInteger("FilterID",0);
+                else if (satelliteType == SatelliteType.RedBasicColourFilter) animator.SetInteger("FilterID",1);
+                else if (satelliteType == SatelliteType.BlueBasicColourFilter) animator.SetInteger("FilterID",2);
+                else if (satelliteType == SatelliteType.GreenBasicColourFilter) animator.SetInteger("FilterID",3);
+                else if (satelliteType == SatelliteType.YellowBasicColourFilter) animator.SetInteger("FilterID",4);
+                else if (satelliteType == SatelliteType.CyanBasicColourFilter) animator.SetInteger("FilterID",5);
+                else if (satelliteType == SatelliteType.MagentaBasicColourFilter) animator.SetInteger("FilterID",6);
+
+                // Get the colour filter script and the set the colour
+                var colourFilterSatellite = gameObject.GetComponent<ColourFilterSatellite>();
+                if (satelliteType == SatelliteType.WhiteBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.White);
+                else if (satelliteType == SatelliteType.RedBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Red);
+                else if (satelliteType == SatelliteType.BlueBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Blue);
+                else if (satelliteType == SatelliteType.GreenBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Green);
+                else if (satelliteType == SatelliteType.YellowBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Yellow);
+                else if (satelliteType == SatelliteType.CyanBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Cyan);
+                else if (satelliteType == SatelliteType.MagentaBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Magenta);
+            }
+            
+
+            
+
         }
+        
+        
         else if (satelliteType == SatelliteType.Combiner)
         {
             if (language == Language.English)
