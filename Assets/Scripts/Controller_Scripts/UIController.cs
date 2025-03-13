@@ -118,6 +118,12 @@ public class UIController : MonoBehaviour
         // If expecting level complete panel, retrieve information
         if (uiExpectations.expectLevelCompletePanel) _levelCompletePanel = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0];
 
+        if (uiExpectations.expectSettingsPanel)
+        {
+            _settingsPanel = GameObject.FindGameObjectsWithTag("SettingsPanel")[0];
+        }
+        
+
         // If expecting teaching UI Panel, then retrieve needed information
         if (uiExpectations.expectTeachingUIPanel)
         {
@@ -130,12 +136,6 @@ public class UIController : MonoBehaviour
                 PresentPanel(UIPanel.Teaching,true);
             }
         }
-
-        if (uiExpectations.expectSettingsPanel)
-        {
-            _settingsPanel = GameObject.FindGameObjectsWithTag("SettingsPanel")[0];
-        }
-        
         
     }
 

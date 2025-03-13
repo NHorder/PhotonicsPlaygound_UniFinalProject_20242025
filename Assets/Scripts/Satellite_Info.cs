@@ -625,7 +625,7 @@ public class Satellite_Info : MonoBehaviour
         var satelliteScript = gameObject.GetComponent<SatelliteParent>();
         satelliteScript.DeleteLasers();
     
-        DestroyObject(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

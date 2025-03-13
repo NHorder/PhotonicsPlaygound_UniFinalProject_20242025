@@ -72,7 +72,6 @@ public class ConfirmationPanel : MonoBehaviour
         // Else if not missing the text components, then update their text
         else if (_titleText != null && _warningText != null)
         {
-            Debug.Log("Hmm?");
             _titleText.text = $"Are you sure you want to {action}?";
             _warningText.text = $"Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
         }

@@ -901,6 +901,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 8911586744422060211, guid: be09aaac27a5638479b52270418bf64e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1005085691}
+    - target: {fileID: 8911586744422060211, guid: be09aaac27a5638479b52270418bf64e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LeaveLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -965,6 +973,20 @@ PrefabInstance:
     - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
       propertyPath: thisLevel
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
+      propertyPath: currentBudget
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
+      propertyPath: startingBudget
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
+      propertyPath: levelDescription
+      value: This level teaches about reflections. Make the best of your budget to
+        get the light beam to the destination, the more budget remaining the higher
+        your score!
       objectReference: {fileID: 0}
     - target: {fileID: 6208899696488686084, guid: c56c34dd5b7c4d5469ceaf811f798a01, type: 3}
       propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
@@ -2102,6 +2124,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 58954789120068420, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SatelliteName
+      objectReference: {fileID: 0}
     - target: {fileID: 1259914139825208686, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_Size
       value: 0.8566667
@@ -2150,6 +2176,144 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[0].title
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[1].title
+      value: Eyes of Zeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[2].title
+      value: 'Origin & Destination '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[3].title
+      value: ' Shop and Satellites'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[4].title
+      value: Reflection
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[5].title
+      value: Reflection
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[0].description
+      value: ' Welcome new recruit! I am Handler One and I will be introducing you
+        to everything that you need to know.                                                                          
+        Your task is simple, get the beam of light to the destination through any
+        means necessary. I have allocated you a budget in order to accomplish this,
+        the less you use the higher score you get!  Good luck, I have high hopes
+        for you.  - Handler One'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[1].description
+      value: ' In each level you will find a drone at the centre of your screen.
+        This will be your eyes, moving it around will change what you can see.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[2].description
+      value: "This is where your light beam begins. Your goal is to get it to the
+        destination (see second image). Due to security reasons, you must hold the
+        beam of light over the destination\u2019s satellite dish in order to \u2018activate\u2019
+        it. Once all destinations are activated, the level ends. You can see how
+        many destinations need activating in the top left corner of your HUD. The
+        destination will notify you when it has received light for a duration."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[3].description
+      value: "As an employee of Elysian Photonics, we have provided you exclusive
+        access to our state of the art matter printer, Elysia.                                                                      
+        On the right side of your HUD, you\u2019ll have access to the shop, use this
+        to purchase satellites that Elysia will create for you. Note that you will
+        need to move created satellites out of the printing area in order for Elysia
+        to create new satellites. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[4].description
+      value: This is a standard reflection satellite. It follows the principle of
+        specular reflection, light will reflect at the same angle so that it hits
+        the surface of the reflector. Some satellites may result in a small loss
+        of energy, so be wary! Weak signals will not be helpful!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[5].description
+      value: This is a standard reflection satellite. It follows the principle of
+        specular reflection, light will reflect at the same angle so that it hits
+        the surface of the reflector. Some satellites may result in a small loss
+        of energy, so be wary! Weak signals will not be helpful!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[0].teachingSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[1].teachingSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[2].teachingSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[3].teachingSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[4].teachingSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[5].teachingSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[0].teachingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: b94937eb4204e2d46a6affe8525b362f, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[1].teachingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 696081361, guid: 90fafcbeb78791f40968a6429e8469f5, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[2].teachingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: b94937eb4204e2d46a6affe8525b362f, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[2].teachingSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 1683703056, guid: 092009abc34bfb549be55fd7294c2185, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[3].teachingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 637ff0e4b29072049a59ea0ea2776601, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[3].teachingSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8893ba907cc992544b1bc00d47251f5c, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[4].teachingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf0e03ecb7e2c7469bffcd57b1f8afa, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[4].teachingSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8893ba907cc992544b1bc00d47251f5c, type: 3}
+    - target: {fileID: 4359918049127584237, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: _teachingElementList.Array.data[5].teachingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf0e03ecb7e2c7469bffcd57b1f8afa, type: 3}
+    - target: {fileID: 4385240391723826101, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SatelliteDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 4528623565495709447, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000030517578
@@ -2180,11 +2344,19 @@ PrefabInstance:
       objectReference: {fileID: 1646502622, guid: 410971d6008e6c944b20c4f6a07e01bd, type: 3}
     - target: {fileID: 6097996290947627011, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_Size
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6097996290947627011, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097996290947627011, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Direction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681451153356773522, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SellText
       objectReference: {fileID: 0}
     - target: {fileID: 7892726507123739495, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_Pivot.x
@@ -2278,6 +2450,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIController, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8296460617587901771, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1005085691}
+    - target: {fileID: 8296460617587901771, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296460617587901771, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327087989771970459, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771826727813308013, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: Sell_Button
+      objectReference: {fileID: 0}
     - target: {fileID: 8835217726597478137, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2317,6 +2509,26 @@ PrefabInstance:
     - target: {fileID: 8906280016925849868, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100796723652046802, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1005085691}
+    - target: {fileID: 9100796723652046802, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100796723652046802, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141573609641673509, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_Name
+      value: SatelliteStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180418685976611474, guid: 4bb1c387695108b49b2e82a17851d925, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
