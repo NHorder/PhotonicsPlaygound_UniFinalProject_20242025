@@ -31,7 +31,10 @@ public class Settings : MonoBehaviour
     private TMP_Text _returnButtonText;
     private TMP_Text _titleText;
     private TMP_Text _viewTeachingTransmissionText;
+    private GameObject _viewTeachingTransmissionButton;
+
     private TMP_Text _exitLevelText;
+    private GameObject _exitLevelButton;
 
     private GameController _gameController;
     private UIController _uiController;
@@ -61,13 +64,23 @@ public class Settings : MonoBehaviour
             else if (childObject.name == "AllowAdvancedInteractionText") _allowAdvancedInteractionsToggleText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "AllowSatelliteMovementParticlesText") _allowSatelliteMovementParticlesToggleText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "ViewTeachingText") _viewTeachingTransmissionText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ViewTeaching") _viewTeachingTransmissionButton = childObject;
+
             else if (childObject.name == "EnglishText") _englishButtonText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "WelshText") _welshButtonText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "ExitLevelText") _exitLevelText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ExitLevelButton") _exitLevelButton = childObject;
 
             else if (childObject.name == "EnglishButton") _englishButtonAnimator = childObject.GetComponent<Animator>();
             else if (childObject.name == "WelshButton") _welshButtonAnimator = childObject.GetComponent<Animator>();
         }
+
+
+        if (!_uiController.uiExpectations.expectConfirmationPanel) _exitLevelButton.active = false;
+        
+
+        if (!_uiController.uiExpectations.expectTeachingUIPanel) _viewTeachingTransmissionButton.active = false;
+        
 
         ReadFile("settings.txt");
     }

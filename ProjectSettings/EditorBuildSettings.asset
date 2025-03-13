@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LightDemo.unity
     guid: bd212762b01501c459114fdcf9d7851e
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelOne_Reflections.unity
+    guid: 91d3233cd3d3de84bb7dcbaa6574a696
   m_configObjects: {}
