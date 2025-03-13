@@ -133,6 +133,7 @@ public class SatelliteController : MonoBehaviour
             }
             // If it's null, set selected to null - this assumes an object that can't be rotated has been selected or empty space has been selected.
             else{
+                
                 CloseInformation(uiObjectFound);
             }
         }

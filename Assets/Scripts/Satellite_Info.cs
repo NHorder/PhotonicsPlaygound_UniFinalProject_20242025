@@ -67,7 +67,7 @@ public class Satellite_Info : MonoBehaviour
 
     private GameController _gameController;
 
-    private Language _language;
+    private Language _language = Language.English;
 
     // Start is called before the first frame update
     void Start()
@@ -333,31 +333,54 @@ public class Satellite_Info : MonoBehaviour
 
             if (!satellite_Shop_Info.IsShopItem)
             {
+                 // Get the animator and set the animation to be played (base animation is just colour change)
                 Animator animator = gameObject.GetComponent<Animator>();
-
-                // Get the animator and set the animation to be played (base animation is just colour change)
-                if (satelliteType == SatelliteType.WhiteBasicColourFilter) animator.SetInteger("FilterID",0);
-                else if (satelliteType == SatelliteType.RedBasicColourFilter) animator.SetInteger("FilterID",1);
-                else if (satelliteType == SatelliteType.BlueBasicColourFilter) animator.SetInteger("FilterID",2);
-                else if (satelliteType == SatelliteType.GreenBasicColourFilter) animator.SetInteger("FilterID",3);
-                else if (satelliteType == SatelliteType.YellowBasicColourFilter) animator.SetInteger("FilterID",4);
-                else if (satelliteType == SatelliteType.CyanBasicColourFilter) animator.SetInteger("FilterID",5);
-                else if (satelliteType == SatelliteType.MagentaBasicColourFilter) animator.SetInteger("FilterID",6);
-
                 // Get the colour filter script and the set the colour
                 var colourFilterSatellite = gameObject.GetComponent<ColourFilterSatellite>();
-                if (satelliteType == SatelliteType.WhiteBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.White);
-                else if (satelliteType == SatelliteType.RedBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Red);
-                else if (satelliteType == SatelliteType.BlueBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Blue);
-                else if (satelliteType == SatelliteType.GreenBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Green);
-                else if (satelliteType == SatelliteType.YellowBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Yellow);
-                else if (satelliteType == SatelliteType.CyanBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Cyan);
-                else if (satelliteType == SatelliteType.MagentaBasicColourFilter) colourFilterSatellite.SetFilterColour(LaserColour.Magenta);
+
+                // Get the animator and set the animation to be played (base animation is just colour change)
+                if (satelliteType == SatelliteType.WhiteBasicColourFilter) 
+                {
+                    animator.SetInteger("FilterID",0);
+                    colourFilterSatellite.SetFilterColour(LaserColour.White);
+                }
+
+                else if (satelliteType == SatelliteType.RedBasicColourFilter) 
+                {
+                    animator.SetInteger("FilterID",1);
+                    colourFilterSatellite.SetFilterColour(LaserColour.Red);
+                }
+
+                else if (satelliteType == SatelliteType.BlueBasicColourFilter)
+                {
+                    animator.SetInteger("FilterID",2);
+                    colourFilterSatellite.SetFilterColour(LaserColour.Blue);
+                }
+
+                else if (satelliteType == SatelliteType.GreenBasicColourFilter) 
+                {
+                    animator.SetInteger("FilterID",3);
+                    colourFilterSatellite.SetFilterColour(LaserColour.Green);
+                }
+
+                else if (satelliteType == SatelliteType.YellowBasicColourFilter) 
+                {
+                    animator.SetInteger("FilterID",4);
+                    colourFilterSatellite.SetFilterColour(LaserColour.Yellow);
+                }
+
+                else if (satelliteType == SatelliteType.CyanBasicColourFilter) 
+                {
+                    animator.SetInteger("FilterID",5);
+                    colourFilterSatellite.SetFilterColour(LaserColour.Cyan);
+                }
+
+                else if (satelliteType == SatelliteType.MagentaBasicColourFilter)
+                {
+                    animator.SetInteger("FilterID",6);
+                    colourFilterSatellite.SetFilterColour(LaserColour.Magenta);
+                }
             }
-            
-
-            
-
         }
         
         
@@ -602,7 +625,7 @@ public class Satellite_Info : MonoBehaviour
         var satelliteScript = gameObject.GetComponent<SatelliteParent>();
         satelliteScript.DeleteLasers();
     
-        DestroyObject(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
