@@ -30,6 +30,9 @@ public class SatelliteCreator : MonoBehaviour
 
     public bool CreateSatellite(SatelliteType satelliteType)
     {
+        // As each colour filter is a different type, and doesn't have different animations, then only run the one filter animaton
+        // if the input type is a colour filter (prefabs are different, hence need for the else if statements)
+        var bFilter = false;
 
         if (!_canCreateNewSatellite)
         {
@@ -91,14 +94,45 @@ public class SatelliteCreator : MonoBehaviour
             _animator.Play("Refractor");
         }
 
-        else if (satelliteType == SatelliteType.BasicColourFilter)
-        {
-            _chosenPrefab = satellitePrefabs.filterSatellite;
-            _canCreateNewSatellite = false;
 
-            _animator.SetBool("Animating",true);
-            _animator.Play("Filter");
+        else if (satelliteType == SatelliteType.WhiteBasicColourFilter)
+        {
+            bFilter = true;
+            _chosenPrefab = satellitePrefabs.whiteFilterSatellite;
         }
+        else if (satelliteType == SatelliteType.RedBasicColourFilter)
+        {
+            bFilter = true;
+            _chosenPrefab = satellitePrefabs.redFilterSatellite;
+        }
+        else if (satelliteType == SatelliteType.BlueBasicColourFilter)
+        {
+            bFilter = true;
+            _chosenPrefab = satellitePrefabs.blueFilterSatellite;
+        }
+        else if (satelliteType == SatelliteType.GreenBasicColourFilter)
+        {
+            bFilter = true;
+            _chosenPrefab = satellitePrefabs.greenFilterSatellite;
+        }
+        else if (satelliteType == SatelliteType.YellowBasicColourFilter)
+        {
+            bFilter = true;
+            _chosenPrefab = satellitePrefabs.yellowFilterSatellite;
+        }
+        else if (satelliteType == SatelliteType.CyanBasicColourFilter)
+        {
+            bFilter = true;
+            _chosenPrefab = satellitePrefabs.cyanFilterSatellite;
+        }
+        else if (satelliteType == SatelliteType.MagentaBasicColourFilter)
+        {
+            bFilter = true;
+            _chosenPrefab = satellitePrefabs.magentaFilterSatellite;
+        }
+        
+
+
         else if (satelliteType == SatelliteType.CustomColourFilter)
         {
             _chosenPrefab = satellitePrefabs.customFilterSatellite;
@@ -149,6 +183,16 @@ public class SatelliteCreator : MonoBehaviour
             return false;
         }
 
+
+        if (bFilter)
+        {
+            _canCreateNewSatellite = false;
+
+            _animator.SetBool("Animating",true);
+            _animator.Play("Filter");
+        }
+
+
         return true;
     }
 
@@ -198,6 +242,12 @@ public class SatellitePrefabs
     public GameObject trioSplitterSatellite;
     public GameObject hexSplitterSatellite;
     public GameObject combinerSatellite;
-    public GameObject filterSatellite;
+    public GameObject whiteFilterSatellite;
+    public GameObject redFilterSatellite;
+    public GameObject blueFilterSatellite;
+    public GameObject greenFilterSatellite;
+    public GameObject yellowFilterSatellite;
+    public GameObject cyanFilterSatellite;
+    public GameObject magentaFilterSatellite;
     public GameObject customFilterSatellite;
 }

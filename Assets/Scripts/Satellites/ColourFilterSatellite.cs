@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColourFilterSatellite : SatelliteParent
 {
-    public LaserColour filterColour = LaserColour.White;
+    private LaserColour filterColour = LaserColour.White;
 
 
     private Animator _animator;

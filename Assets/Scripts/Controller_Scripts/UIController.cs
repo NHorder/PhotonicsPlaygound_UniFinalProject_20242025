@@ -51,9 +51,14 @@ public class UIController : MonoBehaviour
 
 
 
+    private GameObject _settingsPanel;
+    private bool _settingsPanelVisible = false;
+
+
     private bool _userWantsToLeaveLevel = false;
     private bool _interactionEnabled = true;
 
+    private Language _language;
 
 
     [HideInInspector]
@@ -126,6 +131,10 @@ public class UIController : MonoBehaviour
             }
         }
 
+        if (uiExpectations.expectSettingsPanel)
+        {
+            _settingsPanel = GameObject.FindGameObjectsWithTag("SettingsPanel")[0];
+        }
         
         
     }
@@ -190,6 +199,15 @@ public class UIController : MonoBehaviour
             if (currentPosition.y == _levelProgressNewYLoc) _levelProgressMoving = false;
         }
         
+        
+        if (Input.GetButtonDown("Cancel"))
+        {   
+            if (!_settingsPanelVisible) PresentPanel(UIPanel.Settings,true);
+
+            _settingsPanelVisible = !_settingsPanelVisible;
+            
+        }
+
     }
 
     public GameController GetGameController()
@@ -197,6 +215,10 @@ public class UIController : MonoBehaviour
         return _gameController;
     }
 
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
+    }
 
     private void MovePanel(RectTransform rectTransform, Vector3 currentPosition,float newXLoc,float newYLoc,float moveSpeed)
     {
@@ -340,6 +362,12 @@ public class UIController : MonoBehaviour
         
         else if (uiExpectations.expectSettingsPanel && panel == UIPanel.Settings)
         {
+            
+            var rectTransform = _settingsPanel.GetComponent<RectTransform>();
+
+            if (rectTransform.anchoredPosition != new Vector2(0,0)) rectTransform.anchoredPosition = new Vector2(0,0);
+
+            _settingsPanel.active = bVisible;
 
         }
 
@@ -393,7 +421,6 @@ public class UIController : MonoBehaviour
             if (_confirmationPanel == null)
             {
                 _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
-                PresentPanel(UIPanel.ConfirmAction, false);
             }
 
             var rectTransform = _confirmationPanel.gameObject.GetComponent<RectTransform>();
@@ -462,6 +489,10 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void OpenSettings()
+    {
+        PresentPanel(UIPanel.Settings,true);
+    }
 
     public bool GetInteractionEnabled()
     {

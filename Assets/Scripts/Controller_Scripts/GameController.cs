@@ -105,7 +105,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-
     public void SetUIController(UIController providedUIController)
     {
         _uiController = providedUIController;
@@ -114,6 +113,12 @@ public class GameController : MonoBehaviour
     public UIController GetUIController()
     {
         return _uiController;
+    }
+
+    public void UpdateLanguage(Language newLanguage)
+    {
+        Debug.Log("Updated Language (GameController)");
+        activeLanguage = newLanguage;
     }
 
     public void PurchaseSatellite(Satellite_Info satelliteInfo)
