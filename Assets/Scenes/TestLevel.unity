@@ -1648,6 +1648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 515473034}
     m_Modifications:
+    - target: {fileID: 45884826485835824, guid: 92dd4f1ce63d3f943a51e5ad32fcd81f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5096924931145487316, guid: 92dd4f1ce63d3f943a51e5ad32fcd81f, type: 3}
       propertyPath: satelliteType
       value: 20

@@ -47,7 +47,7 @@ public class SatelliteController : MonoBehaviour
             SelectInteraction();
 
             // If there is a linked object (through it's rigidbody) then allow interaction
-            if (_selectedRigidbody2D != null)
+            if (_selectedRigidbody2D != null && _selectedSatelliteInfo.canbeMoved)
             {
                 // Allow for keyboard interactions
                 KeyboardInteraction();
