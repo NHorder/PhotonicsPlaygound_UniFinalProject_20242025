@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        //Screen.SetResolution(1980, 1080, true);
 
         // Check to make sure the desired framerate is not less than or equal to 0. 
         if (framerateRelatedSettings.desiredFramerate <= 0) 
