@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Refraction_Satellite
     originalName: 
-    pivot: {x: 0.4976852, y: 0.26046512}
+    pivot: {x: 0.47500002, y: -0.03305785}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 250
-      width: 216
-      height: 215
+      y: 216
+      width: 180
+      height: 121
     spriteID: 5910a708e054d7f46809712f2c0babc0
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 250}
+    uvTransform: {x: 4, y: 216}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.49311927, y: 0.33193278}
+    pivot: {x: 0.46359223, y: 0.3872549}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 218
-      height: 238
+      width: 206
+      height: 204
     spriteID: 9ad1ac9aa943e5c478e5ddbe1c1cf557
     spriteBone: []
     spriteOutline: []
@@ -174,19 +174,19 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: -10
-        y: -56
-        width: 216
-        height: 215
+        x: 12
+        y: 4
+        width: 180
+        height: 121
       spriteId: 5910a708e054d7f46809712f2c0babc0
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: -10
+        x: 2
         y: -79
-        width: 218
-        height: 238
+        width: 206
+        height: 204
       spriteId: 9ad1ac9aa943e5c478e5ddbe1c1cf557
     linkedCells: []
     parentIndex: -1

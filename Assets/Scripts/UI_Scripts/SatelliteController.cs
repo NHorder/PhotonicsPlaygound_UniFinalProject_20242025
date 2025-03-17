@@ -174,12 +174,13 @@ public class SatelliteController : MonoBehaviour
         var raycastResults = new List<RaycastResult>();
 
         // Use the EventSystem RaycastAll to retrieve all UI elements beneath the mouse.
-        EventSystem.current.RaycastAll( eventData, raycastResults );
+        EventSystem.current.RaycastAll(eventData, raycastResults );
 
         // Return the results
         return raycastResults;
     }
 
+    
 
     private void KeyboardInteraction()
     {
@@ -317,6 +318,11 @@ public class SatelliteController : MonoBehaviour
         // Specifically set to watch for box colliders, as all light interactions interact with polygon colliders
 
         if (collider is BoxCollider2D) _lastFoundRigidBody2D = collider.gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+         if (_lastFoundRigidBody2D == null && collider is BoxCollider2D) _lastFoundRigidBody2D = collider.gameObject.GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerExit2D(Collider2D collider)

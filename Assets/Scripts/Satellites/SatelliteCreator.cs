@@ -15,6 +15,9 @@ public class SatelliteCreator : MonoBehaviour
 
     private GameObject _lastCreatedSatellite;
 
+    private bool _animating = false;
+    private int _numberSatellitesInLoadingBay = 0;
+    private bool _delayedCreation = false;
 
     private LevelProgressPanel levelProgressPanel;
 
@@ -44,6 +47,7 @@ public class SatelliteCreator : MonoBehaviour
 
         if (satelliteType == SatelliteType.SingleSideReflector)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.singlePanelReflectionSatellite;
 
             _canCreateNewSatellite = false;
@@ -54,6 +58,7 @@ public class SatelliteCreator : MonoBehaviour
         
         else if (satelliteType == SatelliteType.DoubleSideReflector)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.doublePanelReflectionSatellite;
             _canCreateNewSatellite = false;
 
@@ -63,6 +68,7 @@ public class SatelliteCreator : MonoBehaviour
         
         else if (satelliteType == SatelliteType.GlassRefractor)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.glassRefractionSatellite;
             _canCreateNewSatellite = false;
 
@@ -71,6 +77,7 @@ public class SatelliteCreator : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.SapphireRefractor)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.sapphireRefractionSatellite;
             _canCreateNewSatellite = false;
 
@@ -79,6 +86,7 @@ public class SatelliteCreator : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.SiliconRefractor)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.siliconRefractionSatellite;
             _canCreateNewSatellite = false;
 
@@ -87,6 +95,7 @@ public class SatelliteCreator : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.WaterRefractor)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.waterRefractionSatellite;
             _canCreateNewSatellite = false;
 
@@ -97,6 +106,7 @@ public class SatelliteCreator : MonoBehaviour
 
         else if (satelliteType == SatelliteType.WhiteBasicColourFilter)
         {
+            
             bFilter = true;
             _chosenPrefab = satellitePrefabs.whiteFilterSatellite;
         }
@@ -135,6 +145,7 @@ public class SatelliteCreator : MonoBehaviour
 
         else if (satelliteType == SatelliteType.CustomColourFilter)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.customFilterSatellite;
             _canCreateNewSatellite = false;
 
@@ -144,7 +155,7 @@ public class SatelliteCreator : MonoBehaviour
 
         else if (satelliteType == SatelliteType.Combiner)
         {
-
+            _animating = true;
             _chosenPrefab = satellitePrefabs.combinerSatellite;
             _canCreateNewSatellite = false;
 
@@ -154,6 +165,7 @@ public class SatelliteCreator : MonoBehaviour
         
         else if (satelliteType == SatelliteType.DuelSplitter) 
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.duelSplitterSatellite;
             _canCreateNewSatellite = false;
 
@@ -162,6 +174,7 @@ public class SatelliteCreator : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.TrioSplitter)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.trioSplitterSatellite;
             _canCreateNewSatellite = false;
 
@@ -170,6 +183,7 @@ public class SatelliteCreator : MonoBehaviour
         }
         else if (satelliteType == SatelliteType.HexSplitter)
         {
+            _animating = true;
             _chosenPrefab = satellitePrefabs.hexSplitterSatellite;
             _canCreateNewSatellite = false;
 
@@ -186,6 +200,7 @@ public class SatelliteCreator : MonoBehaviour
 
         if (bFilter)
         {
+            _animating = true;
             _canCreateNewSatellite = false;
 
             _animator.SetBool("Animating",true);
@@ -198,10 +213,12 @@ public class SatelliteCreator : MonoBehaviour
 
     public void InstantiateSatellite()
     {
-        Debug.Log("Called!");
+        _animating = false;
+        Debug.Log(_numberSatellitesInLoadingBay);
 
-        if (_chosenPrefab != null)
+        if (_chosenPrefab != null && _numberSatellitesInLoadingBay == 0)
         {
+            
             levelProgressPanel.LogCommunications("Elysia",-1,"Satellite created, you can find it in the printing bay\n");
             var newSatellite = Instantiate(_chosenPrefab);
             newSatellite.layer = LayerMask.NameToLayer("Object");
@@ -209,18 +226,50 @@ public class SatelliteCreator : MonoBehaviour
 
             _lastCreatedSatellite = newSatellite;
         }
+        else if (_delayedCreation)
+        {
+            Debug.Log("Delaying Satellite Creation until item is out of the creator bay");
+            levelProgressPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space.\n");
+        }
         else
         {
             Debug.Log("No satellite made");
         }
 
         _animator.SetBool("Animating",false);
-        _chosenPrefab = null;
+        if (!_delayedCreation) _chosenPrefab = null;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (!(collider.gameObject.name == "SatelliteController"))
+        {
+            _numberSatellitesInLoadingBay += 1;
+
+            if (_animating)
+            {
+                _delayedCreation = true;
+            }
+        }
+
+        
     }
 
 
     public void OnTriggerExit2D(Collider2D collider)
     {
+
+        if (!(collider.gameObject.name == "SatelliteController"))
+        {
+            _numberSatellitesInLoadingBay -=1;
+
+            if (_numberSatellitesInLoadingBay == 0 && _delayedCreation)
+            {
+                _delayedCreation = false;
+                InstantiateSatellite();
+            }
+
+        }
 
         if (collider.gameObject == _lastCreatedSatellite)
         {
