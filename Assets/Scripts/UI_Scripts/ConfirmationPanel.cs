@@ -26,7 +26,7 @@ public class ConfirmationPanel : MonoBehaviour
     void Start()
     {
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        //_uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
         // Collect child gameObjects
         var childTransformsList = gameObject.GetComponentsInChildren<RectTransform>();

@@ -19,6 +19,14 @@ TagManager:
   - ConfirmationPanel
   - SatelliteCreator
   - SettingsPanel
+  - SatelliteControlsPanel
+  - LevelInformation
+  - CommunicationsPanel
+  - SatelliteInformationPanel
+  - ShopPanel
+  - TeachingPanel
+  - Settings
+  - LevelCompletePanel
   layers:
   - Default
   - TransparentFX

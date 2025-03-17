@@ -26,7 +26,7 @@ public class SatelliteCreator : MonoBehaviour
     {
         _animator = gameObject.GetComponent<Animator>();
 
-        levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
+        //levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
 
     }
 

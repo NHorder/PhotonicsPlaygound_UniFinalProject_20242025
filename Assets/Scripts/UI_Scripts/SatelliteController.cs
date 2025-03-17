@@ -33,14 +33,14 @@ public class SatelliteController : MonoBehaviour
     void Start()
     {
         // Retrieve UI controller
-        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        //_uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Check that interaction is enabled
-        var interactionEnabled = _uiController.GetInteractionEnabled();
+        var interactionEnabled = true;//_uiController.GetInteractionEnabled();
         if (interactionEnabled)
         {
             // Check to see if an mouse has been clicked

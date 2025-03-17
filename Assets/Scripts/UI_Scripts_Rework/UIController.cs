@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// public enum UIPanel
-// {
-//     Satellite_Controls,
-//     Satellite_Info_UI,
-//     Shop,
-//     Teaching,
-//     LogCommunications,
-//     ConfirmAction,
-//     Settings,
-//     LevelComplete
-// }
+public enum FixedUIPanel
+{
+    Teaching,
+    ConfirmAction,
+    Settings,
+    LevelComplete
+}
 
 public class UIController_ : MonoBehaviour
 {
-    public float panelMovementSpeed;
+    public float panelMovementSpeed = 10f;
 
     public AdvancedSettings advancedSettings;
 
@@ -98,31 +94,106 @@ public class UIController_ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (uiExpectations.expectLevelInformationPanel && _movingPanels.levelInformationPanel != null && _movingPanels.levelInformationMoving)
+        {
+            var rectTransform = _movingPanels.levelInformationPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
+
+            MovePanel(rectTransform,currentPosition,_movingPanels.levelInformationMoveTo);
+
+            if (rectTransform.anchoredPosition == _movingPanels.communicationsMoveTo) _movingPanels.communicationPanelMoving = false;
+        }
+
+        if (uiExpectations.expectCommunicationPanel && _movingPanels.communicationsPanel != null && _movingPanels.communicationPanelMoving)
+        {
+            var rectTransform = _movingPanels.communicationsPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
+
+            MovePanel(rectTransform,currentPosition,_movingPanels.communicationsMoveTo);
+
+            if (rectTransform.anchoredPosition == _movingPanels.communicationsMoveTo) _movingPanels.communicationPanelMoving = false;
+        }
+
+        if (uiExpectations.expectSatelliteControlPanel && _movingPanels.satelliteControlsPanel != null && _movingPanels.satelliteControlsMoving)
+        {
+            var rectTransform = _movingPanels.satelliteControlsPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
+
+            MovePanel(rectTransform,currentPosition,_movingPanels.satelliteControlsMoveTo);
+
+            if (rectTransform.anchoredPosition == _movingPanels.satelliteControlsMoveTo) _movingPanels.satelliteControlsMoving = false;
+
+        }
+
+
+        if (uiExpectations.expectSatelliteInformationPanel && _movingPanels.levelInformationPanel != null && _movingPanels.satelliteInformationMoving)
+        {
+            
+            var rectTransform = _movingPanels.satelliteInformationPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
+
+            MovePanel(rectTransform,currentPosition,_movingPanels.satelliteInformationMoveTo);
+
+            if (rectTransform.anchoredPosition == _movingPanels.satelliteInformationMoveTo) _movingPanels.satelliteInformationMoving = false;
+        }
+
+
+        if (uiExpectations.expectShopPanel && _movingPanels.shopPanel != null && _movingPanels.shopPanelMoving)
+        {
+            var rectTransform = _movingPanels.shopPanel.GetComponent<RectTransform>();
+            var currentPosition = rectTransform.anchoredPosition;
+
+            MovePanel(rectTransform,currentPosition,_movingPanels.shopMoveTo);
+
+            if (rectTransform.anchoredPosition == _movingPanels.shopMoveTo)
+            {
+                _movingPanels.shopPanelMoving = false;
+            }
+        }
         
     }
 
-    public void PresentFixedPanel(UIPanel panel, bool bVisible)
+
+
+
+
+    public void PresentFixedPanel(FixedUIPanel panel, bool bVisible)
     {
         // Fixed Panels have a single location and instead work by handling their 'active' state
         // As such they only appear in one location or not appear in said location. They don't move.
 
-        if (panel == UIPanel.Settings)
+        if (panel == FixedUIPanel.Settings)
         {
 
         }
 
-        else if (panel == UIPanel.LevelComplete)
+        else if (panel == FixedUIPanel.ConfirmAction)
         {
 
         }
 
-        else if (panel == UIPanel.ConfirmAction)
+        else if (panel == FixedUIPanel.Teaching)
         {
 
         }
 
-        else if (panel == UIPanel.Teaching)
+
+        else if (panel == FixedUIPanel.LevelComplete)
         {
+            // Do level complete stuff
+
+
+            // As the level has been completed. Close all open moving UI elements
+            if (uiExpectations.expectLevelInformationPanel && _movingPanels.levelInformationVisible) ToggleVisibleLevelInfomation();
+
+            if (uiExpectations.expectCommunicationPanel && _movingPanels.communicationPanelVisible) ToggleVisibleCommunications();
+            
+            if (uiExpectations.expectSatelliteControlPanel && _movingPanels.satelliteControlsVisible) ToggleVisibleSatelliteControls();
+
+            if (uiExpectations.expectSatelliteInformationPanel && _movingPanels.satelliteInformationVisible) ToggleVisibleSatelliteInformation();
+
+            if (uiExpectations.expectShopPanel && _movingPanels.shopPanelVisible) ToggleVisibleShop();
 
         }
 
@@ -132,11 +203,58 @@ public class UIController_ : MonoBehaviour
 
     private void MovePanel(RectTransform rectTransform,Vector3 currentPosition,Vector2 newPosition)
     {
+        var moveSpeed = panelMovementSpeed;
+
+        if (panelMovementSpeed <= 0) panelMovementSpeed = 1;
+
+        // Check Y positions, move if needed
+        if (currentPosition.y < newPosition.y)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x, currentPosition.y + moveSpeed);
+
+            // If overshot location in this move, then set to the position
+            if (currentPosition.y + moveSpeed > newPosition.y) rectTransform.anchoredPosition = new Vector2(currentPosition.x,newPosition.y);
+            
+        }
+
+        else if (currentPosition.y > newPosition.y)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x, currentPosition.y - moveSpeed);
+
+            // If overshot location in this move, then set to the position
+            if (currentPosition.y - moveSpeed < newPosition.y) rectTransform.anchoredPosition = new Vector2(currentPosition.x,newPosition.y);
+            
+        }
+        
+        
+        // Check X positions, move if needed
+        if (currentPosition.x < newPosition.x)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x + moveSpeed, currentPosition.y);
+
+            // If it overextends then move it to the exact location needed
+            if (currentPosition.x - moveSpeed > newPosition.x) rectTransform.anchoredPosition = new Vector2(newPosition.x,currentPosition.y);
+            
+        }
+
+        else if (currentPosition.x > newPosition.x)
+        {
+            // Move towards destination based on moveSpeed
+            rectTransform.anchoredPosition = new Vector2(currentPosition.x - moveSpeed, currentPosition.y);
+
+            // If it overextends then move it to the exact location needed
+            if (currentPosition.x - moveSpeed < newPosition.x) rectTransform.anchoredPosition = new Vector2(newPosition.x,currentPosition.y);
+            
+        }
 
     }
 
     public void ToggleVisibleLevelInfomation()
     {
+
         // Set the opposite of current
         _movingPanels.levelInformationVisible = !_movingPanels.levelInformationVisible;
 
@@ -150,30 +268,75 @@ public class UIController_ : MonoBehaviour
 
     public void ToggleVisibleCommunications()
     {
+        // Set the opposite of current
+        _movingPanels.communicationPanelVisible = !_movingPanels.communicationPanelVisible;
 
+        // Set moving to true
+        _movingPanels.communicationPanelMoving = true;
+
+        // Set move location based on whether now wanted open or closed
+        if (_movingPanels.communicationPanelVisible) _movingPanels.communicationsMoveTo = movingPanelSettings.communicationsOpenLocation;
+        else _movingPanels.communicationsMoveTo = movingPanelSettings.communicationsCloseLocation;
     }
 
     public void ToggleVisibleShop()
     {
+        // Set the opposite of current
+        _movingPanels.shopPanelVisible = !_movingPanels.shopPanelVisible;
 
+        // Set moving to true
+        _movingPanels.shopPanelMoving = true;
+
+        // Set move location based on whether now wanted open or closed
+        if (_movingPanels.shopPanelVisible) _movingPanels.shopMoveTo = movingPanelSettings.shopOpenLocation;
+        else _movingPanels.shopMoveTo = movingPanelSettings.shopCloseLocation;
     }
 
     public void ToggleVisibleSatelliteControls()
     {
+        // Set the opposite of current
+        _movingPanels.satelliteControlsVisible = !_movingPanels.satelliteControlsVisible;
 
+        // Set moving to true
+        _movingPanels.satelliteControlsMoving = true;
+
+        // Set move location based on whether now wanted open or closed
+        if (_movingPanels.satelliteControlsVisible) _movingPanels.satelliteControlsMoveTo = movingPanelSettings.satelliteControlsOpenLocation;
+        else _movingPanels.satelliteControlsMoveTo = movingPanelSettings.satelliteControlsCloseLocation;
     }
 
     public void ToggleVisibleSatelliteInformation()
     {
+        // Set the opposite of current
+        _movingPanels.satelliteInformationVisible = !_movingPanels.satelliteInformationVisible;
 
+        // Set moving to true
+        _movingPanels.satelliteInformationMoving = true;
+
+        // Set move location based on whether now wanted open or closed
+        if (_movingPanels.satelliteInformationVisible) _movingPanels.satelliteInformationMoveTo = movingPanelSettings.satelliteInfomationOpenLocation;
+        else _movingPanels.satelliteInformationMoveTo = movingPanelSettings.satelliteInformationCloseLocation;
     }
+
 
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;
+
+        // if (uiExpectations.expectCommunicationPanel) _movingPanels.communicationsPanel.UpdateLanguage(newLanguage);
+        // if (uiExpectations.expectLevelInformationPanel) _movingPanels.levelInformationPanel.UpdateLanguage(newLanguage);
+        // if (uiExpectations.expectSatelliteControlPanel) _movingPanels.satelliteControlsPanel.UpdateLanguage(newLanguage);
+        // if (uiExpectations.expectShopPanel) _movingPanels.shopPanel.UpdateLanguage(newLanguage);
+        // if (uiExpectations.expectSatelliteInformationPanel) _movingPanels.satelliteInformationPanel.UpdateLanguage(newLanguage);
+
+        // if (uiExpectations.expectConfirmationPanel) _fixedPanels.confirmationPanel.UpdateLanguage(newLanguage);
+        // if (uiExpectations.expectLevelCompletePanel) _fixedPanels.levelCompletePanel.UpdateLanguage(newLanguage);
+        // if (uiExpectations.expectSettingsPanel) _fixedPanels.settingsPanel.UpdateLanguage(newLanguage);
+        // if (uiExpectations.expectTeachingPanel) _fixedPanels.teachingPanel.UpdateLanguage(newLanguage);
         
     }
 }
+
 
 public class FixedPanels
 {
@@ -195,7 +358,7 @@ public class MovingPanels
 {
     public LevelInformationPanel levelInformationPanel;
     public Vector2 levelInformationMoveTo;
-    public bool levelInformationVisible = true;
+    public bool levelInformationVisible = false;
     public bool levelInformationMoving = false;
 
     public ShopPanel shopPanel;
@@ -241,20 +404,20 @@ public class UIExpectations_
 [System.Serializable]
 public class MovingPanelSettings
 {    
-    public Vector2 levelInformationOpenLocation;
-    public Vector2 levelInformationCloseLocation;
+    public Vector2 levelInformationOpenLocation = new Vector2(659f,339f);
+    public Vector2 levelInformationCloseLocation = new Vector2(1178.8f, 339f);
 
-    public Vector2 shopOpenLocation;
-    public Vector2 shopCloseLocation;
+    public Vector2 shopOpenLocation = new Vector2(737f,-204f);
+    public Vector2 shopCloseLocation = new Vector2(1096f, -204f);
 
-    public Vector2 satelliteControlsOpenLocation;
-    public Vector2 satelliteControlsCloseLocation;
+    public Vector2 satelliteControlsOpenLocation = new Vector2(0f, -472.9f);
+    public Vector2 satelliteControlsCloseLocation = new Vector2(0f,-611f);
 
-    public Vector2 satelliteInfomationOpenLocation;
-    public Vector2 satelliteInformationCloseLocation;
+    public Vector2 satelliteInfomationOpenLocation = new Vector2(-709.5f,-389.3f) ;
+    public Vector2 satelliteInformationCloseLocation = new Vector2(-1139.2f,-389.3f);
 
-    public Vector2 communicationsOpenLocation;
-    public Vector2 communicationsCloseLocation;
+    public Vector2 communicationsOpenLocation = new Vector2(-694.8f, 377.6f);
+    public Vector2 communicationsCloseLocation =  new Vector2(-694.8f,643f);
 
 
 }

@@ -30,15 +30,15 @@ public class LevelProgressPanel : MonoBehaviour
     void Start()
     {
         // Locate and connect to ui controller
-        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        //_uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
         // Locate and connect to game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
         // Collect relevant information from game controller and ui controller
-        _numLocks = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
-        _forceNoChangeOnNewCommunication = _uiController.levelProgressPanelSettings.forceNoChangeOnNewCommunication;
-        _recordRetentionNumber = _uiController.levelProgressPanelSettings.recordRetentionNumber;
+        //_numLocks = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
+        //_forceNoChangeOnNewCommunication = _uiController.levelProgressPanelSettings.forceNoChangeOnNewCommunication;
+        //_recordRetentionNumber = _uiController.levelProgressPanelSettings.recordRetentionNumber;
 
         // Initialise list
         _logTextList = new List<string>();
@@ -58,7 +58,7 @@ public class LevelProgressPanel : MonoBehaviour
         UpdateUIComponents();
 
         // Call uiController to hide the panel
-        _uiController.PresentPanel(UIPanel.LogCommunications,false);
+        //_uiController.PresentPanel(UIPanel.LogCommunications,false);
 
     }
 
