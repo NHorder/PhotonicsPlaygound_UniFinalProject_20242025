@@ -6,6 +6,8 @@ using UnityEngine;
 public class SatelliteCreator : MonoBehaviour
 {
 
+    private Language _language = Language.English;
+
     public SatellitePrefabs satellitePrefabs;
 
     private bool _canCreateNewSatellite = true;
@@ -20,16 +22,41 @@ public class SatelliteCreator : MonoBehaviour
     private bool _delayedCreation = false;
 
     private CommunicationsPanel _communicationsPanel;
+    private UIController _uiController;
+
+    private string _occupiedText = "";
+    private string _satNotRecognised = "";
+    private string _satCreated = "";
+    private string _satDelayed = "";
 
     // Start is called before the first frame update
     void Start()
     {
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _animator = gameObject.GetComponent<Animator>();
 
         _communicationsPanel = GameObject.FindGameObjectsWithTag("CommunicationsPanel")[0].GetComponent<CommunicationsPanel>();
+        UpdateLanguage(_language);
 
     }
 
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
+        
+        if (_language == Language.English)
+        {
+            _occupiedText = "Printer space occupied, please move satellite in printer space before making another request\n";
+            _satNotRecognised = "Satellite not recognised\n";
+            _satCreated = "Satellite created, you can find it in the printing bay\n";
+            _satDelayed = "Printer space occupied, please move satellite in printer space.\n";
+
+        }
+        else if (_language == Language.Welsh)
+        {
+
+        }
+    }
 
     public bool CreateSatellite(SatelliteType satelliteType)
     {
@@ -39,8 +66,9 @@ public class SatelliteCreator : MonoBehaviour
 
         if (!_canCreateNewSatellite)
         {
+            _uiController.ToggleVisibleCommunicationsIfClosed();
             // Notify comns panel about text
-            _communicationsPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space before making another request\n");
+            _communicationsPanel.LogCommunications("Elysia",-1,_occupiedText);
 
             return false;
         }
@@ -192,7 +220,8 @@ public class SatelliteCreator : MonoBehaviour
         }
     
         else{
-            _communicationsPanel.LogCommunications("Elysia",-1,"Satellite not recognised\n");
+            _uiController.ToggleVisibleCommunicationsIfClosed();
+            _communicationsPanel.LogCommunications("Elysia",-1,_satNotRecognised);
             Debug.LogWarning("WARNING: Satellite type not recognised");
             return false;
         }
@@ -218,8 +247,8 @@ public class SatelliteCreator : MonoBehaviour
 
         if (_chosenPrefab != null && _numberSatellitesInLoadingBay == 0)
         {
-            
-            _communicationsPanel.LogCommunications("Elysia",-1,"Satellite created, you can find it in the printing bay\n");
+            _uiController.ToggleVisibleCommunicationsIfClosed();
+            _communicationsPanel.LogCommunications("Elysia",-1,_satCreated);
             var newSatellite = Instantiate(_chosenPrefab);
             newSatellite.layer = LayerMask.NameToLayer("Object");
             newSatellite.transform.position = this.transform.position;
@@ -229,7 +258,8 @@ public class SatelliteCreator : MonoBehaviour
         else if (_delayedCreation)
         {
             Debug.Log("Delaying Satellite Creation until item is out of the creator bay");
-            _communicationsPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space.\n");
+            _uiController.ToggleVisibleCommunicationsIfClosed();
+            _communicationsPanel.LogCommunications("Elysia",-1,_satDelayed);
         }
         else
         {

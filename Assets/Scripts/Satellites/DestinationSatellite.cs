@@ -8,6 +8,7 @@ public class DestinationSatellite : MonoBehaviour
     public LaserColour neededLaserColour = LaserColour.White;
 
     private GameController _gameController;
+    private UIController _uiController;
     private string _satelliteName;
 
     private int _numLocksForLevelCompletion;
@@ -41,6 +42,7 @@ public class DestinationSatellite : MonoBehaviour
     {
         // Find the game controller, establish link
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _neededTransparency = _gameController.specializedInteractionSettings.minimumTransparencyNeededForDestinationRecognition;
 
         // Try to collect the level progress panel - as it may not exist / not be used
@@ -101,16 +103,17 @@ public class DestinationSatellite : MonoBehaviour
             }
             else 
             {
-
+                
                 if (_lockAdvanceRequest && !_colourAccepted && _newColourSeen)
                 {
+                    _uiController.ToggleVisibleCommunicationsIfClosed();    
                     _communicationsPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
-            
                     _newColourSeen = false;
                 }
 
                 else if (_lockAdvanceRequest && !_transparencyAccepted && _newTransparencySeen)
                 {
+                    _uiController.ToggleVisibleCommunicationsIfClosed();
                     _communicationsPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
                     _newTransparencySeen = false;
                 }
@@ -151,7 +154,11 @@ public class DestinationSatellite : MonoBehaviour
                 _lockProgressionCounter = 0;
 
                 // Update UI components to annouce that a lock has been opened
-                if (_numUnlocks <= _numLocksForLevelCompletion) _communicationsPanel.LogCommunications(_satelliteName,_numUnlocks);
+                if (_numUnlocks <= _numLocksForLevelCompletion)
+                {
+                    _uiController.ToggleVisibleCommunicationsIfClosed();
+                    _communicationsPanel.LogCommunications(_satelliteName,_numUnlocks);
+                }
 
                 // if the number of unlocks is more or equal to the number of locks being used
                 if (_numUnlocks >= _numLocksForLevelCompletion)
@@ -165,6 +172,7 @@ public class DestinationSatellite : MonoBehaviour
                         // Notify Game Controller that a destination has become active
                         _gameController.DestinationTrigger(true);
 
+                        _uiController.ToggleVisibleCommunicationsIfClosed();
                         // Update text to show success
                         _communicationsPanel.UpdateSuccessText();
                     }

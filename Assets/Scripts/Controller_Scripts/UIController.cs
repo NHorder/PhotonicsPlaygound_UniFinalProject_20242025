@@ -285,6 +285,15 @@ public class UIController : MonoBehaviour
         else _movingPanels.communicationsMoveTo = movingPanelSettings.communicationsCloseLocation;
     }
 
+    public void ToggleVisibleCommunicationsIfClosed()
+    {
+
+        if (!_movingPanels.communicationPanelVisible && !advancedSettings.overwriteCommunicationMovement)
+        {
+            ToggleVisibleCommunications();
+        }
+    }
+
     public void ToggleVisibleShop()
     {
         // Set the opposite of current
