@@ -57,25 +57,16 @@ public class ShopVarientHandler : MonoBehaviour
 
     public void NewSelectionMade()
     {
-
-        Debug.Log("VALUE has changed!");
         if (_dropdown != null) 
         {
-
             Variant selectedVariant = variants[_dropdown.value];
 
             _satelliteInfo.satelliteType = selectedVariant.variantSatelliteType;
             _satelliteInfo.RetreiveSatelliteText();
 
             if (_shopSprite != null) _shopSprite.sprite = selectedVariant.varientSatelliteSprite;
-
-            
         }
-
     }
-
-
-
 }
 
 [System.Serializable]

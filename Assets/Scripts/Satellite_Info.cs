@@ -225,7 +225,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Reflect-Double-LAM-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Reflect-Duo-LAM-{satelliteNum}-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade reflectance satellite. Upgraded from it's predecessor, this includes two panels for lambertian reflection.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A two surface reflection satellite.";
             }
@@ -289,7 +289,7 @@ public class Satellite_Info : MonoBehaviour
         else if (satelliteType == SatelliteType.WaterRefractor){
              if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Refract-Water-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Refract-H2O-{satelliteNum}-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A cutting edge prototype satellite, capable of maintaining water in a liquid space in deep space and keeping it contained. It has a refractive index of 1.33, passing a laser through this object will alter the angle to a small degree. ";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A water refraction satellite.";
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Settings : MonoBehaviour
+public class SettingsPanel : MonoBehaviour
 {
     private Language _language = Language.English;
     private TMP_Text _languageText;
@@ -45,44 +45,42 @@ public class Settings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-        // _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
-        // var childRectTransformList = gameObject.GetComponentsInChildren<RectTransform>();
+        var childRectTransformList = gameObject.GetComponentsInChildren<RectTransform>();
 
-        // // Loop through all children and filter for wanted objects
-        // foreach (RectTransform childTransform in childRectTransformList)
-        // {
-        //     GameObject childObject = childTransform.gameObject;
+        // Loop through all children and filter for wanted objects
+        foreach (RectTransform childTransform in childRectTransformList)
+        {
+            GameObject childObject = childTransform.gameObject;
 
-        //     if (childObject.name == "Title") _titleText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "LanguageText") _languageText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "ResetText") _resetButtonText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "ReturnText") _returnButtonText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "ForceNoChangeText") _forceNoChangeWhenReceivingCommunicationsToggleText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "DisableConfirmationText") _disableConfirmationsToggleText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "AllowAdvancedInteractionText") _allowAdvancedInteractionsToggleText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "AllowSatelliteMovementParticlesText") _allowSatelliteMovementParticlesToggleText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "ViewTeachingText") _viewTeachingTransmissionText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "ViewTeaching") _viewTeachingTransmissionButton = childObject;
+            if (childObject.name == "Title") _titleText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "LanguageText") _languageText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ResetText") _resetButtonText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ReturnText") _returnButtonText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ForceNoChangeText") _forceNoChangeWhenReceivingCommunicationsToggleText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "DisableConfirmationText") _disableConfirmationsToggleText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "AllowAdvancedInteractionText") _allowAdvancedInteractionsToggleText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "AllowSatelliteMovementParticlesText") _allowSatelliteMovementParticlesToggleText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ViewTeachingText") _viewTeachingTransmissionText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ViewTeaching") _viewTeachingTransmissionButton = childObject;
 
-        //     else if (childObject.name == "EnglishText") _englishButtonText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "WelshText") _welshButtonText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "ExitLevelText") _exitLevelText = childObject.GetComponent<TMP_Text>();
-        //     else if (childObject.name == "ExitLevelButton") _exitLevelButton = childObject;
+            else if (childObject.name == "EnglishText") _englishButtonText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "WelshText") _welshButtonText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ExitLevelText") _exitLevelText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ExitLevelButton") _exitLevelButton = childObject;
 
-        //     else if (childObject.name == "EnglishButton") _englishButtonAnimator = childObject.GetComponent<Animator>();
-        //     else if (childObject.name == "WelshButton") _welshButtonAnimator = childObject.GetComponent<Animator>();
-        // }
+            else if (childObject.name == "EnglishButton") _englishButtonAnimator = childObject.GetComponent<Animator>();
+            else if (childObject.name == "WelshButton") _welshButtonAnimator = childObject.GetComponent<Animator>();
+        }
 
 
-        // if (!_uiController.uiExpectations.expectConfirmationPanel) _exitLevelButton.active = false;
+        //if (!_uiController.uiExpectations.expectConfirmationPanel) _exitLevelButton.active = false;
+        if (!_uiController.uiExpectations.expectTeachingPanel) _viewTeachingTransmissionButton.active = false;
         
 
-        // if (!_uiController.uiExpectations.expectTeachingUIPanel) _viewTeachingTransmissionButton.active = false;
-        
-
-        // ReadFile("settings.txt");
+        ReadFile("settings.txt");
     }
 
 
@@ -160,7 +158,7 @@ public class Settings : MonoBehaviour
         _gameController.UpdateLanguage(_language);
         _uiController.UpdateLanguage(_language);
 
-        _uiController.PresentPanel(UIPanel.Settings,false);
+        _uiController.PresentFixedPanel(FixedUIPanel.Settings,false);
     }
 
     public void ViewTeachingTransmissions()

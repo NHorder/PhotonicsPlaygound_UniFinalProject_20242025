@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
-
 using TMPro;
 
-public class LevelProgressPanel : MonoBehaviour
+public class CommunicationsPanel : MonoBehaviour
 {
-    private bool _forceNoChangeOnNewCommunication = false;
+    private Language _language = Language.English;
 
+    private bool _forceNoChangeOnNewCommunication = false;
+   
     private TMP_Text _logText;
     private TMP_Text _progressText;
-
+    private TMP_Text _progressTextTwo;
     private List<string> _logTextList;
 
     private int _recordRetentionNumber = 10;
@@ -22,23 +23,18 @@ public class LevelProgressPanel : MonoBehaviour
 
 
     private int _numLocks;
-
     private bool _panelOpen = false;
 
-    
     // Start is called before the first frame update
     void Start()
     {
-        // Locate and connect to ui controller
-        //_uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
-
-        // Locate and connect to game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
-        // Collect relevant information from game controller and ui controller
-        //_numLocks = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
-        //_forceNoChangeOnNewCommunication = _uiController.levelProgressPanelSettings.forceNoChangeOnNewCommunication;
-        //_recordRetentionNumber = _uiController.levelProgressPanelSettings.recordRetentionNumber;
+
+        _numLocks = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
+        _forceNoChangeOnNewCommunication = _uiController.advancedSettings.overwriteCommunicationMovement;
+        _recordRetentionNumber = _uiController.advancedSettings.communicationRecordRetentionNumber;
 
         // Initialise list
         _logTextList = new List<string>();
@@ -52,22 +48,19 @@ public class LevelProgressPanel : MonoBehaviour
             // filter for log text and progress text
             if (childObject.name == "LevelProgressLogText") _logText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "LevelProgressProgressText") _progressText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "LevelProgressProgressTextTwo") _progressTextTwo = childObject.GetComponent<TMP_Text>();
         }
-
         // Inital trigger to remove default text
         UpdateUIComponents();
-
-        // Call uiController to hide the panel
-        //_uiController.PresentPanel(UIPanel.LogCommunications,false);
+        UpdateSuccessText();
 
     }
-
 
     public void LogCommunications(string satelliteName, float numUnlocks, string otherText = "")
     {
         // If the user has not specified in settings that this should not appear each time communications are made
         // and if it isn't expanded, then open it.
-        if (!_forceNoChangeOnNewCommunication) _uiController.PresentPanel(UIPanel.LogCommunications,true);
+        //if (!_forceNoChangeOnNewCommunication) _uiController.PresentPanel(UIPanel.LogCommunications,true);
         
         var logText = "";
 
@@ -78,19 +71,36 @@ public class LevelProgressPanel : MonoBehaviour
 
         }
         // If the number of unlocks is less than or equal to zero, assume the connection was lost.
-        else if (numUnlocks <= 0) logText = $"{satelliteName}: Connection Lost\n";
+        else if (numUnlocks <= 0)
+        {
+            if (_language == Language.English) logText = $"{satelliteName}: Connection Lost\n";
+            else if (_language == Language.Welsh) logText = $"{satelliteName}: NOT TRANSLATED\n";
+        }
         
         else
         {
             // Using a percentage allows for more locks to be in place
             var unlockPercentage = (numUnlocks / _numLocks);
 
-            // Determine Log text based on unlock percentage
-            if (unlockPercentage > 0.95f) logText = $"{satelliteName}: Connection Established\n";
-            else if (unlockPercentage > 0.75f) logText = $"{satelliteName}: Confirming Permissions....\n";
-            else if (unlockPercentage > 0.5f) logText = $"{satelliteName}: Securing Connection....\n";
-            else if (unlockPercentage > 0.25f) logText = $"{satelliteName}: Stabilizing Connection....\n";
-            else logText = $"{satelliteName}: Connection Found\n";
+            if (_language == Language.English)
+            {
+                // Determine Log text based on unlock percentage
+                if (unlockPercentage > 0.95f) logText = $"{satelliteName}: Connection Established\n";
+                else if (unlockPercentage > 0.75f) logText = $"{satelliteName}: Confirming Permissions....\n";
+                else if (unlockPercentage > 0.5f) logText = $"{satelliteName}: Securing Connection....\n";
+                else if (unlockPercentage > 0.25f) logText = $"{satelliteName}: Stabilizing Connection....\n";
+                else logText = $"{satelliteName}: Connection Found\n";
+            }
+            else if (_language == Language.Welsh)
+            {
+                // Determine Log text based on unlock percentage
+                if (unlockPercentage > 0.95f) logText = $"{satelliteName}: NEED TRANSLATING\n";
+                else if (unlockPercentage > 0.75f) logText = $"{satelliteName}: NEED TRANSLATING\n";
+                else if (unlockPercentage > 0.5f) logText = $"{satelliteName}: NEED TRANSLATING\n";
+                else if (unlockPercentage > 0.25f) logText = $"{satelliteName}: NEED TRANSLATING\n";
+                else logText = $"{satelliteName}: NEED TRANSLATING\n";
+            }
+            
         }
 
         // Append the log text to the list
@@ -121,7 +131,6 @@ public class LevelProgressPanel : MonoBehaviour
 
         // Call to update the success
         UpdateSuccessText();
-        
     }
 
     public void UpdateSuccessText()
@@ -129,18 +138,17 @@ public class LevelProgressPanel : MonoBehaviour
         // This is within a separate function as it can be called from LaserDestination
 
         // Update the progress text
-        _progressText.text = $"Connections Established: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
+        if (_language == Language.English)
+        {
+            _progressText.text = $"Connections Established: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
+            _progressTextTwo.text = $"Connections Established: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
+        }
+
+        else if (_language == Language.Welsh)
+        {
+            _progressText.text = $"NOT TRANSLATED: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
+            _progressTextTwo.text = $"NOT TRANSLATED: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
+        }
+
     }
-
-    public void HideExpandCommunicationsPanel()
-    {
-        // This function is present so the "Expand/Hide" button can trigger this process
-
-        // Hide or expand the communications panel
-        _panelOpen = !_panelOpen;
-
-        _uiController.PresentPanel(UIPanel.LogCommunications,_panelOpen);
-    }
-
-
 }

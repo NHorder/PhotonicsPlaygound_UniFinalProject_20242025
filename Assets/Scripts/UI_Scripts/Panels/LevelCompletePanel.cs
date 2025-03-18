@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class LevelCompleteController : MonoBehaviour
+public class LevelCompletePanel : MonoBehaviour
 {
 
     private int _score = 0;

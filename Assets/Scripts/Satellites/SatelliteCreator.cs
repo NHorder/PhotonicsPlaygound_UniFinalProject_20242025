@@ -19,14 +19,14 @@ public class SatelliteCreator : MonoBehaviour
     private int _numberSatellitesInLoadingBay = 0;
     private bool _delayedCreation = false;
 
-    private LevelProgressPanel levelProgressPanel;
+    private CommunicationsPanel _communicationsPanel;
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = gameObject.GetComponent<Animator>();
 
-        //levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
+        _communicationsPanel = GameObject.FindGameObjectsWithTag("CommunicationsPanel")[0].GetComponent<CommunicationsPanel>();
 
     }
 
@@ -40,7 +40,7 @@ public class SatelliteCreator : MonoBehaviour
         if (!_canCreateNewSatellite)
         {
             // Notify comns panel about text
-            levelProgressPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space before making another request\n");
+            _communicationsPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space before making another request\n");
 
             return false;
         }
@@ -192,7 +192,7 @@ public class SatelliteCreator : MonoBehaviour
         }
     
         else{
-            levelProgressPanel.LogCommunications("Elysia",-1,"Satellite not recognised\n");
+            _communicationsPanel.LogCommunications("Elysia",-1,"Satellite not recognised\n");
             Debug.LogWarning("WARNING: Satellite type not recognised");
             return false;
         }
@@ -219,7 +219,7 @@ public class SatelliteCreator : MonoBehaviour
         if (_chosenPrefab != null && _numberSatellitesInLoadingBay == 0)
         {
             
-            levelProgressPanel.LogCommunications("Elysia",-1,"Satellite created, you can find it in the printing bay\n");
+            _communicationsPanel.LogCommunications("Elysia",-1,"Satellite created, you can find it in the printing bay\n");
             var newSatellite = Instantiate(_chosenPrefab);
             newSatellite.layer = LayerMask.NameToLayer("Object");
             newSatellite.transform.position = this.transform.position;
@@ -229,7 +229,7 @@ public class SatelliteCreator : MonoBehaviour
         else if (_delayedCreation)
         {
             Debug.Log("Delaying Satellite Creation until item is out of the creator bay");
-            levelProgressPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space.\n");
+            _communicationsPanel.LogCommunications("Elysia",-1,"Printer space occupied, please move satellite in printer space.\n");
         }
         else
         {

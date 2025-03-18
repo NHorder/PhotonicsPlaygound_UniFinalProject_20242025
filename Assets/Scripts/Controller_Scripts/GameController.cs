@@ -16,8 +16,14 @@ public class GameController : MonoBehaviour
     public Language activeLanguage = Language.English;
 
     public Level thisLevel;
-    public string levelName = "";
-    public string levelDescription = "";
+
+    public string levelNameEnglish = " ";
+    public string levelNameWelsh = " ";
+
+    public string levelDescriptionEnglish = " ";
+    public string levelDescriptionWelsh = " ";
+
+
     public int startingBudget = 1000;
     public int currentBudget = 1000;
     public int maxBudget = 9999;
@@ -158,7 +164,7 @@ public class GameController : MonoBehaviour
     {
         gameEnd = true;
         // Notify UI controller of level won, and pass the score
-        if (_uiController != null) _uiController.SetCompletedModeActive(true);
+        if (_uiController != null) _uiController.LevelHasEnded();
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
     }
 

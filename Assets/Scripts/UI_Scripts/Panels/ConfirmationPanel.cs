@@ -13,6 +13,8 @@ public enum ConfirmAction
 public class ConfirmationPanel : MonoBehaviour
 {
 
+    private Language _language = Language.English;
+
     private UIController _uiController;
     private GameController _gameController;
 
@@ -26,7 +28,8 @@ public class ConfirmationPanel : MonoBehaviour
     void Start()
     {
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-        //_uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        _language = _gameController.activeLanguage;
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
         // Collect child gameObjects
         var childTransformsList = gameObject.GetComponentsInChildren<RectTransform>();
@@ -54,13 +57,15 @@ public class ConfirmationPanel : MonoBehaviour
         // Go through statements to confirm what action is to be conducted and their associated action to confirmButton
         if (confirmAction == ConfirmAction.ResetLevel)
         {
-            action = "reset the level";
+            if (_language == Language.English) action = "reset the level";
+            else if (_language == Language.Welsh) action = "reset level (NOT TRANSLATED)";
             _confirmButton.onClick.AddListener(ResetLevel);
         }
 
         else if (confirmAction == ConfirmAction.LeaveLevel)
         {
-            action = "leave the level";
+            if (_language == Language.English) action = "leave the level";
+            else if (_language == Language.Welsh) action = "leave the level (NOT TRANSLATED)";
             _confirmButton.onClick.AddListener(LevelSelection);
         }
 
@@ -72,10 +77,17 @@ public class ConfirmationPanel : MonoBehaviour
         // Else if not missing the text components, then update their text
         else if (_titleText != null && _warningText != null)
         {
-            _titleText.text = $"Are you sure you want to {action}?";
-            _warningText.text = $"Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
+            if (_language == Language.English)
+            {
+                _titleText.text = $"Are you sure you want to {action}?";
+                _warningText.text = $"Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
+            }
+            else if (_language == Language.Welsh)
+            {
+                _titleText.text = $"Are you sure you want to {action}?";
+                _warningText.text = $"Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
+            }
         }
-
         // Else throw a warning that this is missing the objects
         else
         {
@@ -86,7 +98,7 @@ public class ConfirmationPanel : MonoBehaviour
 
     public void CloseConfirmation()
     {
-        _uiController.PresentPanel(UIPanel.ConfirmAction, false);
+        _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,false);
     }
 
     public void ResetLevel()

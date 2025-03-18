@@ -14,6 +14,10 @@ public enum Key{
 
 public class SatelliteController : MonoBehaviour
 {
+    public float heldMovementSpeedIncrease = 0.01f;
+    public float heldRotationSpeedIncrease = 0.01f;
+
+
 
     private UIController _uiController;
 
@@ -22,38 +26,47 @@ public class SatelliteController : MonoBehaviour
     private int _movementCounter = 0;
     private int _rotationCounter = 0;
 
+
+
     private Rigidbody2D _lastFoundRigidBody2D = null;
 
     private Rigidbody2D _selectedRigidbody2D = null;
-    private Satellite_Info _selectedSatelliteInfo = null;
+    public Satellite_Info selectedSatelliteInfo = null;
+
+
 
     private Key _keyPressed = Key.None;
+
+    private bool _panelVisible = false;
+    private bool _firstSelection = true;
 
 
     void Start()
     {
         // Retrieve UI controller
-        //_uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Check that interaction is enabled
-        var interactionEnabled = true;//_uiController.GetInteractionEnabled();
+        var interactionEnabled = true;
+
+
         if (interactionEnabled)
         {
             // Check to see if an mouse has been clicked
             SelectInteraction();
 
             // If there is a linked object (through it's rigidbody) then allow interaction
-            if (_selectedRigidbody2D != null && _selectedSatelliteInfo.canbeMoved)
+            if (_selectedRigidbody2D != null && selectedSatelliteInfo.canbeMoved)
             {
                 // Allow for keyboard interactions
                 KeyboardInteraction();
 
                 // Allow for control panel interactions if the panel is expeccted
-                if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels) ControlPanelInteraction();
+                if (_uiController.uiExpectations.expectSatelliteControlPanel) ControlPanelInteraction();
             }
         }
 
@@ -65,14 +78,8 @@ public class SatelliteController : MonoBehaviour
 
             // Disconnect from the selected satellite
             _selectedRigidbody2D = null;
-            _selectedSatelliteInfo = null;
-
-            // Hide the controls and information UI, as not item is selected
-            _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
-            _uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
+            selectedSatelliteInfo = null;
             
-            // Notify UI Controller that nothing is selected
-            _uiController.selectedSatelliteInfo = null;
         }
     }
 
@@ -94,7 +101,7 @@ public class SatelliteController : MonoBehaviour
             if (!uiObjectFound && _lastFoundRigidBody2D != null){
 
                 // Make the previous selected and set to false (not selected)
-                if (_selectedSatelliteInfo != null) _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
+                if (selectedSatelliteInfo != null) _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
 
                 // Collect the satellite info for the last found rigid body.
                 Satellite_Info lastFoundSatelliteInfo = _lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
@@ -104,57 +111,60 @@ public class SatelliteController : MonoBehaviour
                 if (lastFoundSatelliteInfo.advanced_Satellite_Info.isSelectable)
                 {
                     _selectedRigidbody2D = _lastFoundRigidBody2D;
-                    _selectedSatelliteInfo = _lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
+                    selectedSatelliteInfo = _lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
 
                     // Update multipliers - Mutipliers are used to increase speed of rotation or movement based on how long 
                     // they are held down to a maximum limit (defined in objects satellite information)
-                    _currentMovementMultiplier = _selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
-                    _currentRotationMultiplier = _selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
+                    _currentMovementMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
+                    _currentRotationMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
 
                     // Will involve an animation update - as it needs to be clear which object the user has selected.
                     _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
 
-                    // Notify ui controller of new satellite selection
-                    _uiController.selectedSatelliteInfo = _selectedSatelliteInfo;
-
-                    // If expecting the controls and info panel, update and present the panels
-                    if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
+                    //If expecting the controls and info panel, update and present the panels
+                    if (_uiController.uiExpectations.expectSatelliteControlPanel)
                     {
-
                         // If the selected satellite can be moved, then present the movement panel, else hide it.
-                        if (_selectedSatelliteInfo.canbeMoved) _uiController.PresentPanel(UIPanel.Satellite_Controls,true);
+                        if (selectedSatelliteInfo.canbeMoved)
+                        {
+                            _uiController.ToggleVisibleSatelliteControls();
+                            _panelVisible = true;
+                        }
                         
-                        else _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
+                        else if (_panelVisible) _uiController.ToggleVisibleSatelliteControls();
 
                         // Present the satellite info panel
-                        _uiController.PresentPanel(UIPanel.Satellite_Info_UI,true);
+                        if (_firstSelection)
+                        {
+                            _uiController.ToggleVisibleSatelliteInformation();
+                            _firstSelection = false;
+                        }
                     }
                 }
             }
             // If it's null, set selected to null - this assumes an object that can't be rotated has been selected or empty space has been selected.
-            else{
-                
-                CloseInformation(uiObjectFound);
+            else if (!uiObjectFound)
+            {    
+                CloseInformation();
             }
         }
     }
 
-    private void CloseInformation(bool uiObjectFound = false)
+    private void CloseInformation()
     {
-        if (_selectedRigidbody2D != null && !uiObjectFound)
+        if (_selectedRigidbody2D != null)
         {
             _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
             _selectedRigidbody2D = null;
-            _selectedSatelliteInfo = null;
+            selectedSatelliteInfo = null;
 
-            if (_uiController.uiExpectations.expectSatelliteControlsAndInfoPanels)
+            // Check if expecting panels
+            // If so, check if they're open, then close them
+            if (_uiController.uiExpectations.expectSatelliteControlPanel && _panelVisible)
             {
-                _uiController.PresentPanel(UIPanel.Satellite_Controls,false);
-                _uiController.PresentPanel(UIPanel.Satellite_Info_UI,false);
-
+                _panelVisible = false;
+                _uiController.ToggleVisibleSatelliteControls();
             }
-
-            _uiController.selectedSatelliteInfo = null;
         }
     }
 
@@ -180,8 +190,6 @@ public class SatelliteController : MonoBehaviour
         return raycastResults;
     }
 
-    
-
     private void KeyboardInteraction()
     {
         // Method to handle keyboard interactions
@@ -196,7 +204,7 @@ public class SatelliteController : MonoBehaviour
 
         // If the seleccted satellite IS NOT Origin or Destination, allow movement
         // Reasoning, it would be way to easy to win if you move the destination to the origin or vice versa.
-        if (_selectedSatelliteInfo.satelliteType != SatelliteType.Origin && _selectedSatelliteInfo.satelliteType != SatelliteType.Destination)
+        if (selectedSatelliteInfo.satelliteType != SatelliteType.Origin && selectedSatelliteInfo.satelliteType != SatelliteType.Destination)
         {
             InteractWithSatellite(horizontalMovement,verticalMovement,rotationMovement);
         }
@@ -214,8 +222,8 @@ public class SatelliteController : MonoBehaviour
         // As UI object lists can get very large, loop through all and check if the object tag is a control key, if not ignore it
         foreach (RaycastResult raycastResult in rayCastResults)
         {
-            // If the raycast result has a control key AND the mouse is down
-            if (raycastResult.gameObject.tag == "Satellite_Control_Key" && Input.GetMouseButton(0))
+            // If the mouse is down
+            if (Input.GetMouseButton(0))
             {
                 // Collect the game object
                 var key = raycastResult.gameObject;
@@ -233,17 +241,10 @@ public class SatelliteController : MonoBehaviour
 
                 // Else nothing was pressed
                 else _keyPressed = Key.None;   
-
-                // Break Loop
-                // Assumes the player cannot have multiple mice on the screen at once
-                break;
             }
-
-            // Else if the key was found but the mouse button was not down, break the loop early.
-            // Assumes the player cannot have multiple miceon the screen at once
-            else if (raycastResult.gameObject.tag == "Satellite_Control_Key" && !Input.GetMouseButton(0))
+            // Otherwise break the loop if the mouse isn't down, as we do not care otherwise.
+            else
             {
-                // Break Loop
                 break;
             }
         }
@@ -259,8 +260,6 @@ public class SatelliteController : MonoBehaviour
         {
             // Vertical, Horizontal and Rotation movement are either -1, 0 or 1. As that is how Unity input works
 
-
-
             // Add force based on movement multiplier
             _selectedRigidbody2D.AddForce(new Vector2(horizontalMovement * _currentMovementMultiplier, verticalMovement * _currentMovementMultiplier));
 
@@ -271,7 +270,7 @@ public class SatelliteController : MonoBehaviour
             if (Input.GetButton("Rotation") ||  _keyPressed == Key.Rotation){
                 
                 // Updates every 60 updates - Hardcoded update which appeared suitable, allows user good control
-                if (_rotationCounter > 60 && (_currentRotationMultiplier < _selectedSatelliteInfo.satellite_Movement_Info.maxRotationMultiplier))   
+                if (_rotationCounter > 60 && (_currentRotationMultiplier < selectedSatelliteInfo.satellite_Movement_Info.maxRotationMultiplier))   
                 {
                     // Reset the rotation counter
                     _rotationCounter = 0;
@@ -285,13 +284,13 @@ public class SatelliteController : MonoBehaviour
             }
 
             // Else if the button is let go, reset it the rotation multipler back to it's intial (defined in satellite info)
-            else _currentRotationMultiplier = _selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
+            else _currentRotationMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
 
             // If the vertical or horizontal is held, then gradually increase the speed of movement to a limit (defined in satellite info)
             if (Input.GetButton("Vertical") || Input.GetButton("Horizontal") || _keyPressed == Key.Vertical || _keyPressed == Key.Horizontal){
 
                 // Updates every 60 updates - Hardcoded update which appeared suitable, allows user good control
-                if (_movementCounter > 60 && (_currentMovementMultiplier < _selectedSatelliteInfo.satellite_Movement_Info.maxMovementMultiplier))   
+                if (_movementCounter > 60 && (_currentMovementMultiplier < selectedSatelliteInfo.satellite_Movement_Info.maxMovementMultiplier))   
                 {
                     // Reset the rotation counter
                     _movementCounter = 0;
@@ -305,12 +304,36 @@ public class SatelliteController : MonoBehaviour
             }
 
             // Else if the button is let go, reset it the rotation multipler back to it's intial (defined in satellite info)
-            else _currentMovementMultiplier = _selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
+            else _currentMovementMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
         }
         
         // If nothing is selected, but attempts to interact with a selected item occurs, throw an error, this should not be reached
         else Debug.LogError("ERROR: An error has occurred with control over selected satellites");
     }
+
+
+
+    public void SellSatellite()
+    {
+        if (selectedSatelliteInfo.canBeSold)
+        {
+            int price = selectedSatelliteInfo.satelliteSellPrice;
+
+            var gameController = _uiController.GetGameController();
+
+            if (gameController.currentBudget + price <= gameController.maxBudget)
+            {
+                gameController.currentBudget += price;
+            }
+
+            selectedSatelliteInfo.DestroyObject();
+            CloseInformation();
+
+        }
+    }
+
+
+
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -332,24 +355,5 @@ public class SatelliteController : MonoBehaviour
         if (collider is BoxCollider2D) _lastFoundRigidBody2D = null;
     }
 
-
-    public void SellSatellite()
-    {
-        if (_selectedSatelliteInfo.canBeSold)
-        {
-            int price = _selectedSatelliteInfo.satelliteSellPrice;
-
-            var gameController = _uiController.GetGameController();
-
-            if (gameController.currentBudget + price <= gameController.maxBudget)
-            {
-                gameController.currentBudget += price;
-            }
-
-            _selectedSatelliteInfo.DestroyObject();
-            CloseInformation();
-
-        }
-    }
 
 }
