@@ -38,6 +38,7 @@ public class SettingsPanel : MonoBehaviour
 
     private GameController _gameController;
     private UIController _uiController;
+    private ConfirmationPanel _confirmationPanel;
 
 
     private bool _visible = false;
@@ -47,6 +48,7 @@ public class SettingsPanel : MonoBehaviour
     {
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
 
         var childRectTransformList = gameObject.GetComponentsInChildren<RectTransform>();
 
@@ -159,6 +161,12 @@ public class SettingsPanel : MonoBehaviour
         _uiController.UpdateLanguage(_language);
 
         _uiController.PresentFixedPanel(FixedUIPanel.Settings,false);
+    }
+
+    public void LeaveLevel()
+    {
+        _confirmationPanel.UpdateUIComponents(ConfirmAction.LeaveLevel);
+        _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,true);
     }
 
     public void ViewTeachingTransmissions()

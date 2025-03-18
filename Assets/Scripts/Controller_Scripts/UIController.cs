@@ -168,24 +168,39 @@ public class UIController : MonoBehaviour
 
         if (panel == FixedUIPanel.Settings)
         {
-
+            var rectTransform = _fixedPanels.settingsPanel.GetComponent<RectTransform>();
+            
+            if (rectTransform.anchoredPosition != fixedPanelSettings.settingsPanelLocation) rectTransform.anchoredPosition = fixedPanelSettings.settingsPanelLocation;
+            
+            _fixedPanels.settingsPanel.gameObject.active = bVisible;
         }
 
         else if (panel == FixedUIPanel.ConfirmAction)
         {
-
+            var rectTransform = _fixedPanels.confirmationPanel.GetComponent<RectTransform>();
+            
+            if (rectTransform.anchoredPosition != fixedPanelSettings.confirmationPanelLocation) rectTransform.anchoredPosition = fixedPanelSettings.confirmationPanelLocation;
+            
+            _fixedPanels.confirmationPanel.gameObject.active = bVisible;
         }
 
         else if (panel == FixedUIPanel.Teaching)
         {
-
+            var rectTransform = _fixedPanels.teachingPanel.GetComponent<RectTransform>();
+            
+            if (rectTransform.anchoredPosition != fixedPanelSettings.teachingPanelLocation) rectTransform.anchoredPosition = fixedPanelSettings.teachingPanelLocation;
+            
+            _fixedPanels.teachingPanel.gameObject.active = bVisible;
         }
 
 
         else if (panel == FixedUIPanel.LevelComplete)
         {
-            // Do level complete stuff
-
+            var rectTransform = _fixedPanels.levelCompletePanel.GetComponent<RectTransform>();
+            
+            if (rectTransform.anchoredPosition != fixedPanelSettings.levelCompeletePanelLocation) rectTransform.anchoredPosition = fixedPanelSettings.levelCompeletePanelLocation;
+            
+            _fixedPanels.levelCompletePanel.gameObject.active = bVisible;
 
             // As the level has been completed. Close all open moving UI elements
             if (uiExpectations.expectLevelInformationPanel && _movingPanels.levelInformationVisible) ToggleVisibleLevelInfomation();
@@ -355,7 +370,7 @@ public class UIController : MonoBehaviour
 
     public void LevelHasEnded()
     {
-        
+        PresentFixedPanel(FixedUIPanel.LevelComplete,true);
     }
 }
 

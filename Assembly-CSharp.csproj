@@ -64,9 +64,9 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.50f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopDropDownHandler.cs" />
     <Compile Include="Assets\Scripts\Satellites\RefractionSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\UI_Scripts\Panels\ShopPanel.cs" />
     <Compile Include="Assets\Scripts\Satellites\DestinationSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\UIController.cs" />
     <Compile Include="Assets\Scripts\Satellites\SatelliteCreator.cs" />
@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Laser_Scripts\InteractionMethods.cs" />
     <Compile Include="Assets\Scripts\Satellite_Info.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopPanel.cs" />
     <Compile Include="Assets\Scripts\Satellites\ReflectionSatellite.cs" />
     <Compile Include="Assets\Scripts\Satellites\OriginSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelCompletePanel.cs" />
@@ -83,12 +84,12 @@
     <Compile Include="Assets\Scripts\Controller_Scripts\SatelliteController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\TeachingPanel.cs" />
-    <Compile Include="Assets\Scripts\UI_Scripts\ShopVarientHandler.cs" />
     <Compile Include="Assets\Scripts\Satellites\SatelliteParent.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\CameraDrone.cs" />
-    <Compile Include="Assets\Scripts\Satellites\CombinerSatellite.cs" />
     <Compile Include="Assets\Scripts\OldUI_Scripts\UIController.cs" />
+    <Compile Include="Assets\Scripts\Satellites\CombinerSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\ConfirmationPanel.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopItem.cs" />
     <Compile Include="Assets\Scripts\Satellites\ColourFilterSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelInformationPanel.cs" />
     <Compile Include="Assets\Scripts\Satellites\SplitterSatellite.cs" />

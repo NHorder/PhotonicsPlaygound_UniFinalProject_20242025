@@ -11,6 +11,7 @@ public class LevelInformationPanel : MonoBehaviour
 
     private GameController _gameController;
     private UIController _uiController;
+    private ConfirmationPanel _confirmationPanel;
 
     private TMP_Text _titleText;
     private TMP_Text _descriptionText;
@@ -20,6 +21,7 @@ public class LevelInformationPanel : MonoBehaviour
     {
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
 
         var childTextList = gameObject.GetComponentsInChildren<TMP_Text>();
         foreach (TMP_Text childText in childTextList)
@@ -60,6 +62,7 @@ public class LevelInformationPanel : MonoBehaviour
 
     public void ResetLevelInteract()
     {
+        _confirmationPanel.UpdateUIComponents(ConfirmAction.ResetLevel);
         _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,true);
     }
 }

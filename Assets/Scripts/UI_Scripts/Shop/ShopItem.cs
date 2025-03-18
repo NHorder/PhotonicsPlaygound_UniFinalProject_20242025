@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShopVarientHandler : MonoBehaviour
+public class ShopItem : MonoBehaviour
 {
 
     private TMP_Dropdown _dropdown;
@@ -17,12 +17,18 @@ public class ShopVarientHandler : MonoBehaviour
 
     void Start()
     {
+        var shopitemHandler = gameObject.GetComponentInParent<ShopDropDownHandler>();
+
         _satelliteInfo = gameObject.GetComponent<Satellite_Info>();
+        shopitemHandler.Called(_satelliteInfo);
+
 
         _dropdown =  gameObject.GetComponentInChildren<TMP_Dropdown>();
 
         var childImageList = gameObject.GetComponentsInChildren<Image>();
 
+
+        Image purchaseButton = null;
 
         Image startingImage = null;
         // Loop through all children and filter for wanted objects
@@ -32,8 +38,10 @@ public class ShopVarientHandler : MonoBehaviour
             if (childObject.name == "Shop_SatelliteSprite") _shopSprite = childImage;
             
             else if (childObject.name == "FrontImage") startingImage = childImage;
+
+            else if (childObject.name == "Shop_PurchaseButton") purchaseButton = childImage;
             
-            if (_shopSprite != null && startingImage != null) break;
+            if (_shopSprite != null && startingImage != null && purchaseButton != null) break;
         }
 
         if (startingImage != null && variants.Count > 0) startingImage.sprite = variants[0].varientSprite;
@@ -53,6 +61,14 @@ public class ShopVarientHandler : MonoBehaviour
 
         _dropdown.value = 0;
 
+        if (variants.Count <= 1 && purchaseButton != null)
+        {
+            _dropdown.gameObject.active = false;
+
+            var rectTransform = purchaseButton.gameObject.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(0, rectTransform.anchoredPosition.y);
+        }
+
     }
 
     public void NewSelectionMade()
@@ -62,7 +78,11 @@ public class ShopVarientHandler : MonoBehaviour
             Variant selectedVariant = variants[_dropdown.value];
 
             _satelliteInfo.satelliteType = selectedVariant.variantSatelliteType;
+            _satelliteInfo.satelliteName = "";
+            _satelliteInfo.satelliteDescription = "";
+            _satelliteInfo.satelliteShortDescription = "";
             _satelliteInfo.RetreiveSatelliteText();
+            _satelliteInfo.CreateShopItem();
 
             if (_shopSprite != null) _shopSprite.sprite = selectedVariant.varientSatelliteSprite;
         }
