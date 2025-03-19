@@ -72,6 +72,9 @@ public class Satellite_Info : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
+
+        
         // Retrieve game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 

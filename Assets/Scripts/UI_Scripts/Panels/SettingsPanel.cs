@@ -16,25 +16,33 @@ public class SettingsPanel : MonoBehaviour
 
     private bool _forceNoChangeWhenReceivingCommunications = true;
     private TMP_Text _forceNoChangeWhenReceivingCommunicationsToggleText;
+    private Toggle _forceNoChangeWhenReceivingCommunicationsToggle;
 
     private bool _disableConfirmations = true;
     private TMP_Text _disableConfirmationsToggleText;
+    private Toggle _disableConfirmmationsToggle;
 
     private bool _allowAdvancedInteractions = true;
     private TMP_Text _allowAdvancedInteractionsToggleText;
+    private Toggle _allowAdvancedInteractionsToggle;
 
     private bool _allowSatelliteMovementParticles = true;
     private TMP_Text _allowSatelliteMovementParticlesToggleText;
+    private Toggle _allowSatelliteMovementParticlesToggle;
 
 
     private TMP_Text _resetButtonText;
     private TMP_Text _returnButtonText;
+
+
     private TMP_Text _titleText;
     private TMP_Text _viewTeachingTransmissionText;
     private GameObject _viewTeachingTransmissionButton;
 
     private TMP_Text _exitLevelText;
     private GameObject _exitLevelButton;
+
+
 
     private GameController _gameController;
     private UIController _uiController;
@@ -43,9 +51,14 @@ public class SettingsPanel : MonoBehaviour
 
     private bool _visible = false;
 
+    private Language _savedLanguage = Language.English;
+
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
+        _savedLanguage = SettingsController.GetLanguage();
+        
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
@@ -61,10 +74,19 @@ public class SettingsPanel : MonoBehaviour
             else if (childObject.name == "LanguageText") _languageText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "ResetText") _resetButtonText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "ReturnText") _returnButtonText = childObject.GetComponent<TMP_Text>();
+
+            else if (childObject.name == "ForceNoChangeOnCommunicationToggle") _forceNoChangeWhenReceivingCommunicationsToggle = childObject.GetComponent<Toggle>();
             else if (childObject.name == "ForceNoChangeText") _forceNoChangeWhenReceivingCommunicationsToggleText = childObject.GetComponent<TMP_Text>();
-            else if (childObject.name == "DisableConfirmationText") _disableConfirmationsToggleText = childObject.GetComponent<TMP_Text>();
+
+            else if (childObject.name == "AllowAdvancedInteractionToggle") _allowAdvancedInteractionsToggle = childObject.GetComponent<Toggle>();
             else if (childObject.name == "AllowAdvancedInteractionText") _allowAdvancedInteractionsToggleText = childObject.GetComponent<TMP_Text>();
+
+            else if (childObject.name == "AllowSatelliteMovementParticles") _allowSatelliteMovementParticlesToggle = childObject.GetComponent<Toggle>();
             else if (childObject.name == "AllowSatelliteMovementParticlesText") _allowSatelliteMovementParticlesToggleText = childObject.GetComponent<TMP_Text>();
+
+            else if (childObject.name == "DisableConfirmations") _disableConfirmmationsToggle = childObject.GetComponent<Toggle>();
+            else if (childObject.name == "DisableConfirmationText") _disableConfirmationsToggleText = childObject.GetComponent<TMP_Text>();
+
             else if (childObject.name == "ViewTeachingText") _viewTeachingTransmissionText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "ViewTeaching") _viewTeachingTransmissionButton = childObject;
 
@@ -80,9 +102,8 @@ public class SettingsPanel : MonoBehaviour
 
         //if (!_uiController.uiExpectations.expectConfirmationPanel) _exitLevelButton.active = false;
         if (!_uiController.uiExpectations.expectTeachingPanel) _viewTeachingTransmissionButton.active = false;
-        
 
-        ReadFile("settings.txt");
+        ReadSettings();
     }
 
 
@@ -94,8 +115,12 @@ public class SettingsPanel : MonoBehaviour
             _languageText.text = "Language";
             _englishButtonText.text = "English";
             _welshButtonText.text = "Welsh";
+
             _allowAdvancedInteractionsToggleText.text = "Allow Advanced Interactions";
             _allowSatelliteMovementParticlesToggleText.text = "Allow Satellite Movement Particles";
+            _disableConfirmationsToggleText.text = "Disabled Confirmations";
+            _forceNoChangeWhenReceivingCommunicationsToggleText.text = "Force No Change When Receiving Communications";
+
             _viewTeachingTransmissionText.text = "View Teaching Transmissions";
             _resetButtonText.text = "Reset";
             _returnButtonText.text = "Return";
@@ -114,6 +139,9 @@ public class SettingsPanel : MonoBehaviour
             _allowAdvancedInteractionsToggleText.text = "Allow Advanced Interactions";
             _allowSatelliteMovementParticlesToggleText.text = "Allow Satellite Movement Particles";
             _viewTeachingTransmissionText.text = "View Teaching Transmissions";
+            _disableConfirmationsToggleText.text = "Disabled Confirmations";
+            _forceNoChangeWhenReceivingCommunicationsToggleText.text = "Force No Change When Receiving Communications";
+
             _resetButtonText.text = "Reset";
             _returnButtonText.text = "Return";
             _exitLevelText.text = "Exit Level";
@@ -124,15 +152,28 @@ public class SettingsPanel : MonoBehaviour
 
     }
     
-    private void ReadFile(string filename)
+    private void ReadSettings()
     {
-        _language = Language.English;
+        _language = SettingsController.GetLanguage();
+        _savedLanguage = SettingsController.GetLanguage();
         ChangeLanguage();
+
+        _forceNoChangeWhenReceivingCommunications = SettingsController.GetForceNoChangeWhenReceivingCommunications();
+        _forceNoChangeWhenReceivingCommunicationsToggle.isOn = _forceNoChangeWhenReceivingCommunications;
+
+        _disableConfirmations = SettingsController.GetDisableConfirmations();
+        _disableConfirmmationsToggle.isOn = _disableConfirmations;
+
+        _allowAdvancedInteractions = SettingsController.GetAllowAdvancedInteractions();
+        _allowAdvancedInteractionsToggle.isOn = _allowAdvancedInteractions;
+
+        _allowSatelliteMovementParticles = SettingsController.GetAllowSatelliteMovementParticles();
+        _allowSatelliteMovementParticlesToggle.isOn = _allowSatelliteMovementParticles;
     }
 
-    private void UpdateFile(string filename)
+    private void UpdateSettings()
     {
-        
+        SettingsController.UpdateSettings(_language,_forceNoChangeWhenReceivingCommunications,_disableConfirmations,_allowAdvancedInteractions,_allowSatelliteMovementParticles);
     }
 
     public void SetLanguageEnglish()
@@ -147,24 +188,47 @@ public class SettingsPanel : MonoBehaviour
         ChangeLanguage();
     }
 
+    public void ToggleCommunicationOverwrite()
+    {
+        _forceNoChangeWhenReceivingCommunications = !_forceNoChangeWhenReceivingCommunications;
+    }
+
+    public void ToggleDisableConfirmations()
+    {
+        _disableConfirmations = !_disableConfirmations;
+    }
+
+    public void ToggleAdvancedInteractions()
+    {
+        _allowAdvancedInteractions = !_allowAdvancedInteractions;
+    }
+
+    public void ToggleSatelliteParticles()
+    {
+        _allowSatelliteMovementParticles = !_allowSatelliteMovementParticles;
+    }
 
     public void Reset()
     {
-        ReadFile("settings.txt");
+        ReadSettings();
     }
 
     public void Return()
     {
-        UpdateFile("settings.txt");
+        UpdateSettings();
 
-        _gameController.UpdateLanguage(_language);
-        _uiController.UpdateLanguage(_language);
 
-        _uiController.PresentFixedPanel(FixedUIPanel.Settings,false);
+        _gameController.UpdateSettings();
+        _uiController.UpdateSettings(_language != _savedLanguage);
+
+
+        if (_disableConfirmations) SceneController.ToLevelSelection();
+        else _uiController.PresentFixedPanel(FixedUIPanel.Settings,false);
     }
 
     public void LeaveLevel()
     {
+        Return();
         _confirmationPanel.UpdateUIComponents(ConfirmAction.LeaveLevel);
         _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,true);
     }
@@ -175,4 +239,5 @@ public class SettingsPanel : MonoBehaviour
 
 
     }
+
 }

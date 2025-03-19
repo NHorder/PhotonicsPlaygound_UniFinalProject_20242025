@@ -14,6 +14,9 @@ public class ShopPanel : MonoBehaviour
 
     private TMP_Text _budgetText;
 
+    private bool _forceUpdate = false;
+
+    private ShopDropDownHandler[] _dropdowns;
 
 
     // Start is called before the first frame update
@@ -35,18 +38,36 @@ public class ShopPanel : MonoBehaviour
 
         }
    
+        _dropdowns = gameObject.GetComponentsInChildren<ShopDropDownHandler>();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_gameController.currentBudget != _currentBudget)
+        if (_gameController.currentBudget != _currentBudget || _forceUpdate)
         {
+            _forceUpdate = false;
             _currentBudget = _gameController.currentBudget;
             // Update text
             if (_language == Language.English) _budgetText.text = "Budget: £"+_currentBudget;
             else if (_language == Language.Welsh) _budgetText.text = "NT: £"+_currentBudget;
         }
         // Update budget whenever the game controller budget changes
+    }
+
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
+        _forceUpdate = true;
+
+        if (_dropdowns.Length > 0)
+        {
+            foreach (ShopDropDownHandler dropdown in _dropdowns)
+            {
+                dropdown.UpdateLanguage(newLanguage);
+            }
+        }
     }
 }

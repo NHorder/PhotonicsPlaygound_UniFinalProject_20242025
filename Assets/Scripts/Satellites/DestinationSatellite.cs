@@ -106,15 +106,27 @@ public class DestinationSatellite : MonoBehaviour
                 
                 if (_lockAdvanceRequest && !_colourAccepted && _newColourSeen)
                 {
-                    _uiController.ToggleVisibleCommunicationsIfClosed();    
-                    _communicationsPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
+                    if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();    
+
+                    var language = SettingsController.GetLanguage();
+
+                    
+                    if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
+                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "(Not Translated) Incorrect colour\n");
+
                     _newColourSeen = false;
                 }
 
                 else if (_lockAdvanceRequest && !_transparencyAccepted && _newTransparencySeen)
                 {
-                    _uiController.ToggleVisibleCommunicationsIfClosed();
-                    _communicationsPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
+                    if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
+
+
+                    var language = SettingsController.GetLanguage();
+
+                    if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
+                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "(Not Translated)Connection is too weak\n");
+
                     _newTransparencySeen = false;
                 }
 
@@ -156,7 +168,7 @@ public class DestinationSatellite : MonoBehaviour
                 // Update UI components to annouce that a lock has been opened
                 if (_numUnlocks <= _numLocksForLevelCompletion)
                 {
-                    _uiController.ToggleVisibleCommunicationsIfClosed();
+                    if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
                     _communicationsPanel.LogCommunications(_satelliteName,_numUnlocks);
                 }
 
@@ -172,7 +184,7 @@ public class DestinationSatellite : MonoBehaviour
                         // Notify Game Controller that a destination has become active
                         _gameController.DestinationTrigger(true);
 
-                        _uiController.ToggleVisibleCommunicationsIfClosed();
+                        if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
                         // Update text to show success
                         _communicationsPanel.UpdateSuccessText();
                     }

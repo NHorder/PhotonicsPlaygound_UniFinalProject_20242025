@@ -7,7 +7,7 @@ using TMPro;
 
 public class LevelInformationPanel : MonoBehaviour
 {
-    private Language _langauge = Language.English;
+    private Language _language = Language.English;
 
     private GameController _gameController;
     private UIController _uiController;
@@ -15,10 +15,13 @@ public class LevelInformationPanel : MonoBehaviour
 
     private TMP_Text _titleText;
     private TMP_Text _descriptionText;
+    private TMP_Text _resetLevelText;
 
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
+
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
@@ -31,8 +34,9 @@ public class LevelInformationPanel : MonoBehaviour
             // filter for log text and progress text
             if (childObject.name == "LevelTitle") _titleText = childText;
             else if (childObject.name == "LevelDescription") _descriptionText = childText;
+            else if (childObject.name == "ResetLevelText") _resetLevelText = childText;
 
-            if (_titleText != null && _descriptionText != null) break;
+            if (_titleText != null && _descriptionText != null && _resetLevelText != null) break;
         }
 
 
@@ -41,15 +45,17 @@ public class LevelInformationPanel : MonoBehaviour
 
     private void UpdateText()
     {
-        if (_langauge == Language.English)
+        if (_language == Language.English)
         {
             _titleText.text = _gameController.levelNameEnglish;
             _descriptionText.text = _gameController.levelDescriptionEnglish;
+            _resetLevelText.text = "Reset Level";
         }
-        else if (_langauge == Language.Welsh)
+        else if (_language == Language.Welsh)
         {
             _titleText.text = _gameController.levelNameWelsh;
             _descriptionText.text = _gameController.levelDescriptionWelsh;
+            _resetLevelText.text = "NOT TRANSLATED (Reset Level)";
         }
     }
 
@@ -62,7 +68,20 @@ public class LevelInformationPanel : MonoBehaviour
 
     public void ResetLevelInteract()
     {
-        _confirmationPanel.UpdateUIComponents(ConfirmAction.ResetLevel);
-        _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,true);
+
+        if (SettingsController.GetDisableConfirmations()) _gameController.ResetLevel();
+        else
+        {
+            _confirmationPanel.UpdateUIComponents(ConfirmAction.ResetLevel);
+            _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,true);
+        }
+        
+    }
+
+
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
+        UpdateText();
     }
 }

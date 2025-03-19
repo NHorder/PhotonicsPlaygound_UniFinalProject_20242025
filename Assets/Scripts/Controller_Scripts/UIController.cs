@@ -35,6 +35,8 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start() 
     {
+        _language = SettingsController.GetLanguage();
+
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _gameController.SetUIController(this);
 
@@ -173,6 +175,7 @@ public class UIController : MonoBehaviour
             if (rectTransform.anchoredPosition != fixedPanelSettings.settingsPanelLocation) rectTransform.anchoredPosition = fixedPanelSettings.settingsPanelLocation;
             
             _fixedPanels.settingsPanel.gameObject.active = bVisible;
+            _fixedPanels.settingsPanel.Reset();
         }
 
         else if (panel == FixedUIPanel.ConfirmAction)
@@ -212,6 +215,9 @@ public class UIController : MonoBehaviour
             if (uiExpectations.expectSatelliteInformationPanel && _movingPanels.satelliteInformationVisible) ToggleVisibleSatelliteInformation();
 
             if (uiExpectations.expectShopPanel && _movingPanels.shopPanelVisible) ToggleVisibleShop();
+
+
+            _fixedPanels.levelCompletePanel.GameComplete();
 
         }
 
@@ -351,20 +357,27 @@ public class UIController : MonoBehaviour
 
 
 
-    public void UpdateLanguage(Language newLanguage)
+    public void UpdateSettings(bool languageChanged)
     {
-        _language = newLanguage;
+        _language = SettingsController.GetLanguage();
 
-        // if (uiExpectations.expectCommunicationPanel) _movingPanels.communicationsPanel.UpdateLanguage(newLanguage);
-        // if (uiExpectations.expectLevelInformationPanel) _movingPanels.levelInformationPanel.UpdateLanguage(newLanguage);
-        // if (uiExpectations.expectSatelliteControlPanel) _movingPanels.satelliteControlsPanel.UpdateLanguage(newLanguage);
-        // if (uiExpectations.expectShopPanel) _movingPanels.shopPanel.UpdateLanguage(newLanguage);
-        // if (uiExpectations.expectSatelliteInformationPanel) _movingPanels.satelliteInformationPanel.UpdateLanguage(newLanguage);
+        advancedSettings.overwriteCommunicationMovement = SettingsController.GetForceNoChangeWhenReceivingCommunications();
 
-        // if (uiExpectations.expectConfirmationPanel) _fixedPanels.confirmationPanel.UpdateLanguage(newLanguage);
-        // if (uiExpectations.expectLevelCompletePanel) _fixedPanels.levelCompletePanel.UpdateLanguage(newLanguage);
-        // if (uiExpectations.expectSettingsPanel) _fixedPanels.settingsPanel.UpdateLanguage(newLanguage);
-        // if (uiExpectations.expectTeachingPanel) _fixedPanels.teachingPanel.UpdateLanguage(newLanguage);
+        if (languageChanged)
+        {
+            if (uiExpectations.expectCommunicationPanel) _movingPanels.communicationsPanel.UpdateLanguage(_language);
+            if (uiExpectations.expectLevelInformationPanel) _movingPanels.levelInformationPanel.UpdateLanguage(_language);
+
+            if (uiExpectations.expectShopPanel) _movingPanels.shopPanel.UpdateLanguage(_language);
+            if (uiExpectations.expectSatelliteInformationPanel) _movingPanels.satelliteInformationPanel.UpdateLanguage(_language);
+
+            if (uiExpectations.expectConfirmationPanel) _fixedPanels.confirmationPanel.UpdateLanguage(_language);
+            if (uiExpectations.expectLevelCompletePanel) _fixedPanels.levelCompletePanel.UpdateLanguage(_language);
+
+            //if (uiExpectations.expectTeachingPanel) _fixedPanels.teachingPanel.UpdateLanguage(_language);
+        }
+
+        
         
     }
 

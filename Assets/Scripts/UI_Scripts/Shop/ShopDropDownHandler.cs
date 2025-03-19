@@ -7,18 +7,21 @@ using TMPro;
 
 public class ShopDropDownHandler : MonoBehaviour
 {
-    public string dropDownName;
+    public string dropDownName = "";
+    public string dropDownNameWelsh = "";
     public List<ShopItemInfomation> shopItems;
 
 
     private int currentIndex = 0;
 
+    private TMP_Dropdown _tmpDropdown;
 
     // Start is called before the first frame update
     void Start()
     {
-        TMP_Dropdown dropdown = gameObject.GetComponent<TMP_Dropdown>();
-        dropdown.transform.SetAsLastSibling();
+        
+        _tmpDropdown = gameObject.GetComponent<TMP_Dropdown>();
+        _tmpDropdown.transform.SetAsLastSibling();
 
         List<TMP_Dropdown.OptionData> list = new List<TMP_Dropdown.OptionData>();
 
@@ -29,11 +32,24 @@ public class ShopDropDownHandler : MonoBehaviour
             list.Add(temp);
         }
 
-        dropdown.AddOptions(list);
+        _tmpDropdown.AddOptions(list);
 
-
+        UpdateLanguage(SettingsController.GetLanguage());
     }
 
+    public void UpdateLanguage(Language language)
+    {
+        if (language == Language.English)
+        {
+            _tmpDropdown.captionText.text = dropDownName;
+        }
+        else if (language == Language.Welsh)
+        {
+            _tmpDropdown.captionText.text = dropDownNameWelsh;
+        }
+        
+    }
+    
 
     public void Called(Satellite_Info satellite_Info)
     {

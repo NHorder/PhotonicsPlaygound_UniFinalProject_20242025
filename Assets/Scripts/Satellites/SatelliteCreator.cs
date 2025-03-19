@@ -32,6 +32,8 @@ public class SatelliteCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
+        
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _animator = gameObject.GetComponent<Animator>();
 
@@ -221,7 +223,7 @@ public class SatelliteCreator : MonoBehaviour
     
         else{
             _uiController.ToggleVisibleCommunicationsIfClosed();
-            _communicationsPanel.LogCommunications("Elysia",-1,_satNotRecognised);
+            if (!_uiController.advancedSettings.overwriteCommunicationMovement) _communicationsPanel.LogCommunications("Elysia",-1,_satNotRecognised);
             Debug.LogWarning("WARNING: Satellite type not recognised");
             return false;
         }
@@ -247,8 +249,8 @@ public class SatelliteCreator : MonoBehaviour
 
         if (_chosenPrefab != null && _numberSatellitesInLoadingBay == 0)
         {
-            _uiController.ToggleVisibleCommunicationsIfClosed();
-            _communicationsPanel.LogCommunications("Elysia",-1,_satCreated);
+            if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
+             _communicationsPanel.LogCommunications("Elysia",-1,_satCreated);
             var newSatellite = Instantiate(_chosenPrefab);
             newSatellite.layer = LayerMask.NameToLayer("Object");
             newSatellite.transform.position = this.transform.position;
@@ -257,7 +259,6 @@ public class SatelliteCreator : MonoBehaviour
         }
         else if (_delayedCreation)
         {
-            Debug.Log("Delaying Satellite Creation until item is out of the creator bay");
             _uiController.ToggleVisibleCommunicationsIfClosed();
             _communicationsPanel.LogCommunications("Elysia",-1,_satDelayed);
         }
@@ -269,6 +270,9 @@ public class SatelliteCreator : MonoBehaviour
         _animator.SetBool("Animating",false);
         if (!_delayedCreation) _chosenPrefab = null;
     }
+
+
+
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
@@ -284,7 +288,6 @@ public class SatelliteCreator : MonoBehaviour
 
         
     }
-
 
     public void OnTriggerExit2D(Collider2D collider)
     {

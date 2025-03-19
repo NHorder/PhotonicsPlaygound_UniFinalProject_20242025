@@ -3560,6 +3560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropDownName: Reflectors
+  dropDownNameWelsh: 
   shopItems:
   - satelliteType: 1
     shopItemSprite: {fileID: 1240402061, guid: c39a7ac5b90b88c45912b89256e6d6bc, type: 3}
@@ -6034,6 +6035,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367876888}
   m_CullTransparentMesh: 1
+--- !u!1001 &1376490617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5428744190470839102, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: _disableConfirmations
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428744190470839102, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: _forceNoChangeWhenReceivingCommunications
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842791736290895501, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_Name
+      value: SettingsController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -51.749863
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6245055068352294727, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65a56a8251188094484167b7ba83a7d1, type: 3}
 --- !u!1 &1380325660
 GameObject:
   m_ObjectHideFlags: 0
@@ -6896,6 +6962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropDownName: Refractors
+  dropDownNameWelsh: 
   shopItems:
   - satelliteType: 3
     shopItemSprite: {fileID: 117497472, guid: 2e4fd8d5c0ee0124db85e5b8d4dca132, type: 3}
@@ -7707,6 +7774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropDownName: Splitters and Combiners
+  dropDownNameWelsh: 
   shopItems:
   - satelliteType: 8
     shopItemSprite: {fileID: -947047648, guid: 6e512124edd13144595de6c7205a5f1e, type: 3}
@@ -11918,7 +11986,7 @@ GameObject:
   - component: {fileID: 2779752414539333429}
   - component: {fileID: 5906300928984973303}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ConfirmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12200,7 +12268,7 @@ GameObject:
   - component: {fileID: 1629027509953367799}
   - component: {fileID: 7326866712474755992}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: RetryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13782,7 +13850,7 @@ GameObject:
   - component: {fileID: 6798578487109767077}
   - component: {fileID: 6646080524057443304}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CancelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20161,7 +20229,7 @@ GameObject:
   - component: {fileID: 7282029762336693852}
   - component: {fileID: 1837355914657230968}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ContinueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24310,6 +24378,7 @@ SceneRoots:
   - {fileID: 4947794896749833169}
   - {fileID: 5605400062049167734}
   - {fileID: 1335211145772254846}
+  - {fileID: 1376490617}
   - {fileID: 136163973}
   - {fileID: 515473034}
   - {fileID: 1614946493518964666}

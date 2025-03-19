@@ -28,6 +28,7 @@ public class CommunicationsPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
@@ -60,7 +61,6 @@ public class CommunicationsPanel : MonoBehaviour
     {
         // If the user has not specified in settings that this should not appear each time communications are made
         // and if it isn't expanded, then open it.
-        //if (!_forceNoChangeOnNewCommunication) _uiController.PresentPanel(UIPanel.LogCommunications,true);
         
         var logText = "";
 
@@ -151,4 +151,18 @@ public class CommunicationsPanel : MonoBehaviour
         }
 
     }
+
+
+
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
+        UpdateSuccessText();
+
+        _uiController.ToggleVisibleCommunicationsIfClosed();
+
+        LogCommunications("Overseer",-1,"Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");
+        LogCommunications("Overseer",-1,"(NOT TRANSLATED) Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");
+    }
+
 }

@@ -12,15 +12,23 @@ public class LevelCompletePanel : MonoBehaviour
 
     private TMP_Text _scoreText;
     private TMP_Text _statisticsText;
+    
+    private TMP_Text _retryText;
+    private TMP_Text _continueText;
+    private TMP_Text _finalRatingText;
+    private TMP_Text _levelCompleteText;
 
     private Animator _rankAnimator;
 
     private GameController _gameController;
+    private Language _language = Language.English;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
+
         // Collect game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
@@ -35,6 +43,10 @@ public class LevelCompletePanel : MonoBehaviour
             if (childObject.name == "ScoreText") _scoreText = childObject.GetComponent<TMP_Text>();
             else if (childObject.name == "StatisticsText") _statisticsText = childObject.GetComponent<TMP_Text>(); 
             else if (childObject.name == "FinalRatingSprite") _rankAnimator = childObject.GetComponent<Animator>();
+            else if (childObject.name == "FinalRatingText") _finalRatingText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "RetryText") _retryText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ContinueText") _continueText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "LevelCompleteText") _levelCompleteText = childObject.GetComponent<TMP_Text>();
         }
     }
 
@@ -50,12 +62,37 @@ public class LevelCompletePanel : MonoBehaviour
         CalculateScore(startingBudget,currentBudget,numSatellites,numSatellitesDestroyed);
         CalculateRank();
 
-        // Update the score text
-        _scoreText.text  = $"Score: {_score}";
-
-        // Update the satistics text
-        _statisticsText.text = $"- Remaining Budget: {currentBudget}\n- Number of Satellites Purchased: {numSatellites}\n- Number of Satellites Destroyed: {numSatellitesDestroyed}";
+        if (_language == Language.English)
+        {
+            _levelCompleteText.text = "Level Complete!";
+            _finalRatingText.text = "Final Rating: ";
+            _retryText.text = "Retry";
+            _continueText.text = "Continue";
         
+            // Update the score text
+            _scoreText.text  = $"Score: {_score}";
+
+            // Update the satistics text
+            _statisticsText.text = $"- Remaining Budget: {currentBudget}\n- Number of Satellites Purchased: {numSatellites}\n- Number of Satellites Destroyed: {numSatellitesDestroyed}";
+            
+        }
+        else if (_language == Language.Welsh)
+        {
+            _levelCompleteText.text = "(NOT TRANSLATED) Level Complete!";
+            _finalRatingText.text = "(NOT TRANSLATED) Final Rating: ";
+            _retryText.text = "(NOT TRANSLATED) Retry";
+            _continueText.text = "(NOT TRANSLATED) Continue";
+
+            // Update the score text
+            _scoreText.text  = $"NOT TRANSLATED (Score): {_score}";
+
+            // Update the satistics text
+            _statisticsText.text = $"- NOT TRANSLATED(Remaining Budget): {currentBudget}\n- NOT TRANSLATED(Number of Satellites Purchased): {numSatellites}\n- NOT TRANSLATED(Number of Satellites Destroyed): {numSatellitesDestroyed}";
+            
+
+        }
+
+
         // Notify animator to change visual dependent on rank (1 = S, 2 = A, 3 = B, 4 = C, 5 = D, 6 = E, > 7 = F)
         _rankAnimator.SetInteger("Rank",_rank);
 
@@ -92,5 +129,10 @@ public class LevelCompletePanel : MonoBehaviour
     }
 
 
+
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
+    }
 
 }

@@ -21,12 +21,15 @@ public class SatelliteInformationPanel : MonoBehaviour
 
     private TMP_Text _statusText;
     private TMP_Text _lightColour;
+    private bool _forceTrigger = true;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
+        
         _satelliteController = GameObject.FindGameObjectsWithTag("MouseController")[0].GetComponent<SatelliteController>();
 
 
@@ -50,8 +53,10 @@ public class SatelliteInformationPanel : MonoBehaviour
         // Update information if applicable
         // Doing this on update to avoid the link between controller and this
 
-        if (_selectedSatelliteInfo != _satelliteController.selectedSatelliteInfo)
+        if (_selectedSatelliteInfo != _satelliteController.selectedSatelliteInfo || _forceTrigger)
         {
+            _forceTrigger = false;
+
             _selectedSatelliteInfo = _satelliteController.selectedSatelliteInfo;
 
             if (_selectedSatelliteInfo != null)
@@ -92,6 +97,7 @@ public class SatelliteInformationPanel : MonoBehaviour
                     _titleText.text = "Nothing";
                     _descriptionText.text = "Nothing has been selected. Please select a satellite to view it's information or close this tab.";
                     _sellText.text = "";
+                    _statusText.gameObject.active = false;
                     
                 }
                 else if (_language == Language.Welsh)
@@ -99,6 +105,7 @@ public class SatelliteInformationPanel : MonoBehaviour
                     _titleText.text = " ";
                     _descriptionText.text = "Nothing has been selected. Please select a satellite to view it's information. NOT TRANSLATED";
                     _sellText.text = " ";
+                    _statusText.gameObject.active = false;
                 }
 
             }
@@ -106,9 +113,9 @@ public class SatelliteInformationPanel : MonoBehaviour
         }
     }
 
-
-
-
-    // Need to connect to satellite controller and retrieve selected satellite information
-    // whenever an item has been selected.
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
+        _forceTrigger = true;
+    }
 }

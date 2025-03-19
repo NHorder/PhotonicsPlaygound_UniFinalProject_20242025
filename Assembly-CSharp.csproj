@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\TeachingPanel.cs" />
     <Compile Include="Assets\Scripts\Satellites\SatelliteParent.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\CameraDrone.cs" />
+    <Compile Include="Assets\Scripts\Controller_Scripts\SettingsController.cs" />
     <Compile Include="Assets\Scripts\OldUI_Scripts\UIController.cs" />
     <Compile Include="Assets\Scripts\Satellites\CombinerSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\ConfirmationPanel.cs" />

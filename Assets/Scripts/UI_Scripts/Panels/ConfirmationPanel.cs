@@ -22,13 +22,17 @@ public class ConfirmationPanel : MonoBehaviour
     private Button _confirmButton;
     private TMP_Text _titleText;
     private TMP_Text _warningText;
+    private TMP_Text _cancelText;
+    private TMP_Text _confirmText;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _language = SettingsController.GetLanguage();
+
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
-        _language = _gameController.activeLanguage;
+        
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
         // Collect child gameObjects
@@ -42,6 +46,8 @@ public class ConfirmationPanel : MonoBehaviour
             if (childObject.name == "ConfirmButton") _confirmButton = childObject.GetComponent<Button>();
             else if (childObject.name == "ConfirmActionTitle") _titleText = childObject.GetComponent<TMP_Text>(); 
             else if (childObject.name == "ConfirmActionWarning") _warningText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "CancelText") _cancelText = childObject.GetComponent<TMP_Text>();
+            else if (childObject.name == "ConfirmText") _confirmText = childObject.GetComponent<TMP_Text>();
         }
     }
 
@@ -79,13 +85,19 @@ public class ConfirmationPanel : MonoBehaviour
         {
             if (_language == Language.English)
             {
+                _confirmText.text = "Confirm";
+                _cancelText.text = "Cancel";
+
                 _titleText.text = $"Are you sure you want to {action}?";
                 _warningText.text = $"Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
             }
             else if (_language == Language.Welsh)
             {
-                _titleText.text = $"Are you sure you want to {action}?";
-                _warningText.text = $"Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
+                _confirmText.text = "(NOT TRANSLATED) Confirm";
+                _cancelText.text = "(NOT TRANSLATED) Cancel";
+
+                _titleText.text = $"(NOT TRANSLATED) Are you sure you want to {action}?";
+                _warningText.text = $"(NOT TRANSLATED) Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
             }
         }
         // Else throw a warning that this is missing the objects
@@ -109,6 +121,11 @@ public class ConfirmationPanel : MonoBehaviour
     public void LevelSelection()
     {
         SceneController.ToLevelSelection();
+    }
+
+    public void UpdateLanguage(Language newLanguage)
+    {
+        _language = newLanguage;
     }
 
 }

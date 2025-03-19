@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        activeLanguage = SettingsController.GetLanguage();
 
         // Check to make sure the desired framerate is not less than or equal to 0. 
         if (framerateRelatedSettings.desiredFramerate <= 0) 
@@ -121,12 +122,6 @@ public class GameController : MonoBehaviour
         return _uiController;
     }
 
-    public void UpdateLanguage(Language newLanguage)
-    {
-        Debug.Log("Updated Language (GameController)");
-        activeLanguage = newLanguage;
-    }
-
     public void PurchaseSatellite(Satellite_Info satelliteInfo)
     {
         // Collect the satellite type and find it's price
@@ -170,10 +165,7 @@ public class GameController : MonoBehaviour
 
     public void ResetLevel()
     {
-        // Would collect user confirmation from a menu
-        var userConfirmation = true;
-
-        if (userConfirmation) SceneController.ToLevel(thisLevel);
+        SceneController.ToLevel(thisLevel);
     }
 
     public void DestinationTrigger(bool active)
@@ -187,6 +179,16 @@ public class GameController : MonoBehaviour
         if (activeDestinations >= worldInfo.numDestinations) LevelEnd();
     }
 
+
+
+    public void UpdateSettings()
+    {
+        activeLanguage = SettingsController.GetLanguage();
+
+        bool allowAdvancedInteraction = SettingsController.GetAllowAdvancedInteractions();
+
+        specializedInteractionSettings.allowReflectionDuringRefraction = allowAdvancedInteraction;
+    }
 }
 
 
