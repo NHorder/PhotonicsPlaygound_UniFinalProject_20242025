@@ -29,7 +29,7 @@ public class ConfirmationPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
 
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         

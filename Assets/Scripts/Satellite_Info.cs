@@ -72,7 +72,7 @@ public class Satellite_Info : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
 
         
         // Retrieve game controller
@@ -622,6 +622,10 @@ public class Satellite_Info : MonoBehaviour
 
         var satelliteScript = gameObject.GetComponent<SatelliteParent>();
         satelliteScript.DeleteLasers();
+
+        // Check to see if the satellite being destroyed has the Eye of Zeta attached, if so remove the attachment
+        CameraDrone eyeOfZeta = gameObject.GetComponentInChildren<CameraDrone>();
+        if (eyeOfZeta != null) eyeOfZeta.DetachDroneFromSatellite();
     
         Destroy(this.gameObject);
     }

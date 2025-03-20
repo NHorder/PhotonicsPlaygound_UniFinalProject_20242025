@@ -20,7 +20,7 @@ public class LevelInformationPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
 
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
@@ -69,7 +69,7 @@ public class LevelInformationPanel : MonoBehaviour
     public void ResetLevelInteract()
     {
 
-        if (SettingsController.GetDisableConfirmations()) _gameController.ResetLevel();
+        if (PersistenceController.GetDisableConfirmations()) _gameController.ResetLevel();
         else
         {
             _confirmationPanel.UpdateUIComponents(ConfirmAction.ResetLevel);

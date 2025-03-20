@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4609307171123880253}
   - component: {fileID: 2921198798478282874}
   - component: {fileID: 9119542604553617227}
-  - component: {fileID: 860191238376282395}
+  - component: {fileID: 8983514542494981534}
   m_Layer: 1
   m_Name: CameraDrone
   m_TagString: Untagged
@@ -225,7 +225,7 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
---- !u!114 &860191238376282395
+--- !u!114 &8983514542494981534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,3 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222a3b7bd22b224498de1c11ed7ac9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyeOfZetaAutomaticDroneSettings:
+    movementSpeed: 10
+    xRange: 5
+    yRange: 5

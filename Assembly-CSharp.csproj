@@ -71,7 +71,6 @@
     <Compile Include="Assets\Scripts\Controller_Scripts\UIController.cs" />
     <Compile Include="Assets\Scripts\Satellites\SatelliteCreator.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\CommunicationsPanel.cs" />
-    <Compile Include="Assets\Scripts\OldUI_Scripts\TeachingController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\InteractionMethods.cs" />
     <Compile Include="Assets\Scripts\Satellite_Info.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
@@ -86,8 +85,7 @@
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\TeachingPanel.cs" />
     <Compile Include="Assets\Scripts\Satellites\SatelliteParent.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\CameraDrone.cs" />
-    <Compile Include="Assets\Scripts\Controller_Scripts\SettingsController.cs" />
-    <Compile Include="Assets\Scripts\OldUI_Scripts\UIController.cs" />
+    <Compile Include="Assets\Scripts\Controller_Scripts\PersistenceController.cs" />
     <Compile Include="Assets\Scripts\Satellites\CombinerSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\ConfirmationPanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopItem.cs" />

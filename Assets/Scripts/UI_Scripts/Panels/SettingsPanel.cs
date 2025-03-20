@@ -56,8 +56,8 @@ public class SettingsPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _language = SettingsController.GetLanguage();
-        _savedLanguage = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
+        _savedLanguage = PersistenceController.GetLanguage();
         
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
@@ -154,26 +154,26 @@ public class SettingsPanel : MonoBehaviour
     
     private void ReadSettings()
     {
-        _language = SettingsController.GetLanguage();
-        _savedLanguage = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
+        _savedLanguage = PersistenceController.GetLanguage();
         ChangeLanguage();
 
-        _forceNoChangeWhenReceivingCommunications = SettingsController.GetForceNoChangeWhenReceivingCommunications();
+        _forceNoChangeWhenReceivingCommunications = PersistenceController.GetForceNoChangeWhenReceivingCommunications();
         _forceNoChangeWhenReceivingCommunicationsToggle.isOn = _forceNoChangeWhenReceivingCommunications;
 
-        _disableConfirmations = SettingsController.GetDisableConfirmations();
+        _disableConfirmations = PersistenceController.GetDisableConfirmations();
         _disableConfirmmationsToggle.isOn = _disableConfirmations;
 
-        _allowAdvancedInteractions = SettingsController.GetAllowAdvancedInteractions();
+        _allowAdvancedInteractions = PersistenceController.GetAllowAdvancedInteractions();
         _allowAdvancedInteractionsToggle.isOn = _allowAdvancedInteractions;
 
-        _allowSatelliteMovementParticles = SettingsController.GetAllowSatelliteMovementParticles();
+        _allowSatelliteMovementParticles = PersistenceController.GetAllowSatelliteMovementParticles();
         _allowSatelliteMovementParticlesToggle.isOn = _allowSatelliteMovementParticles;
     }
 
     private void UpdateSettings()
     {
-        SettingsController.UpdateSettings(_language,_forceNoChangeWhenReceivingCommunications,_disableConfirmations,_allowAdvancedInteractions,_allowSatelliteMovementParticles);
+        PersistenceController.UpdateSettings(_language,_forceNoChangeWhenReceivingCommunications,_disableConfirmations,_allowAdvancedInteractions,_allowSatelliteMovementParticles);
     }
 
     public void SetLanguageEnglish()

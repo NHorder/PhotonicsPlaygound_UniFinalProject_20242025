@@ -32,7 +32,7 @@ public class SatelliteCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
         
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _animator = gameObject.GetComponent<Animator>();

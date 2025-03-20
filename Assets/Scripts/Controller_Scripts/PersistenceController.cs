@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettingsController : MonoBehaviour
+public class PersistenceController : MonoBehaviour
 {
 
     public Language _language = Language.English;
@@ -13,7 +13,7 @@ public class SettingsController : MonoBehaviour
 
 
 
-    public static SettingsController Instance;
+    public static PersistenceController Instance;
 
     private void Awake()
     {

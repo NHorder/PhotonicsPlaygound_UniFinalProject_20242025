@@ -27,7 +27,7 @@ public class LevelCompletePanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
 
         // Collect game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();

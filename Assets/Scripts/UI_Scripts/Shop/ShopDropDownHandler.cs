@@ -34,7 +34,7 @@ public class ShopDropDownHandler : MonoBehaviour
 
         _tmpDropdown.AddOptions(list);
 
-        UpdateLanguage(SettingsController.GetLanguage());
+        UpdateLanguage(PersistenceController.GetLanguage());
     }
 
     public void UpdateLanguage(Language language)

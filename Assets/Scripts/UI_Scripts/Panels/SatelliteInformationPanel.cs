@@ -28,7 +28,7 @@ public class SatelliteInformationPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
         
         _satelliteController = GameObject.FindGameObjectsWithTag("MouseController")[0].GetComponent<SatelliteController>();
 

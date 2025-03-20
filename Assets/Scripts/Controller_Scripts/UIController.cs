@@ -35,7 +35,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start() 
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
 
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _gameController.SetUIController(this);
@@ -69,13 +69,6 @@ public class UIController : MonoBehaviour
             _movingPanels.shopPanel = GameObject.FindGameObjectsWithTag("ShopPanel")[0].GetComponent<ShopPanel>();
         } 
 
-
-        // Collect all panel objects for fixed panels.
-        if (uiExpectations.expectTeachingPanel)
-        {
-            _fixedPanels.teachingPanel = GameObject.FindGameObjectsWithTag("TeachingPanel")[0].GetComponent<TeachingPanel>();
-        }
-
         if (uiExpectations.expectSettingsPanel) 
         {
             _fixedPanels.settingsPanel = GameObject.FindGameObjectsWithTag("Settings")[0].GetComponent<SettingsPanel>();
@@ -90,6 +83,14 @@ public class UIController : MonoBehaviour
         {
             _fixedPanels.levelCompletePanel = GameObject.FindGameObjectsWithTag("LevelCompleteController")[0].GetComponent<LevelCompletePanel>();
         } 
+
+
+        // Collect all panel objects for fixed panels.
+        if (uiExpectations.expectTeachingPanel)
+        {
+            _fixedPanels.teachingPanel = GameObject.FindGameObjectsWithTag("TeachingPanel")[0].GetComponent<TeachingPanel>();
+            PresentFixedPanel(FixedUIPanel.Teaching,true);
+        }
     }
 
 
@@ -341,6 +342,16 @@ public class UIController : MonoBehaviour
         else _movingPanels.satelliteControlsMoveTo = movingPanelSettings.satelliteControlsCloseLocation;
     }
 
+    public bool CloseSatelliteControlsIfOpen()
+    {
+        if (_movingPanels.satelliteControlsVisible)
+        {
+            ToggleVisibleSatelliteControls();
+            return true;
+        }
+        return false;
+    }
+
     public void ToggleVisibleSatelliteInformation()
     {
         // Set the opposite of current
@@ -359,9 +370,9 @@ public class UIController : MonoBehaviour
 
     public void UpdateSettings(bool languageChanged)
     {
-        _language = SettingsController.GetLanguage();
+        _language = PersistenceController.GetLanguage();
 
-        advancedSettings.overwriteCommunicationMovement = SettingsController.GetForceNoChangeWhenReceivingCommunications();
+        advancedSettings.overwriteCommunicationMovement = PersistenceController.GetForceNoChangeWhenReceivingCommunications();
 
         if (languageChanged)
         {

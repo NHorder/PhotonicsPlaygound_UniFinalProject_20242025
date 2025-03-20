@@ -108,7 +108,7 @@ public class DestinationSatellite : MonoBehaviour
                 {
                     if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();    
 
-                    var language = SettingsController.GetLanguage();
+                    var language = PersistenceController.GetLanguage();
 
                     
                     if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
@@ -122,7 +122,7 @@ public class DestinationSatellite : MonoBehaviour
                     if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
 
 
-                    var language = SettingsController.GetLanguage();
+                    var language = PersistenceController.GetLanguage();
 
                     if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
                     else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "(Not Translated)Connection is too weak\n");

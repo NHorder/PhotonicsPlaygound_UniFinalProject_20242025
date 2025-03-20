@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        activeLanguage = SettingsController.GetLanguage();
+        activeLanguage = PersistenceController.GetLanguage();
 
         // Check to make sure the desired framerate is not less than or equal to 0. 
         if (framerateRelatedSettings.desiredFramerate <= 0) 
@@ -183,9 +183,9 @@ public class GameController : MonoBehaviour
 
     public void UpdateSettings()
     {
-        activeLanguage = SettingsController.GetLanguage();
+        activeLanguage = PersistenceController.GetLanguage();
 
-        bool allowAdvancedInteraction = SettingsController.GetAllowAdvancedInteractions();
+        bool allowAdvancedInteraction = PersistenceController.GetAllowAdvancedInteractions();
 
         specializedInteractionSettings.allowReflectionDuringRefraction = allowAdvancedInteraction;
     }

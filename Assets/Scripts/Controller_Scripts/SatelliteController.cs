@@ -41,10 +41,14 @@ public class SatelliteController : MonoBehaviour
     private bool _firstSelection = true;
 
 
+    private CameraDrone _eyeOfZeta;
+
+
     void Start()
     {
         // Retrieve UI controller
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
+        _eyeOfZeta = GameObject.FindGameObjectsWithTag("EyeOfZeta")[0].GetComponent<CameraDrone>();
     }
 
     // Update is called once per frame
@@ -125,13 +129,22 @@ public class SatelliteController : MonoBehaviour
                     if (_uiController.uiExpectations.expectSatelliteControlPanel)
                     {
                         // If the selected satellite can be moved, then present the movement panel, else hide it.
-                        if (selectedSatelliteInfo.canbeMoved)
+                        if (selectedSatelliteInfo.canbeMoved && !_panelVisible)
                         {
                             _uiController.ToggleVisibleSatelliteControls();
                             _panelVisible = true;
                         }
+                        else if (!selectedSatelliteInfo.canbeMoved && _uiController.CloseSatelliteControlsIfOpen())
+                        {
+                            _panelVisible = false;
+                        }
+
+                        if (selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
+                        {
+                            _eyeOfZeta.AttachDroneToSatellite(selectedSatelliteInfo.gameObject.GetComponent<Transform>());
+                        }
+                        else _eyeOfZeta.DetachDroneFromSatellite();
                         
-                        else if (_panelVisible) _uiController.ToggleVisibleSatelliteControls();
 
                         // Present the satellite info panel
                         if (_firstSelection)
@@ -145,6 +158,7 @@ public class SatelliteController : MonoBehaviour
             // If it's null, set selected to null - this assumes an object that can't be rotated has been selected or empty space has been selected.
             else if (!uiObjectFound)
             {    
+                _eyeOfZeta.DetachDroneFromSatellite();
                 CloseInformation();
             }
         }
@@ -160,11 +174,7 @@ public class SatelliteController : MonoBehaviour
 
             // Check if expecting panels
             // If so, check if they're open, then close them
-            if (_uiController.uiExpectations.expectSatelliteControlPanel && _panelVisible)
-            {
-                _panelVisible = false;
-                _uiController.ToggleVisibleSatelliteControls();
-            }
+            if (_uiController.CloseSatelliteControlsIfOpen()) _panelVisible = false;
         }
     }
 
@@ -265,6 +275,27 @@ public class SatelliteController : MonoBehaviour
 
             // Add torque (rotation) based on rotation multiplier
             _selectedRigidbody2D.AddTorque(rotationMovement * _currentRotationMultiplier);
+
+            // Check to see if the satellite has an attached Eye of Zeta
+            // If so, apply the same movement force, so that it follows the satellite.
+            // NOTE: This assumes that the Eye of Zeta is parented to the selected satellite.
+            CameraDrone eyeOfZeta = _selectedRigidbody2D.GetComponentInChildren<CameraDrone>();
+
+            if (eyeOfZeta != null)
+            {
+                var eyeOfZetaRigidbody = eyeOfZeta.GetComponent<Rigidbody2D>();
+                
+                // Retrieve the rigidbody2d
+                eyeOfZetaRigidbody.AddForce(new Vector2(horizontalMovement * _currentMovementMultiplier, verticalMovement * _currentMovementMultiplier));
+
+
+
+
+
+                // Torque or no Torque that is the question
+
+                eyeOfZetaRigidbody.AddTorque(rotationMovement * _currentRotationMultiplier);
+            }
 
             // If the input is rotation, gradually increase the speed of rotation to the object's defined limit (in satellite info)
             if (Input.GetButton("Rotation") ||  _keyPressed == Key.Rotation){
