@@ -85,6 +85,15 @@ public class CombinerSatellite : SatelliteParent
         
         // Else soemthing went wrong
         else  Debug.Log("Something went wrong");
+
+
+        // Reset values.
+        _redLaser = false;
+        _blueLaser = false;
+        _greenLaser = false;
+        _yellowLaser = false;
+        _cyanLaser = false;
+        _magentaLaser = false;
         
     }
 

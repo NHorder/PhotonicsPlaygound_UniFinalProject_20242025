@@ -72,6 +72,9 @@ public class Satellite_Info : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _language = PersistenceController.GetLanguage();
+
+        
         // Retrieve game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
@@ -127,12 +130,9 @@ public class Satellite_Info : MonoBehaviour
     {
         //// This method serves as the "database" where all satellites have their related information
 
-
         // Collect active language - important for defining descriptions
         if (_language == null) _language = _gameController.activeLanguage;
 
-        // Collect the satellite number - used in naming conventions
-        var satelliteNum = _gameController.worldInfo.numSatellites;
 
         if (satelliteType == SatelliteType.Origin)
         {
@@ -207,7 +207,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Reflect-Single-LAM-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Reflect-Single-LAM-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade reflectance satellite. The surface has no indents and is perfectly flat, providing optimal reflection of light, a true lambertian diffuse satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A single surface reflection satellite.";
             }
@@ -225,7 +225,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Reflect-Double-LAM-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Reflect-Duo-LAM-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade reflectance satellite. Upgraded from it's predecessor, this includes two panels for lambertian reflection.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A two surface reflection satellite.";
             }
@@ -243,7 +243,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Refract-GL-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Refract-GL-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is Glass and has a refractive index of 1.52, passing a laser through this object will alter the angle to a small degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A glass refraction satellite.";
             }
@@ -259,7 +259,7 @@ public class Satellite_Info : MonoBehaviour
         else if (satelliteType == SatelliteType.SapphireRefractor){
              if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Refract-SAP-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Refract-SAP-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is crystal sapphire and has a refractive index of 1.78, passing a laser through this object will alter the angle to a large degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A sapphire refraction satellite";
             }
@@ -274,7 +274,7 @@ public class Satellite_Info : MonoBehaviour
         else if (satelliteType == SatelliteType.SiliconRefractor){
              if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Refract-S-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Refract-S-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is silicon and has a refractive index of 3.4, passing a laser through this object will alter the angle to a large degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A silicon refraction satellite";
             }
@@ -289,7 +289,7 @@ public class Satellite_Info : MonoBehaviour
         else if (satelliteType == SatelliteType.WaterRefractor){
              if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Refract-Water-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Refract-H2O-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A cutting edge prototype satellite, capable of maintaining water in a liquid space in deep space and keeping it contained. It has a refractive index of 1.33, passing a laser through this object will alter the angle to a small degree. ";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A water refraction satellite.";
             }
@@ -314,7 +314,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Colour-Filter-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Colour-Filter-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A simple colour filter. This will change the colour of light beams that pass through it. Cheaply made, not too durable but suitable for the task.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A fixed coloured filter";
             }
@@ -388,7 +388,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Combiner-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Combiner-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A cutting edge satellite designed to combine two beams of light. Note: The output beam will be stronger and may vary in colour";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Combines two beams of light.";
             }
@@ -406,7 +406,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Duel-Splitter-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Duel-Splitter-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A must have in satellite communications, it can split a beam of light in two. Note: resulting beams will have less energy and may vary in colour.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light in two";
             }
@@ -424,7 +424,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Trio-Splitter-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Trio-Splitter-SAT";
                 if (satelliteDescription == "") satelliteDescription = "An advanced variant of the Duel-Splitter, it can split a beam of light into three. Note: resulting beams will have less energy and may vary in colour";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light into three";
             }
@@ -441,7 +441,7 @@ public class Satellite_Info : MonoBehaviour
         {
             if (_language == Language.English)
             {
-                if (satelliteName == "") satelliteName = $"Hex-Splitter-{satelliteNum}-SAT";
+                if (satelliteName == "") satelliteName = $"Hex-Splitter-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A cutting edge prototype splitter, capable of splitting a single beam of light into six output lasers. Note: Resulting beams will have less energy and may vary in colour. ";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light into six";
             }
@@ -571,7 +571,7 @@ public class Satellite_Info : MonoBehaviour
     }
 
 
-    private void CreateShopItem()
+    public void CreateShopItem()
     {
         // Get common component across children
         var childrenTransformList = gameObject.GetComponentsInChildren<RectTransform>();
@@ -581,34 +581,32 @@ public class Satellite_Info : MonoBehaviour
         {
             var childObject = childTransform.gameObject;
 
-            if (childObject.tag != "Prefab_ShopContent" && childObject.name != "Shop_SalePriceText")
+            
+            // Remove Clone brackets from the new child objects - more of a personal preference thing
+            //childObject.name = childObject.name.Replace("(Clone)","");
+
+
+            // Retrieve text component
+            var textComponent = childObject.GetComponent<TMP_Text>();
+
+            if (childObject.name == "Shop_SatelliteName") textComponent.text = satelliteName;
+            else if (childObject.name == "Shop_ShortDescription") textComponent.text = satelliteShortDescription;
+
+            else if (childObject.name == "Shop_PurchaseButton")
             {
-
-                // Remove Clone brackets from the new child objects - more of a personal preference thing
-                childObject.name = childObject.name.Replace("(Clone)","");
-
-
-                // Retrieve text component
-                var textComponent = childObject.GetComponent<TMP_Text>();
-
-                if (childObject.name == "Shop_SatelliteName") textComponent.text = satelliteName;
-                else if (childObject.name == "Shop_ShortDescription") textComponent.text = satelliteShortDescription;
-
-                else if (childObject.name == "Shop_PurchaseButton")
-                {
-                    // Assign an execution script
-                    var purchasePriceText = childObject.GetComponentInChildren<TMP_Text>();
-                    purchasePriceText.text = "£"+satellitePurchasePrice;
-                    
-                    childObject.GetComponent<Button>().onClick.AddListener(PurchaseSatellite);
-                }
-
-                else if (childObject.name == "Shop_SatelliteSprite")
-                {
-                    var imageComponent = childObject.GetComponent<Image>();
-                    if (satellite_Shop_Info.satelliteSprite != null) imageComponent.sprite = satellite_Shop_Info.satelliteSprite;
-                }
+                // Assign an execution script
+                var purchasePriceText = childObject.GetComponentInChildren<TMP_Text>();
+                purchasePriceText.text = "£"+satellitePurchasePrice;
+                
+                childObject.GetComponent<Button>().onClick.AddListener(PurchaseSatellite);
             }
+
+            else if (childObject.name == "Shop_SatelliteSprite")
+            {
+                var imageComponent = childObject.GetComponent<Image>();
+                if (satellite_Shop_Info.satelliteSprite != null) imageComponent.sprite = satellite_Shop_Info.satelliteSprite;
+            }
+            
         }
 
     }
@@ -624,11 +622,15 @@ public class Satellite_Info : MonoBehaviour
 
         var satelliteScript = gameObject.GetComponent<SatelliteParent>();
         satelliteScript.DeleteLasers();
+
+        // Check to see if the satellite being destroyed has the Eye of Zeta attached, if so remove the attachment
+        CameraDrone eyeOfZeta = gameObject.GetComponentInChildren<CameraDrone>();
+        if (eyeOfZeta != null) eyeOfZeta.DetachDroneFromSatellite();
     
         Destroy(this.gameObject);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void DamageSatellite(Collision2D collision)
     {
         // When collision occurs with the game object, decrease the health of this and the colliders satellite.
         // There is no guarentee that the hit object is a satellite.
@@ -639,13 +641,8 @@ public class Satellite_Info : MonoBehaviour
         Satellite_Info opposingSatellite = null;
 
         // Try to get satellite info of the object, may not be possible if it's an asteroid or boundary
-        try
-        {
-            opposingSatellite = colliderObject.GetComponent<Satellite_Info>();
-        }
-        catch{
-            // Do nothing, as expected occurance
-        }
+        colliderObject.TryGetComponent<Satellite_Info>(out opposingSatellite);
+        
 
         if (opposingSatellite != null)
         {
@@ -671,6 +668,16 @@ public class Satellite_Info : MonoBehaviour
                 if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
             }
         }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        DamageSatellite(collision);
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        DamageSatellite(collision);
     }
 }
 

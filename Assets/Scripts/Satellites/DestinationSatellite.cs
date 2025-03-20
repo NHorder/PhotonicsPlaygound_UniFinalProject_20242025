@@ -8,6 +8,7 @@ public class DestinationSatellite : MonoBehaviour
     public LaserColour neededLaserColour = LaserColour.White;
 
     private GameController _gameController;
+    private UIController _uiController;
     private string _satelliteName;
 
     private int _numLocksForLevelCompletion;
@@ -19,7 +20,7 @@ public class DestinationSatellite : MonoBehaviour
 
 
     private int _numUnlocks = 0;
-    private bool _allLocksOpen = false;
+    public bool allLocksOpen = false;
 
     private bool _colourAccepted = false;
     private bool _newColourSeen = false;
@@ -33,7 +34,7 @@ public class DestinationSatellite : MonoBehaviour
 
     private int _laserDelay;
     private Animator _animator;
-    private LevelProgressPanel _levelProgressPanel;
+    private CommunicationsPanel _communicationsPanel;
     
 
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class DestinationSatellite : MonoBehaviour
     {
         // Find the game controller, establish link
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+        _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _neededTransparency = _gameController.specializedInteractionSettings.minimumTransparencyNeededForDestinationRecognition;
 
         // Try to collect the level progress panel - as it may not exist / not be used
@@ -49,7 +51,7 @@ public class DestinationSatellite : MonoBehaviour
         // of whether the level progress panel is intended Not to exist
         try
         {
-            _levelProgressPanel = GameObject.FindGameObjectsWithTag("LevelProgressPanel")[0].GetComponent<LevelProgressPanel>();
+            _communicationsPanel = GameObject.FindGameObjectsWithTag("CommunicationsPanel")[0].GetComponent<CommunicationsPanel>();
         } 
         catch
         {
@@ -88,7 +90,7 @@ public class DestinationSatellite : MonoBehaviour
         if (_satelliteName == null) _satelliteName = gameObject.GetComponent<Satellite_Info>().satelliteName;
 
         // Sync delay of that to laser creation and destruction - meaning it will be seen as consistent
-        if (_updateCounter > _laserDelay && _levelProgressPanel != null)
+        if (_updateCounter > _laserDelay && _communicationsPanel != null)
         {
             // If lock advance request received, then update the lockProgressionCounter, and reset the lock advance request
             if (_lockAdvanceRequest && _colourAccepted && _transparencyAccepted)
@@ -101,23 +103,36 @@ public class DestinationSatellite : MonoBehaviour
             }
             else 
             {
-
+                
                 if (_lockAdvanceRequest && !_colourAccepted && _newColourSeen)
                 {
-                    _levelProgressPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
-            
+                    if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();    
+
+                    var language = PersistenceController.GetLanguage();
+
+                    
+                    if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
+                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "(Not Translated) Incorrect colour\n");
+
                     _newColourSeen = false;
                 }
 
                 else if (_lockAdvanceRequest && !_transparencyAccepted && _newTransparencySeen)
                 {
-                    _levelProgressPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
+                    if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
+
+
+                    var language = PersistenceController.GetLanguage();
+
+                    if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
+                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "(Not Translated)Connection is too weak\n");
+
                     _newTransparencySeen = false;
                 }
 
 
                 // Update UI components to announce that a locks have been reset
-                else if (_numUnlocks > 0) _levelProgressPanel.LogCommunications(_satelliteName,-1);
+                else if (_numUnlocks > 0) _communicationsPanel.LogCommunications(_satelliteName,-1);
                 // Note: -1 indicates that the locks have been reset, as the connection is lost
                 
                 // If no request, then reset the locks - as the laser isn't consistently connected.
@@ -125,7 +140,7 @@ public class DestinationSatellite : MonoBehaviour
                 _numUnlocks = 0;
 
                 // If all locks were open but have been reset, notify gameController. 
-                if (_allLocksOpen) 
+                if (allLocksOpen) 
                 {
                     // Update gameObject animator if locks reset, but they were open
                     _animator.SetBool("Active",false);
@@ -134,10 +149,10 @@ public class DestinationSatellite : MonoBehaviour
                     _gameController.DestinationTrigger(false);
 
                     // Update the level progress panel text - this states "<SATNAME>: Connection Lost"
-                    _levelProgressPanel.UpdateSuccessText();
+                    _communicationsPanel.UpdateSuccessText();
 
                     // Set all locks open to false
-                    _allLocksOpen = false;
+                    allLocksOpen = false;
                 }
             }
 
@@ -151,7 +166,11 @@ public class DestinationSatellite : MonoBehaviour
                 _lockProgressionCounter = 0;
 
                 // Update UI components to annouce that a lock has been opened
-                if (_numUnlocks <= _numLocksForLevelCompletion) _levelProgressPanel.LogCommunications(_satelliteName,_numUnlocks);
+                if (_numUnlocks <= _numLocksForLevelCompletion)
+                {
+                    if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
+                    _communicationsPanel.LogCommunications(_satelliteName,_numUnlocks);
+                }
 
                 // if the number of unlocks is more or equal to the number of locks being used
                 if (_numUnlocks >= _numLocksForLevelCompletion)
@@ -160,17 +179,18 @@ public class DestinationSatellite : MonoBehaviour
                     _animator.SetBool("Active",true);
 
                     // By placing this here, it means it will only run once - preventing one destination from being marked as more than one
-                    if (!_allLocksOpen)
+                    if (!allLocksOpen)
                     {
                         // Notify Game Controller that a destination has become active
                         _gameController.DestinationTrigger(true);
 
+                        if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
                         // Update text to show success
-                        _levelProgressPanel.UpdateSuccessText();
+                        _communicationsPanel.UpdateSuccessText();
                     }
 
                     // Set all locks open to false and notify gamecontroller of this update
-                    _allLocksOpen = true;
+                    allLocksOpen = true;
 
                     // Enforces a limit of number of unlocks - prevents ever increasing lock unlocks
                     _numUnlocks = _numLocksForLevelCompletion + 1;

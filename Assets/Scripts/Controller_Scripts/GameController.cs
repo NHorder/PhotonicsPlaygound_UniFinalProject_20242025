@@ -16,8 +16,14 @@ public class GameController : MonoBehaviour
     public Language activeLanguage = Language.English;
 
     public Level thisLevel;
-    public string levelName = "";
-    public string levelDescription = "";
+
+    public string levelNameEnglish = " ";
+    public string levelNameWelsh = " ";
+
+    public string levelDescriptionEnglish = " ";
+    public string levelDescriptionWelsh = " ";
+
+
     public int startingBudget = 1000;
     public int currentBudget = 1000;
     public int maxBudget = 9999;
@@ -48,6 +54,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        activeLanguage = PersistenceController.GetLanguage();
 
         // Check to make sure the desired framerate is not less than or equal to 0. 
         if (framerateRelatedSettings.desiredFramerate <= 0) 
@@ -115,12 +122,6 @@ public class GameController : MonoBehaviour
         return _uiController;
     }
 
-    public void UpdateLanguage(Language newLanguage)
-    {
-        Debug.Log("Updated Language (GameController)");
-        activeLanguage = newLanguage;
-    }
-
     public void PurchaseSatellite(Satellite_Info satelliteInfo)
     {
         // Collect the satellite type and find it's price
@@ -158,16 +159,13 @@ public class GameController : MonoBehaviour
     {
         gameEnd = true;
         // Notify UI controller of level won, and pass the score
-        if (_uiController != null) _uiController.SetCompletedModeActive(true);
+        if (_uiController != null) _uiController.LevelHasEnded();
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
     }
 
     public void ResetLevel()
     {
-        // Would collect user confirmation from a menu
-        var userConfirmation = true;
-
-        if (userConfirmation) SceneController.ToLevel(thisLevel);
+        SceneController.ToLevel(thisLevel);
     }
 
     public void DestinationTrigger(bool active)
@@ -181,6 +179,16 @@ public class GameController : MonoBehaviour
         if (activeDestinations >= worldInfo.numDestinations) LevelEnd();
     }
 
+
+
+    public void UpdateSettings()
+    {
+        activeLanguage = PersistenceController.GetLanguage();
+
+        bool allowAdvancedInteraction = PersistenceController.GetAllowAdvancedInteractions();
+
+        specializedInteractionSettings.allowReflectionDuringRefraction = allowAdvancedInteraction;
+    }
 }
 
 
