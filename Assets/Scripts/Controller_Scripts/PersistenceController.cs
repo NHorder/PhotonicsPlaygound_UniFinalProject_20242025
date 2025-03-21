@@ -5,11 +5,13 @@ using UnityEngine;
 public class PersistenceController : MonoBehaviour
 {
 
-    public Language _language = Language.English;
-    public bool _forceNoChangeWhenReceivingCommunications = false;
-    public bool _disableConfirmations = false;
-    public bool _allowAdvancedInteractions = true;
-    public bool _allowSatelliteMovementParticles = true;
+    private Language _language = Language.English;
+    private bool _forceNoChangeWhenReceivingCommunications = false;
+    private bool _disableConfirmations = false;
+    private bool _allowAdvancedInteractions = true;
+    private bool _allowSatelliteMovementParticles = true;
+
+    private List<Level> _unlockedLevels = new List<Level>();
 
 
 
@@ -43,6 +45,16 @@ public class PersistenceController : MonoBehaviour
         Instance._allowAdvancedInteractions = allowAdvancedInteractions;
         Instance._allowSatelliteMovementParticles = allowSatelliteMovementParticles;
 
+    }
+
+    public static void UnlockLevel(Level unlockLevel)
+    {
+        if (!Instance._unlockedLevels.Contains(unlockLevel)) Instance._unlockedLevels.Add(unlockLevel);
+    }
+
+    public static List<Level> GetUnlockedLevels() 
+    {
+        return Instance._unlockedLevels;
     }
 
     public static Language GetLanguage()

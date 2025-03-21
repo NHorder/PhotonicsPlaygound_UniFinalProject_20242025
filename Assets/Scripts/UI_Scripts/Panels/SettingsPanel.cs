@@ -208,6 +208,11 @@ public class SettingsPanel : MonoBehaviour
         _allowSatelliteMovementParticles = !_allowSatelliteMovementParticles;
     }
 
+    public void ShowSettingsPanel()
+    {
+        _uiController.PresentFixedPanel(FixedUIPanel.Settings,true);
+    }
+
     public void Reset()
     {
         ReadSettings();

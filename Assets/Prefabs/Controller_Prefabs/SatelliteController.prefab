@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2737235220666689187}
   - component: {fileID: 4698020984865418483}
-  - component: {fileID: 578744778078915272}
+  - component: {fileID: 8668900837221384463}
   m_Layer: 0
   m_Name: SatelliteController
   m_TagString: MouseController
@@ -78,7 +78,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &578744778078915272
+--- !u!114 &8668900837221384463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,6 +87,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7067916814420480008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a56d849e4290c64fbcefccfd8d23d36, type: 3}
+  m_Script: {fileID: 11500000, guid: 8599090830258724a86b3348a60b7672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heldMovementSpeedIncrease: 0.01
+  heldRotationSpeedIncrease: 0.01
+  selectedSatelliteInfo: {fileID: 0}

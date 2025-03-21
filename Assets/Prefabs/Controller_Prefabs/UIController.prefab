@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2076908590012320399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5943467037081398639}
+  - component: {fileID: 1618071356293392001}
+  m_Layer: 0
+  m_Name: UIController
+  m_TagString: UI_Controller
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5943467037081398639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076908590012320399}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2015.7128, y: 2146.7075, z: -25.116388}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1618071356293392001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076908590012320399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13163297db1cef46a229a876781cec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelMovementSpeed: 20
+  advancedSettings:
+    skipConfirmation: 0
+    overwriteCommunicationMovement: 0
+    communicationRecordRetentionNumber: 10
+  uiExpectations:
+    expectLevelInformationPanel: 1
+    expectSettingsPanel: 1
+    expectShopPanel: 1
+    expectTeachingPanel: 1
+    expectSatelliteControlPanel: 1
+    expectSatelliteInformationPanel: 1
+    expectCommunicationPanel: 1
+    expectConfirmationPanel: 1
+    expectLevelCompletePanel: 1
+  movingPanelSettings:
+    levelInformationOpenLocation: {x: 659, y: 339}
+    levelInformationCloseLocation: {x: 1178.8, y: 339}
+    shopOpenLocation: {x: 737, y: -204}
+    shopCloseLocation: {x: 1096, y: -204}
+    satelliteControlsOpenLocation: {x: 0, y: -472.9}
+    satelliteControlsCloseLocation: {x: 0, y: -611}
+    satelliteInfomationOpenLocation: {x: -709.5, y: -389.3}
+    satelliteInformationCloseLocation: {x: -1139.2, y: -389.3}
+    communicationsOpenLocation: {x: -694.8, y: 377.6}
+    communicationsCloseLocation: {x: -694.8, y: 643}
+  fixedPanelSettings:
+    settingsPanelLocation: {x: 0, y: 0}
+    teachingPanelLocation: {x: 0, y: 0}
+    confirmationPanelLocation: {x: 0, y: 0}
+    levelCompeletePanelLocation: {x: 0, y: 0}
