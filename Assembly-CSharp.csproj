@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Satellites\OriginSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelCompletePanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\SettingsPanel.cs" />
+    <Compile Include="Assets\Scripts\Satellites\GravitationalAnomaly.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\SatelliteInformationPanel.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SatelliteController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />

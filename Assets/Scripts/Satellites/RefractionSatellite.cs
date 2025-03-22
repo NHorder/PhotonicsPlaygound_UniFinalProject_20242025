@@ -59,6 +59,36 @@ public class RefractionSatellite : SatelliteParent
 
         var refractedAngle = InteractionFunctions.RefractionInteraction(incidentIndex,refractiveIndex,incomingLaser.raycast.normal,incomingLaser.laser);
 
+
+        var refractedEnergy = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
+
+        if (_gameController.specializedInteractionSettings.allowReflectionDuringRefraction)
+        {
+            ReflectionSatellite reflectionSatellite = null;
+            gameObject.TryGetComponent<ReflectionSatellite>(out reflectionSatellite);
+
+            if (reflectionSatellite != null)
+            {
+                // Fresnels Equations |  Special Cases | Normal Incidence
+                // Using the Normal Incidence special case from Fresnel law, as we are not concerned with the
+                // polarisation of the light, hence we can use the special case to caluclate the power of reflectance
+                float powerReflectance = Mathf.Clamp01(Mathf.Pow((incidentIndex - refractiveIndex) / (incidentIndex + refractiveIndex),2f));
+
+                // Using the refrated energy (which has already absorbed the energy from the laser), calculate the energy for the reflected
+                // and then negate that from the refracted.
+                var reflectedEnergy = refractedEnergy * powerReflectance;
+                refractedEnergy -= reflectedEnergy;
+
+                // In cases of glass, the powerReflectance would be roughly 0.04 (4%), hence it's more of a aestetic choice over function.
+                // Though it could become functional given enough combiners...
+
+                // Call the attached reflection satellite information, overwrite it's advanced interaction energy (from 0) and set it to active
+                // this will make display the reflection the same way refraction happens.
+                reflectionSatellite.SetAdvancedInteractionEnergyOverwrite(reflectedEnergy);
+                reflectionSatellite.SetActive(incomingLaser.laser,incomingLaser.raycast);
+            }
+        }
+
         if (!float.IsNaN(refractedAngle))
         {
 
@@ -69,15 +99,13 @@ public class RefractionSatellite : SatelliteParent
             newOutgoingLaser.satelliteInfo = newSatelliteInfo;
             newOutgoingLaser.laserColour = incomingLaser.laser.GetLaserColour();
 
-            newOutgoingLaser.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance; 
+            newOutgoingLaser.laserTransparency = refractedEnergy;
 
             _outgoingLaserInfo.Add(newOutgoingLaser);
+
         }
 
-
     }
-
-
 }
 
                 

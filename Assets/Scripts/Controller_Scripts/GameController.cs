@@ -224,7 +224,7 @@ public class FramerateRelatedSettings
 [System.Serializable]
 public class SpecializedInteractionSettings
 {
-    public bool allowReflectionDuringRefraction = false;
+    public bool allowReflectionDuringRefraction = true;
     public float minimumTransparencyNeededForDestinationRecognition = 0.5f;
     public float minimumTransparencyForReflectionDuringRefraction = 0.02f;
 }

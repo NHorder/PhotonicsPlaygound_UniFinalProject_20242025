@@ -40,6 +40,8 @@ public class TeachingPanel : MonoBehaviour
         _language = PersistenceController.GetLanguage();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
+        if (teachingElements.Count > 0) PersistenceController.AddTeachingElements(teachingElements);
+
         var childTransformList = gameObject.GetComponentsInChildren<RectTransform>();
         foreach (RectTransform childTransform in childTransformList)
         {
@@ -110,7 +112,7 @@ public class TeachingPanel : MonoBehaviour
         {
             TeachingElement teachingElement = teachingElements[_currentTeachingElement];
 
-
+ 
             
             if (teachingElement.usingSpriteA)
             {
@@ -212,6 +214,12 @@ public class TeachingPanel : MonoBehaviour
     {
         _currentTeachingElement = 0;
         _uiController.PresentFixedPanel(FixedUIPanel.Teaching,false);
+    }
+
+
+    public void DisplayTeachingPanelFromSettings()
+    {
+        DisplayTeachingElement();
     }
 
 }

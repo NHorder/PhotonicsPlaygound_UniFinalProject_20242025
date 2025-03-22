@@ -94,7 +94,7 @@ public class LevelSelectManage: MonoBehaviour
             bool unlockAll = false;
             bool unlockQuasars = false;
 
-            if (_secretCodeInputField.text.ToLower() == "photonics")
+            if (_secretCodeInputField.text.ToLower() == "photonics" || _secretCodeInputField.text.ToLower() == "elysian photonics")
             {
                 Debug.Log("Everything unlocks...");
                 unlockAll = true;
@@ -110,15 +110,31 @@ public class LevelSelectManage: MonoBehaviour
                 PersistenceController.UnlockLevel(Level.LevelNine_GravitationalAnomalies);
                 PersistenceController.UnlockLevel(Level.LevelTen_GravitationalCollapse);
 
+
+                if (_secretCodeInputField.text.ToLower() == "elysian photonics")
+                {
+                    // Rapidly switch between each level regardless of unlock condition to update the 
+                    // PersistenceControllers Teaching elements - so all teaching info is available.
+                    SceneController.ToTestLevel();
+                    SceneController.ToLevelSelection();
+                }
             }
 
-            else if (_secretCodeInputField.text.ToLower() == "quasars")
+            else if (_secretCodeInputField.text.ToLower() == "quasars" || _secretCodeInputField.text.ToLower() == "quasar anomalies")
             {
                 Debug.Log("Something unlocks related to quasars..");
                 unlockQuasars = true;
 
                 PersistenceController.UnlockLevel(Level.LevelNine_GravitationalAnomalies);
                 PersistenceController.UnlockLevel(Level.LevelTen_GravitationalCollapse);
+
+                if (_secretCodeInputField.text.ToLower() == "quasar anomalies")
+                {
+                    // Rapidly switch between both levels to update the 
+                    // PersistenceControllers Teaching elements - so all teaching info is available.
+
+                    SceneController.ToLevelSelection();
+                }
             }
 
             if (unlockAll || unlockQuasars)

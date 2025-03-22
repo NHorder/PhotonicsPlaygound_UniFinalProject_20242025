@@ -215,6 +215,13 @@ public class Laser : MonoBehaviour
                 ColourFilterSatellite colourFilterSatellite = _raycast.collider.gameObject.GetComponent<ColourFilterSatellite>();
                 colourFilterSatellite.SetActive(this,_raycast);
             }
+        
+            else if (interaction == Interaction.GravitationalAnomaly)
+            {
+                GravitationalAnomaly gravitationalAnomaly = _raycast.collider.gameObject.GetComponent<GravitationalAnomaly>();
+                gravitationalAnomaly.SetActive(this,_raycast);
+            }
+        
         }
     }
 

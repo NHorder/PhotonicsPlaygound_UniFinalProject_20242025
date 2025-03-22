@@ -13,7 +13,7 @@ public class PersistenceController : MonoBehaviour
 
     private List<Level> _unlockedLevels = new List<Level>();
 
-
+    private List<TeachingElement> _savedTeachingElements = new List<TeachingElement>();
 
     public static PersistenceController Instance;
 
@@ -55,6 +55,22 @@ public class PersistenceController : MonoBehaviour
     public static List<Level> GetUnlockedLevels() 
     {
         return Instance._unlockedLevels;
+    }
+
+    public static void AddTeachingElements(List<TeachingElement> newTeachingElements)
+    {
+        foreach (TeachingElement teachingElement in newTeachingElements)
+        {
+            if (!Instance._savedTeachingElements.Contains(teachingElement) && teachingElement.teachingTitle != "Introduction")
+            {
+                Instance._savedTeachingElements.Add(teachingElement);
+            }
+        }
+    }
+
+    public static List<TeachingElement> GetSavedTeachingElements()
+    {
+        return Instance._savedTeachingElements;
     }
 
     public static Language GetLanguage()

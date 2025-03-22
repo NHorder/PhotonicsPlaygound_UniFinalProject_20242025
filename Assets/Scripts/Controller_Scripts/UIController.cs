@@ -367,7 +367,6 @@ public class UIController : MonoBehaviour
 
 
 
-
     public void UpdateSettings(bool languageChanged)
     {
         _language = PersistenceController.GetLanguage();
