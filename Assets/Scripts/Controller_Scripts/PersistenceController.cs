@@ -5,13 +5,15 @@ using UnityEngine;
 public class PersistenceController : MonoBehaviour
 {
 
-    public Language _language = Language.English;
-    public bool _forceNoChangeWhenReceivingCommunications = false;
-    public bool _disableConfirmations = false;
-    public bool _allowAdvancedInteractions = true;
-    public bool _allowSatelliteMovementParticles = true;
+    private Language _language = Language.English;
+    private bool _forceNoChangeWhenReceivingCommunications = false;
+    private bool _disableConfirmations = false;
+    private bool _allowAdvancedInteractions = true;
+    private bool _allowSatelliteMovementParticles = true;
 
+    private List<Level> _unlockedLevels = new List<Level>();
 
+    private List<TeachingElement> _savedTeachingElements = new List<TeachingElement>();
 
     public static PersistenceController Instance;
 
@@ -43,6 +45,32 @@ public class PersistenceController : MonoBehaviour
         Instance._allowAdvancedInteractions = allowAdvancedInteractions;
         Instance._allowSatelliteMovementParticles = allowSatelliteMovementParticles;
 
+    }
+
+    public static void UnlockLevel(Level unlockLevel)
+    {
+        if (!Instance._unlockedLevels.Contains(unlockLevel)) Instance._unlockedLevels.Add(unlockLevel);
+    }
+
+    public static List<Level> GetUnlockedLevels() 
+    {
+        return Instance._unlockedLevels;
+    }
+
+    public static void AddTeachingElements(List<TeachingElement> newTeachingElements)
+    {
+        foreach (TeachingElement teachingElement in newTeachingElements)
+        {
+            if (!Instance._savedTeachingElements.Contains(teachingElement) && teachingElement.teachingTitle != "Introduction")
+            {
+                Instance._savedTeachingElements.Add(teachingElement);
+            }
+        }
+    }
+
+    public static List<TeachingElement> GetSavedTeachingElements()
+    {
+        return Instance._savedTeachingElements;
     }
 
     public static Language GetLanguage()

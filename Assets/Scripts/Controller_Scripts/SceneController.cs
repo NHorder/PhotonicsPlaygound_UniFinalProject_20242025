@@ -10,6 +10,14 @@ public enum Level{
     LevelSelection,
     LevelOne_Reflections,
     LevelTwo_Refractions,
+    LevelThree_Colour,
+    LevelFour_ColourSplitting,
+    LevelFive_ColourCombinations,
+    LevelSix_PromotionPrerequsite,
+    LevelSeven_PromotionExam,
+    LevelEight_Challange,
+    LevelNine_GravitationalAnomalies,
+    LevelTen_GravitationalCollapse
 }
 
 

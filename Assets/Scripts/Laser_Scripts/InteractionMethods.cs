@@ -16,6 +16,8 @@ public enum Interaction
     Origin,
     Destination,
 
+    GravitationalAnomaly
+
 
 }
 

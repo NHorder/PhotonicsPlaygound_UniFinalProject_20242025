@@ -52,6 +52,7 @@ public class SettingsPanel : MonoBehaviour
     private bool _visible = false;
 
     private Language _savedLanguage = Language.English;
+    private TeachingPanel _teachingPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -101,7 +102,8 @@ public class SettingsPanel : MonoBehaviour
 
 
         //if (!_uiController.uiExpectations.expectConfirmationPanel) _exitLevelButton.active = false;
-        if (!_uiController.uiExpectations.expectTeachingPanel) _viewTeachingTransmissionButton.active = false;
+        if (!_uiController.uiExpectations.expectTeachingPanel)_viewTeachingTransmissionButton.active = false;
+        else _teachingPanel = GameObject.FindGameObjectsWithTag("TeachingPanel")[0].GetComponent<TeachingPanel>();
 
         ReadSettings();
     }
@@ -208,6 +210,11 @@ public class SettingsPanel : MonoBehaviour
         _allowSatelliteMovementParticles = !_allowSatelliteMovementParticles;
     }
 
+    public void ShowSettingsPanel()
+    {
+        _uiController.PresentFixedPanel(FixedUIPanel.Settings,true);
+    }
+
     public void Reset()
     {
         ReadSettings();
@@ -235,8 +242,15 @@ public class SettingsPanel : MonoBehaviour
 
     public void ViewTeachingTransmissions()
     {
-        Return();
+        if (_teachingPanel != null)
+        {
+            _teachingPanel.teachingElements = PersistenceController.GetSavedTeachingElements();
+            _teachingPanel.DisplayTeachingPanelFromSettings();
+            Return();
 
+            _uiController.PresentFixedPanel(FixedUIPanel.Teaching,true);
+        }
+        
 
     }
 

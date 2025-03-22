@@ -157,7 +157,19 @@ public class GameController : MonoBehaviour
 
     public void LevelEnd()
     {
+        // Notify persistence controller to unlock the next level
+        if (thisLevel == Level.LevelOne_Reflections) PersistenceController.UnlockLevel(Level.LevelTwo_Refractions);
+        else if (thisLevel == Level.LevelTwo_Refractions) PersistenceController.UnlockLevel(Level.LevelThree_Colour);
+        else if (thisLevel == Level.LevelThree_Colour) PersistenceController.UnlockLevel(Level.LevelFour_ColourSplitting);
+        else if (thisLevel == Level.LevelFour_ColourSplitting) PersistenceController.UnlockLevel(Level.LevelFive_ColourCombinations);
+        else if (thisLevel == Level.LevelFive_ColourCombinations) PersistenceController.UnlockLevel(Level.LevelSix_PromotionPrerequsite);
+        else if (thisLevel == Level.LevelSix_PromotionPrerequsite) PersistenceController.UnlockLevel(Level.LevelSeven_PromotionExam);
+        else if (thisLevel == Level.LevelSeven_PromotionExam) PersistenceController.UnlockLevel(Level.LevelEight_Challange);
+        else if (thisLevel == Level.LevelEight_Challange) PersistenceController.UnlockLevel( Level.LevelNine_GravitationalAnomalies);
+        else if (thisLevel == Level.LevelNine_GravitationalAnomalies) PersistenceController.UnlockLevel(Level.LevelTen_GravitationalCollapse);
+
         gameEnd = true;
+        
         // Notify UI controller of level won, and pass the score
         if (_uiController != null) _uiController.LevelHasEnded();
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
@@ -212,7 +224,7 @@ public class FramerateRelatedSettings
 [System.Serializable]
 public class SpecializedInteractionSettings
 {
-    public bool allowReflectionDuringRefraction = false;
+    public bool allowReflectionDuringRefraction = true;
     public float minimumTransparencyNeededForDestinationRecognition = 0.5f;
     public float minimumTransparencyForReflectionDuringRefraction = 0.02f;
 }

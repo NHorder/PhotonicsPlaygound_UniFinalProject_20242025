@@ -36,6 +36,9 @@ public enum SatelliteType{
     Debris_Filter,
 
 
+    GravitationalAnomaly,
+
+
     CameraDrone,
 
 }
@@ -69,14 +72,23 @@ public class Satellite_Info : MonoBehaviour
 
     private Language _language = Language.English;
 
+    private int _numberImmunityFrames = 0;
+    private int _remainingImmunityFrames = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        _language = PersistenceController.GetLanguage();
+        _language = PersistenceController.GetLanguage(); 
 
-        
         // Retrieve game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
+
+        // Immunity frames to prevent instant destruction of satellites on collision, includes a brief delay of immunity.
+        // As we are dealing with immunity frames, we round down. Hence the use of RoundToInt - which cuts of the decimals
+        // so, 3.9999 would be considered 3 by this rounding function. 
+        // It's harsh due to it being immunity related, note that black holes are excempt from immunity. It's guarenteed destruction if you 
+        // send a satellite into a black hole
+        _numberImmunityFrames = Mathf.RoundToInt(_gameController.framerateRelatedSettings.desiredFramerate * advanced_Satellite_Info.numberImmunityFrames);
 
         // Fill out satellite information
         this.RetreiveSatelliteText();
@@ -112,6 +124,8 @@ public class Satellite_Info : MonoBehaviour
             if (satellite_Shop_Info.IsShopItem) CreateShopItem();
 
         }
+
+        if (_remainingImmunityFrames > 0) _remainingImmunityFrames -= 1;
 
         // if the satellite health falls below or equal to 0, destroy the satellite in a flashy animation
         if (satelliteHealth <= 0)
@@ -520,6 +534,26 @@ public class Satellite_Info : MonoBehaviour
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
         }
 
+        else if (satelliteType == SatelliteType.GravitationalAnomaly)
+        {
+            canbeMoved = false;
+            canBeSold = false;
+            isDebris = true;
+            if (_language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"Gravitational Anomaly";
+                if (satelliteDescription == "") satelliteDescription = "WARNING! Scans indicate significant gravitational disturbance within this region. Satellites entering this region may be lost! It may have an unexpected interference when light passes near it….";
+                if (satelliteShortDescription == "") satelliteShortDescription = "";
+            }
+
+            if (satelliteHealth == 100) satelliteHealth = 9999999;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 0;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
+
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.GravitationalAnomaly;
+        }
 
         else if (satelliteType == SatelliteType.CameraDrone)
         {
@@ -631,7 +665,7 @@ public class Satellite_Info : MonoBehaviour
     }
 
     private void DamageSatellite(Collision2D collision)
-    {
+    {  
         // When collision occurs with the game object, decrease the health of this and the colliders satellite.
         // There is no guarentee that the hit object is a satellite.
 
@@ -642,30 +676,38 @@ public class Satellite_Info : MonoBehaviour
 
         // Try to get satellite info of the object, may not be possible if it's an asteroid or boundary
         colliderObject.TryGetComponent<Satellite_Info>(out opposingSatellite);
-        
 
-        if (opposingSatellite != null)
+        // If you hit a black hole, instant destruction, regardless of immunity - even your god can't save you now
+        if (opposingSatellite.satelliteType == SatelliteType.GravitationalAnomaly) satelliteHealth = -1;
+
+        // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
+        else if (_remainingImmunityFrames <= 0) 
         {
-            // Satellites cannot interact with origin
-            if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) {}
+            if (opposingSatellite != null)
+            {
+                // Satellites cannot interact with origin
+                if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) {}
 
-            // Satellites are easily destroyed when interacting with destination
-            else if (opposingSatellite.satelliteType == SatelliteType.Destination)
-            {
-                satelliteHealth -= 80;
-                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 10;
-            }
+                // Satellites are easily destroyed when interacting with destination
+                else if (opposingSatellite.satelliteType == SatelliteType.Destination)
+                {
+                    satelliteHealth -= 80;
+                    if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 10;
+                }
 
-            // Glass refractors take more damage upon hitting opposing satellites
-            else if (this.satelliteType == SatelliteType.GlassRefractor)
-            {
-                satelliteHealth -= 40;
-                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
-            }
-            else
-            {
-                satelliteHealth -= 25;
-                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+                // Glass refractors take more damage upon hitting opposing satellites
+                else if (this.satelliteType == SatelliteType.GlassRefractor)
+                {
+                    satelliteHealth -= 40;
+                    if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+                }
+                else
+                {
+                    satelliteHealth -= 25;
+                    if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+                }
+
+                _remainingImmunityFrames = _numberImmunityFrames;
             }
         }
     }
@@ -692,9 +734,13 @@ public class AdvancedSatelliteInfo
     public float percentageOfReflectedLightWhenRefracted = 0;
     public float surfaceColor;
     public float absorbance = 0;
-    public LaserColour lightColor = LaserColour.White;
 
+    public float numberImmunityFrames = 1;
+
+    public LaserColour lightColor = LaserColour.White;
     public bool IsSatelliteReceivedCorrectLaser = false;
+
+
 }
 
 [System.Serializable]

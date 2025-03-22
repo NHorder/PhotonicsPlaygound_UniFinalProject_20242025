@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ReflectionSatellite : SatelliteParent
 {
+    private float _advancedInteractionEnergy = 0f;
+
+
+    public void SetAdvancedInteractionEnergyOverwrite(float energy)
+    {
+        _advancedInteractionEnergy = energy;
+    }
+
     override public void Interaction(IncomingLaser incomingLaser)
     {
 
@@ -14,7 +22,8 @@ public class ReflectionSatellite : SatelliteParent
         newOutGoingLaserInfo.origin = incomingLaser.raycast.point;
         newOutGoingLaserInfo.raycastPosition = incomingLaser.raycast.point;
 
-        newOutGoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
+        if (_advancedInteractionEnergy == 0f) newOutGoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
+        else newOutGoingLaserInfo.laserTransparency =  _advancedInteractionEnergy;
         newOutGoingLaserInfo.laserColour = incomingLaser.laser.GetLaserColour();
 
         _outgoingLaserInfo.Add(newOutGoingLaserInfo);

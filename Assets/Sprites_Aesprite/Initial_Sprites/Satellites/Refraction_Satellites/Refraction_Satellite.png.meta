@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 56
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,8 +115,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 130
-        height: 85
+        width: 195
+        height: 127
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: Refraction_Satellite_1
       rect:
         serializedVersion: 2
-        x: 130
+        x: 195
         y: 0
-        width: 130
-        height: 85
+        width: 195
+        height: 127
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,6 +147,132 @@ TextureImporter:
       bones: []
       spriteID: 4714ca18063d61f468fdfdb268c85025
       internalID: 1593865484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_Satellite_2
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 195
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be25f35762eab004d959a1459089aaf2
+      internalID: -1976719231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_Satellite_3
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 0
+        width: 195
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e864131d5cf00b243bb9544cf7ea2d17
+      internalID: -1939235989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_Satellite_4
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 0
+        width: 195
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1e350631efeeb45991e23ea81b2639
+      internalID: -201161029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_Satellite_5
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 0
+        width: 195
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 938245a837615a140b08733da4a80cc9
+      internalID: -1921341540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_Satellite_6
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 0
+        width: 195
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1313fb3468fb1154db70ed94c854e489
+      internalID: 792738966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refraction_Satellite_7
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 0
+        width: 195
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f401bf098cb4b1147af3be56a5429d05
+      internalID: 1772267922
       vertices: []
       indices: 
       edges: []
@@ -164,6 +290,12 @@ TextureImporter:
     nameFileIdTable:
       Refraction_Satellite_0: 117497472
       Refraction_Satellite_1: 1593865484
+      Refraction_Satellite_2: -1976719231
+      Refraction_Satellite_3: -1939235989
+      Refraction_Satellite_4: -201161029
+      Refraction_Satellite_5: -1921341540
+      Refraction_Satellite_6: 792738966
+      Refraction_Satellite_7: 1772267922
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
