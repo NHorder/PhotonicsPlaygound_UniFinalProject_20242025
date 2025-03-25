@@ -65,8 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopDropDownHandler.cs" />
+    <Compile Include="Assets\Scripts\GravitationalAnomalies\testingA.cs" />
     <Compile Include="Assets\Scripts\Satellites\RefractionSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\GravitationalAnomalies\GravitationalAnomaly.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\SceneSpecific\LevelSelectButton.cs" />
     <Compile Include="Assets\Scripts\Satellites\DestinationSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\UIController.cs" />
@@ -81,7 +83,7 @@
     <Compile Include="Assets\Scripts\Satellites\OriginSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelCompletePanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\SettingsPanel.cs" />
-    <Compile Include="Assets\Scripts\Satellites\GravitationalAnomaly.cs" />
+    <Compile Include="Assets\Scripts\GravitationalAnomalies\SingularityLaser.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\SatelliteInformationPanel.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SatelliteController.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\Laser.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Assets\Scripts\Satellites\ColourFilterSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelInformationPanel.cs" />
     <Compile Include="Assets\Scripts\Satellites\SplitterSatellite.cs" />
+    <Compile Include="Assets\Scripts\GravitationalAnomalies\Singularity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

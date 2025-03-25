@@ -678,7 +678,7 @@ public class Satellite_Info : MonoBehaviour
         colliderObject.TryGetComponent<Satellite_Info>(out opposingSatellite);
 
         // If you hit a black hole, instant destruction, regardless of immunity - even your god can't save you now
-        if (opposingSatellite.satelliteType == SatelliteType.GravitationalAnomaly) satelliteHealth = -1;
+        if (opposingSatellite != null && opposingSatellite.satelliteType == SatelliteType.GravitationalAnomaly) satelliteHealth = -1;
 
         // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
         else if (_remainingImmunityFrames <= 0) 
