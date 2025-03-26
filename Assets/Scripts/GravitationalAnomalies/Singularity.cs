@@ -18,28 +18,40 @@ public class Singularity : SatelliteParent
     void Start()
     {
         _blackholeHelper = GameObject.FindGameObjectsWithTag("BlackholeHelper")[0].GetComponent<Transform>();
+        _blackholeHelper.SetParent(null);
 
         base.Start();
     }
 
     override public void FireLaser(OutgoingLaserInfo laserInfo)
     {
-        bool bendRight = PrepareHelper(laserInfo.angle,laserInfo.raycastPosition);
-
-        var newLaser = Instantiate(_singularityLaser);
-        newLaser.GetComponent<SingularityLaser>().Activate(this,laserInfo.angle,laserInfo.raycastPosition, bendRight, gravitationalAnomalyPhysics, gravitationalAnomalySettings);
-
-        if (!_outgoingLaserOrigins.Contains(laserInfo.raycastPosition))
+        if (laserInfo.external)
         {
-            // Add laser object and origin to lists respectively
-            _outgoingLaserObjects.Add(newLaser);
-            _outgoingLaserOrigins.Add(laserInfo.raycastPosition);
+            Debug.Log("Hello?");
+            base.FireLaser(laserInfo);
         }
-        else
-        {
-            // Destroy laser if unneeded
-            Destroy(newLaser);
+        
+        else {
+            float helperAngle = PrepareHelper(laserInfo.angle,laserInfo.raycastPosition);
+            var newLaser = Instantiate(_singularityLaser);
+            newLaser.GetComponent<SingularityLaser>().Activate(this, laserInfo, helperAngle, gravitationalAnomalyPhysics, gravitationalAnomalySettings);
+
+            if (!_outgoingLaserOrigins.Contains(laserInfo.raycastPosition))
+            {
+                // Add laser object and origin to lists respectively
+                _outgoingLaserObjects.Add(newLaser);
+                _outgoingLaserOrigins.Add(laserInfo.raycastPosition);
+            }
+            else
+            {
+                // Destroy laser if unneeded
+                Destroy(newLaser);
+            }
         }
+
+        
+
+        
     }
 
 
@@ -53,13 +65,17 @@ public class Singularity : SatelliteParent
         newOutGoingLaserInfo.raycastPosition = incomingLaser.raycast.point;
         newOutGoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
         newOutGoingLaserInfo.laserColour = incomingLaser.laser.GetLaserColour();
+        newOutGoingLaserInfo.external = false;
         _outgoingLaserInfo.Add(newOutGoingLaserInfo);
     }
 
 
+    public void NewExternalLaser(OutgoingLaserInfo outgoingLaser)
+    {
+        _outgoingLaserInfo.Add(outgoingLaser);
+    }
 
-
-    private bool PrepareHelper(float laserAngle, Vector3 raycastPosition)
+    public float PrepareHelper(float laserAngle, Vector3 raycastPosition)
     {
         _blackholeHelper.position = raycastPosition;
         _blackholeHelper.eulerAngles = new Vector3(0f,0f,laserAngle);
@@ -69,10 +85,24 @@ public class Singularity : SatelliteParent
         float _blackholeHelperAngle = _blackholeHelper.eulerAngles.z;
         if (_blackholeHelperAngle > 180) _blackholeHelperAngle = (_blackholeHelperAngle - 360);
 
-        bool bendRight = false;
-
-        if (_blackholeHelperAngle < laserAngle) bendRight = true;
-
-        return bendRight;
+        return _blackholeHelperAngle;
     }
+}
+
+[System.Serializable]
+public class GravitationalAnomalySettings
+{
+    public float distanceFromEventHorizonToChangeAngleSign = 20f;
+}
+
+[System.Serializable]
+public class GravitationalAnomalyPhysics
+{
+    public float anomalyMass = 10f;
+    public float toPowerOf10 = -1f;
+
+    public float distanceMultipler = 12f;
+    public float dsitanceMultiplerToPowerOf10 = 3f;
+
+    public float angleMulitplier = 10f;
 }

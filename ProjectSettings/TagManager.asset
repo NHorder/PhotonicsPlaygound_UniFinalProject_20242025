@@ -21,6 +21,7 @@ TagManager:
   - Settings
   - EyeOfZeta
   - BlackholeHelper
+  - Singularity
   layers:
   - Default
   - TransparentFX

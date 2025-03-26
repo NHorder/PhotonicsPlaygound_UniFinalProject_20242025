@@ -186,4 +186,5 @@ public class OutgoingLaserInfo
     public Satellite_Info satelliteInfo = null;
     public LaserColour laserColour;
     public float laserTransparency = 1;
+    public bool external = true;
 }

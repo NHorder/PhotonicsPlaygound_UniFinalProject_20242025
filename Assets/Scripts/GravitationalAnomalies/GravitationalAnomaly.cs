@@ -190,23 +190,3 @@ public class GravitationalAnomaly : MonoBehaviour
 }
 
 
-[System.Serializable]
-public class GravitationalAnomalySettings
-{
-    public int maximumPoints = 100;
-    public float laserDistance = 0.5f;
-
-    public float distanceFromEventHorizonToChangeAngleSign = 0.05f;
-}
-
-[System.Serializable]
-public class GravitationalAnomalyPhysics
-{
-    public float anomalyMass = 10f;
-    public float toPowerOf10 = -1f;
-
-    public float distanceMultipler = 12f;
-    public float dsitanceMultiplerToPowerOf10 = 3f;
-
-    public float angleMulitplier = 10f;
-}

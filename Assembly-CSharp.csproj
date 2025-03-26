@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopDropDownHandler.cs" />
-    <Compile Include="Assets\Scripts\GravitationalAnomalies\testingA.cs" />
     <Compile Include="Assets\Scripts\Satellites\RefractionSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GravitationalAnomalies\GravitationalAnomaly.cs" />
