@@ -81,7 +81,7 @@ public class SatelliteParent : MonoBehaviour
         
     }
 
-    private void FireLaser(OutgoingLaserInfo laserInfo)
+    virtual public void FireLaser(OutgoingLaserInfo laserInfo)
     {
 
         if (_trueOrigin.prefabLaser != null)

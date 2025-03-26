@@ -11,9 +11,9 @@ public class SingularityLaser : MonoBehaviour
 
     private bool _bendRight;
 
-    private Vector2 _firstPosition;
-    private Transform _laserTransform;
-    private Vector2 _priorFirstPosition;
+    public Vector3 _firstPosition;
+    public Vector3 _firstPosAfterChanges;
+
 
 
     private bool _hitEdge = false;
@@ -23,110 +23,107 @@ public class SingularityLaser : MonoBehaviour
     private GravitationalAnomalyPhysics anomalyPhysics;
     private GravitationalAnomalySettings anomalySettings;
 
+
+    private Transform _helper;
+
     // Start is called before the first frame update
     void Start()
     {
         _lineRenderer = gameObject.GetComponent<LineRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FireLaser()
     {
-        if (_firstPosition != _priorFirstPosition)
+        Vector2 currentPoint = _listPositions[0];
+
+        while (!_hitEdge)
         {
-            ResetLaser();
+            this.transform.position = currentPoint;
+            float angularDeflection = CalculateAngularDeflection(currentPoint);
 
-            Vector2 currentPoint = _listPositions[0];
+            if (_bendRight && !float.IsNaN(-angularDeflection)) this.transform.Rotate(0f,0f,-angularDeflection);
+            else if (!float.IsNaN(angularDeflection)) this.transform.Rotate(0f,0f,angularDeflection);
 
-            while (!_hitEdge)
+            Ray ray = new Ray(currentPoint,this.transform.up);
+
+            RaycastHit2D raycast = Physics2D.Raycast(currentPoint,this.transform.up,0.1f);
+
+            if (raycast.collider != null)
             {
-                this.transform.position = currentPoint;
 
-                float angularDeflection = CalculateAngularDeflection(currentPoint);
-
-
-                if (_bendRight && !float.IsNaN(-angularDeflection)) this.transform.Rotate(0f,0f,-angularDeflection);
-                else if (!float.IsNaN(angularDeflection)) this.transform.Rotate(0f,0f,angularDeflection);
-
-                Ray ray = new Ray(currentPoint,this.transform.up);
-
-                RaycastHit2D raycast = Physics2D.Raycast(currentPoint,this.transform.up,0.1f);
-
-                if (raycast.collider != null)
+                if (raycast.collider is CircleCollider2D)
                 {
-
-                    if (raycast.collider is CircleCollider2D)
-                    {
-                        _hitEdge = true;
-                        _hitEventHorizon = true;
-                        Debug.Log("Hit Event Horizon");
-                    }
-                    else if (raycast.collider is PolygonCollider2D)
-                    {
-                        Debug.Log("Hit Edge!");
-                        _hitEdge = true;
-                    }
-                    else
-                    {
-                        Debug.Log("???");
-                    }
-
-                    }
+                    _hitEdge = true;
+                    _hitEventHorizon = true;
+                    Debug.Log("Hit Event Horizon");
+                }
+                else if (raycast.collider is PolygonCollider2D)
+                {
+                    Debug.Log("Hit Edge!");
+                    _hitEdge = true;
+                }
                 else
                 {
-                    currentPoint = ray.GetPoint(0.1f);
-                    _listPositions.Add(currentPoint);
+                    Debug.Log("???");
                 }
-                
 
-            }
-
-            var points = new Vector3[_listPositions.Count];
-            _lineRenderer.positionCount = _listPositions.Count;
-            // Reset Line Renderer
-            _lineRenderer.SetPositions(points);
-
-            for (int i = 0; i < _listPositions.Count; i++)
+                }
+            else
             {
-                points[i] = _listPositions[i];
+                currentPoint = ray.GetPoint(0.1f);
+                _listPositions.Add(currentPoint);
             }
-            _lineRenderer.SetPositions(points);
         }
+
+        var points = new Vector3[_listPositions.Count];
+        _lineRenderer.positionCount = _listPositions.Count;
+        // Reset Line Renderer
+        _lineRenderer.SetPositions(points);
+
+        for (int i = 0; i < _listPositions.Count; i++)
+        {
+            points[i] = _listPositions[i];
+        }
+        _lineRenderer.SetPositions(points);
     }
 
-
-    public void Activate(Singularity singularity,Transform laserTransform, Vector2 firstPosition, bool bendRight, GravitationalAnomalyPhysics physics, GravitationalAnomalySettings settings)
+    public void Activate(Singularity singularity,float laserAngle, Vector3 raycastPosition, bool bendRight, GravitationalAnomalyPhysics physics, GravitationalAnomalySettings settings)
     {
+        _lineRenderer = gameObject.GetComponent<LineRenderer>();
+
+        _firstPosition = raycastPosition;
+
+        _lineRenderer = gameObject.GetComponent<LineRenderer>();
         anomalyPhysics = physics;
         anomalySettings = settings;
         _singularityPosition = singularity.transform.position;
-        _laserTransform = laserTransform;
         _bendRight = bendRight;
 
         var yOffset = 0.05f;
 
-        this._firstPosition =  firstPosition;
+        Vector3 point = raycastPosition;
 
-        if (_firstPosition.y < this.transform.position.y) _firstPosition.y += yOffset;
-        else if (_firstPosition.y > this.transform.position.y) _firstPosition.y -= yOffset;
+        if (raycastPosition.y < _singularityPosition.y) point.y += yOffset;
+        else if (raycastPosition.y > _singularityPosition.y) point.y -= yOffset;
 
         // If the point.x is different from what is known, apply an offset. 
         // This allows the point to consistently be within the refraction collider.
-        if (_firstPosition.x < this.transform.position.x) _firstPosition.x += yOffset;
-        else if (_firstPosition.x > this.transform.position.x) _firstPosition.x -= yOffset; 
+        if (raycastPosition.x < _singularityPosition.x) point.x += yOffset;
+        else if (raycastPosition.x > _singularityPosition.x) point.x -= yOffset; 
 
-    }
+        _listPositions.Add(point);
+        _hitEdge = false;
+        _hitEventHorizon = false;
+        this.transform.eulerAngles = new Vector3(0f,0f,laserAngle);
 
 
-    private void ResetLaser()
-    {
-        _priorFirstPosition = _firstPosition;
-        _listPositions.Clear();
-        _listPositions.Add(_firstPosition);
+        _firstPosAfterChanges = point;
+
         _hitEdge = false;
         _hitEventHorizon = false;
 
-        this.transform.rotation = _laserTransform.rotation;
+        FireLaser();
+
     }
 
     private float CalculateAngularDeflection(Vector2 point)

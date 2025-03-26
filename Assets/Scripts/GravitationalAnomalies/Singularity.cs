@@ -2,74 +2,67 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singularity : MonoBehaviour
+public class Singularity : SatelliteParent
 {
-
-    private LineRenderer _lineRenderer;
 
     private Transform _blackholeHelper;
 
     public GameObject _singularityLaser;
 
-    private List<GameObject> _listLasers = new List<GameObject>();
-
-    private List<Vector2> _listOrigins = new List<Vector2>();
-
-    private int _currentUpdateCount = 0;
-    private int _updateDelay = 1;
-
-    private GameController _gameController;
-
-
-    private bool _reset = false;
-
-
     public GravitationalAnomalyPhysics gravitationalAnomalyPhysics;
     public GravitationalAnomalySettings gravitationalAnomalySettings;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _lineRenderer = gameObject.GetComponent<LineRenderer>();
         _blackholeHelper = GameObject.FindGameObjectsWithTag("BlackholeHelper")[0].GetComponent<Transform>();
+
+        base.Start();
     }
 
-    // Update is called once per frame
-    private void Reset()
+    override public void FireLaser(OutgoingLaserInfo laserInfo)
     {
-        _reset = false;
-        // Reset update count
-        _currentUpdateCount = 0;
+        bool bendRight = PrepareHelper(laserInfo.angle,laserInfo.raycastPosition);
 
-        // Delete all lasers
-        foreach (GameObject laser in _listLasers) Destroy(laser);
+        var newLaser = Instantiate(_singularityLaser);
+        newLaser.GetComponent<SingularityLaser>().Activate(this,laserInfo.angle,laserInfo.raycastPosition, bendRight, gravitationalAnomalyPhysics, gravitationalAnomalySettings);
 
-        // Clear list
-        _listLasers.Clear();
-        _listOrigins.Clear();
-    }
-
-    public void SetActive(Laser laser, RaycastHit2D raycast)
-    {
-
-        if (!_listOrigins.Contains(raycast.point))
+        if (!_outgoingLaserOrigins.Contains(laserInfo.raycastPosition))
         {
-            Reset();
-            _listOrigins.Add(raycast.point);
-
-            bool bendRight = PrepareHelper(laser,raycast);
-
-            var newLaser = Instantiate(_singularityLaser);
-            newLaser.GetComponent<SingularityLaser>().Activate(this,laser.transform,raycast.point, bendRight,gravitationalAnomalyPhysics,gravitationalAnomalySettings);
-            _listLasers.Add(newLaser);
+            // Add laser object and origin to lists respectively
+            _outgoingLaserObjects.Add(newLaser);
+            _outgoingLaserOrigins.Add(laserInfo.raycastPosition);
+        }
+        else
+        {
+            // Destroy laser if unneeded
+            Destroy(newLaser);
         }
     }
 
-    private bool PrepareHelper(Laser laser, RaycastHit2D raycast)
+
+    override public void Interaction(IncomingLaser incomingLaser)
     {
-        _blackholeHelper.position = raycast.point;
-        _blackholeHelper.eulerAngles = laser.transform.eulerAngles;
+        OutgoingLaserInfo newOutGoingLaserInfo = new OutgoingLaserInfo();
+
+        newOutGoingLaserInfo.angle = incomingLaser.laser.transform.eulerAngles.z;
+
+        newOutGoingLaserInfo.origin = incomingLaser.raycast.point;
+        newOutGoingLaserInfo.raycastPosition = incomingLaser.raycast.point;
+        newOutGoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
+        newOutGoingLaserInfo.laserColour = incomingLaser.laser.GetLaserColour();
+        _outgoingLaserInfo.Add(newOutGoingLaserInfo);
+    }
+
+
+
+
+    private bool PrepareHelper(float laserAngle, Vector3 raycastPosition)
+    {
+        _blackholeHelper.position = raycastPosition;
+        _blackholeHelper.eulerAngles = new Vector3(0f,0f,laserAngle);
 
         _blackholeHelper.up = transform.position - _blackholeHelper.position;
 
@@ -78,7 +71,7 @@ public class Singularity : MonoBehaviour
 
         bool bendRight = false;
 
-        if (_blackholeHelperAngle < laser.transform.eulerAngles.z) bendRight = true;
+        if (_blackholeHelperAngle < laserAngle) bendRight = true;
 
         return bendRight;
     }
