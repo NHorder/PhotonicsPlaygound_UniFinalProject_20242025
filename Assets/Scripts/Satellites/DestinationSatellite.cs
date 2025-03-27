@@ -112,7 +112,7 @@ public class DestinationSatellite : MonoBehaviour
 
                     
                     if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Incorrect colour\n");
-                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "(Not Translated) Incorrect colour\n");
+                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "Lliw Anghywir\n");
 
                     _newColourSeen = false;
                 }
@@ -125,7 +125,7 @@ public class DestinationSatellite : MonoBehaviour
                     var language = PersistenceController.GetLanguage();
 
                     if (language == Language.English) _communicationsPanel.LogCommunications(_satelliteName,-1, "Connection is too weak\n");
-                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "(Not Translated)Connection is too weak\n");
+                    else if (language == Language.Welsh) _communicationsPanel.LogCommunications(_satelliteName,-1, "Cysylltiad yn rhy wan\n");
 
                     _newTransparencySeen = false;
                 }

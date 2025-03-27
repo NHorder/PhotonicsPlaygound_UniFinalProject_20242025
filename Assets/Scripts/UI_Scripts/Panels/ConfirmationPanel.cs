@@ -64,14 +64,14 @@ public class ConfirmationPanel : MonoBehaviour
         if (confirmAction == ConfirmAction.ResetLevel)
         {
             if (_language == Language.English) action = "reset the level";
-            else if (_language == Language.Welsh) action = "reset level (NOT TRANSLATED)";
+            else if (_language == Language.Welsh) action = "ailosod y lefel";
             _confirmButton.onClick.AddListener(ResetLevel);
         }
 
         else if (confirmAction == ConfirmAction.LeaveLevel)
         {
             if (_language == Language.English) action = "leave the level";
-            else if (_language == Language.Welsh) action = "leave the level (NOT TRANSLATED)";
+            else if (_language == Language.Welsh) action = "gadael y lefel";
             _confirmButton.onClick.AddListener(LevelSelection);
         }
 
@@ -93,11 +93,11 @@ public class ConfirmationPanel : MonoBehaviour
             }
             else if (_language == Language.Welsh)
             {
-                _confirmText.text = "(NOT TRANSLATED) Confirm";
-                _cancelText.text = "(NOT TRANSLATED) Cancel";
+                _confirmText.text = "Cadarnhau";
+                _cancelText.text = "Canslo";
 
-                _titleText.text = $"(NOT TRANSLATED) Are you sure you want to {action}?";
-                _warningText.text = $"(NOT TRANSLATED) Are you sure you want to {action}? All progress on this level will be lost to the darkest depths of space and cannot be retreived at a later date. Do you wish to continue?";
+                _titleText.text = $"Ydych chi'n siŵr eich bod am {action}?";
+                _warningText.text = $"Ydych chi'n siŵr eich bod am {action}? Bydd yr holl gynnydd ar y lefel hon yn cael ei golli i ddyfnderoedd tywyllaf y gofod ac ni ellir ei adfer yn nes ymlaen. Ydych chi'n dymuno parhau?";
             }
         }
         // Else throw a warning that this is missing the objects

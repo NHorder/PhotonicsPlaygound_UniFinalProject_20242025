@@ -405,6 +405,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7974504251702777771, guid: 550b65d5239ea7440af57247c711ddbe, type: 3}
+      propertyPath: thisLevel
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12594,7 +12598,7 @@ GameObject:
   - component: {fileID: 1835769719}
   - component: {fileID: 1835769718}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: LevelSelectText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12973,7 +12977,7 @@ GameObject:
   - component: {fileID: 2071862344}
   m_Layer: 5
   m_Name: LevelSelect
-  m_TagString: Untagged
+  m_TagString: LevelSelectManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

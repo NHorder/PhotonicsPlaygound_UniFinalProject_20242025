@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 
 public enum FixedUIPanel
 {
@@ -385,10 +386,39 @@ public class UIController : MonoBehaviour
             if (uiExpectations.expectLevelCompletePanel) _fixedPanels.levelCompletePanel.UpdateLanguage(_language);
 
             //if (uiExpectations.expectTeachingPanel) _fixedPanels.teachingPanel.UpdateLanguage(_language);
-        }
 
+            if (_gameController.thisLevel == Level.LevelSelection)
+            {
+                var levelSelectManager = GameObject.FindGameObjectsWithTag("LevelSelectManager")[0];
+
+                var levelButtons = levelSelectManager.GetComponentsInChildren<LevelSelectButton>();
+
+                foreach (LevelSelectButton levelSelectButton in levelButtons) levelSelectButton.UpdateLanguage();
+
+                var childTextList = levelSelectManager.gameObject.GetComponentsInChildren<TMP_Text>();
+                foreach (TMP_Text childText in childTextList)
+                {
+
+                    if (childText.gameObject.name == "LevelSelectText" && _language == Language.English)
+                    {
+                        childText.text = "Level Select";
+                        break;
+                    }
+
+                    else if (childText.gameObject.name == "LevelSelectText" && _language == Language.Welsh)
+                    {
+                        childText.text = "Dewis Lefel";
+                        break;
+                    }
+                }
+            }
         
-        
+            if (_gameController.thisLevel == Level.Titlescreen)
+            {
+                var titlescreenController = GameObject.FindGameObjectsWithTag("TitlescreenManager")[0].GetComponent<Titlescreen>();
+                titlescreenController.UpdateLanguage(_language);
+            }
+        }
     }
 
     public void LevelHasEnded()

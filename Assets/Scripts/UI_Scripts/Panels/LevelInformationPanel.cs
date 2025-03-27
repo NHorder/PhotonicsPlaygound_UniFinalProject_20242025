@@ -55,7 +55,7 @@ public class LevelInformationPanel : MonoBehaviour
         {
             _titleText.text = _gameController.levelNameWelsh;
             _descriptionText.text = _gameController.levelDescriptionWelsh;
-            _resetLevelText.text = "NOT TRANSLATED (Reset Level)";
+            _resetLevelText.text = "Ailosod Lefel";
         }
     }
 

@@ -78,16 +78,16 @@ public class LevelCompletePanel : MonoBehaviour
         }
         else if (_language == Language.Welsh)
         {
-            _levelCompleteText.text = "(NOT TRANSLATED) Level Complete!";
-            _finalRatingText.text = "(NOT TRANSLATED) Final Rating: ";
-            _retryText.text = "(NOT TRANSLATED) Retry";
-            _continueText.text = "(NOT TRANSLATED) Continue";
+            _levelCompleteText.text = "Lefel wedi’u Chwblhau!";
+            _finalRatingText.text = "Sgôr Terfynol ";
+            _retryText.text = "Ailgynnig";
+            _continueText.text = "Parhau";
 
             // Update the score text
-            _scoreText.text  = $"NOT TRANSLATED (Score): {_score}";
+            _scoreText.text  = $"Sgôr: {_score}";
 
             // Update the satistics text
-            _statisticsText.text = $"- NOT TRANSLATED(Remaining Budget): {currentBudget}\n- NOT TRANSLATED(Number of Satellites Purchased): {numSatellites}\n- NOT TRANSLATED(Number of Satellites Destroyed): {numSatellitesDestroyed}";
+            _statisticsText.text = $"- Gyllideb sy'n Weddill: {currentBudget}\n- Nifer y lloerennau a brynwyd: {numSatellites}\n- Lloerennau wedi'u dinistrio: {numSatellitesDestroyed}";
             
 
         }

@@ -134,19 +134,19 @@ public class SettingsPanel : MonoBehaviour
         }
         else if (_language == Language.Welsh)
         {
-            _titleText.text = "(Not Translated)";
-            _languageText.text = "Language";
-            _englishButtonText.text = "English";
-            _welshButtonText.text = "Welsh";
-            _allowAdvancedInteractionsToggleText.text = "Allow Advanced Interactions";
-            _allowSatelliteMovementParticlesToggleText.text = "Allow Satellite Movement Particles";
-            _viewTeachingTransmissionText.text = "View Teaching Transmissions";
-            _disableConfirmationsToggleText.text = "Disabled Confirmations";
-            _forceNoChangeWhenReceivingCommunicationsToggleText.text = "Force No Change When Receiving Communications";
+            _titleText.text = "Gosodiadau";
+            _languageText.text = "Iaith";
+            _englishButtonText.text = "Saesneg";
+            _welshButtonText.text = "Cymraeg";
+            _allowAdvancedInteractionsToggleText.text = "Caniatáu Rhyngweithiadau Uwch";
+            _allowSatelliteMovementParticlesToggleText.text = "Caniatáu Gronynnau Symudiad Lloeren";
+            _viewTeachingTransmissionText.text = "Gweld Darllediadau Addysgu";
+            _disableConfirmationsToggleText.text = "Analluogi Cadarnhad";
+            _forceNoChangeWhenReceivingCommunicationsToggleText.text = "Gorfodi dim newid wrth dderbyn cyfathrebiadau";
 
-            _resetButtonText.text = "Reset";
-            _returnButtonText.text = "Return";
-            _exitLevelText.text = "Exit Level";
+            _resetButtonText.text = "Ailosod";
+            _returnButtonText.text = "Dychwelyd";
+            _exitLevelText.text = "Gadael Lefel";
 
             _welshButtonAnimator.SetBool("Selected",true);
             _englishButtonAnimator.SetBool("Selected",false);

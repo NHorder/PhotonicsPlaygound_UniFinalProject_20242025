@@ -19,9 +19,11 @@ TagManager:
   - ShopPanel
   - TeachingPanel
   - Settings
+  - Singularity
   - EyeOfZeta
   - BlackholeHelper
-  - Singularity
+  - LevelSelectManager
+  - TitlescreenManager
   layers:
   - Default
   - TransparentFX
