@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c299ddb8e1a61c44396b6fed9b5cbe6c
+guid: c3b7dd3ace0d0d546ac3c30092f0d2c6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blackhole_0
+      name: Singularity_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,83 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9aabba6336704342a719f0884264dd1
-      internalID: 883153525
+      spriteID: 3b28261a8266e724db0b8a145ec74d1f
+      internalID: -317220397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blackhole_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da6f0f66c1360674e92a6580f8ba04d5
-      internalID: 1550976780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blackhole_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4f30f06b56663e4b89f4c707190a8a0
-      internalID: -203660921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blackhole_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9151851bf5fa4984c838f20ac010b702
-      internalID: 804418506
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blackhole_4
+      name: Singularity_1
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bcdb3c5dc3592141a10d7d16ffe866d
-      internalID: -1889922044
+      spriteID: e25fab9ef6e993f4a8bb068b57b3127e
+      internalID: -981569322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blackhole_5
+      name: Singularity_2
       rect:
         serializedVersion: 2
-        x: 320
+        x: 512
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7ff129ff31ea0c4d9b9e5a317b2fb0b
-      internalID: -169607373
+      spriteID: 29e1ffd41ae491745952a2c469a22dd7
+      internalID: 1990434308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blackhole_6
+      name: Singularity_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 768
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1c8d2ce56ab31c48a066888b1eb6e9e
-      internalID: -1778239889
+      spriteID: 1b0d381c38c8f8642b2c888148f2eec3
+      internalID: 267670720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blackhole_7
+      name: Singularity_4
       rect:
         serializedVersion: 2
-        x: 448
+        x: 1024
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +208,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4102d03748e7d3f49b88da6ea6ae5ddd
-      internalID: 6774031
+      spriteID: ebfd62f473d33534bb9eb9e3ad9a7552
+      internalID: -1078681868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Singularity_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce64fddb1743ca4885d867513ac0689
+      internalID: 1445319663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Singularity_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d58db9444382cb44895fd5fddf20e22
+      internalID: 1221393104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Singularity_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7010a556eaa7c46a18a6dde683b2bc
+      internalID: -924820280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Singularity_8
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05a7a50593602124f9b7943ad39b1d19
+      internalID: 148251327
       vertices: []
       indices: 
       edges: []
@@ -288,14 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Blackhole_0: 883153525
-      Blackhole_1: 1550976780
-      Blackhole_2: -203660921
-      Blackhole_3: 804418506
-      Blackhole_4: -1889922044
-      Blackhole_5: -169607373
-      Blackhole_6: -1778239889
-      Blackhole_7: 6774031
+      Singularity_0: -317220397
+      Singularity_1: -981569322
+      Singularity_2: 1990434308
+      Singularity_3: 267670720
+      Singularity_4: -1078681868
+      Singularity_5: 1445319663
+      Singularity_6: 1221393104
+      Singularity_7: -924820280
+      Singularity_8: 148251327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

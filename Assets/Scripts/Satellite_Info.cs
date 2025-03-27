@@ -677,39 +677,34 @@ public class Satellite_Info : MonoBehaviour
         // Try to get satellite info of the object, may not be possible if it's an asteroid or boundary
         colliderObject.TryGetComponent<Satellite_Info>(out opposingSatellite);
 
-        // If you hit a black hole, instant destruction, regardless of immunity - even your god can't save you now
-        if (opposingSatellite != null && opposingSatellite.satelliteType == SatelliteType.GravitationalAnomaly) satelliteHealth = -1;
-
         // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
-        else if (_remainingImmunityFrames <= 0) 
+        if (_remainingImmunityFrames <= 0 && opposingSatellite != null)
         {
-            if (opposingSatellite != null)
+            // Satellites cannot interact with origin
+            if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) {}
+
+            // Satellites are easily destroyed when interacting with destination
+            else if (opposingSatellite.satelliteType == SatelliteType.Destination)
             {
-                // Satellites cannot interact with origin
-                if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) {}
-
-                // Satellites are easily destroyed when interacting with destination
-                else if (opposingSatellite.satelliteType == SatelliteType.Destination)
-                {
-                    satelliteHealth -= 80;
-                    if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 10;
-                }
-
-                // Glass refractors take more damage upon hitting opposing satellites
-                else if (this.satelliteType == SatelliteType.GlassRefractor)
-                {
-                    satelliteHealth -= 40;
-                    if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
-                }
-                else
-                {
-                    satelliteHealth -= 25;
-                    if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
-                }
-
-                _remainingImmunityFrames = _numberImmunityFrames;
+                satelliteHealth -= 80;
+                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 10;
             }
+
+            // Glass refractors take more damage upon hitting opposing satellites
+            else if (this.satelliteType == SatelliteType.GlassRefractor)
+            {
+                satelliteHealth -= 40;
+                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+            }
+            else
+            {
+                satelliteHealth -= 25;
+                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
+            }
+
+            _remainingImmunityFrames = _numberImmunityFrames;
         }
+        
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -721,6 +716,15 @@ public class Satellite_Info : MonoBehaviour
     {
         DamageSatellite(collision);
     }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Singularity" && this.gameObject.tag != "Singularity")
+        {
+            DestroyObject();
+        }
+    }
+
 }
 
 
