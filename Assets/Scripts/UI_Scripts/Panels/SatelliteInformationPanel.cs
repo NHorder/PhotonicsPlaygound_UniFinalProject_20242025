@@ -71,7 +71,7 @@ public class SatelliteInformationPanel : MonoBehaviour
                 else
                 {
                     if (_language == Language.English) _sellText.text = "Not For Sale";
-                    else if (_language == Language.Welsh) _sellText.text = "Not translated";
+                    else if (_language == Language.Welsh) _sellText.text = "Ddim Ar Werth";
                 }
 
 
@@ -81,8 +81,8 @@ public class SatelliteInformationPanel : MonoBehaviour
 
                     if (_language == Language.English && destinationSat.allLocksOpen) _statusText.text = "Status: Active";
                     else if (_language == Language.English && !destinationSat.allLocksOpen) _statusText.text = "Status: Inactive";
-                    else if (_language == Language.Welsh && destinationSat.allLocksOpen) _statusText.text = "NOT TRANSLATED";
-                    else if (_language == Language.Welsh && !destinationSat.allLocksOpen) _statusText.text = "NOT TRANSLATED";
+                    else if (_language == Language.Welsh && destinationSat.allLocksOpen) _statusText.text = "Statws: Gweithredol";
+                    else if (_language == Language.Welsh && !destinationSat.allLocksOpen) _statusText.text = "Statws: Anweithredol";
                 }
                 else
                 {
@@ -102,8 +102,8 @@ public class SatelliteInformationPanel : MonoBehaviour
                 }
                 else if (_language == Language.Welsh)
                 {
-                    _titleText.text = " ";
-                    _descriptionText.text = "Nothing has been selected. Please select a satellite to view it's information. NOT TRANSLATED";
+                    _titleText.text = "Dim";
+                    _descriptionText.text = "Does dim byd wedi'i ddewis. Dewiswch loeren i weld ei gwybodaeth neu cau'r tab hwn.";
                     _sellText.text = " ";
                     _statusText.gameObject.active = false;
                 }

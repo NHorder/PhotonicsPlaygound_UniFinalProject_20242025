@@ -74,7 +74,7 @@ public class CommunicationsPanel : MonoBehaviour
         else if (numUnlocks <= 0)
         {
             if (_language == Language.English) logText = $"{satelliteName}: Connection Lost\n";
-            else if (_language == Language.Welsh) logText = $"{satelliteName}: NOT TRANSLATED\n";
+            else if (_language == Language.Welsh) logText = $"{satelliteName}: Cysylltiad wedi Colli\n";
         }
         
         else
@@ -94,11 +94,11 @@ public class CommunicationsPanel : MonoBehaviour
             else if (_language == Language.Welsh)
             {
                 // Determine Log text based on unlock percentage
-                if (unlockPercentage > 0.95f) logText = $"{satelliteName}: NEED TRANSLATING\n";
-                else if (unlockPercentage > 0.75f) logText = $"{satelliteName}: NEED TRANSLATING\n";
-                else if (unlockPercentage > 0.5f) logText = $"{satelliteName}: NEED TRANSLATING\n";
-                else if (unlockPercentage > 0.25f) logText = $"{satelliteName}: NEED TRANSLATING\n";
-                else logText = $"{satelliteName}: NEED TRANSLATING\n";
+                if (unlockPercentage > 0.95f) logText = $"{satelliteName}: Cysylltiad wedi'i Sefydlu\n";
+                else if (unlockPercentage > 0.75f) logText = $"{satelliteName}: Cadarnhau Caniatadau\n";
+                else if (unlockPercentage > 0.5f) logText = $"{satelliteName}: Diogelu Cysylltiad\n";
+                else if (unlockPercentage > 0.25f) logText = $"{satelliteName}: Sefydlogi Cysylltiad\n";
+                else logText = $"{satelliteName}: Canfuwyd y Cysylltiad\n";
             }
             
         }
@@ -146,8 +146,8 @@ public class CommunicationsPanel : MonoBehaviour
 
         else if (_language == Language.Welsh)
         {
-            _progressText.text = $"NOT TRANSLATED: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
-            _progressTextTwo.text = $"NOT TRANSLATED: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
+            _progressText.text = $"Cysylltiadau wedi'u Sefydlu: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
+            _progressTextTwo.text = $"Cysylltiadau wedi'u Sefydlu: {_gameController.activeDestinations} / {_gameController.worldInfo.numDestinations}";
         }
 
     }

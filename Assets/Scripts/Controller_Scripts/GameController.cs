@@ -200,6 +200,7 @@ public class GameController : MonoBehaviour
         bool allowAdvancedInteraction = PersistenceController.GetAllowAdvancedInteractions();
 
         specializedInteractionSettings.allowReflectionDuringRefraction = allowAdvancedInteraction;
+
     }
 }
 

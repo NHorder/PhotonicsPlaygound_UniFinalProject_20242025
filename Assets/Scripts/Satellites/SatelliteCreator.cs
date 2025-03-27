@@ -56,7 +56,10 @@ public class SatelliteCreator : MonoBehaviour
         }
         else if (_language == Language.Welsh)
         {
-
+            _occupiedText = "Gofod yr argraffydd wedi'i feddiannu, symudwch y lloeren yn y gofod argraffydd cyn gwneud cais arall os gwelwch yn dda\n";
+            _satNotRecognised = "Lloeren heb ei hadnabod\n";
+            _satCreated = "Lloeren wedi'i chreu, gallwch ddod o hyd iddo yn y bae argraffu\n";
+            _satDelayed = "Gofod yr argraffydd wedi'i feddiannu, symudwch y lloeren yn y gofod argraffydd os gwelwch yn dda.\n";
         }
     }
 

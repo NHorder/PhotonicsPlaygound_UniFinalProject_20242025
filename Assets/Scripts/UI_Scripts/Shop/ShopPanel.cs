@@ -52,7 +52,7 @@ public class ShopPanel : MonoBehaviour
             _currentBudget = _gameController.currentBudget;
             // Update text
             if (_language == Language.English) _budgetText.text = "Budget: £"+_currentBudget;
-            else if (_language == Language.Welsh) _budgetText.text = "NT: £"+_currentBudget;
+            else if (_language == Language.Welsh) _budgetText.text = "Cyllid: £"+_currentBudget;
         }
         // Update budget whenever the game controller budget changes
     }

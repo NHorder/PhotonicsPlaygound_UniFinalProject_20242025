@@ -21,6 +21,7 @@ public class LevelSelectButton : MonoBehaviour
     public void UpdateLanguage()
     {
         var _language = PersistenceController.GetLanguage();
+        Debug.Log(_language);
 
         if (_language == Language.English)
         {
@@ -38,16 +39,16 @@ public class LevelSelectButton : MonoBehaviour
         }
         else if (_language == Language.Welsh)
         {
-            if (level == Level.LevelOne_Reflections) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelTwo_Refractions) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelThree_Colour) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelFour_ColourSplitting) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelFive_ColourCombinations) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelSix_PromotionPrerequsite) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelSeven_PromotionExam) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelEight_Challange) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelNine_GravitationalAnomalies) _buttonText.text = "NOT TRANSLATED";
-            else if (level == Level.LevelTen_GravitationalCollapse) _buttonText.text = "NOT TRANSLATED";
+            if (level == Level.LevelOne_Reflections) _buttonText.text = "Lefel 1: Adlewyrchiad";
+            else if (level == Level.LevelTwo_Refractions) _buttonText.text = "Lefel 2: Plygiannau";
+            else if (level == Level.LevelThree_Colour) _buttonText.text = "Lefel 3: Lliw";
+            else if (level == Level.LevelFour_ColourSplitting) _buttonText.text = "Lefel 4: Hollti Lliw";
+            else if (level == Level.LevelFive_ColourCombinations) _buttonText.text = "Lefel 5: Cyfuniadau Lliwiau";
+            else if (level == Level.LevelSix_PromotionPrerequsite) _buttonText.text = "Lefel 6: Rhagofyniad Dyrchafiad";
+            else if (level == Level.LevelSeven_PromotionExam) _buttonText.text = "Lefel 7: Arholiad Dyrchafiad";
+            else if (level == Level.LevelEight_Challange) _buttonText.text = "Lefel 8: Her Anoddach";
+            else if (level == Level.LevelNine_GravitationalAnomalies) _buttonText.text = "Lefel 9: Anghysondebau Disgyrchiant";
+            else if (level == Level.LevelTen_GravitationalCollapse) _buttonText.text = "Lefel 10: Cwymp Disgyrchian";
         }
 
     }

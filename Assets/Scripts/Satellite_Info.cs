@@ -161,7 +161,7 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteHealth == 100) satelliteHealth = 1000;
 
             if (satelliteDescription == "" && _language == Language.English) satelliteDescription = "A Type XII Prometheus communication output, designed for deep space communciations it boasts a powerful beam of light to send messages into deep space. This is where your light laser begins.";
-            else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
+            else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "Mae canolfan gyfathrebu Math XII Prometheus, a gynlluniwyd ar gyfer cyfathrebu gofod dwfn, yn ymfalchïo mewn pelydr pwerus o olau i anfon negeseuon i'r gofod dwfn. Dyma lle mae eich laser golau yn dechrau.";
 
             if (satelliteShortDescription == "" && _language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
             else if (satelliteShortDescription == "" && _language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
@@ -184,7 +184,7 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteHealth == 100) satelliteHealth = 700;
 
             if (satelliteDescription == "" && _language == Language.English) satelliteDescription = "A Type VI Fyrefly Deep Space Space Station, designed to withstand the harshest conditions in space. Your task is to get the light beam to this station's satellite dish.";
-            else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
+            else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "Gorsaf Ymchwil Gofod Dwfn Math VI Fyrefly, a gynlluniwyd i wrthsefyll amodau llymaf y gofod. Eich tasg yw cael y pelydr golau i ddysgl lloeren yr orsaf hon.";
 
             if (satelliteShortDescription == "" && _language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
             else if (satelliteShortDescription == "" && _language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
@@ -206,7 +206,7 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteHealth == 100) satelliteHealth = 3000;
 
             if (satelliteDescription == "" && _language == Language.English) satelliteDescription = "Elysia is a cutting edge Elysian Matter Printer. One of the three in existence. It makes use of space-time manipulator lasers and drones to construct satellites of any type.";
-            else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "NOT YET TRANSLATED";
+            else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "Mae Elysia yn Argraffydd Mater Elysian arloesol. Un o dri sy'n bodoli, mae'n defnyddio laserau a dronau manipulator gofod-amser i adeiladu lloerennau o unrhyw fath";
 
             if (satelliteShortDescription == "" && _language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
             else if (satelliteShortDescription == "" && _language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
@@ -224,6 +224,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteName == "") satelliteName = $"Reflect-Single-LAM-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A high grade reflectance satellite. The surface has no indents and is perfectly flat, providing optimal reflection of light, a true lambertian diffuse satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A single surface reflection satellite.";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Adlewyrchu-Sengl-LAM";
+                if (satelliteDescription == "") satelliteDescription ="Lloeren adlewyrchiad gradd uchel. Nid oes gan yr wyneb unrhyw fewnoliadau ac mae'n berffaith wastad, gan ddarparu adlewyrchiad gorau posibl o olau, lloeren gwasgaredig lambertian go iawn";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren adlewyrchu un arwyneb";
             }
 
             if (satelliteHealth == 100) satelliteHealth = 200;
@@ -243,6 +249,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "A high grade reflectance satellite. Upgraded from it's predecessor, this includes two panels for lambertian reflection.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A two surface reflection satellite.";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Adlewyrchu-Deuawd-LAM";
+                if (satelliteDescription == "") satelliteDescription ="Lloeren adlewyrchiad gradd uchel. Uwchradd o'i ragflaenydd, mae hyn yn cynnwys dau banel ar gyfer adlewyrchiad lambertian";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren adlewyrchiad dau wyneb";
+            }
 
             if (satelliteHealth == 100) satelliteHealth = 250;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
@@ -261,6 +273,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is Glass and has a refractive index of 1.52, passing a laser through this object will alter the angle to a small degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A glass refraction satellite.";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Plygu-GL";
+                if (satelliteDescription == "") satelliteDescription ="Lloeren gradd uchel wedi'i chynllunio ar gyfer plygiannu golau. Mae'r deunydd yn wydr ac mae ganddo indecs plygiannol o 1.52, bydd pasio laser trwy'r gwrthrych hwn yn newid yr ongl i raddau bach";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant gwydr";
+            }
 
             
             if (satelliteHealth == 100) satelliteHealth = 90;
@@ -277,6 +295,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is crystal sapphire and has a refractive index of 1.78, passing a laser through this object will alter the angle to a large degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A sapphire refraction satellite";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Plygu-SAP";
+                if (satelliteDescription == "") satelliteDescription ="Lloeren gradd uchel wedi'i chynllunio ar gyfer plygiannu golau. Mae'r deunydd yn saffir grisial ac mae ganddo indecs plygiannol o 1.78, bydd pasio laser trwy'r gwrthrych hwn yn newid yr ongl i raddau helaeth. Mae'r saffir ei hun yn synthetig, wedi'i gynllunio i gynnal ei eglurder heb ei lliw unigryw.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant saffir";
+            }
 
             if (satelliteHealth == 100) satelliteHealth = 120;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 300;
@@ -292,6 +316,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "A high grade satellite designed for refracting light. The material is silicon and has a refractive index of 3.4, passing a laser through this object will alter the angle to a large degree.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A silicon refraction satellite";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Plygu-S";
+                if (satelliteDescription == "") satelliteDescription ="Lloeren gradd uchel wedi'i chynllunio ar gyfer plygiannu golau. Mae'r deunydd yn synthesis arbenigol o silicon ac mae ganddo indecs plygiannol o 3.4, bydd pasio laser trwy'r gwrthrych hwn yn newid yr ongl i raddau helaeth.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant silicon";
+            }
 
             if (satelliteHealth == 100) satelliteHealth = 120;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 250;
@@ -306,6 +336,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteName == "") satelliteName = $"Refract-H2O-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A cutting edge prototype satellite, capable of maintaining water in a liquid space in deep space and keeping it contained. It has a refractive index of 1.33, passing a laser through this object will alter the angle to a small degree. ";
                 if (satelliteShortDescription == "") satelliteShortDescription = "A water refraction satellite.";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Plygu-H2O";
+                if (satelliteDescription == "") satelliteDescription ="Lloeren prototeip arloesol, sy'n gallu cynnal dŵr mewn gofod hylif yn y gofod dwfn a'i gadw. Mae ganddo indecs plygiannol o 1.33, bydd pasio laser trwy'r gwrthrych hwn yn newid yr ongl i raddau bach.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant dŵr";
             }
 
             if (satelliteHealth == 100) satelliteHealth = 50;
@@ -334,7 +370,9 @@ public class Satellite_Info : MonoBehaviour
             }
             else if (_language == Language.Welsh)
             {
-
+                if (satelliteName == "") satelliteName = "SAT-Hidlydd-Lliw";
+                if (satelliteDescription == "") satelliteDescription ="Hidlydd lliw syml. Bydd hyn yn newid lliw pelydrau golau sy'n pasio drwyddo. Wedi'i wneud yn rhad, ddim yn rhy gadarn ond yn addas ar gyfer y dasg";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Hidlydd lliw sefydlog";
             }
 
             if (satelliteHealth == 100) satelliteHealth = 125;
@@ -406,6 +444,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "A cutting edge satellite designed to combine two beams of light. Note: The output beam will be stronger and may vary in colour";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Combines two beams of light.";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Cyfuno";
+                if (satelliteDescription == "") satelliteDescription ="Lloeren flaengar wedi'i chynllunio i gyfuno dau belydryn o olau. Nodyn: Bydd y pelydr allbwn yn gryfach a gall amrywio o ran lliw.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Cyfuno dau belydryn o olau";
+            }
 
             if (satelliteHealth == 100) satelliteHealth = 400;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
@@ -423,6 +467,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteName == "") satelliteName = $"Duel-Splitter-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A must have in satellite communications, it can split a beam of light in two. Note: resulting beams will have less energy and may vary in colour.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light in two";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Holltydd-Deuol";
+                if (satelliteDescription == "") satelliteDescription ="Yn ddefnyddiol iawn mewn cyfathrebu lloeren, gall rannu pelydr o olau yn ddau. Nodyn: Bydd gan pelydrau sy'n deillio o hyn lai o egni a gallant amrywio o ran lliw";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Rhannu pelydr o olau yn ddwy";
             }
 
             if (satelliteHealth == 100) satelliteHealth = 250;
@@ -442,6 +492,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "An advanced variant of the Duel-Splitter, it can split a beam of light into three. Note: resulting beams will have less energy and may vary in colour";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light into three";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Holltydd-Triawd";
+                if (satelliteDescription == "") satelliteDescription ="Amrywiad datblygedig o'r Holltydd-Deuawd, gall rannu pelydr o olau yn dri. Nodyn: bydd gan pelydrau sy'n deillio o hyn lai o egni a gallant amrywio o ran lliw.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Rhannu pelydr o olau yn dri";
+            }
 
             if (satelliteHealth == 100) satelliteHealth = 250;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
@@ -458,6 +514,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteName == "") satelliteName = $"Hex-Splitter-SAT";
                 if (satelliteDescription == "") satelliteDescription = "A cutting edge prototype splitter, capable of splitting a single beam of light into six output lasers. Note: Resulting beams will have less energy and may vary in colour. ";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Splits a beam of light into six";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Holltydd-Hecs";
+                if (satelliteDescription == "") satelliteDescription ="Holltydd prototeip blaengar, sy'n gallu rhannu un pelydr o olau yn chwe laser allbwn. Nodyn: Bydd gan pelydrau sy'n deillio o hyn lai o egni a gallant amrywio o ran lliw";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Rhannu pelydr o olau yn chwech";
             }
 
             if (satelliteHealth == 100) satelliteHealth = 250;
@@ -481,6 +543,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid will absorb all light that hits it. It is recommended to not direct light beams at this satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs all incoming light";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "Asteroid";
+                if (satelliteDescription == "") satelliteDescription ="Mae sganiau'n dangos y bydd yr asteroid hwn yn amsugno'r holl olau sy'n ei daro. Argymhellir peidio â chyfeirio pelydrau golau at y lloeren hon.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "";
+            }
 
             
             if (satelliteHealth == 100) satelliteHealth = 300;
@@ -503,6 +571,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid is partially reflective but will absorb a signficant amount of light. It is advised to not direct light beams at this satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs most incoming light, reflecting a small amount";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "Asteroid Adlewyrchydd";
+                if (satelliteDescription == "") satelliteDescription ="Mae sganiau'n dangos bod yr asteroid hwn yn rhannol adlewyrchol ond bydd yn amsugno llawer iawn o olau. Cynghorir peidio â chyfeirio pelydrau golau at y lloeren hon";
+                if (satelliteShortDescription == "") satelliteShortDescription = "";
+            }
 
             if (satelliteHealth == 100) satelliteHealth = 300;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
@@ -524,6 +598,12 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription = "Scans indicate this asteroid can split light and absorbs a signficant amount of energy. It is recommended to not direct light beams at this satellite.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Absorbs most incoming light, splitting the remaining light";
             }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "Asteroid Holltydd";
+                if (satelliteDescription == "") satelliteDescription ="Mae sganiau'n dangos y gall yr asteroid hwn rannu golau ac amsugno swm sylweddol o egni. Argymhellir peidio â chyfeirio pelydrau golau at y lloeren hon.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "";
+            }
 
             if (satelliteHealth == 100) satelliteHealth = 300;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
@@ -543,6 +623,12 @@ public class Satellite_Info : MonoBehaviour
             {
                 if (satelliteName == "") satelliteName = $"Gravitational Anomaly";
                 if (satelliteDescription == "") satelliteDescription = "WARNING! Scans indicate significant gravitational disturbance within this region. Satellites entering this region may be lost! It may have an unexpected interference when light passes near it….";
+                if (satelliteShortDescription == "") satelliteShortDescription = "";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "Anghysondeb Disgyrchiant";
+                if (satelliteDescription == "") satelliteDescription ="RHYBUDD! Mae sganiau yn dangos aflonyddwch disgyrchiant sylweddol yn y rhanbarth hwn. Efallai y bydd lloerennau sy'n mynd i mewn i'r rhanbarth hwn yn cael eu colli! Efallai y bydd ganddo ymyrraeth annisgwyl pan fydd golau yn pasio yn agos ato...";
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
@@ -567,8 +653,8 @@ public class Satellite_Info : MonoBehaviour
             }
             else if (_language == Language.Welsh)
             {
-                if (satelliteName == "") satelliteName = $"The Eye of Zeta";
-                if (satelliteDescription == "") satelliteDescription = "NOT TRANSLATED";
+                if (satelliteName == "") satelliteName = $"Llygad Zeta";
+                if (satelliteDescription == "") satelliteDescription = "Mae Llygad Zeta yn darparu porthiant gweledol amser real i chi, gan eich galluogi i groesi gofod o fewn ardal a ganiateir. Maent yn cynnwys technoleg hynod ddosbarthedig ac yn seryddol ddrud. Peidiwch â'i dorri";
                 if (satelliteShortDescription == "") satelliteShortDescription = "NOT TRANSLATED";
             }
             
@@ -594,6 +680,12 @@ public class Satellite_Info : MonoBehaviour
 
                 if (satelliteDescription == "") satelliteDescription = "An unknown satellite with unknown interactions with light. Be cautious.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Unknown satellite";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "";
+                if (satelliteDescription == "") satelliteDescription ="";
+                if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
