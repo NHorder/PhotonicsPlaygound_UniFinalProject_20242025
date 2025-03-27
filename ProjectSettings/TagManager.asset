@@ -24,6 +24,8 @@ TagManager:
   - BlackholeHelper
   - LevelSelectManager
   - TitlescreenManager
+  - Prefab_ShopContent
+  - Canvas
   layers:
   - Default
   - TransparentFX
