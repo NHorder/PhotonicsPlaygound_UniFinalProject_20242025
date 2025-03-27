@@ -20,6 +20,8 @@ TagManager:
   - TeachingPanel
   - Settings
   - EyeOfZeta
+  - BlackholeHelper
+  - Singularity
   layers:
   - Default
   - TransparentFX

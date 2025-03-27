@@ -137,6 +137,9 @@ public class LevelSelectManage: MonoBehaviour
                 }
             }
 
+            else if (_secretCodeInputField.text.ToLower() == "project radiance") SceneController.ToTestLevel();
+            else if (_secretCodeInputField.text.ToLower() == "project hue") SceneController.ToColourDemo();
+
             if (unlockAll || unlockQuasars)
             {
                 var childLevelList = gameObject.GetComponentsInChildren<LevelSelectButton>();

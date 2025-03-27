@@ -81,7 +81,7 @@ public class SatelliteParent : MonoBehaviour
         
     }
 
-    private void FireLaser(OutgoingLaserInfo laserInfo)
+    virtual public void FireLaser(OutgoingLaserInfo laserInfo)
     {
 
         if (_trueOrigin.prefabLaser != null)
@@ -186,4 +186,5 @@ public class OutgoingLaserInfo
     public Satellite_Info satelliteInfo = null;
     public LaserColour laserColour;
     public float laserTransparency = 1;
+    public bool external = true;
 }

@@ -218,7 +218,7 @@ public class Laser : MonoBehaviour
         
             else if (interaction == Interaction.GravitationalAnomaly)
             {
-                GravitationalAnomaly gravitationalAnomaly = _raycast.collider.gameObject.GetComponent<GravitationalAnomaly>();
+                Singularity gravitationalAnomaly = _raycast.collider.gameObject.GetComponent<Singularity>();
                 gravitationalAnomaly.SetActive(this,_raycast);
             }
         

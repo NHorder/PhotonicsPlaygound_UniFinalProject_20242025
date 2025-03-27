@@ -21,8 +21,8 @@ public class SatelliteController : MonoBehaviour
 
     private UIController _uiController;
 
-    private float _currentMovementMultiplier;
-    private float _currentRotationMultiplier;
+    public float _currentMovementMultiplier;
+    public float _currentRotationMultiplier;
     private int _movementCounter = 0;
     private int _rotationCounter = 0;
 

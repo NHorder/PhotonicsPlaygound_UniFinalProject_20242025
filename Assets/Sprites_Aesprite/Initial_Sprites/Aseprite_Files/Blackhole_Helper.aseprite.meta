@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 378ff9a5647df754eab1895a6a1b17ba
+guid: d707576e3a45f2046b5421b7a246f99e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Laser_Origin_Satellite
+  - name: Blackhole_Helper
     originalName: 
-    pivot: {x: 0.49549547, y: -0.08035714}
+    pivot: {x: 0.5, y: -0.34042552}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 111
-      height: 112
-    spriteID: 029d1c4e2f2f1a34890da1bbb3eab1e4
+      width: 32
+      height: 47
+    spriteID: c8a332b69bf835d409c942713aba4da4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,21 +144,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1629877910
-    name: Laser_Origin_Satellite
+    guid: -357682972
+    name: Blackhole_Helper
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Laser_Origin_Satellite
+    - name: Blackhole_Helper
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 9
-        width: 111
-        height: 112
-      spriteId: 029d1c4e2f2f1a34890da1bbb3eab1e4
+        x: 16
+        y: 16
+        width: 32
+        height: 47
+      spriteId: c8a332b69bf835d409c942713aba4da4
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -177,4 +177,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 144, y: 144}
+  canvasSize: {x: 64, y: 64}
