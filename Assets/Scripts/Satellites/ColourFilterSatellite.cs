@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class ColourFilterSatellite : SatelliteParent
 {
-    private LaserColour filterColour = LaserColour.White;
+    protected LaserColour filterColour = LaserColour.White;
 
 
-    private Animator _animator;
+    protected Animator _animator;
 
     void Start()
     {
-        _animator = gameObject.GetComponent<Animator>();
+        if (_animator == null) _animator = gameObject.GetComponent<Animator>();
         base.Start();
     }
     
     public void SetFilterColour(LaserColour newFiterColour)
     {
         filterColour = newFiterColour;
-
-        // Update animator!
     }
 
     override public void Interaction(IncomingLaser incomingLaser)

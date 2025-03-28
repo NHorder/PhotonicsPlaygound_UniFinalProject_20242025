@@ -75,13 +75,14 @@
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\CommunicationsPanel.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\InteractionMethods.cs" />
     <Compile Include="Assets\Scripts\Satellite_Info.cs" />
-    <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Singularity\SingularityLaser.cs" />
+    <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopPanel.cs" />
     <Compile Include="Assets\Scripts\Satellites\ReflectionSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\SceneSpecific\LevelSelectManager.cs" />
     <Compile Include="Assets\Scripts\Satellites\OriginSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelCompletePanel.cs" />
+    <Compile Include="Assets\Scripts\Satellites\CustomColourFilter.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\SettingsPanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\SatelliteInformationPanel.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SatelliteController.cs" />

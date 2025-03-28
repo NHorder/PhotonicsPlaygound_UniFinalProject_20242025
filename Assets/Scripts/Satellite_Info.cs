@@ -434,7 +434,29 @@ public class Satellite_Info : MonoBehaviour
                 }
             }
         }
-        
+        else if (satelliteType == SatelliteType.CustomColourFilter)
+        {
+           if (_language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"Custom-Colour-Filter-SAT";
+                if (satelliteDescription == "") satelliteDescription = "A high grade colour filter, allows swapping between up to 7 colours on the fly. Suitable for all tasks.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "A customisable colour filter";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = "SAT-Hidlydd-Lliw-Addasedig";
+                if (satelliteDescription == "") satelliteDescription ="Hidlydd lliw gradd uchel, yn caniatáu cyfnewid rhwng hyd at 7 lliw ar y hedfan. Addas ar gyfer pob tasg.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Hidlydd lliw y gellir ei addasu";
+            }
+
+            if (satelliteHealth == 100) satelliteHealth = 450;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 300;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
+
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.ColourFilter; 
+        }
         
         else if (satelliteType == SatelliteType.Combiner)
         {
