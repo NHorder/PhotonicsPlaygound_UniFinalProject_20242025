@@ -197,9 +197,8 @@ public class GameController : MonoBehaviour
     {
         activeLanguage = PersistenceController.GetLanguage();
 
-        bool allowAdvancedInteraction = PersistenceController.GetAllowAdvancedInteractions();
-
-        specializedInteractionSettings.allowReflectionDuringRefraction = allowAdvancedInteraction;
+        specializedInteractionSettings.allowReflectionDuringRefraction = PersistenceController.GetAllowAdvancedInteractions();
+        specializedInteractionSettings.allowSatelliteParticleEffects = PersistenceController.GetAllowSatelliteMovementParticles();
 
     }
 }
@@ -226,6 +225,7 @@ public class FramerateRelatedSettings
 public class SpecializedInteractionSettings
 {
     public bool allowReflectionDuringRefraction = true;
+    public bool allowSatelliteParticleEffects = true;
     public float minimumTransparencyNeededForDestinationRecognition = 0.5f;
     public float minimumTransparencyForReflectionDuringRefraction = 0.02f;
 }

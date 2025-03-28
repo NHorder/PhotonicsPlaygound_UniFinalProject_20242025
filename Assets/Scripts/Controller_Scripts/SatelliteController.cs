@@ -128,6 +128,13 @@ public class SatelliteController : MonoBehaviour
                     //If expecting the controls and info panel, update and present the panels
                     if (_uiController.uiExpectations.expectSatelliteControlPanel)
                     {
+
+                        if (_uiController.GetGameController().specializedInteractionSettings.allowSatelliteParticleEffects &&
+                        selectedSatelliteInfo.canbeMoved && selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
+                        {
+                            selectedSatelliteInfo.statelliteParticleSystem.Play();
+                        }
+
                         // If the selected satellite can be moved, then present the movement panel, else hide it.
                         if (selectedSatelliteInfo.canbeMoved && !_panelVisible)
                         {
@@ -168,9 +175,16 @@ public class SatelliteController : MonoBehaviour
     {
         if (_selectedRigidbody2D != null)
         {
+            if (selectedSatelliteInfo.canbeMoved && selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
+            {
+                selectedSatelliteInfo.statelliteParticleSystem.Stop();
+            }
+
             _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
             _selectedRigidbody2D = null;
             selectedSatelliteInfo = null;
+            
+            
 
             // Check if expecting panels
             // If so, check if they're open, then close them
