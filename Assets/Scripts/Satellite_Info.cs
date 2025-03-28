@@ -75,11 +75,12 @@ public class Satellite_Info : MonoBehaviour
     private int _numberImmunityFrames = 0;
     private int _remainingImmunityFrames = 0;
 
+    public ParticleSystem statelliteParticleSystem;
+
     // Start is called before the first frame update
     void Start()
     {
         _language = PersistenceController.GetLanguage(); 
-
         // Retrieve game controller
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
@@ -107,6 +108,13 @@ public class Satellite_Info : MonoBehaviour
                 // Do Nothing
             }
             else _gameController.worldInfo.numSatellites += 1;
+        }
+
+         // If the satellite is not a: Drone, Creator, Destination or blackhole or Origin, then retrieve it's particle system
+        if (canbeMoved && satelliteType != SatelliteType.CameraDrone)
+        {
+            statelliteParticleSystem = gameObject.GetComponent<ParticleSystem>();
+            statelliteParticleSystem.Stop();
         }
     }
 
@@ -136,6 +144,14 @@ public class Satellite_Info : MonoBehaviour
 
             var animator = this.gameObject.GetComponent<Animator>();
             animator.SetBool("Destroy",true);
+
+
+            // If the animation has not already triggered by this point, destroy the satellite and skip the animation
+            // This should only occur when satellites do not yet have a destruction animation. 
+            if (satelliteHealth <= -100)
+            {
+                DestroyObject();
+            }
 
         }
     }
@@ -778,12 +794,16 @@ public class Satellite_Info : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void DamageSatellite(Collision2D collision)
+    private void DamageSatellite(Collision2D collision = null, Collider2D collider = null)
     {  
+
         // When collision occurs with the game object, decrease the health of this and the colliders satellite.
         // There is no guarentee that the hit object is a satellite.
 
-        var colliderObject = collision.gameObject;
+        GameObject colliderObject;
+
+        if (collision != null) colliderObject = collision.gameObject;
+        else colliderObject = collider.gameObject;
 
         // Prepare variable in case satellite on satellite collision occurred.
         Satellite_Info opposingSatellite = null;
@@ -805,11 +825,20 @@ public class Satellite_Info : MonoBehaviour
             }
 
             // Glass refractors take more damage upon hitting opposing satellites
-            else if (this.satelliteType == SatelliteType.GlassRefractor)
+            else if (this.satelliteType == SatelliteType.GlassRefractor || this.satelliteType == SatelliteType.SiliconRefractor ||
+             this.satelliteType == SatelliteType.SapphireRefractor || this.satelliteType == SatelliteType.WaterRefractor)
             {
                 satelliteHealth -= 40;
                 if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
             }
+            else if (opposingSatellite.satelliteType == SatelliteType.GravitationalAnomaly)
+            {
+                var animator = this.gameObject.GetComponent<Animator>();
+                animator.SetBool("Destroy",true);
+            }
+
+
+
             else
             {
                 satelliteHealth -= 25;
@@ -833,10 +862,22 @@ public class Satellite_Info : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Singularity" && this.gameObject.tag != "Singularity")
+        if (collider.tag == "Singularity" && this.gameObject.tag != "Singularity" && !(collider is BoxCollider2D))
         {
-            DestroyObject();
+            var animator = this.gameObject.GetComponent<Animator>();
+            animator.SetBool("Destroy",true);
         }
+        else DamageSatellite(null,collider);
+        
+    }
+
+    public void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.tag == "Singularity" && this.gameObject.tag != "Singularity" && !(collider is BoxCollider2D))
+        {
+            // Do nothing, it should be either in the process of being destroyed, or has been destroyed
+        }
+        else DamageSatellite(null,collider);
     }
 
 }
