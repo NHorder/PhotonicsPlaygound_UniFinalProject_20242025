@@ -26,6 +26,7 @@ TagManager:
   - TitlescreenManager
   - Prefab_ShopContent
   - Canvas
+  - Satellites_WithUIElements
   layers:
   - Default
   - TransparentFX

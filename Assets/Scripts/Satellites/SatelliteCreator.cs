@@ -24,6 +24,8 @@ public class SatelliteCreator : MonoBehaviour
     private CommunicationsPanel _communicationsPanel;
     private UIController _uiController;
 
+    private GameObject _satWithUIElements;
+
     private string _occupiedText = "";
     private string _satNotRecognised = "";
     private string _satCreated = "";
@@ -36,6 +38,9 @@ public class SatelliteCreator : MonoBehaviour
         
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _animator = gameObject.GetComponent<Animator>();
+
+
+        _satWithUIElements = GameObject.FindGameObjectsWithTag("Satellites_WithUIElements")[0];
 
         _communicationsPanel = GameObject.FindGameObjectsWithTag("CommunicationsPanel")[0].GetComponent<CommunicationsPanel>();
         UpdateLanguage(_language);
@@ -257,6 +262,11 @@ public class SatelliteCreator : MonoBehaviour
             var newSatellite = Instantiate(_chosenPrefab);
             newSatellite.layer = LayerMask.NameToLayer("Object");
             newSatellite.transform.position = this.transform.position;
+
+            if (newSatellite.GetComponent<Satellite_Info>().satelliteType == SatelliteType.CustomColourFilter)
+            {
+                newSatellite.transform.SetParent(_satWithUIElements.transform);
+            }
 
             _lastCreatedSatellite = newSatellite;
         }

@@ -11,7 +11,7 @@ public class ColourFilterSatellite : SatelliteParent
 
     void Start()
     {
-        _animator = gameObject.GetComponent<Animator>();
+        if (_animator == null) _animator = gameObject.GetComponent<Animator>();
         base.Start();
     }
     
