@@ -111,7 +111,7 @@ public class Satellite_Info : MonoBehaviour
         }
 
          // If the satellite is not a: Drone, Creator, Destination or blackhole or Origin, then retrieve it's particle system
-        if (canbeMoved && satelliteType != SatelliteType.CameraDrone)
+        if (canbeMoved && satelliteType != SatelliteType.CameraDrone && !satellite_Shop_Info.IsShopItem)
         {
             statelliteParticleSystem = gameObject.GetComponent<ParticleSystem>();
             statelliteParticleSystem.Stop();

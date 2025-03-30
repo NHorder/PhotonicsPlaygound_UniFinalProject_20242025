@@ -99,12 +99,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b94937eb4204e2d46a6affe8525b362f, type: 3}
+  m_Sprite: {fileID: -51410477, guid: b94937eb4204e2d46a6affe8525b362f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.5, y: 5.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -126,7 +126,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   maxDistance: 50
-  laserColour: 1
+  laserColour: 6
   prefabLaser: {fileID: 4956329101352024174, guid: cd9b5c1f6e96df64eb24ea3a4dfdaf9a, type: 3}
 --- !u!114 &1544823237011915237
 MonoBehaviour:
@@ -157,6 +157,7 @@ MonoBehaviour:
     percentageOfReflectedLightWhenRefracted: 0
     surfaceColor: 0
     absorbance: 0
+    numberImmunityFrames: 1
     lightColor: 0
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
@@ -171,6 +172,7 @@ MonoBehaviour:
     ShopSpriteHeight: 0
     ShopItemXLoc: 0
     ShopItemYLoc: 0
+  statelliteParticleSystem: {fileID: 0}
 --- !u!61 &8415990197887160677
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -203,18 +205,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22408295, y: -0.7872114}
+  m_Offset: {x: 0.011048794, y: -1.902504}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.47962883, y: 0.5453926}
-    oldSize: {x: 11, y: 11}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5214123, y: 0.8438044}
+    oldSize: {x: 4.5, y: 5.625}
+    newSize: {x: 4.5, y: 5.625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11, y: 8.632875}
+  m_Size: {x: 3.957364, y: 6.101536}
   m_EdgeRadius: 0
 --- !u!50 &6149680264067595449
 Rigidbody2D:
