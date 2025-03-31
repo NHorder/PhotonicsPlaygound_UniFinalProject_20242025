@@ -9,7 +9,8 @@ public enum FixedUIPanel
     Teaching,
     ConfirmAction,
     Settings,
-    LevelComplete
+    LevelComplete,
+    Athenaeum 
 }
 
 public class UIController : MonoBehaviour
@@ -223,6 +224,11 @@ public class UIController : MonoBehaviour
 
         }
 
+        else if (panel == FixedUIPanel.Athenaeum )
+        {
+
+        }
+
     }
 
 
@@ -375,6 +381,10 @@ public class UIController : MonoBehaviour
     }
 
 
+    public void ToggleAthenaeum ()
+    {
+        PresentFixedPanel(FixedUIPanel.Athenaeum ,_fixedPanels.athenaeumVisible);
+    }
 
     public void UpdateSettings(bool languageChanged)
     {
@@ -450,6 +460,9 @@ public class FixedPanels
     public TeachingPanel teachingPanel;
     public bool teachingPanelVisible = true;
 
+    public RecordSelection athenaeum ;
+    public bool athenaeumVisible = false; 
+
 }
 
 public class MovingPanels
@@ -497,6 +510,7 @@ public class UIExpectations_
     public bool expectCommunicationPanel = false;
     public bool expectConfirmationPanel = false;
     public bool expectLevelCompletePanel = false;
+    public bool expectAthenaeum   = false;
 }
 
 [System.Serializable]

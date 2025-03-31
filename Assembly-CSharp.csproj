@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopDropDownHandler.cs" />
     <Compile Include="Assets\Scripts\Satellites\RefractionSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\Atheneum\RecordSelection.cs" />
     <Compile Include="Assets\Scripts\Singularity\Singularity.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\SceneSpecific\LevelSelectButton.cs" />
     <Compile Include="Assets\Scripts\Satellites\DestinationSatellite.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopItem.cs" />
     <Compile Include="Assets\Scripts\Satellites\ColourFilterSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelInformationPanel.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\Atheneum\Record.cs" />
     <Compile Include="Assets\Scripts\Satellites\SplitterSatellite.cs" />
   </ItemGroup>
   <ItemGroup>
