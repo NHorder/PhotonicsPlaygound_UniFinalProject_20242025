@@ -151,6 +151,12 @@ public class SatelliteController : MonoBehaviour
                             _eyeOfZeta.AttachDroneToSatellite(selectedSatelliteInfo.gameObject.GetComponent<Transform>());
                         }
                         else _eyeOfZeta.DetachDroneFromSatellite();
+
+
+                        if (selectedSatelliteInfo.satelliteType == SatelliteType.SatelliteCreator)
+                        {
+                            _uiController.ToggleVisibleShopIfClosed();
+                        }
                         
 
                         // Present the satellite info panel

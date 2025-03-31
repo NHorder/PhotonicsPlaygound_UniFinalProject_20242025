@@ -330,6 +330,14 @@ public class UIController : MonoBehaviour
         else _movingPanels.shopMoveTo = movingPanelSettings.shopCloseLocation;
     }
 
+    public void ToggleVisibleShopIfClosed()
+    {
+        if (!_movingPanels.shopPanelVisible)
+        {
+            ToggleVisibleShop();
+        }
+    }
+
     public void ToggleVisibleSatelliteControls()
     {
         // Set the opposite of current
