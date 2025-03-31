@@ -289,7 +289,7 @@ public class SatelliteCreator : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!(collider.gameObject.name == "SatelliteController"))
+        if (!(collider.gameObject.name == "SatelliteController") && collider is PolygonCollider2D)
         {
             _numberSatellitesInLoadingBay += 1;
 
@@ -305,7 +305,7 @@ public class SatelliteCreator : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collider)
     {
 
-        if (!(collider.gameObject.name == "SatelliteController"))
+        if (!(collider.gameObject.name == "SatelliteController") && collider is PolygonCollider2D )
         {
             _numberSatellitesInLoadingBay -=1;
 

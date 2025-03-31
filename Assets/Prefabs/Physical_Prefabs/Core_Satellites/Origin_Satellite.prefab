@@ -126,7 +126,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   maxDistance: 50
-  laserColour: 6
+  laserColour: 1
   prefabLaser: {fileID: 4956329101352024174, guid: cd9b5c1f6e96df64eb24ea3a4dfdaf9a, type: 3}
 --- !u!114 &1544823237011915237
 MonoBehaviour:
