@@ -40,8 +40,6 @@ public class TeachingPanel : MonoBehaviour
         _language = PersistenceController.GetLanguage();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
-        if (teachingElements.Count > 0) PersistenceController.AddTeachingElements(teachingElements);
-
         var childTransformList = gameObject.GetComponentsInChildren<RectTransform>();
         foreach (RectTransform childTransform in childTransformList)
         {
