@@ -815,13 +815,14 @@ public class Satellite_Info : MonoBehaviour
         if (_remainingImmunityFrames <= 0 && opposingSatellite != null)
         {
             // Satellites cannot interact with origin
-            if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) {}
+            if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) 
+            {
+
+            }
 
             // Satellites are easily destroyed when interacting with destination
             else if (opposingSatellite.satelliteType == SatelliteType.Destination)
             {
-                satelliteHealth -= 80;
-                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 10;
             }
 
             // Glass refractors take more damage upon hitting opposing satellites
