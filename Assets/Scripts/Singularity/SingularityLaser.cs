@@ -191,6 +191,8 @@ public class SingularityLaser : MonoBehaviour
         // Use the provided helper anlge to determine which way to bend the light (+ or - direction)
         // However, if the angle is within a specified limit, then have it determine it's bend DURING the laser creation loop (in FireLaser)
         if (helperAngle <= _specifiedLimit && helperAngle >= -_specifiedLimit) _determineBendDuringLoop = true; 
+
+        if (helperAngle > 0) _bendRight = true;
         else _bendRight = false;
 
         _listPositions.Add(laserInfo.raycastPosition);
