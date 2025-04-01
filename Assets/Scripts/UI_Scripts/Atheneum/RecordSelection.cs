@@ -119,7 +119,6 @@ public class RecordSelection : MonoBehaviour
         {
             if (nonVisibleRecord.recordType == recordType)
             {
-                Debug.Log("?");
                 nonVisibleRecord.gameObject.active = true;
                 _visibleRecord = nonVisibleRecord;
                 if (!_firstLoad) break;

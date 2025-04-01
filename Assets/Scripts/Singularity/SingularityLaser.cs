@@ -118,14 +118,22 @@ public class SingularityLaser : MonoBehaviour
                 // Otherwise it's an edge if its a polygon collider
                 else if (raycast.collider is PolygonCollider2D) _hitEdge = true;
 
+                else if (raycast.collider is BoxCollider2D) _hitEdge = true;
+
                 // Else log as an error. It really should not be capable of hitting anything else.
                 else Debug.LogError("ERROR: A Singularity has hit something unexpected");
                 }
             else
             {
-                // Get the point along the distance, and add it to the position list
-                currentPoint = ray.GetPoint(0.1f);
-                _listPositions.Add(currentPoint);
+
+                float distanceOfClosestApproach = Mathf.Sqrt(Mathf.Pow((_singularityPosition.x - currentPoint.x),2) + Mathf.Pow((_singularityPosition.y - currentPoint.y),2));
+                if (distanceOfClosestApproach >= 5 * _singularity.transform.localScale.x) _hitEdge = true;
+                else
+                {
+                    // Get the point along the distance, and add it to the position list
+                    currentPoint = ray.GetPoint(0.1f);
+                    _listPositions.Add(currentPoint);
+                }
             }
         }
 
@@ -186,13 +194,13 @@ public class SingularityLaser : MonoBehaviour
         // Retreive the starting point, then apply an offset, calculated with a ray to maintain correct positioning - this is to prevent the laser from 
         // hitting the outer polygon collider (as then it won't trigger it again when it hits it again later on)
         Ray ray = new Ray(laserInfo.raycastPosition,laserInfo.incomingLaserDirection);
-        Vector3 point = ray.GetPoint(0.25f);
+        Vector3 point = ray.GetPoint(0.1f);
 
         // Use the provided helper anlge to determine which way to bend the light (+ or - direction)
         // However, if the angle is within a specified limit, then have it determine it's bend DURING the laser creation loop (in FireLaser)
         if (helperAngle <= _specifiedLimit && helperAngle >= -_specifiedLimit) _determineBendDuringLoop = true; 
 
-        if (helperAngle > 0) _bendRight = true;
+        else if (helperAngle < 0) _bendRight = true;
         else _bendRight = false;
 
         _listPositions.Add(laserInfo.raycastPosition);
