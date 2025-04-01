@@ -76,6 +76,7 @@ public class Singularity : SatelliteParent
         newOutGoingLaserInfo.angle = incomingLaser.laser.transform.eulerAngles.z;
         newOutGoingLaserInfo.origin = incomingLaser.raycast.point;
         newOutGoingLaserInfo.raycastPosition = incomingLaser.raycast.point;
+        newOutGoingLaserInfo.incomingLaserDirection = incomingLaser.laser.transform.up;
 
         // Absorbance is 0, so can be ignored
         newOutGoingLaserInfo.laserTransparency = incomingLaser.laser.GetTransparency();

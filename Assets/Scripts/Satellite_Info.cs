@@ -43,6 +43,15 @@ public enum SatelliteType{
 
 }
 
+public enum SatelliteTypeModifier
+{
+    Weak,
+    SlightlyWeak,
+    Middle,
+    SlightStrong,
+    Strong,
+    Indestructible
+}
 
 public class Satellite_Info : MonoBehaviour
 {
@@ -75,7 +84,13 @@ public class Satellite_Info : MonoBehaviour
     private int _numberImmunityFrames = 0;
     private int _remainingImmunityFrames = 0;
 
+    private SatelliteTypeModifier satelliteTypeModifier;
+
     public ParticleSystem statelliteParticleSystem;
+
+
+    private SatelliteController _satelliteControlsPanel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +119,9 @@ public class Satellite_Info : MonoBehaviour
             // Update game controller of satellite, and it's type
             if (satelliteType == SatelliteType.Origin) _gameController.worldInfo.numOrigins += 1;
             else if (satelliteType == SatelliteType.Destination) _gameController.worldInfo.numDestinations += 1;
-            else if (isDebris){
+            else if (satelliteType == SatelliteType.CameraDrone || satelliteType == SatelliteType.SatelliteCreator 
+            || satelliteType == SatelliteType.GravitationalAnomaly || isDebris)
+            {
                 // Do Nothing
             }
             else _gameController.worldInfo.numSatellites += 1;
@@ -169,12 +186,11 @@ public class Satellite_Info : MonoBehaviour
             canbeMoved = false;
             canBeSold = false;
 
+            satelliteTypeModifier = SatelliteTypeModifier.Indestructible;
+
 
             // if origin, name is determined randomly
             if (satelliteName == "") satelliteName = "Prometheus-"+Random.Range(1,384);
-
-            // Origin satellites are not destroyable, but still have health in cases developers wish to destroy them
-            if (satelliteHealth == 100) satelliteHealth = 1000;
 
             if (satelliteDescription == "" && _language == Language.English) satelliteDescription = "A Type XII Prometheus communication output, designed for deep space communciations it boasts a powerful beam of light to send messages into deep space. This is where your light laser begins.";
             else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "Mae canolfan gyfathrebu Math XII Prometheus, a gynlluniwyd ar gyfer cyfathrebu gofod dwfn, yn ymfalchïo mewn pelydr pwerus o olau i anfon negeseuon i'r gofod dwfn. Dyma lle mae eich laser golau yn dechrau.";
@@ -196,8 +212,6 @@ public class Satellite_Info : MonoBehaviour
             // If destination, name is generated with a random number
             if (satelliteName == "") satelliteName = "Fyrefly-"+Random.Range(1,384);
 
-            // Destination satellites are destroyable, unlike origin
-            if (satelliteHealth == 100) satelliteHealth = 700;
 
             if (satelliteDescription == "" && _language == Language.English) satelliteDescription = "A Type VI Fyrefly Deep Space Space Station, designed to withstand the harshest conditions in space. Your task is to get the light beam to this station's satellite dish.";
             else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "Gorsaf Ymchwil Gofod Dwfn Math VI Fyrefly, a gynlluniwyd i wrthsefyll amodau llymaf y gofod. Eich tasg yw cael y pelydr golau i ddysgl lloeren yr orsaf hon.";
@@ -205,6 +219,7 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteShortDescription == "" && _language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
             else if (satelliteShortDescription == "" && _language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
 
+            satelliteTypeModifier = SatelliteTypeModifier.Indestructible;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0.1f;
@@ -218,8 +233,6 @@ public class Satellite_Info : MonoBehaviour
             // If destination, name is generated with a random number
             if (satelliteName == "") satelliteName = "Elysia";
 
-            // Destination satellites are destroyable, unlike origin
-            if (satelliteHealth == 100) satelliteHealth = 3000;
 
             if (satelliteDescription == "" && _language == Language.English) satelliteDescription = "Elysia is a cutting edge Elysian Matter Printer. One of the three in existence. It makes use of space-time manipulator lasers and drones to construct satellites of any type.";
             else if (satelliteDescription == "" && _language == Language.Welsh) satelliteDescription = "Mae Elysia yn Argraffydd Mater Elysian arloesol. Un o dri sy'n bodoli, mae'n defnyddio laserau a dronau manipulator gofod-amser i adeiladu lloerennau o unrhyw fath";
@@ -227,12 +240,40 @@ public class Satellite_Info : MonoBehaviour
             if (satelliteShortDescription == "" && _language == Language.English) satelliteShortDescription = "Not an Item in the Shop";
             else if (satelliteShortDescription == "" && _language == Language.Welsh) satelliteShortDescription = "NOT YET TRANSLATED";
 
+            satelliteTypeModifier = SatelliteTypeModifier.Indestructible;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 12000000;
             if (satelliteSellPrice == 0) satelliteSellPrice = 12000000;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
             interaction = Interaction.Absorb;
         }
+        else if (satelliteType == SatelliteType.CameraDrone)
+        {
+            canBeSold = false;
+
+            if (_language == Language.English)
+            {
+                if (satelliteName == "") satelliteName = $"The Eye of Zeta";
+                if (satelliteDescription == "") satelliteDescription = "The Eye of Zeta provides you with a real time visual feed, allowing you to traverse space within an allowed area. They contain highly classified technology and are astronomically expensive. Do not break it.";
+                if (satelliteShortDescription == "") satelliteShortDescription = "Not an item in the shop";
+            }
+            else if (_language == Language.Welsh)
+            {
+                if (satelliteName == "") satelliteName = $"Llygad Zeta";
+                if (satelliteDescription == "") satelliteDescription = "Mae Llygad Zeta yn darparu porthiant gweledol amser real i chi, gan eich galluogi i groesi gofod o fewn ardal a ganiateir. Maent yn cynnwys technoleg hynod ddosbarthedig ac yn seryddol ddrud. Peidiwch â'i dorri";
+                if (satelliteShortDescription == "") satelliteShortDescription = "NOT TRANSLATED";
+            }
+
+            satelliteTypeModifier = SatelliteTypeModifier.Indestructible;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 9999;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 0;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
+
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
+        }
+
+        
         else if (satelliteType == SatelliteType.SingleSideReflector)
         {
             if (_language == Language.English)
@@ -248,9 +289,10 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren adlewyrchu un arwyneb";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 200;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+
+            satelliteTypeModifier = SatelliteTypeModifier.Middle;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 200;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 100;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
@@ -271,10 +313,9 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription ="Lloeren adlewyrchiad gradd uchel. Uwchradd o'i ragflaenydd, mae hyn yn cynnwys dau banel ar gyfer adlewyrchiad lambertian";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren adlewyrchiad dau wyneb";
             }
-
-            if (satelliteHealth == 100) satelliteHealth = 250;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 75;
+            satelliteTypeModifier = SatelliteTypeModifier.SlightStrong;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 225;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 150;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
@@ -296,10 +337,9 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant gwydr";
             }
 
-            
-            if (satelliteHealth == 100) satelliteHealth = 90;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 150;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 75;
+            satelliteTypeModifier = SatelliteTypeModifier.Weak;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 200;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 150;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.52f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.033f;
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Refraction;
@@ -318,7 +358,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant saffir";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 120;
+            satelliteTypeModifier = SatelliteTypeModifier.Strong;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 300;
             if (satelliteSellPrice == 0) satelliteSellPrice = 250;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.78f;
@@ -339,7 +379,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant silicon";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 120;
+            satelliteTypeModifier = SatelliteTypeModifier.SlightStrong;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 250;
             if (satelliteSellPrice == 0) satelliteSellPrice = 200;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 3.4f;
@@ -360,8 +400,8 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Lloeren plygiant dŵr";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 50;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
+            satelliteTypeModifier = SatelliteTypeModifier.Weak;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 375;
             if (satelliteSellPrice == 0) satelliteSellPrice = 300;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 1.33f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.033f;
@@ -391,9 +431,10 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Hidlydd lliw sefydlog";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 125;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 75;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+
+            satelliteTypeModifier = SatelliteTypeModifier.Weak;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 75;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
@@ -465,9 +506,9 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Hidlydd lliw y gellir ei addasu";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 450;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 300;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 50;
+            satelliteTypeModifier = SatelliteTypeModifier.Strong;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 350;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 200;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
 
@@ -489,9 +530,9 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "Cyfuno dau belydryn o olau";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 400;
+            satelliteTypeModifier = SatelliteTypeModifier.SlightlyWeak;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 250;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 275;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.0f;
 
@@ -512,10 +553,9 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription ="Yn ddefnyddiol iawn mewn cyfathrebu lloeren, gall rannu pelydr o olau yn ddau. Nodyn: Bydd gan pelydrau sy'n deillio o hyn lai o egni a gallant amrywio o ran lliw";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Rhannu pelydr o olau yn ddwy";
             }
-
-            if (satelliteHealth == 100) satelliteHealth = 250;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 350;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 250;
+            satelliteTypeModifier = SatelliteTypeModifier.Middle;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 300;
+            if (satelliteSellPrice == 0) satelliteSellPrice = 225;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
 
@@ -536,9 +576,8 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription ="Amrywiad datblygedig o'r Holltydd-Deuawd, gall rannu pelydr o olau yn dri. Nodyn: bydd gan pelydrau sy'n deillio o hyn lai o egni a gallant amrywio o ran lliw.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Rhannu pelydr o olau yn dri";
             }
-
-            if (satelliteHealth == 100) satelliteHealth = 250;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 400;
+            satelliteTypeModifier = SatelliteTypeModifier.Middle;
+            if (satellitePurchasePrice == 0) satellitePurchasePrice = 375;
             if (satelliteSellPrice == 0) satelliteSellPrice = 300;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
@@ -559,8 +598,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteDescription == "") satelliteDescription ="Holltydd prototeip blaengar, sy'n gallu rhannu un pelydr o olau yn chwe laser allbwn. Nodyn: Bydd gan pelydrau sy'n deillio o hyn lai o egni a gallant amrywio o ran lliw";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Rhannu pelydr o olau yn chwech";
             }
-
-            if (satelliteHealth == 100) satelliteHealth = 250;
+            satelliteTypeModifier = SatelliteTypeModifier.SlightlyWeak;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 450;
             if (satelliteSellPrice == 0) satelliteSellPrice = 350;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
@@ -588,8 +626,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
-            
-            if (satelliteHealth == 100) satelliteHealth = 300;
+            satelliteTypeModifier = SatelliteTypeModifier.SlightStrong;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
@@ -616,7 +653,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 300;
+            satelliteTypeModifier = SatelliteTypeModifier.Middle;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
@@ -643,7 +680,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
-            if (satelliteHealth == 100) satelliteHealth = 300;
+            satelliteTypeModifier = SatelliteTypeModifier.Middle;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
@@ -670,6 +707,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
+            satelliteTypeModifier = SatelliteTypeModifier.Indestructible;
             if (satelliteHealth == 100) satelliteHealth = 9999999;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
@@ -679,32 +717,7 @@ public class Satellite_Info : MonoBehaviour
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.GravitationalAnomaly;
         }
 
-        else if (satelliteType == SatelliteType.CameraDrone)
-        {
-            canBeSold = false;
-
-            if (_language == Language.English)
-            {
-                if (satelliteName == "") satelliteName = $"The Eye of Zeta";
-                if (satelliteDescription == "") satelliteDescription = "The Eye of Zeta provides you with a real time visual feed, allowing you to traverse space within an allowed area. They contain highly classified technology and are astronomically expensive. Do not break it.";
-                if (satelliteShortDescription == "") satelliteShortDescription = "Not an item in the shop";
-            }
-            else if (_language == Language.Welsh)
-            {
-                if (satelliteName == "") satelliteName = $"Llygad Zeta";
-                if (satelliteDescription == "") satelliteDescription = "Mae Llygad Zeta yn darparu porthiant gweledol amser real i chi, gan eich galluogi i groesi gofod o fewn ardal a ganiateir. Maent yn cynnwys technoleg hynod ddosbarthedig ac yn seryddol ddrud. Peidiwch â'i dorri";
-                if (satelliteShortDescription == "") satelliteShortDescription = "NOT TRANSLATED";
-            }
-            
-            if (satelliteHealth == 100) satelliteHealth = 900000;
-            if (satellitePurchasePrice == 0) satellitePurchasePrice = 9999;
-            if (satelliteSellPrice == 0) satelliteSellPrice = 0;
-            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0f;
-
-            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
-        }
-
+        
         else
         {
             // if the satellite is unknown then set it to a default health and have it absorb all light, also notify developer
@@ -714,7 +727,6 @@ public class Satellite_Info : MonoBehaviour
             if (_language == Language.English)
             {
                 if (satelliteName == "") satelliteName = "Unknown";
-                if (satelliteHealth == 100) satelliteHealth = 100;
 
                 if (satelliteDescription == "") satelliteDescription = "An unknown satellite with unknown interactions with light. Be cautious.";
                 if (satelliteShortDescription == "") satelliteShortDescription = "Unknown satellite";
@@ -814,37 +826,49 @@ public class Satellite_Info : MonoBehaviour
         // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
         if (_remainingImmunityFrames <= 0 && opposingSatellite != null)
         {
-            // Satellites cannot interact with origin
-            if (opposingSatellite.satelliteType == SatelliteType.Origin || opposingSatellite.satelliteType == SatelliteType.SatelliteCreator || opposingSatellite.satelliteType == SatelliteType.CameraDrone ) 
-            {
 
+            var baseDamage = _gameController.baseDamage;
+
+            var typeModifier = 1.0f;
+
+            if (satelliteTypeModifier == SatelliteTypeModifier.Weak) typeModifier = 3.0f;
+            else if (satelliteTypeModifier == SatelliteTypeModifier.SlightlyWeak) typeModifier = 2.0f; 
+            else if (satelliteTypeModifier == SatelliteTypeModifier.Middle) typeModifier = 1.0f;
+            else if (satelliteTypeModifier == SatelliteTypeModifier.SlightStrong) typeModifier = 0.75f;
+            else if (satelliteTypeModifier == SatelliteTypeModifier.Strong) typeModifier = 0.5f;
+
+            // This prevents damage from destinations, creators, origins, etc
+            else typeModifier = 0.0f;
+
+
+            var speedModifier = 1.0f;
+            var currentSpeed = 1.0f;
+            var maxSpeed = 1.0f;
+
+            if (_satelliteControlsPanel != null)
+            {
+                currentSpeed = _satelliteControlsPanel.currentMovementMultiplier;
+                maxSpeed = satellite_Movement_Info.maxRotationMultiplier;
+            }
+            else if (_gameController.GetUIController().uiExpectations.expectSatelliteControlPanel) 
+            {
+                _satelliteControlsPanel = GameObject.FindGameObjectsWithTag("SatelliteControlsPanel")[0].GetComponent<SatelliteController>();
             }
 
-            // Satellites are easily destroyed when interacting with destination
-            else if (opposingSatellite.satelliteType == SatelliteType.Destination)
+
+            if (currentSpeed / maxSpeed  == 1) speedModifier = 1.75f;
+            else if (currentSpeed / maxSpeed  >= 80) speedModifier = 1.5f;
+            else if (currentSpeed / maxSpeed  >= 60) speedModifier = 1.25f;
+            else if (currentSpeed / maxSpeed  >= 40) speedModifier = 1.0f;
+            else if (currentSpeed / maxSpeed  >= 20) speedModifier = 0.75f;
+            else speedModifier = 0.5f;
+
+            // If the other satellite type is industructable, don't do damage to either.
+            if (opposingSatellite.satelliteTypeModifier != SatelliteTypeModifier.Indestructible)
             {
+                satelliteHealth = (int)(satelliteHealth - (baseDamage * typeModifier * speedModifier));
             }
 
-            // Glass refractors take more damage upon hitting opposing satellites
-            else if (this.satelliteType == SatelliteType.GlassRefractor || this.satelliteType == SatelliteType.SiliconRefractor ||
-             this.satelliteType == SatelliteType.SapphireRefractor || this.satelliteType == SatelliteType.WaterRefractor)
-            {
-                satelliteHealth -= 40;
-                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
-            }
-            else if (opposingSatellite.satelliteType == SatelliteType.GravitationalAnomaly)
-            {
-                var animator = this.gameObject.GetComponent<Animator>();
-                animator.SetBool("Destroy",true);
-            }
-
-
-
-            else
-            {
-                satelliteHealth -= 25;
-                if (opposingSatellite != null) opposingSatellite.satelliteHealth -= 25;
-            }
 
             _remainingImmunityFrames = _numberImmunityFrames;
         }

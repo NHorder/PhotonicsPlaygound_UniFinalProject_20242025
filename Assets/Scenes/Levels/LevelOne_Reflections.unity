@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 56214181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -867,11 +867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7244372481996358232, guid: 92dd4f1ce63d3f943a51e5ad32fcd81f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.1
+      value: -13.68
       objectReference: {fileID: 0}
     - target: {fileID: 7244372481996358232, guid: 92dd4f1ce63d3f943a51e5ad32fcd81f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.3
+      value: -15.14
       objectReference: {fileID: 0}
     - target: {fileID: 7244372481996358232, guid: 92dd4f1ce63d3f943a51e5ad32fcd81f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31927,6 +31927,26 @@ PrefabInstance:
     - target: {fileID: 4891735831495933996, guid: 550b65d5239ea7440af57247c711ddbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974504251702777771, guid: 550b65d5239ea7440af57247c711ddbe, type: 3}
+      propertyPath: maxBudget
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974504251702777771, guid: 550b65d5239ea7440af57247c711ddbe, type: 3}
+      propertyPath: currentBudget
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974504251702777771, guid: 550b65d5239ea7440af57247c711ddbe, type: 3}
+      propertyPath: startingBudget
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974504251702777771, guid: 550b65d5239ea7440af57247c711ddbe, type: 3}
+      propertyPath: expectedNumSatellitesUsed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974504251702777771, guid: 550b65d5239ea7440af57247c711ddbe, type: 3}
+      propertyPath: expectedBudgetOnCompletion
+      value: 750
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

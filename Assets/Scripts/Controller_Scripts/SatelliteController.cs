@@ -21,8 +21,8 @@ public class SatelliteController : MonoBehaviour
 
     private UIController _uiController;
 
-    public float _currentMovementMultiplier;
-    public float _currentRotationMultiplier;
+    public float currentMovementMultiplier;
+    public float currentRotationMultiplier;
     private int _movementCounter = 0;
     private int _rotationCounter = 0;
 
@@ -119,8 +119,8 @@ public class SatelliteController : MonoBehaviour
 
                     // Update multipliers - Mutipliers are used to increase speed of rotation or movement based on how long 
                     // they are held down to a maximum limit (defined in objects satellite information)
-                    _currentMovementMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
-                    _currentRotationMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
+                    currentMovementMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
+                    currentRotationMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
 
                     // Will involve an animation update - as it needs to be clear which object the user has selected.
                     _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
@@ -291,10 +291,10 @@ public class SatelliteController : MonoBehaviour
             // Vertical, Horizontal and Rotation movement are either -1, 0 or 1. As that is how Unity input works
 
             // Add force based on movement multiplier
-            _selectedRigidbody2D.AddForce(new Vector2(horizontalMovement * _currentMovementMultiplier, verticalMovement * _currentMovementMultiplier));
+            _selectedRigidbody2D.AddForce(new Vector2(horizontalMovement * currentMovementMultiplier, verticalMovement * currentMovementMultiplier));
 
             // Add torque (rotation) based on rotation multiplier
-            _selectedRigidbody2D.AddTorque(rotationMovement * _currentRotationMultiplier);
+            _selectedRigidbody2D.AddTorque(rotationMovement * currentRotationMultiplier);
 
             // Check to see if the satellite has an attached Eye of Zeta
             // If so, apply the same movement force, so that it follows the satellite.
@@ -306,56 +306,52 @@ public class SatelliteController : MonoBehaviour
                 var eyeOfZetaRigidbody = eyeOfZeta.GetComponent<Rigidbody2D>();
                 
                 // Retrieve the rigidbody2d
-                eyeOfZetaRigidbody.AddForce(new Vector2(horizontalMovement * _currentMovementMultiplier, verticalMovement * _currentMovementMultiplier));
-
-
-
-
+                eyeOfZetaRigidbody.AddForce(new Vector2(horizontalMovement * currentMovementMultiplier, verticalMovement * currentMovementMultiplier));
 
                 // Torque or no Torque that is the question
 
-                eyeOfZetaRigidbody.AddTorque(rotationMovement * _currentRotationMultiplier);
+                eyeOfZetaRigidbody.AddTorque(rotationMovement * currentRotationMultiplier);
             }
 
             // If the input is rotation, gradually increase the speed of rotation to the object's defined limit (in satellite info)
             if (Input.GetButton("Rotation") ||  _keyPressed == Key.Rotation){
                 
                 // Updates every 60 updates - Hardcoded update which appeared suitable, allows user good control
-                if (_rotationCounter > 60 && (_currentRotationMultiplier < selectedSatelliteInfo.satellite_Movement_Info.maxRotationMultiplier))   
+                if (_rotationCounter > 60 && (currentRotationMultiplier < selectedSatelliteInfo.satellite_Movement_Info.maxRotationMultiplier))   
                 {
                     // Reset the rotation counter
                     _rotationCounter = 0;
 
                     // As 60 frames is still small, it can rapidly increase speeds if increment is 1, hence small increment allows for
                     // more precise user control
-                    _currentRotationMultiplier += 0.01f;
+                    currentRotationMultiplier += 0.01f;
                 }
 
                 _rotationCounter += 1;
             }
 
             // Else if the button is let go, reset it the rotation multipler back to it's intial (defined in satellite info)
-            else _currentRotationMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
+            else currentRotationMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialRotationMultiplier;
 
             // If the vertical or horizontal is held, then gradually increase the speed of movement to a limit (defined in satellite info)
             if (Input.GetButton("Vertical") || Input.GetButton("Horizontal") || _keyPressed == Key.Vertical || _keyPressed == Key.Horizontal){
 
                 // Updates every 60 updates - Hardcoded update which appeared suitable, allows user good control
-                if (_movementCounter > 60 && (_currentMovementMultiplier < selectedSatelliteInfo.satellite_Movement_Info.maxMovementMultiplier))   
+                if (_movementCounter > 60 && (currentMovementMultiplier < selectedSatelliteInfo.satellite_Movement_Info.maxMovementMultiplier))   
                 {
                     // Reset the rotation counter
                     _movementCounter = 0;
 
                     // As 60 frames is still small, it can rapidly increase speeds if increment is 1, hence small increment allows for
                     // more precise user control
-                    _currentMovementMultiplier += 0.01f;
+                    currentMovementMultiplier += 0.01f;
                 }
 
                 _movementCounter += 1;
             }
 
             // Else if the button is let go, reset it the rotation multipler back to it's intial (defined in satellite info)
-            else _currentMovementMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
+            else currentMovementMultiplier = selectedSatelliteInfo.satellite_Movement_Info.intialMovementMultiplier;
         }
         
         // If nothing is selected, but attempts to interact with a selected item occurs, throw an error, this should not be reached
@@ -372,10 +368,8 @@ public class SatelliteController : MonoBehaviour
 
             var gameController = _uiController.GetGameController();
 
-            if (gameController.currentBudget + price <= gameController.maxBudget)
-            {
-                gameController.currentBudget += price;
-            }
+            gameController.currentBudget += price;
+            
 
             selectedSatelliteInfo.DestroyObject();
             CloseInformation();
