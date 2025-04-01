@@ -87,6 +87,8 @@ public class UIController : MonoBehaviour
         } 
 
 
+        if (uiExpectations.expectAthenaeum) _fixedPanels.athenaeum = GameObject.FindGameObjectsWithTag("Athenaeum")[0];
+
         // Collect all panel objects for fixed panels.
         if (uiExpectations.expectTeachingPanel)
         {
@@ -226,7 +228,13 @@ public class UIController : MonoBehaviour
 
         else if (panel == FixedUIPanel.Athenaeum )
         {
+            var rectTransform = _fixedPanels.athenaeum.GetComponent<RectTransform>();
+            
+            if (rectTransform.anchoredPosition != fixedPanelSettings.teachingPanelLocation) rectTransform.anchoredPosition = fixedPanelSettings.athenaeumLocation;
+            
+            _fixedPanels.athenaeum.active = bVisible;
 
+            _fixedPanels.athenaeumVisible = bVisible;
         }
 
     }
@@ -381,9 +389,9 @@ public class UIController : MonoBehaviour
     }
 
 
-    public void ToggleAthenaeum ()
+    public void ToggleAthenaeum()
     {
-        PresentFixedPanel(FixedUIPanel.Athenaeum ,_fixedPanels.athenaeumVisible);
+        PresentFixedPanel(FixedUIPanel.Athenaeum ,!_fixedPanels.athenaeumVisible);
     }
 
     public void UpdateSettings(bool languageChanged)
@@ -403,7 +411,9 @@ public class UIController : MonoBehaviour
             if (uiExpectations.expectConfirmationPanel) _fixedPanels.confirmationPanel.UpdateLanguage(_language);
             if (uiExpectations.expectLevelCompletePanel) _fixedPanels.levelCompletePanel.UpdateLanguage(_language);
 
-            //if (uiExpectations.expectTeachingPanel) _fixedPanels.teachingPanel.UpdateLanguage(_language);
+            if (uiExpectations.expectTeachingPanel) _fixedPanels.teachingPanel.UpdateLanguage(_language);
+
+            if (uiExpectations.expectAthenaeum) _fixedPanels.athenaeum.GetComponentInChildren<RecordSelection>().UpdateLanguage(_language);
 
             if (_gameController.thisLevel == Level.LevelSelection)
             {
@@ -460,7 +470,7 @@ public class FixedPanels
     public TeachingPanel teachingPanel;
     public bool teachingPanelVisible = true;
 
-    public RecordSelection athenaeum ;
+    public GameObject athenaeum ;
     public bool athenaeumVisible = false; 
 
 }
@@ -541,6 +551,7 @@ public class FixedPanelSettings
     public Vector2 teachingPanelLocation = new Vector2(0,0);
     public Vector2 confirmationPanelLocation = new Vector2(0,0);
     public Vector2 levelCompeletePanelLocation = new Vector2(0,0);
+    public Vector2  athenaeumLocation = new Vector2(0,0);
 
 }
 

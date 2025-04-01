@@ -16,6 +16,8 @@ public class RecordSelection : MonoBehaviour
     private Record _visibleRecord;
 
 
+    private bool _firstLoad = true;
+
     private UIController _uiController;
 
     // Start is called before the first frame update
@@ -24,11 +26,14 @@ public class RecordSelection : MonoBehaviour
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
         var _athenaeum = GameObject.FindGameObjectsWithTag("Athenaeum")[0];
-        _records = _athenaeum .GetComponentsInChildren<Record>();
+        _records = _athenaeum.GetComponentsInChildren<Record>();
 
 
         _contentElements = gameObject.GetComponentsInChildren<TMP_Text>();
         UpdateLanguage(PersistenceController.GetLanguage());
+
+        ShowGeneralInfo();
+        _firstLoad = false;
     }
 
     private void GetText(RecordType recordType)
@@ -68,6 +73,11 @@ public class RecordSelection : MonoBehaviour
             _englishTitle = "Gravitational Anomalies";
             _welshTitle = "";
         }
+        else
+        {
+            _englishTitle = "Silver Athenaeum";
+            _welshTitle = "";
+        }
     }
 
     public void UpdateLanguage(Language language)
@@ -83,6 +93,13 @@ public class RecordSelection : MonoBehaviour
             else if (contentText.gameObject.name == "ColourText") GetText(RecordType.Colour);
             else if (contentText.gameObject.name == "BlackholeText") GetText(RecordType.Blackholes);
 
+
+            if (contentText.gameObject.name == "Title")
+            {
+                _englishTitle = "Silver Athenaeum";
+                _welshTitle = "";
+            }
+
             if (language == Language.English)contentText.text = _englishTitle;
             else if (language == Language.Welsh)contentText.text = _welshTitle;
         }
@@ -96,15 +113,21 @@ public class RecordSelection : MonoBehaviour
 
     private void ShowRecord(RecordType recordType)
     {
-        _visibleRecord.gameObject.active = false;
+        if (_visibleRecord != null) _visibleRecord.gameObject.active = false;
 
         foreach (Record nonVisibleRecord in _records)
         {
             if (nonVisibleRecord.recordType == recordType)
             {
+                Debug.Log("?");
                 nonVisibleRecord.gameObject.active = true;
                 _visibleRecord = nonVisibleRecord;
-                break;
+                if (!_firstLoad) break;
+            }
+            
+            else if (_firstLoad)
+            {
+                nonVisibleRecord.gameObject.active = false;
             }
         }
     }
@@ -147,7 +170,7 @@ public class RecordSelection : MonoBehaviour
 
     public void CloseAthenaeum ()
     {
-
+        _uiController.ToggleAthenaeum();
     }
 
 }
