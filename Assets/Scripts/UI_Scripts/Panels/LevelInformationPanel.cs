@@ -66,6 +66,11 @@ public class LevelInformationPanel : MonoBehaviour
         _uiController.PresentFixedPanel(FixedUIPanel.Settings, true);
     }
 
+    public void AthenaeumInteract()
+    {
+        _uiController.ToggleAthenaeum();
+    }
+
     public void ResetLevelInteract()
     {
 

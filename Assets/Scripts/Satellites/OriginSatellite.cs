@@ -26,9 +26,26 @@ public class OriginSatellite : MonoBehaviour
 
     private GameController _gameController;
 
+    private Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        var colourID = 0;
+
+        _animator = gameObject.GetComponent<Animator>();
+        if (laserColour == LaserColour.Red) colourID = 1;
+        else if (laserColour == LaserColour.Blue) colourID = 2;
+        else if (laserColour == LaserColour.Green) colourID = 3;
+        else if (laserColour == LaserColour.Yellow) colourID = 4;
+        else if (laserColour == LaserColour.Cyan) colourID = 5;
+        else if (laserColour == LaserColour.Magenta) colourID = 6; 
+        
+
+        _animator.SetInteger("ColourID",colourID);
+
+
+
         // Collect game controller and update delay settings
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _updateDelay = _gameController.framerateRelatedSettings.laserCycleDelay;
@@ -42,6 +59,8 @@ public class OriginSatellite : MonoBehaviour
             _updateDelay = 32;
             Debug.LogWarning("WARNING: Laser Origin updateDelay cannot be less than 0. Setting to default");
         }   
+
+
     }
  
     // Update is called once per frame

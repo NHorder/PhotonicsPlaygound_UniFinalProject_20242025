@@ -228,9 +228,7 @@ public class SettingsPanel : MonoBehaviour
         _gameController.UpdateSettings();
         _uiController.UpdateSettings(_language != _savedLanguage);
 
-
-        if (_disableConfirmations) SceneController.ToLevelSelection();
-        else _uiController.PresentFixedPanel(FixedUIPanel.Settings,false);
+        _uiController.PresentFixedPanel(FixedUIPanel.Settings,false);
     }
 
     public void LeaveLevel()

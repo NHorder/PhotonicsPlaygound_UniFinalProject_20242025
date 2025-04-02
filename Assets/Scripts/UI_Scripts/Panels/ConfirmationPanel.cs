@@ -66,6 +66,11 @@ public class ConfirmationPanel : MonoBehaviour
             if (_language == Language.English) action = "reset the level";
             else if (_language == Language.Welsh) action = "ailosod y lefel";
             _confirmButton.onClick.AddListener(ResetLevel);
+
+            if (PersistenceController.GetDisableConfirmations())
+            {
+                ResetLevel();
+            }
         }
 
         else if (confirmAction == ConfirmAction.LeaveLevel)
@@ -73,6 +78,11 @@ public class ConfirmationPanel : MonoBehaviour
             if (_language == Language.English) action = "leave the level";
             else if (_language == Language.Welsh) action = "gadael y lefel";
             _confirmButton.onClick.AddListener(LevelSelection);
+
+            if (PersistenceController.GetDisableConfirmations())
+            {
+                LevelSelection();
+            }
         }
 
         // if action is null, throw an error

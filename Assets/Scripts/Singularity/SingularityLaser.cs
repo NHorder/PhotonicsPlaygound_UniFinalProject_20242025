@@ -43,17 +43,14 @@ public class SingularityLaser : MonoBehaviour
         {
             // Get the current angle and location (Reminder: this object is following the line)
             _laserInfo.angle = this.transform.eulerAngles.z;
-            Vector3 point = this.transform.position;
 
             // Set external to true, as we'll notify the singularity to create a laser using sprites instead of line renderer
             _laserInfo.external = true;
 
-            // Shift the laser to be OUTSIDE the ring (Hence why cannot move other offset code into a function and call it that way)
-            if (this.transform.position.y < _singularityPosition.y) point.y -= laserOffset;
-            else if (this.transform.position.y > _singularityPosition.y) point.y += laserOffset;
-
-            if (this.transform.position.x < _singularityPosition.x) point.x -= laserOffset;
-            else if (this.transform.position.x > _singularityPosition.x) point.x += laserOffset; 
+            Ray ray = new Ray(this.transform.position,this.transform.up);
+            Vector3 point = ray.GetPoint(0.25f);
+            _lineRenderer.SetPosition(_listPositions.Count-1,point);
+            
 
             // Update the remaining information
             _laserInfo.origin = point;
@@ -72,7 +69,7 @@ public class SingularityLaser : MonoBehaviour
     {
 
         // Set the current position to the first item in the list (the origin)
-        Vector2 currentPoint = _listPositions[0];
+        Vector2 currentPoint = _listPositions[1];
 
         // While loop until an edge is hit.
         while (!_hitEdge)
@@ -121,14 +118,22 @@ public class SingularityLaser : MonoBehaviour
                 // Otherwise it's an edge if its a polygon collider
                 else if (raycast.collider is PolygonCollider2D) _hitEdge = true;
 
+                else if (raycast.collider is BoxCollider2D) _hitEdge = true;
+
                 // Else log as an error. It really should not be capable of hitting anything else.
                 else Debug.LogError("ERROR: A Singularity has hit something unexpected");
                 }
             else
             {
-                // Get the point along the distance, and add it to the position list
-                currentPoint = ray.GetPoint(0.1f);
-                _listPositions.Add(currentPoint);
+
+                float distanceOfClosestApproach = Mathf.Sqrt(Mathf.Pow((_singularityPosition.x - currentPoint.x),2) + Mathf.Pow((_singularityPosition.y - currentPoint.y),2));
+                if (distanceOfClosestApproach >= 5 * _singularity.transform.localScale.x) _hitEdge = true;
+                else
+                {
+                    // Get the point along the distance, and add it to the position list
+                    currentPoint = ray.GetPoint(0.1f);
+                    _listPositions.Add(currentPoint);
+                }
             }
         }
 
@@ -138,7 +143,10 @@ public class SingularityLaser : MonoBehaviour
         var points = new Vector3[_listPositions.Count];
 
         // Update the line renderer and reset it
+
+       
         _lineRenderer.positionCount = _listPositions.Count;
+
         _lineRenderer.SetPositions(points);
 
         // Loop and add positions to the line renderer
@@ -182,24 +190,20 @@ public class SingularityLaser : MonoBehaviour
         _specifiedLimit = settings.distanceFromEventHorizonToChangeAngleSign;
 
 
-        // Retreive the starting point, then apply an offset - this is to prevent the laser from 
+        
+        // Retreive the starting point, then apply an offset, calculated with a ray to maintain correct positioning - this is to prevent the laser from 
         // hitting the outer polygon collider (as then it won't trigger it again when it hits it again later on)
-        Vector3 point = laserInfo.raycastPosition;
-
-        if (laserInfo.raycastPosition.y < _singularityPosition.y) point.y += laserOffset;
-        else if (laserInfo.raycastPosition.y > _singularityPosition.y) point.y -= laserOffset;
-
-        // If the point.x is different from what is known, apply an offset. 
-        // This allows the point to consistently be within the refraction collider.
-        if (laserInfo.raycastPosition.x < _singularityPosition.x) point.x += laserOffset;
-        else if (laserInfo.raycastPosition.x > _singularityPosition.x) point.x -= laserOffset; 
-
+        Ray ray = new Ray(laserInfo.raycastPosition,laserInfo.incomingLaserDirection);
+        Vector3 point = ray.GetPoint(0.1f);
 
         // Use the provided helper anlge to determine which way to bend the light (+ or - direction)
         // However, if the angle is within a specified limit, then have it determine it's bend DURING the laser creation loop (in FireLaser)
         if (helperAngle <= _specifiedLimit && helperAngle >= -_specifiedLimit) _determineBendDuringLoop = true; 
-        else if (helperAngle < laserInfo.angle) _bendRight = true;
+
+        else if (helperAngle < 0) _bendRight = true;
         else _bendRight = false;
+
+        _listPositions.Add(laserInfo.raycastPosition);
 
         // Add Position tot he list
         _listPositions.Add(point);

@@ -24,9 +24,16 @@ public class GameController : MonoBehaviour
     public string levelDescriptionWelsh = " ";
 
 
-    public int startingBudget = 1000;
-    public int currentBudget = 1000;
-    public int maxBudget = 9999;
+    public float startingBudget = 1000;
+    public float currentBudget = 1000;
+
+    public float minimumBudget = -300;
+
+    public float expectedBudgetOnCompletion;
+    public int expectedNumSatellitesUsed;
+
+
+    public int baseDamage = 20;
 
 
     [HideInInspector]
@@ -55,6 +62,9 @@ public class GameController : MonoBehaviour
     void Start()
     {
         activeLanguage = PersistenceController.GetLanguage();
+
+        if (expectedBudgetOnCompletion == null || expectedBudgetOnCompletion == 0) expectedBudgetOnCompletion = (float)(0.5 * startingBudget);
+        if (expectedNumSatellitesUsed == null || expectedNumSatellitesUsed == 0) expectedNumSatellitesUsed = 5;
 
         // Check to make sure the desired framerate is not less than or equal to 0. 
         if (framerateRelatedSettings.desiredFramerate <= 0) 

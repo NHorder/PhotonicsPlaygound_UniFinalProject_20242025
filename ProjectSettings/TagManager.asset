@@ -27,6 +27,7 @@ TagManager:
   - Prefab_ShopContent
   - Canvas
   - Satellites_WithUIElements
+  - Athenaeum
   layers:
   - Default
   - TransparentFX

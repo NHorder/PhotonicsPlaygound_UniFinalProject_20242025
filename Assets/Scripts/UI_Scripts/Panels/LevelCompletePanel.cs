@@ -53,13 +53,15 @@ public class LevelCompletePanel : MonoBehaviour
     public void GameComplete()
     {
         // Collect information from game controller needed to clacualte the score
-        var startingBudget = _gameController.startingBudget;
         var currentBudget = _gameController.currentBudget;
+        var expectedBudget = _gameController.expectedBudgetOnCompletion;
+        var expectedSatellites = _gameController.expectedNumSatellitesUsed;
+
         var numSatellites = _gameController.worldInfo.numSatellites;
         var numSatellitesDestroyed = _gameController.worldInfo.numSatellitesDestroyed;
 
         // Calculate score and rank - score is saved as private variable
-        CalculateScore(startingBudget,currentBudget,numSatellites,numSatellitesDestroyed);
+        CalculateScore(currentBudget,expectedBudget,numSatellites,expectedSatellites,numSatellitesDestroyed);
         CalculateRank();
 
         if (_language == Language.English)
@@ -98,21 +100,31 @@ public class LevelCompletePanel : MonoBehaviour
 
     }
 
-    public void CalculateScore(int startingBudget,int currentBudget,int numSatellites,int numSatellitesDestroyed)
+    public void CalculateScore(float currentBudget,float expectedBudget,int numSatellites,int expectedSatellites,int numSatellitesDestroyed)
     {   
+
+
+        float budgetScore = 500f * (currentBudget / expectedBudget);
+        float satelliteScore = 500f * ((float)expectedSatellites / numSatellites) * (1 - (numSatellitesDestroyed / numSatellites));
+
+
+        Debug.Log("Budget: "+budgetScore + " | Current: "+currentBudget + " | Expected: "+expectedBudget);
+
+        Debug.Log("Satellite: "+satelliteScore + " | Num Sats: "+numSatellites + " | Expected: "+expectedSatellites + " | Destroyed: "+numSatellitesDestroyed);
+
         // Calculate score using an equation
-        _score = 0;
+        _score = (int)(budgetScore + satelliteScore);
     }
 
     private void CalculateRank()
     {
         // Calcualte rank based on score
         if (_score > 900) _rank = 1;
-        else if (_score > 800) _rank = 2;
-        else if (_score > 700) _rank = 3;
-        else if (_score > 600) _rank = 4;
-        else if (_score > 500) _rank = 5;
-        else if (_score > 400) _rank = 6;
+        else if (_score > 750) _rank = 2;
+        else if (_score > 500) _rank = 3;
+        else if (_score > 400) _rank = 4;
+        else if (_score > 300) _rank = 5;
+        else if (_score > 250) _rank = 6;
         else _rank = 7;
     }
 
