@@ -153,8 +153,11 @@ public class Satellite_Info : MonoBehaviour
         if (_remainingImmunityFrames > 0) _remainingImmunityFrames -= 1;
 
         // if the satellite health falls below or equal to 0, destroy the satellite in a flashy animation
-        if (satelliteHealth <= 0)
+        if (satelliteHealth <= 0 && satelliteTypeModifier != SatelliteTypeModifier.Indestructible && !satellite_Shop_Info.IsShopItem)
         {
+            Debug.Log("??");
+            Debug.Log(satelliteHealth);
+
             // Play satellite destruction animation
             // The animation contains a destroy trigger - which when reached will call this DestroyObject function.
             // Forcing a animation delay before destruction.
@@ -179,7 +182,7 @@ public class Satellite_Info : MonoBehaviour
 
         // Collect active language - important for defining descriptions
         if (_language == null) _language = _gameController.activeLanguage;
-
+        satelliteHealth = 100;
 
         if (satelliteType == SatelliteType.Origin)
         {
@@ -826,7 +829,6 @@ public class Satellite_Info : MonoBehaviour
         // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
         if (_remainingImmunityFrames <= 0 && opposingSatellite != null)
         {
-
             var baseDamage = _gameController.baseDamage;
 
             var typeModifier = 1.0f;
