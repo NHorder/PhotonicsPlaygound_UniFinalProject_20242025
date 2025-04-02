@@ -48,42 +48,42 @@ public class LevelSelectManage: MonoBehaviour
 
     public void ToLevelThree()
     {
-        if (unlockedLevels.Contains(Level.LevelThree_Colour)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelThree_Colour)) SceneController.ToLevelThreeColour();
     }
 
     public void ToLevelFour()
     {
-        if (unlockedLevels.Contains(Level.LevelFour_ColourSplitting)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelFour_ColourSplitting)) SceneController.ToLevelFourColourSplitting();
     }
 
     public void ToLevelFive()
     {
-        if (unlockedLevels.Contains(Level.LevelFive_ColourCombinations)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelFive_ColourCombinations)) SceneController.ToLevelFiveColourCombinations();
     }
 
     public void ToLevelSix()
     {
-        if (unlockedLevels.Contains(Level.LevelSix_PromotionPrerequsite)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelSix_PromotionPrerequsite)) SceneController.ToLevelSixPromotionPrerequisite();
     }
 
     public void ToLevelSeven()
     {
-        if (unlockedLevels.Contains(Level.LevelSeven_PromotionExam)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelSeven_PromotionExam)) SceneController.ToLevelSevenPromotionExam();
     }
 
     public void ToLevelEight()
     {
-        if (unlockedLevels.Contains(Level.LevelEight_Challange)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelEight_Challange)) SceneController.ToLevelEightAHarderChallenge();
     }
 
     public void ToLevelNine()
     {
-        if (unlockedLevels.Contains(Level.LevelNine_GravitationalAnomalies)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelNine_GravitationalAnomalies)) SceneController.ToLevelNineGravitationalAnomalies();
     }
 
     public void ToLevelTen()
     {
-        if (unlockedLevels.Contains(Level.LevelTen_GravitationalCollapse)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelTen_GravitationalCollapse)) SceneController.ToLevelTenGravitationalCollapse();
     }
 
 
@@ -91,13 +91,13 @@ public class LevelSelectManage: MonoBehaviour
     {
         if (_secretCodeInputField != null)
         {
-            bool unlockAll = false;
-            bool unlockQuasars = false;
+            bool secretUnlocked = false;
 
+            // Secret codes (photonics) or (elysian photonics) unlocks all levels
             if (_secretCodeInputField.text.ToLower() == "photonics" || _secretCodeInputField.text.ToLower() == "elysian photonics")
             {
                 Debug.Log("Everything unlocks...");
-                unlockAll = true;
+                secretUnlocked = true;
 
                 // Unlock all levels for this instance
                 PersistenceController.UnlockLevel(Level.LevelTwo_Refractions);
@@ -109,50 +109,35 @@ public class LevelSelectManage: MonoBehaviour
                 PersistenceController.UnlockLevel(Level.LevelEight_Challange);
                 PersistenceController.UnlockLevel(Level.LevelNine_GravitationalAnomalies);
                 PersistenceController.UnlockLevel(Level.LevelTen_GravitationalCollapse);
-
-
-                if (_secretCodeInputField.text.ToLower() == "elysian photonics")
-                {
-                    // Rapidly switch between each level regardless of unlock condition to update the 
-                    // PersistenceControllers Teaching elements - so all teaching info is available.
-                    SceneController.ToTestLevel();
-                    SceneController.ToLevelSelection();
-                }
             }
 
+
+            // Secret codes (quasars) or (quasar anomalies) unlock the last two levels
             else if (_secretCodeInputField.text.ToLower() == "quasars" || _secretCodeInputField.text.ToLower() == "quasar anomalies")
             {
                 Debug.Log("Something unlocks related to quasars..");
-                unlockQuasars = true;
+                secretUnlocked = true;
 
                 PersistenceController.UnlockLevel(Level.LevelNine_GravitationalAnomalies);
                 PersistenceController.UnlockLevel(Level.LevelTen_GravitationalCollapse);
-
-                if (_secretCodeInputField.text.ToLower() == "quasar anomalies")
-                {
-                    // Rapidly switch between both levels to update the 
-                    // PersistenceControllers Teaching elements - so all teaching info is available.
-
-                    SceneController.ToLevelSelection();
-                }
             }
 
+            // Secret code (project radiance) directs the user to the test level
             else if (_secretCodeInputField.text.ToLower() == "project radiance") SceneController.ToTestLevel();
-            else if (_secretCodeInputField.text.ToLower() == "project hue") SceneController.ToColourDemo();
 
-            if (unlockAll || unlockQuasars)
+            // If any secret code is unlocked, then play unlock animations as needed
+            if (secretUnlocked)
             {
                 var childLevelList = gameObject.GetComponentsInChildren<LevelSelectButton>();
                 var counter = 0;
                 foreach (LevelSelectButton childLevel in childLevelList)
                 {
-                    if (unlockAll) childLevel.PlayUnlockAnimation();
+                    if (secretUnlocked) childLevel.PlayUnlockAnimation();
 
-                    if (unlockQuasars && (childLevel.level == Level.LevelNine_GravitationalAnomalies || childLevel.level == Level.LevelTen_GravitationalCollapse))
+                    if (secretUnlocked && (childLevel.level == Level.LevelNine_GravitationalAnomalies || childLevel.level == Level.LevelTen_GravitationalCollapse))
                     {
                         childLevel.PlayUnlockAnimation();
                     }
-                    
                 }
             }
         }

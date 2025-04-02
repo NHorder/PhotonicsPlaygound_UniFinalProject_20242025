@@ -45,6 +45,7 @@ public class LevelInformationPanel : MonoBehaviour
 
     private void UpdateText()
     {
+
         if (_language == Language.English)
         {
             _titleText.text = _gameController.levelNameEnglish;
