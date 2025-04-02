@@ -233,8 +233,11 @@ public class UIController : MonoBehaviour
             if (rectTransform.anchoredPosition != fixedPanelSettings.teachingPanelLocation) rectTransform.anchoredPosition = fixedPanelSettings.athenaeumLocation;
             
             _fixedPanels.athenaeum.active = bVisible;
-
             _fixedPanels.athenaeumVisible = bVisible;
+
+            if (_movingPanels.shopPanelVisible) ToggleVisibleShop();
+            if (_movingPanels.levelInformationVisible) ToggleVisibleLevelInfomation();
+            if (_movingPanels.communicationPanelVisible) ToggleVisibleCommunications();
         }
 
     }

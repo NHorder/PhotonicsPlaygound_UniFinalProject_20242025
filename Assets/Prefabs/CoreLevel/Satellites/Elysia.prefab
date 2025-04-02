@@ -290,21 +290,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   satellitePrefabs:
-    singlePanelReflectionSatellite: {fileID: 8159377607702779972, guid: 792c9818fad8b0940b3670211c3c23df, type: 3}
-    doublePanelReflectionSatellite: {fileID: 6339632074429853780, guid: 0e600e0de2e54284ebbcab083f626959, type: 3}
-    glassRefractionSatellite: {fileID: 238820390179215942, guid: 465b4a8c508e2d64a9ef6002c1328dd1, type: 3}
-    sapphireRefractionSatellite: {fileID: 2174765570018992377, guid: bce8e769b497e3546887795d0865c9f3, type: 3}
-    siliconRefractionSatellite: {fileID: 5170132079802867616, guid: caccff8c91867ef4a89374ab74c15b1c, type: 3}
-    waterRefractionSatellite: {fileID: 663790855515490099, guid: 4714700d6a18df84b87e9812c229b37a, type: 3}
-    duelSplitterSatellite: {fileID: 8429709725125763397, guid: 7ce50aad56f736a418612ad0ff997922, type: 3}
-    trioSplitterSatellite: {fileID: 8429709725125763397, guid: b1129d9bd3da1a646904448d83b2ac18, type: 3}
-    hexSplitterSatellite: {fileID: 8429709725125763397, guid: 01ac745706a92df4b875b2164396c62a, type: 3}
-    combinerSatellite: {fileID: 5298249285035803575, guid: 763c44d0f406d2948a21bc485cba0a1b, type: 3}
-    whiteFilterSatellite: {fileID: 3690359245125754572, guid: 788436420957c734f8d4ea73796c03ba, type: 3}
-    redFilterSatellite: {fileID: 4991537195760023880, guid: 0d101ec37447af949831746be46d8203, type: 3}
-    blueFilterSatellite: {fileID: 4991537195760023880, guid: f5b0a8e3ad11f6f4eb9febd972d572d8, type: 3}
-    greenFilterSatellite: {fileID: 2278853733732732607, guid: c78a22c4dc8604c4588b29375310f063, type: 3}
-    yellowFilterSatellite: {fileID: 4991537195760023880, guid: 812ebe4292b018f4b99613cb4d401bdb, type: 3}
-    cyanFilterSatellite: {fileID: 4991537195760023880, guid: c754a25c79211b34bb771e4d9690a6be, type: 3}
-    magentaFilterSatellite: {fileID: 4991537195760023880, guid: c1a65892d5ee79f41a4a5828f19b3dad, type: 3}
-    customFilterSatellite: {fileID: 1733962463596710343, guid: 89a82924bd536d449b07fc32a969ee41, type: 3}
+    singlePanelReflectionSatellite: {fileID: 3870250094815667028, guid: 871225e89bf9e4844aa9c743da5d2260, type: 3}
+    doublePanelReflectionSatellite: {fileID: 4164235087891423318, guid: aa2a5ab2af1187f4dbc4e47fa56e5412, type: 3}
+    glassRefractionSatellite: {fileID: 66894818069016229, guid: 3c60f82d7ddac424495e9ad4aa1ab103, type: 3}
+    sapphireRefractionSatellite: {fileID: 3836886016988331694, guid: ff623619c7df28b4bbce928f59071332, type: 3}
+    siliconRefractionSatellite: {fileID: 7583453649835994577, guid: 2f248ead69ce19f42a899bf8b1df916f, type: 3}
+    waterRefractionSatellite: {fileID: 4647145277020480110, guid: 1f9a38a25c625ff42930e3b12ec6f75a, type: 3}
+    duelSplitterSatellite: {fileID: 388780979406706557, guid: 7e1654f322dec234b8d08e7234c690b2, type: 3}
+    trioSplitterSatellite: {fileID: 8363010052062313300, guid: 7d3e23021f103f24c9f822668cf3c760, type: 3}
+    hexSplitterSatellite: {fileID: 1916496259872852364, guid: 40162991e6d78d946bff03efc873628f, type: 3}
+    combinerSatellite: {fileID: 1251865556898045220, guid: 50875fee70edfb049a587663734adc5a, type: 3}
+    whiteFilterSatellite: {fileID: 3560297984869133238, guid: 2e5b22cadfe76a3489224fbb3005bab3, type: 3}
+    redFilterSatellite: {fileID: 3560297984869133238, guid: 11e0fe6aa8fe6f7488ff7eb32da0fe49, type: 3}
+    blueFilterSatellite: {fileID: 3560297984869133238, guid: 9fd53c9dac7437649949904eb170aeb2, type: 3}
+    greenFilterSatellite: {fileID: 3560297984869133238, guid: 2c662bc34a7d08144816d991c7b0c664, type: 3}
+    yellowFilterSatellite: {fileID: 3560297984869133238, guid: 0dbd2481637ca0b45aa196bdfa1028de, type: 3}
+    cyanFilterSatellite: {fileID: 3560297984869133238, guid: 37854b626ccc7f0408aec9b3df04745e, type: 3}
+    magentaFilterSatellite: {fileID: 3560297984869133238, guid: 5e02ad282a7103b448147bd513077c45, type: 3}
+    customFilterSatellite: {fileID: 2045251909050510166, guid: 2f411eb7106f268478e519c06b38484b, type: 3}

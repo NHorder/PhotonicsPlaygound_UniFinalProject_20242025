@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1379674786, guid: 28b615777c5f84f42a71cfc1878d2ead, type: 3}
+  m_Sprite: {fileID: 1296460319, guid: 28b615777c5f84f42a71cfc1878d2ead, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 13
+  satelliteType: 17
   interaction: 0
   isDebris: 0
   satelliteName: 
@@ -267,10 +267,10 @@ MonoBehaviour:
     lightColor: 2
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
-    intialMovementMultiplier: 2
-    intialRotationMultiplier: 2
-    maxMovementMultiplier: 20
-    maxRotationMultiplier: 20
+    intialMovementMultiplier: 4
+    intialRotationMultiplier: 0.25
+    maxMovementMultiplier: 60
+    maxRotationMultiplier: 2
   satellite_Shop_Info:
     IsShopItem: 0
     satelliteSprite: {fileID: 0}
