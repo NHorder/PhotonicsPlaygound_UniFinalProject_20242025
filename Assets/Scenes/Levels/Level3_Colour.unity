@@ -499,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7315617238182381110, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1141
+      value: -1143.2
       objectReference: {fileID: 0}
     - target: {fileID: 7315617238182381110, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -778,6 +778,155 @@ PrefabInstance:
     - target: {fileID: 4913765414196006811, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 965e0cb9ed4d70e478b56f4e8e917b59, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteB
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a1ca8d2a109c5b438551d935ffa05a3, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: 523cd279d5891de4aadd320da4902d4c, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spirteNameB
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameA
+      value: Light Colour
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spirteNameB
+      value: Custom-Colour-Filter-SAT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameA
+      value: Colour Filters
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: "Fantastic job, I knew you\u2019d do well. The company has high hopes
+        for you, so they\u2019ve assigned you to a harder field - Colour! Good luck!
+        - Handler One"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfo
+      value: "The origin satellite has been upgraded to fire different colours of
+        light, due to legal reasons these are restricted to Red, Blue, Green, Yellow,
+        Cyan and Magenta (Pink!). Some destinations require specific colours in order
+        to activate, they\u2019ll notify you if you send the wrong colour to them."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingInfo
+      value: Colour filters have been added to your shop! There are two types of
+        colour filters, the custom and the basic. The custom colour filter is more
+        expensive but allows full colour customisation, the basic is fixed. Use these
+        to change the colour of your light beams in order to meet the destination
+        satellites needs! Note that some colours may have unique interactions with
+        certain filters.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitle
+      value: Light Colour
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingTitle
+      value: Colour Filters
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameAWelsh
+      value: Lliw Golau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameAWelsh
+      value: Hidlwyr Lliw
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameBWelsh
+      value: SAT-Hidlydd-Lliw-Addasedig
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: Gwaith wych, roeddwn i'n gwybod y byddech chi'n gwneud yn dda. Mae gan
+        y cwmni obeithion mawr i chi, felly maen nhw wedi eich neilltuo i faes anoddach
+        - Lliw! Pob lwc! - Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfoWelsh
+      value: Mae'r lloeren tarddiad wedi'i huwchraddio i danio gwahanol liwiau golau,
+        oherwydd rhesymau cyfreithiol mae'r rhain wedi'u cyfyngu i Goch, Glas, Gwyrdd,
+        Melyn, Gwyrddlas a Magenta (Pinc!). Mae rhai cyrchfannau angen lliwiau penodol
+        er mwyn ei actifeiddio, byddant yn eich hysbysu os byddwch chi'n anfon y
+        lliw anghywir atynt.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingInfoWelsh
+      value: "Mae hidlwyr lliw wedi'u hychwanegu at eich siop! Mae dau fath o hidlwyr
+        lliw, yr addasol a'r sylfaenol. Mae'r hidlydd lliw addasol yn ddrytach ond
+        yn caniat\xE1u addasu lliw llawn, mae'r sylfaenol yn sefydlog. Defnyddiwch
+        y rhain i newid lliw eich pelydrau golau er mwyn diwallu anghenion lloerennau
+        cyrchfan! Sylwch y gall rhai lliwiau fod \xE2 rhyngweithiadau unigryw \xE2
+        hidlwyr penodol."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Cyflwyniad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitleWelsh
+      value: Lliw Golau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingTitleWelsh
+      value: Hidlwyr Lliw
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1365,11 +1514,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2163384497861572131, guid: a9920944824b47d4a891137bca2a7501, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.58
+      value: -13.74
       objectReference: {fileID: 0}
     - target: {fileID: 2163384497861572131, guid: a9920944824b47d4a891137bca2a7501, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.1
+      value: -11.09
       objectReference: {fileID: 0}
     - target: {fileID: 2163384497861572131, guid: a9920944824b47d4a891137bca2a7501, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1790,11 +1939,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7507327514781693688, guid: 9fd53c9dac7437649949904eb170aeb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.27
+      value: 7.02
       objectReference: {fileID: 0}
     - target: {fileID: 7507327514781693688, guid: 9fd53c9dac7437649949904eb170aeb2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.88
+      value: -4.08
       objectReference: {fileID: 0}
     - target: {fileID: 7507327514781693688, guid: 9fd53c9dac7437649949904eb170aeb2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1957,7 +2106,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 329230314428367394, guid: aa2a5ab2af1187f4dbc4e47fa56e5412, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.62
+      value: -1.45
       objectReference: {fileID: 0}
     - target: {fileID: 329230314428367394, guid: aa2a5ab2af1187f4dbc4e47fa56e5412, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2421,7 +2570,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.55
+      value: 3.03
       objectReference: {fileID: 0}
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.y

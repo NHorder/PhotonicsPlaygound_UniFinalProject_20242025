@@ -779,6 +779,117 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f05147fa02671d47b1615084b379a95, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteB
+      value: 
+      objectReference: {fileID: -981569322, guid: c3b7dd3ace0d0d546ac3c30092f0d2c6, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteB
+      value: 
+      objectReference: {fileID: -981569322, guid: c3b7dd3ace0d0d546ac3c30092f0d2c6, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spirteNameB
+      value: Gravitational Anomalies
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Priority Red Alert!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spirteNameB
+      value: Gravitational Anomalies
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameA
+      value: Handler On
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: Warning! Gravitational Anomalies have been detected within your zone.
+        Gravitational Anomalies may destroy satellites and are hard to notice. Due
+        to this mission being priority one, we need you to continue with your mission.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfo
+      value: "I\u2019ve been notified of the gravitational anomalies within your
+        area, don\u2019t panic. In fact, you might be able to use them. Ever tried
+        slingshotting light around a black hole before? Good luck, I\u2019ll be monitoring
+        your progress and the anomalies. - Handler One"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Priority Red Alert!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Rhybudd Coch Blaenoriaethol!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameBWelsh
+      value: Anghysondebau Disgyrchiant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameBWelsh
+      value: Anghysondebau Disgyrchiant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: "Rhybudd! Mae Anghysondebau Disgyrchiant wedi'u canfod yn eich parth.
+        Gall anomaleddau disgyrchiant ddinistrio lloerennau ac maent yn anodd sylwi.
+        Oherwydd bod y genhadaeth hon yn flaenoriaeth un, mae angen i chi barhau
+        \xE2'ch cenhadaeth."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfoWelsh
+      value: "Rydw i wedi cael gwybod am yr anghysondebau disgyrchiant yn eich ardal,
+        peidiwch \xE2 mynd i banig. Mewn gwirionedd, efallai y byddwch chi'n gallu
+        eu defnyddio. Erioed wedi ceisio taflu golau o amgylch twll du o'r blaen?
+        Pob lwc, byddaf yn monitro chi a'r anghysondebau. - Triniwr Un"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Rhybudd Coch Blaenoriaethol!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitleWelsh
+      value: Not Cyflwyniad
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

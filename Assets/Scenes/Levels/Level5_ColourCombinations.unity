@@ -779,6 +779,101 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: db2e8e18532e4f842b2b652f14a53970, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: d2bffb7a0c70737449539134e3170858, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spirteNameB
+      value: Combiners
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameA
+      value: Combiners
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: "Congratulations on receiving \u201CEmployee of the System\u201D as
+        the youngest ever employee to receive that award! Your experience and knowledge
+        of colour is astounding, your next task is to use combiners to merge colours
+        together. Wish you the best! - Handler One"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfo
+      value: Your ship has been updated to include colour combiner satellites. These
+        satellites can combine multiple colours and strengthen the resulting beam
+        of light. Try a couple of colour combinations, see what you get!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitle
+      value: Combiners
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameAWelsh
+      value: Cyfunwyr
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameBWelsh
+      value: Cyfunwyr
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: "Llongyfarchiadau ar dderbyn \u201CGweithiwr y System\u201D fel y gweithiwr
+        ieuengaf erioed i dderbyn y wobr honno! Mae eich profiad a'ch gwybodaeth
+        am liw yn syfrdanol, eich tasg nesaf yw defnyddio cyfunwyr i uno lliwiau
+        gyda'i gilydd. Dymunwn y gorau i chi! - Triniwr Un"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfoWelsh
+      value: Mae eich llong wedi'i diweddaru i gynnwys lloerennau cyfunydd lliw.
+        Gall y lloerennau hyn gyfuno lliwiau lluosog a chryfhau'r pelydr golau sy'n
+        deillio o hynny. Rhowch gynnig ar gwpl o gyfuniadau lliw, gweld beth ydych
+        chi'n ei gael!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Cyflwyniad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitleWelsh
+      value: Cyfunwyr
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

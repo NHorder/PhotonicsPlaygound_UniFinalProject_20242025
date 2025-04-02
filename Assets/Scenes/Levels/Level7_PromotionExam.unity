@@ -779,6 +779,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: "The promotion exam. A challenging task to see if you\u2019re worth
+        the money - and a fairly large betting pool too. My bets are on you, good
+        luck and let's make some pocket money. - Handler One"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: Yr arholiad dyrchafiad. Tasg heriol i weld a ydych chi'n werth yr arian
+        - a phwll betio eithaf mawr hefyd. Mae fy betiau arnoch chi, pob lwc a gadewch
+        i ni wneud rhywfaint o arian poced - Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Cyflwyniad
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

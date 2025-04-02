@@ -779,6 +779,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: "Congratulations on that promotion! You\u2019ll be assigned harder tasks
+        from now, good luck! - Handler One"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: Llongyfarchiadau ar y dyrchafiad! Byddwch yn cael tasgau anoddach o
+        hyn ymlaen, pob lwc! - Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Cyflwyniad
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -779,6 +779,152 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteA
+      value: 
+      objectReference: {fileID: -131190350, guid: 5101ddd79ec779f41a80fffd2e14a6b2, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteB
+      value: 
+      objectReference: {fileID: -361493908, guid: 5101ddd79ec779f41a80fffd2e14a6b2, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 0edc335e5c21d584aaeee805be3a6c95, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d7960d9b25dc9e41a7308da311fe897, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spirteNameB
+      value: Asteroids
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameA
+      value: Asteroids
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spirteNameB
+      value: A high grade satellite designed for refracting light
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameA
+      value: A high grade satellite designed for refracting light
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: "It\u2019s me again, well done with reflections. You\u2019ve been assigned
+        to refractions this time. Scans have detected a number of asteroids present
+        within this area, be careful to not crash satellites into them too often,
+        satellites aren\u2019t cheap! - Handler One"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfo
+      value: Scans indicate a number of asteroids and debris within your operation
+        zone, crashing satellites into them may destroy the satellite.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingInfo
+      value: The shop has been updated to include refractor satellites! Refractors
+        are unique satellites that allow light to pass through them whilst subtly
+        changing their direction. This is based on the refractive index of the material
+        being used, glass for example has an index of 1.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitle
+      value: Asteroids
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingTitle
+      value: Refractors
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameAWelsh
+      value: Asteroidau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameBWelsh
+      value: Asteroidau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameAWelsh
+      value: Lloeren gradd uchel wedi'i chynllunio ar gyfer plygiannu golau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameBWelsh
+      value: Lloeren gradd uchel wedi'i chynllunio ar gyfer plygiannu golau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: "Fi eto, da iawn gyda\u2019r adlewyrchiadau. Rydych wedi cael eich neilltuo
+        i plygiant y tro hwn. Mae sganiau wedi canfod nifer o asteroidau sy'n bresennol
+        yn yr ardal hon, byddwch yn ofalus i beidio \xE2 chwalu lloerennau i mewn
+        iddynt yn rhy aml, nid yw lloerennau yn rhad! - Triniwr Un"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfoWelsh
+      value: "Mae sganiau yn dangos nifer o asteroidau a malurion o fewn eich parth
+        gweithredu, gall taro\u2019r lloerennau i mewn iddynt ddinistrio'r lloeren."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingInfoWelsh
+      value: "Mae'r siop wedi'i diweddaru i gynnwys lloerennau plygiant! Mae plygiannau
+        yn lloerennau unigryw sy'n caniat\xE1u i olau basio trwyddynt tra'n newid
+        eu cyfeiriad yn gynnil. Mae hyn yn seiliedig ar indecs plygiannol y deunydd
+        sy'n cael ei ddefnyddio, mae gan wydr er enghraifft indecs o 1.52."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Cyflwyniad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitleWelsh
+      value: Asteroidau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingTitleWelsh
+      value: Plygiannau
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1548,11 +1694,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2282948915416225052, guid: 1f9a38a25c625ff42930e3b12ec6f75a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.23
+      value: -7.16
       objectReference: {fileID: 0}
     - target: {fileID: 2282948915416225052, guid: 1f9a38a25c625ff42930e3b12ec6f75a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.16
+      value: -3.78
       objectReference: {fileID: 0}
     - target: {fileID: 2282948915416225052, guid: 1f9a38a25c625ff42930e3b12ec6f75a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2421,7 +2567,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.55
+      value: 2.53
       objectReference: {fileID: 0}
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2905,11 +3051,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643892780293205000, guid: 3c60f82d7ddac424495e9ad4aa1ab103, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.48
+      value: -12.68
       objectReference: {fileID: 0}
     - target: {fileID: 6643892780293205000, guid: 3c60f82d7ddac424495e9ad4aa1ab103, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.42
+      value: -4.81
       objectReference: {fileID: 0}
     - target: {fileID: 6643892780293205000, guid: 3c60f82d7ddac424495e9ad4aa1ab103, type: 3}
       propertyPath: m_LocalPosition.z

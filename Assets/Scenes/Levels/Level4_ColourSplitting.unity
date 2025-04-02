@@ -779,6 +779,106 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fe369d6ded9e474ca14b0c6811e7e5b, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: c68f80a21d6f26845803463219d7694d, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spirteNameB
+      value: Splitter Satellites
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameA
+      value: Splitter Satellites
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: "Impressive work. You\u2019re on track to receive \u201CEmployee of
+        the System\u201D, which is unheard given your time with the company. Due
+        to your competence in communications, you\u2019ve been assigned to a slightly
+        harder task, splitting light. Good luck! - Handler One"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfo
+      value: The shop has been updated to include new satellites, Duel Splitter,
+        Trio Splitter and Hex Splitter. These satellites will take a single light
+        beam and split it into more beams depending on the type of satellite used.
+        The technology in each satellite allows for the splitting of colour! Some
+        destinations may require colours that you have not yet split, so try splitting
+        a couple of beams of light to see what happens.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitle
+      value: Splitter Satellites
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameAWelsh
+      value: Lloerennau hollti
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameBWelsh
+      value: Lloerennau hollti
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: Gwaith trawiadol. Rydych chi ar y trywydd iawn i dderbyn "Gweithiwr
+        y System", sy'n anghyffredin o ystyried eich amser gyda'r cwmni. Oherwydd
+        eich cymhwysedd mewn cyfathrebu, rydych chi wedi cael eich neilltuo i dasg
+        ychydig yn anoddach, hollti golau. Pob lwc! - Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfoWelsh
+      value: "Mae'r siop wedi'i diweddaru i gynnwys lloerennau newydd, Holltydd Deuawd,
+        Holltydd Triawd, a Holltydd Hecs. Bydd y lloerennau hyn yn cymryd un pelydr
+        golau a'i rannu'n fwy o belydrau yn dibynnu ar y math o loeren a ddefnyddir.
+        Mae'r dechnoleg ym mhob lloeren yn caniat\xE1u hollti lliw! Efallai y bydd
+        rhai cyrchfannau angen lliwiau nad ydych wedi'u rhannu eto, felly ceisiwch
+        rannu cwpl o belydrau o olau i weld beth sy'n digwydd."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Cyflwyniad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitleWelsh
+      value: Lloerennau hollti
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

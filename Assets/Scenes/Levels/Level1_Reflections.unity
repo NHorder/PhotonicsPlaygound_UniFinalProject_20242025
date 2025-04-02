@@ -499,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7315617238182381110, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1141
+      value: -1269.8
       objectReference: {fileID: 0}
     - target: {fileID: 7315617238182381110, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -779,6 +779,411 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: fac368452487cb840a48273a5ac41a01, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: f3e5892cdc4a78a459f490a3adf54d49, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: 76d26a486ed19224eb999a810e2d31d5, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteA
+      value: 
+      objectReference: {fileID: 1670687119, guid: 6427afcbe8292e84391de597f336e6f3, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteB
+      value: 
+      objectReference: {fileID: 231070858, guid: 6427afcbe8292e84391de597f336e6f3, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: f4d7c3531b377a84982f8784257b578f, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: 98c63ff0adb2b104cbb71efdaf90943e, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 7fd5fda84c31ce94588f1ed0dc48ebfa, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: 0baa744dc93bc4d489b55e7fce9949bd, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: ab1c8a37ba937d64eb5f5238d137d0ff, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: f8b46a2845c66ae4cbd799edd4f27524, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: a7664464c2369b648934dd2890f7783e, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].spriteB
+      value: 
+      objectReference: {fileID: 21300000, guid: 57cbf958453e5d44688200aecf5dfac3, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[7].spriteA
+      value: 
+      objectReference: {fileID: 21300000, guid: 39293f968bb68ee4591a93b0fd8da1ed, type: 3}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameA
+      value: Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spirteNameB
+      value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameA
+      value: Level Information
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spirteNameB
+      value: Eye of Zeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameA
+      value: Eye of Zeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].spirteNameB
+      value: Prometheus (Origin)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].spriteNameA
+      value: Prometheus (Origin)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].spirteNameB
+      value: Communications
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].spriteNameA
+      value: Fyrefly (Destination)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].spirteNameB
+      value: Elysia
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].spriteNameA
+      value: The Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].spirteNameB
+      value: Satellite Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].spriteNameA
+      value: Satellite Selection
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfo
+      value: Welcome new recruit! I am Handler One and I will be introducing you
+        to everything that you need to know. Your task is simple, get the beam of
+        light to the destination through any means necessary. I have allocated you
+        a budget in order to accomplish this, the less you use the higher score you
+        get! Good luck, I have high hopes for you. - Handler One
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfo
+      value: You can find level information and settings in the top right of your
+        display, hitting the Info icon will open it. Settings are saved automatically
+        when leaving the settings screen.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingInfo
+      value: In each level you will find a drone at the centre of your screen. This
+        will be your eyes, moving it around will change what you can see.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].teachingInfo
+      value: This is your starting point, this is where your beam of light begins.
+        Make note of the colour, this will be helpful in later levels.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].teachingInfo
+      value: "This is your goal, getting the beam of light here. Due to security
+        reasons, you must hold the beam of light over the destination in order to
+        \u2018activate\u2019 it. If the beam moves off the destination the connection
+        will be lost and the destination will become \u2018inactive\u2019. Once all
+        destinations are active, the level ends. You can see how many destinations
+        need activating and your progress in the top left of your display. Selecting
+        the WiFi icon will open the panel and display more information. The destination
+        will notify you when it has received light for a duration."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].teachingInfo
+      value: As an employee of Elysian Photonics, we have provided you with exclusive
+        access to our state of the art matter printer, Elysia. On the right side
+        of your display, clicking the shopping basket icon will open the shop. Clicking
+        on one of the dedicated tabs will present you with satellites you may purchase.
+        Purchased satellites are then created by Elysia. Note that you will need
+        to move created satellites out of the printing area in order for Elysia to
+        create new ones.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].teachingInfo
+      value: "Satellites come in a variety of forms and have different interactions.
+        Selecting a satellite will present its information in the bottom left of
+        your screen (document icon) and a control panel. Use of the control panel
+        is optional, you can use your keyboard for the same results. Some satellites
+        don\u2019t give you the ability to move them!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].usingSpriteB
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[7].teachingInfo
+      value: This is a standard reflection satellite. It follows the principle of
+        specular reflection and will absorb a small amount of light. Light will reflect
+        at the same angle that it is hit at. Weak signals are not accepted by the
+        destination so be wary!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[7].usingSpriteA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitle
+      value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitle
+      value: Level Information and Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingTitle
+      value: Eyes of Zeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].teachingTitle
+      value: Prometheus (Origin)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].teachingTitle
+      value: Fyrefly (Destination )
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].teachingTitle
+      value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].teachingTitle
+      value: Satellites
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[7].teachingTitle
+      value: Reflection
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].spriteNameAWelsh
+      value: Triniwr Un
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameAWelsh
+      value: Gwybodaeth Lefel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].spriteNameBWelsh
+      value: Gosodiadau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameAWelsh
+      value: Llygad Zeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].spriteNameBWelsh
+      value: Llygad Zeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].spriteNameAWelsh
+      value: Prometheus (Tarddiad)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].spriteNameBWelsh
+      value: Prometheus (Tarddiad)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].spriteNameAWelsh
+      value: Fyrefly (Cyrchfan)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].spriteNameBWelsh
+      value: Cyfathrebiadau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].spriteNameAWelsh
+      value: Y Siop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].spriteNameBWelsh
+      value: Elysia
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].spriteNameAWelsh
+      value: Dewis Lloeren
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].spriteNameBWelsh
+      value: Rheolaethau Lloeren
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingInfoWelsh
+      value: "Croeso recriwt newydd! Triniwr Un dw\u2019i a byddaf yn eich cyflwyno
+        i bopeth sydd angen i chi ei wybod. Mae eich tasg yn syml, cael y pelydr
+        o olau i'r gyrchfan trwy unrhyw ddulliau angenrheidiol. Rwyf wedi dyrannu
+        cyllideb i chi er mwyn cyflawni hyn, y lleiaf y byddwch chi'n defnyddio'r
+        sg\xF4r uwch a gewch! Pob lwc, mae gen i obeithion mawr i chi. - Triniwr
+        Un"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingInfoWelsh
+      value: Gallwch ddod o hyd i wybodaeth lefel a gosodiadau ar frig dde eich sgrin,
+        bydd taro'r eicon Info yn ei agor. Mae gosodiadau'n cael eu cadw'n awtomatig
+        wrth adael y sgrin gosodiadau.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingInfoWelsh
+      value: "Ym mhob lefel fe welwch dr\xF4n yng nghanol eich sgrin. Dyma fydd eich
+        llygaid, bydd ei symud o gwmpas yn newid yr hyn y gallwch ei weld."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].teachingInfoWelsh
+      value: Dyma eich man cychwyn, dyma lle mae eich pelydr o olau yn dechrau. Gwnewch
+        sylw o'r lliw, bydd hyn yn ddefnyddiol mewn lefelau diweddarach.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].teachingInfoWelsh
+      value: Dyma eich nod, cael y pelydr o olau yma. Oherwydd rhesymau diogelwch,
+        mae'n rhaid i chi ddal y pelydr o olau dros y gyrchfan er mwyn ei 'actifeiddio'.
+        Os yw'r pelydr yn symud oddi ar y cyrchfan, collir y cysylltiad a bydd y
+        cyrchfan yn 'anweithredol'. Unwaith y bydd yr holl gyrchfannau yn weithredol,
+        mae'r lefel yn dod i ben. Gallwch weld faint o gyrchfannau sydd angen eu
+        'actifeiddio'a'ch cynnydd ar y chwith uchaf o'ch sgrin. Bydd dewis yr eicon
+        WiFi yn agor y panel ac yn arddangos mwy o wybodaeth. Bydd y cyrchfan yn
+        eich hysbysu pan fydd wedi derbyn golau am gyfnod.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].teachingInfoWelsh
+      value: "Fel gweithiwr Ffotoneg Elysian, rydym wedi darparu mynediad unigryw
+        i chi i'n argraffydd mater o'r radd flaenaf, Elysia. Ar ochr dde'ch sgrin,
+        bydd clicio ar yr eicon basged siopa yn agor y siop. Bydd clicio ar un o'r
+        tabiau pwrpasol yn cyflwyno lloerennau y gallwch eu prynu i chi. Yna mae
+        lloerennau a brynwyd yn cael eu creu gan Elysia. Sylwch y bydd angen i chi
+        symud lloerennau a gr\xEBwyd allan o'r ardal argraffu er mwyn i Elysia greu
+        rhai newydd."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].teachingInfoWelsh
+      value: Daw lloerennau mewn amrywiaeth o ffurfiau ac mae ganddynt wahanol ryngweithiadau.
+        Bydd dewis lloeren yn cyflwyno ei wybodaeth ar waelod chwith eich sgrin (eicon
+        dogfen) a phanel rheoli. Mae defnyddio'r panel rheoli yn ddewisol, gallwch
+        ddefnyddio'ch bysellfwrdd ar gyfer yr un canlyniadau. Nid yw rhai lloerennau
+        yn rhoi'r gallu i chi eu symud!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[7].teachingInfoWelsh
+      value: Mae hon yn lloeren adlewyrchu safonol. Mae'n dilyn yr egwyddor o adlewyrchiad
+        speciwlar a bydd yn amsugno ychydig bach o olau. Bydd golau yn adlewyrchu
+        ar yr un ongl ag y mae'n cael ei daro arno. Nid yw signalau gwan yn cael
+        eu derbyn gan y gyrchfan felly byddwch yn wyliadwrus!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[0].teachingTitleWelsh
+      value: Cyflwyniad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[1].teachingTitleWelsh
+      value: Gwybodaeth a Gosodiadau Lefel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[2].teachingTitleWelsh
+      value: Llygaid Zeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[3].teachingTitleWelsh
+      value: Prometheus (Tarddiad)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[4].teachingTitleWelsh
+      value: Fyrefly (Cyrchfan)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[5].teachingTitleWelsh
+      value: Siop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[6].teachingTitleWelsh
+      value: Loerennau
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
+      propertyPath: teachingElements.Array.data[7].teachingTitleWelsh
+      value: Adlewyrchiad
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -812,17 +1217,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 515473034}
     m_Modifications:
+    - target: {fileID: 141322203935189207, guid: 46e3e7db5de7e9e43b1fccc4c013f155, type: 3}
+      propertyPath: allLocksOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 141322203935189207, guid: 46e3e7db5de7e9e43b1fccc4c013f155, type: 3}
+      propertyPath: neededLaserColour
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3238712552904753242, guid: 46e3e7db5de7e9e43b1fccc4c013f155, type: 3}
       propertyPath: m_Name
       value: Destination
       objectReference: {fileID: 0}
     - target: {fileID: 8640278322024016581, guid: 46e3e7db5de7e9e43b1fccc4c013f155, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.09
+      value: 11.32
       objectReference: {fileID: 0}
     - target: {fileID: 8640278322024016581, guid: 46e3e7db5de7e9e43b1fccc4c013f155, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.57
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 8640278322024016581, guid: 46e3e7db5de7e9e43b1fccc4c013f155, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1369,7 +1782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2163384497861572131, guid: a9920944824b47d4a891137bca2a7501, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.1
+      value: -6.26
       objectReference: {fileID: 0}
     - target: {fileID: 2163384497861572131, guid: a9920944824b47d4a891137bca2a7501, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1406,6 +1819,10 @@ PrefabInstance:
     - target: {fileID: 6738512806945825477, guid: a9920944824b47d4a891137bca2a7501, type: 3}
       propertyPath: m_Name
       value: Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189672109583947968, guid: a9920944824b47d4a891137bca2a7501, type: 3}
+      propertyPath: laserColour
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2421,11 +2838,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.55
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3228,7 +3645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7692380582219875850, guid: 451f616f099921f4aba52a64da34e116, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.87
+      value: -1.36
       objectReference: {fileID: 0}
     - target: {fileID: 7692380582219875850, guid: 451f616f099921f4aba52a64da34e116, type: 3}
       propertyPath: m_LocalPosition.z
