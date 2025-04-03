@@ -1747,7 +1747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7315617238182381110, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1138
+      value: -1321.6
       objectReference: {fileID: 0}
     - target: {fileID: 7315617238182381110, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -103949,8 +103949,16 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: currentBudget
+      value: 1800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: levelNameWelsh
       value: 'Lefel 6: Rhagofyniad Dyrchafiad'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: startingBudget
+      value: 1800
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: levelNameEnglish
@@ -103965,6 +103973,14 @@ PrefabInstance:
       propertyPath: levelDescriptionEnglish
       value: "You\u2019ve been taught all the basics, now use it to demonstrate you
         are ready for that promotion!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: expectedNumSatellitesUsed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: expectedBudgetOnCompletion
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed

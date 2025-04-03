@@ -397,6 +397,15 @@ public class UIController : MonoBehaviour
         PresentFixedPanel(FixedUIPanel.Athenaeum ,!_fixedPanels.athenaeumVisible);
     }
 
+    public void ToggleSettingsIfClosed()
+    {
+        if (!_fixedPanels.settingsVisible) 
+        {
+            PresentFixedPanel(FixedUIPanel.Settings,true);
+            _fixedPanels.settingsVisible = true;
+        }
+    }
+
     public void UpdateSettings(bool languageChanged)
     {
         _language = PersistenceController.GetLanguage();

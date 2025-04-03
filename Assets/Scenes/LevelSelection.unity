@@ -13006,13 +13006,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: EyeOfZeta
       objectReference: {fileID: 0}
+    - target: {fileID: 3537930732422198724, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.29
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.z

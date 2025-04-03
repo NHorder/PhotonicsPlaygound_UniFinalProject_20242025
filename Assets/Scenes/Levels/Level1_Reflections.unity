@@ -2765,8 +2765,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: currentBudget
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: levelNameWelsh
       value: 'Lefel 1: Adlewyrchiad'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: startingBudget
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: levelNameEnglish
@@ -2783,6 +2791,18 @@ PrefabInstance:
       value: This level teaches about reflections. Make the best of your budget to
         get the light beam to the destination, the more budget remaining the higher
         your score!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: expectedNumSatellitesUsed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: expectedBudgetOnCompletion
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8246850707657699121, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: m_Name

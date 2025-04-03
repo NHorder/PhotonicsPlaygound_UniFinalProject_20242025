@@ -58,6 +58,10 @@ public class SceneController: MonoBehaviour
         SceneManager.LoadScene("LevelSelection");
     }
 
+    public static void ToAcknowledgementsScreen()
+    {
+        SceneManager.LoadScene("Acknowledgements");
+    }
 
 
     // Introductory Levels

@@ -17981,8 +17981,16 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: currentBudget
+      value: 1700
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: levelNameWelsh
       value: 'Lefel 9: Anghysondebau Disgyrchiant.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: startingBudget
+      value: 1700
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: levelNameEnglish
@@ -17995,6 +18003,14 @@ PrefabInstance:
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: levelDescriptionEnglish
       value: A mission with abnormal gravity signatures, do your best!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: expectedNumSatellitesUsed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: expectedBudgetOnCompletion
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
