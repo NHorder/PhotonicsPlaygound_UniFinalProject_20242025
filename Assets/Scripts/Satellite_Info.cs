@@ -749,7 +749,7 @@ public class Satellite_Info : MonoBehaviour
 
 
 
-        if (isDebris)
+        if (isDebris && satelliteType != SatelliteType.GravitationalAnomaly)
         {
             this.transform.eulerAngles = new Vector3(0f,0f,Random.Range(0f,360f));
         }
@@ -848,9 +848,10 @@ public class Satellite_Info : MonoBehaviour
             else if (satelliteTypeModifier == SatelliteTypeModifier.SlightStrong) typeModifier = 0.75f;
             else if (satelliteTypeModifier == SatelliteTypeModifier.Strong) typeModifier = 0.5f;
             else if (satelliteTypeModifier == SatelliteTypeModifier.ReallyStrong) typeModifier = 0.1f;
-
             // This prevents damage from destinations, creators, origins, etc
             else typeModifier = 0.0f;
+
+            if (opposingSatellite.tag == "BrokenSatellite") typeModifier = 0.0f;
 
 
             var speedModifier = 1.0f;
