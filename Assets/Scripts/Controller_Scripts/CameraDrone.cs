@@ -143,7 +143,6 @@ public class CameraDrone : MonoBehaviour
         _attached = true;
         _linkedSatelliteTransform = transform;
         
-
     }
 
     public void DetachDroneFromSatellite()

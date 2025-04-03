@@ -4057,6 +4057,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.movementSpeed
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1576753308454094203, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Name
       value: EyeOfZeta
@@ -47898,6 +47902,10 @@ PrefabInstance:
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition
       value: -7.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8246850707657699121, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: m_Name

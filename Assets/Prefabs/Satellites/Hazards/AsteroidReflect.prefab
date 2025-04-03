@@ -9,16 +9,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7692380582219875850}
+  - component: {fileID: 7491123667389459715}
   - component: {fileID: 4659319299700742855}
   - component: {fileID: 7313655991479528876}
-  - component: {fileID: 8969632965523634690}
+  - component: {fileID: 2605757290755812286}
   - component: {fileID: 3229400356028533944}
   - component: {fileID: 3028145778818627234}
-  - component: {fileID: 7491123667389459715}
   - component: {fileID: 3480236409775147038}
   - component: {fileID: 1347039932729700302}
+  - component: {fileID: 5650562721535430097}
   m_Layer: 3
-  m_Name: Asteroid
+  m_Name: AsteroidReflect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,6 +40,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7491123667389459715
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464133313348597813}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c192115e71dac84c8ce254ba25c2251, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &4659319299700742855
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -80,12 +102,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1777447134, guid: 88e13f2b863b5a34a98bd6560145cb2e, type: 3}
+  m_Sprite: {fileID: 1600877155, guid: 88e13f2b863b5a34a98bd6560145cb2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.5, y: 2.6875}
+  m_Size: {x: 2.2916667, y: 2.0625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -118,7 +140,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &8969632965523634690
+--- !u!60 &2605757290755812286
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,39 +176,33 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.6875}
-    newSize: {x: 2.5, y: 2.6875}
+    oldSize: {x: 2.2916667, y: 2.0625}
+    newSize: {x: 2.2916667, y: 2.0625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.25, y: -0.07291667}
-      - {x: 1.2291667, y: 0.17708334}
-      - {x: 1.25, y: 0.40625}
-      - {x: 1.25, y: 0.48958334}
-      - {x: 1.2083334, y: 0.53125}
-      - {x: 0.8958334, y: 1.09375}
-      - {x: 0.5833334, y: 1.34375}
-      - {x: -0.22916667, y: 1.34375}
-      - {x: -0.45833334, y: 1.3020834}
-      - {x: -0.75, y: 1.21875}
-      - {x: -0.8958334, y: 1.09375}
-      - {x: -1.0625, y: 0.90625}
-      - {x: -1.2291667, y: 0.46875}
-      - {x: -1.2291667, y: 0.28125}
-      - {x: -1.0833334, y: 0.03125}
-      - {x: -1.1041667, y: -0.48958334}
-      - {x: -0.8958334, y: -0.8854167}
-      - {x: -0.7291667, y: -0.9895834}
-      - {x: -0.5833334, y: -1.15625}
-      - {x: -0.33333334, y: -1.34375}
-      - {x: 0.041666668, y: -1.34375}
-      - {x: 0.4166667, y: -1.3020834}
-      - {x: 0.8958334, y: -1.0104167}
-      - {x: 1.0625, y: -0.7395834}
-      - {x: 1.25, y: -0.6770834}
+    - - {x: 1.1458334, y: -0.17708334}
+      - {x: 1.1458334, y: 0.3229167}
+      - {x: 0.9375, y: 0.6770834}
+      - {x: 0.75, y: 1.0104167}
+      - {x: 0.6458334, y: 1.03125}
+      - {x: -0.25, y: 1.03125}
+      - {x: -0.5, y: 1.0104167}
+      - {x: -0.6458334, y: 0.8854167}
+      - {x: -0.9375, y: 0.65625}
+      - {x: -1.125, y: 0.40625}
+      - {x: -1.125, y: 0.13541667}
+      - {x: -1.0833334, y: -0.13541667}
+      - {x: -1.0416667, y: -0.53125}
+      - {x: -0.875, y: -0.7395834}
+      - {x: -0.3541667, y: -1.03125}
+      - {x: 0.020833334, y: -1.03125}
+      - {x: 0.45833334, y: -0.9270834}
+      - {x: 0.8125, y: -0.6979167}
+      - {x: 1, y: -0.5729167}
   m_UseDelaunayMesh: 0
 --- !u!61 &3229400356028533944
 BoxCollider2D:
@@ -224,8 +240,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.6875}
-    newSize: {x: 2.5, y: 2.6875}
+    oldSize: {x: 2.2916667, y: 2.0625}
+    newSize: {x: 2.2916667, y: 2.0625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -245,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 22
+  satelliteType: 23
   interaction: 0
   isDebris: 1
   satelliteName: 
@@ -278,27 +294,6 @@ MonoBehaviour:
     ShopItemXLoc: 0
     ShopItemYLoc: 0
   statelliteParticleSystem: {fileID: 0}
---- !u!95 &7491123667389459715
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6464133313348597813}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bfc15cfe775451f478f57d1527b7df15, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!198 &3480236409775147038
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5096,3 +5091,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5650562721535430097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464133313348597813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6aa863658c9914bab06b96d63c031b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

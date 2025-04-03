@@ -56,12 +56,14 @@ public class GameController : MonoBehaviour
 
     private UIController _uiController;
 
-    private SatelliteCreator satelliteCreator;
+    private SatelliteCreator _satelliteCreatorElysia;
+    private CameraDrone _cameraDroneEyeOfZeta;
 
 
     void Start()
     {
         activeLanguage = PersistenceController.GetLanguage();
+        
 
         if (expectedBudgetOnCompletion == null || expectedBudgetOnCompletion == 0) expectedBudgetOnCompletion = (float)(0.5 * startingBudget);
         if (expectedNumSatellitesUsed == null || expectedNumSatellitesUsed == 0) expectedNumSatellitesUsed = 5;
@@ -141,9 +143,10 @@ public class GameController : MonoBehaviour
 
 
 
-        if (satelliteCreator == null)
+        if (_satelliteCreatorElysia == null || _cameraDroneEyeOfZeta == null)
         {
-            satelliteCreator = GameObject.FindGameObjectsWithTag("SatelliteCreator")[0].GetComponent<SatelliteCreator>();
+            _satelliteCreatorElysia = GameObject.FindGameObjectsWithTag("SatelliteCreator")[0].GetComponent<SatelliteCreator>();
+            _cameraDroneEyeOfZeta = GameObject.FindGameObjectsWithTag("EyeOfZeta")[0].GetComponent<CameraDrone>();
         }
 
         // If the price is more than 0 (meaning it can be purchased) identify which satellite to purchase.
@@ -151,7 +154,9 @@ public class GameController : MonoBehaviour
         {
             bool purchased = false;
 
-            if (satelliteCreator != null) purchased = satelliteCreator.CreateSatellite(satType);
+            if (_satelliteCreatorElysia != null) purchased = _satelliteCreatorElysia.CreateSatellite(satType);
+
+            _cameraDroneEyeOfZeta.AttachDroneToSatellite(_satelliteCreatorElysia.gameObject.GetComponent<Transform>());
 
             if (purchased)
             {
