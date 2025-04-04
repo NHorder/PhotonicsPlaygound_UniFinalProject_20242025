@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 182440517018563772}
   - component: {fileID: 8848586412842649538}
   - component: {fileID: 3340271827481355428}
+  - component: {fileID: -3526186865438849244}
   m_Layer: 3
   m_Name: BrokenCombiner
   m_TagString: BrokenSatellite
@@ -129,6 +130,7 @@ MonoBehaviour:
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   canBeSold: 1
+  isDestroyedDebris: 1
   satelliteSellPrice: 0
   canbeMoved: 1
   advanced_Satellite_Info:
@@ -182,7 +184,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -297,3 +299,30 @@ PolygonCollider2D:
       - {x: 1.0625, y: -1.2291667}
       - {x: 1.125, y: -1.1875}
   m_UseDelaunayMesh: 0
+--- !u!50 &-3526186865438849244
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083379457334733539}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 2
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

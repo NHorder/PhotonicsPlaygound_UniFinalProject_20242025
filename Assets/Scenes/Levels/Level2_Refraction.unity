@@ -4061,6 +4061,22 @@ PrefabInstance:
       propertyPath: eyeOfZetaAutomaticDroneSettings.movementSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
+      value: 7.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumYPosition
+      value: 2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumXPosition
+      value: -5.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition
+      value: -7.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1576753308454094203, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Name
       value: EyeOfZeta

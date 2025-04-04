@@ -19,7 +19,6 @@ public class CombinerSatellite : SatelliteParent
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_outputLaserColour);
         
 
         if (_incomingLasers.Count > 0)

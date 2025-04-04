@@ -18,7 +18,6 @@ public class SatelliteController : MonoBehaviour
     public float heldRotationSpeedIncrease = 0.01f;
 
 
-
     private UIController _uiController;
 
     public float currentMovementMultiplier;
@@ -49,6 +48,12 @@ public class SatelliteController : MonoBehaviour
         // Retrieve UI controller
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _eyeOfZeta = GameObject.FindGameObjectsWithTag("EyeOfZeta")[0].GetComponent<CameraDrone>();
+
+        _selectedRigidbody2D = _eyeOfZeta.GetComponent<Rigidbody2D>();
+        _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
+        selectedSatelliteInfo = _eyeOfZeta.GetComponent<Satellite_Info>();
+
+        
     }
 
     // Update is called once per frame
@@ -56,7 +61,6 @@ public class SatelliteController : MonoBehaviour
     {
         // Check that interaction is enabled
         var interactionEnabled = true;
-
 
         if (interactionEnabled)
         {
@@ -77,14 +81,11 @@ public class SatelliteController : MonoBehaviour
         // If interaction is disabled, but the selected rigid body is not null
         else if (!interactionEnabled && _selectedRigidbody2D != null) 
         {
-            // Update the items animator to show unselected
-            _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
-
-            // Disconnect from the selected satellite
-            _selectedRigidbody2D = null;
-            selectedSatelliteInfo = null;
-            
+            CloseInformation();
         }
+
+
+
     }
 
     private void SelectInteraction()
@@ -188,8 +189,9 @@ public class SatelliteController : MonoBehaviour
             }
 
             _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
-            _selectedRigidbody2D = null;
-            selectedSatelliteInfo = null;
+            _selectedRigidbody2D = _eyeOfZeta.GetComponent<Rigidbody2D>();
+            _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
+            selectedSatelliteInfo = _eyeOfZeta.GetComponent<Satellite_Info>();
             
             
 

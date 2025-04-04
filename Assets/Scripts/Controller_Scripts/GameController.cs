@@ -52,8 +52,6 @@ public class GameController : MonoBehaviour
 
     public SpecializedInteractionSettings specializedInteractionSettings;
 
-    public EyeOfZetaCameraDroneSettings eyeOfZetaCameraDroneSettings;
-
     private UIController _uiController;
 
     private SatelliteCreator _satelliteCreatorElysia;
@@ -246,17 +244,7 @@ public class SpecializedInteractionSettings
     public float minimumTransparencyForReflectionDuringRefraction = 0.02f;
 }
 
-[System.Serializable]
-public class EyeOfZetaCameraDroneSettings
-{
-    public float minimumXPosition = -20f;
-    public float maximumXPosition = 20f;
-    public float minimumYPosition = -20f;
-    public float maximumYPosition = 20f;
 
-    public float cameraDroneMovementSpeed = 20;
-
-}
 
 public class WorldInfo
 {

@@ -227,7 +227,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008008838, y: -0.49681687}
+  m_Offset: {x: -0.005661607, y: -0.44283128}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.50174046, y: 0.75073284}
@@ -238,7 +238,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6769674, y: 2.3061404}
+  m_Size: {x: 2.6347177, y: 2.0010047}
   m_EdgeRadius: 0
 --- !u!114 &3150633968315599275
 MonoBehaviour:
@@ -261,6 +261,7 @@ MonoBehaviour:
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   canBeSold: 1
+  isDestroyedDebris: 0
   satelliteSellPrice: 0
   canbeMoved: 1
   advanced_Satellite_Info:

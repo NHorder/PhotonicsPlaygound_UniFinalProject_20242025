@@ -203,6 +203,7 @@ MonoBehaviour:
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   canBeSold: 1
+  isDestroyedDebris: 0
   satelliteSellPrice: 0
   canbeMoved: 1
   advanced_Satellite_Info:
@@ -239,9 +240,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222a3b7bd22b224498de1c11ed7ac9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyeOfZetaCameraDroneSettings:
+    minimumXPosition: -20
+    maximumXPosition: 20
+    minimumYPosition: -20
+    maximumYPosition: 20
+    cameraDroneMovementSpeed: 35
   eyeOfZetaAutomaticDroneSettings:
     movementSpeed: 40
     minimumMovementSpeed: 1
-    intialDrag: 8
+    intialDrag: 15
     xRange: 1.2
     yRange: 1.2
+    offsetFromObjectX: 0.5
+    offsetFromObjectY: 0.5

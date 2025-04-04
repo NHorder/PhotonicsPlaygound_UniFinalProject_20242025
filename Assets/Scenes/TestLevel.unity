@@ -219,6 +219,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6abd1c8b90a56b349bddc4d919e27289, type: 3}
+--- !u!1001 &341138099
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.856047
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8991177
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.27705964
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337427134617019393, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348422903587508476, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
+      propertyPath: m_Name
+      value: BrokenDoubleReflector
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6549891428d662d4cbf4ae1e0887b946, type: 3}
 --- !u!1001 &344385883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -682,7 +739,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.33, y: -0.82, z: -10}
+  m_LocalPosition: {x: 1.5, y: -2.63, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2298,17 +2355,53 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.xRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.yRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.intialDrag
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
+      value: 8.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumYPosition
+      value: 4.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumXPosition
+      value: -3.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition
+      value: -4.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.offsetFromObjectX
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.offsetFromObjectY
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1576753308454094203, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Name
       value: EyeOfZeta
       objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.29
+      value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.68
       objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3392,3 +3485,4 @@ SceneRoots:
   - {fileID: 4811082033967301216}
   - {fileID: 3410003047152969842}
   - {fileID: 2646192156098624405}
+  - {fileID: 341138099}

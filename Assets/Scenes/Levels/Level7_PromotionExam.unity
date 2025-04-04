@@ -6430,6 +6430,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
+      value: 61.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumYPosition
+      value: 10.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumXPosition
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition
+      value: -11.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1576753308454094203, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Name
       value: EyeOfZeta

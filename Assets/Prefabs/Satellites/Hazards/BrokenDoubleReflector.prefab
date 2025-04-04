@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1815586132867728149}
   - component: {fileID: 8723919549896678679}
   - component: {fileID: 5375208327294793986}
+  - component: {fileID: 7608048994457515610}
   m_Layer: 3
   m_Name: BrokenDoubleReflector
   m_TagString: BrokenSatellite
@@ -130,6 +131,7 @@ MonoBehaviour:
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   canBeSold: 1
+  isDestroyedDebris: 1
   satelliteSellPrice: 0
   canbeMoved: 1
   advanced_Satellite_Info:
@@ -183,7 +185,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -248,3 +250,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6aa863658c9914bab06b96d63c031b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &7608048994457515610
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348422903587508476}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 2
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

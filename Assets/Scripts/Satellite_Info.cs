@@ -68,6 +68,7 @@ public class Satellite_Info : MonoBehaviour
     public int satellitePurchasePrice = 0;
 
     public bool canBeSold = true;
+    public bool isDestroyedDebris = false;
     public int satelliteSellPrice = 0;
 
 
@@ -836,8 +837,9 @@ public class Satellite_Info : MonoBehaviour
         colliderObject.TryGetComponent<Satellite_Info>(out opposingSatellite);
 
         // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
-        if (_remainingImmunityFrames <= 0 && opposingSatellite != null)
+        if (_remainingImmunityFrames <= 0 && opposingSatellite != null && !isDestroyedDebris)
         {
+
             var baseDamage = _gameController.baseDamage;
 
             var typeModifier = 1.0f;
@@ -850,8 +852,6 @@ public class Satellite_Info : MonoBehaviour
             else if (satelliteTypeModifier == SatelliteTypeModifier.ReallyStrong) typeModifier = 0.1f;
             // This prevents damage from destinations, creators, origins, etc
             else typeModifier = 0.0f;
-
-            if (opposingSatellite.tag == "BrokenSatellite") typeModifier = 0.0f;
 
 
             var speedModifier = 1.0f;

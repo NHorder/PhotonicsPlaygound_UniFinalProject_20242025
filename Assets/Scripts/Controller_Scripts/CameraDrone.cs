@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraDrone : MonoBehaviour
 {
-
+    public EyeOfZetaCameraDroneSettings eyeOfZetaCameraDroneSettings;
     public EyeOfZetaAutomaticDroneSettings eyeOfZetaAutomaticDroneSettings;
 
     private GameObject _camera;
@@ -37,15 +37,14 @@ public class CameraDrone : MonoBehaviour
         _currentMovementSpeed = eyeOfZetaAutomaticDroneSettings.movementSpeed;
 
         var satelliteInfo = this.gameObject.GetComponent<Satellite_Info>();
-        satelliteInfo.satellite_Movement_Info.intialMovementMultiplier = _gameController.eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed;
-        satelliteInfo.satellite_Movement_Info.maxMovementMultiplier = _gameController.eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed + 5;
+        satelliteInfo.satellite_Movement_Info.intialMovementMultiplier = eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed;
+        satelliteInfo.satellite_Movement_Info.maxMovementMultiplier = eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed + 5;
 
-        _minX = _gameController.eyeOfZetaCameraDroneSettings.minimumXPosition;
-        _maxX = _gameController.eyeOfZetaCameraDroneSettings.maximumXPosition;
+        _minX = eyeOfZetaCameraDroneSettings.minimumXPosition;
+        _maxX = eyeOfZetaCameraDroneSettings.maximumXPosition;
 
-        _minY = _gameController.eyeOfZetaCameraDroneSettings.minimumYPosition;
-        _maxY = _gameController.eyeOfZetaCameraDroneSettings.maximumYPosition;
-
+        _minY = eyeOfZetaCameraDroneSettings.minimumYPosition;
+        _maxY = eyeOfZetaCameraDroneSettings.maximumYPosition;
 
     }
 
@@ -61,66 +60,49 @@ public class CameraDrone : MonoBehaviour
             float xForce = 0f;
             float yForce = 0f;
 
-            // If the drone position.x is less than the location of the linked satellite - allowed range. Or more than the location + the allowed range
-            // then move the drone towards the satellite.
-            if (dronePosition.x < linkedSatelliteLocation.x - eyeOfZetaAutomaticDroneSettings.xRange)
+            var movementSpeedX = eyeOfZetaAutomaticDroneSettings.movementSpeed;
+            var movementSpeedY = eyeOfZetaAutomaticDroneSettings.movementSpeed;
+
+            var canParentX = false;
+            var canParentY = false;
+
+            var allowedRange = eyeOfZetaAutomaticDroneSettings.allowedRange;
+
+
+            // Set a desired position which will be a slight offset to the bottom left of the select satellite
+            var wantedPosition = new Vector2(_linkedSatelliteTransform.position.x - eyeOfZetaAutomaticDroneSettings.offsetFromObjectX, 
+                                            _linkedSatelliteTransform.position.y - eyeOfZetaAutomaticDroneSettings.offsetFromObjectY);
+
+            
+            // If the drone x position is within an allowed range of the wanted, then set canParentX to true. Concluding X is near the right place.
+            if (dronePosition.x > wantedPosition.x - allowedRange && dronePosition.x < wantedPosition.x + allowedRange) canParentX = true;
+            else
             {
-                xForce = _gameController.eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed;
-
-                if (dronePosition.x > linkedSatelliteLocation.x + eyeOfZetaAutomaticDroneSettings.xRange) _currentMovementSpeed /= 4;
-
-                if (_currentMovementSpeed < eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed) _currentMovementSpeed = eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed;
+                // Otherwise add force on the x axis dependent on which side of the object is from the drone.
+                if (dronePosition.x < wantedPosition.x) xForce = movementSpeedX;
+                else xForce = -movementSpeedX;
             }
-            else if (dronePosition.x > linkedSatelliteLocation.x + eyeOfZetaAutomaticDroneSettings.xRange)
+
+            // If the drone y position is within an allowed range of the wanted, then set canParentY to true. Conluding Y is near the right place.
+            if (dronePosition.y > wantedPosition.y - allowedRange && dronePosition.y < wantedPosition.y + allowedRange) canParentY = true;
+            else
             {
-                xForce = -_gameController.eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed;
-
-                if (dronePosition.x < linkedSatelliteLocation.x - eyeOfZetaAutomaticDroneSettings.xRange) _currentMovementSpeed /= 4;
-
-                if (_currentMovementSpeed < eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed) _currentMovementSpeed = eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed;
-            }
-
-            if (dronePosition.y < linkedSatelliteLocation.y - eyeOfZetaAutomaticDroneSettings.yRange)
-            {
-                yForce = _gameController.eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed;
-
-                // If overshot, reduce drone speed by four
-                if (dronePosition.y > linkedSatelliteLocation.y + eyeOfZetaAutomaticDroneSettings.yRange) _currentMovementSpeed /= 4;
-
-                // If movement speed is less than 2, then set movement speed to 2
-                if (_currentMovementSpeed < eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed) _currentMovementSpeed = eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed;
-
-            }
-            else if (dronePosition.y > linkedSatelliteLocation.y + eyeOfZetaAutomaticDroneSettings.yRange)
-            {
-                yForce = -_gameController.eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed;
-
-                // If overshot, reduce drone speed by four
-                if (dronePosition.y < linkedSatelliteLocation.y - eyeOfZetaAutomaticDroneSettings.yRange) _currentMovementSpeed /= 4;
-
-                // If movement speed is less than 2, then set movement speed to 2
-                if (_currentMovementSpeed < eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed) _currentMovementSpeed = eyeOfZetaAutomaticDroneSettings.minimumMovementSpeed;
-
-
+                // Otherwise add force on the y axis depending on the drones location relative to the selected objects.
+                if (dronePosition.y < wantedPosition.y) yForce = movementSpeedY;
+                else yForce = -movementSpeedY;
             }
 
 
-            if ( (dronePosition.x >= linkedSatelliteLocation.x - eyeOfZetaAutomaticDroneSettings.xRange) &&
-                (dronePosition.x <= linkedSatelliteLocation.x + eyeOfZetaAutomaticDroneSettings.xRange) && 
-                (dronePosition.y >= linkedSatelliteLocation.y - eyeOfZetaAutomaticDroneSettings.yRange) &&
-                (dronePosition.y <= linkedSatelliteLocation.y + eyeOfZetaAutomaticDroneSettings.yRange))
+            // If the X and Y of the drone are within the allowed range, then parent drone to object, such it will follow the object as it is moved.
+            if (canParentX && canParentY)
             {
                 _parented = true;
                 this.transform.SetParent(_linkedSatelliteTransform);
-
-                _droneRigidbody2D.drag = 1f;
-
-            }
-            else
-            {
-                _droneRigidbody2D.AddForce(new Vector3(xForce,yForce,0));
             }
 
+            // Otherwise apply preallocated force to the drone
+            else _droneRigidbody2D.AddForce(new Vector3(xForce,yForce,0));
+            
         }
 
         Vector3 cameraPosition = _camera.transform.position;
@@ -162,13 +144,25 @@ public class CameraDrone : MonoBehaviour
 }
 
 [System.Serializable]
+public class EyeOfZetaCameraDroneSettings
+{
+    public float minimumXPosition = -20f;
+    public float maximumXPosition = 20f;
+    public float minimumYPosition = -20f;
+    public float maximumYPosition = 20f;
+
+    public float cameraDroneMovementSpeed = 35;
+
+}
+
+[System.Serializable]
 public class EyeOfZetaAutomaticDroneSettings
 {
     public float movementSpeed = 10f;
-    public float minimumMovementSpeed = 0.5f;
     public float intialDrag = 4f;
-    public float xRange = 2f;
-    public float yRange = 2f;
+    public float allowedRange = 0.5f;
+    public float offsetFromObjectX = 0.5f;
+    public float offsetFromObjectY = 0.5f;
 
 
 }
