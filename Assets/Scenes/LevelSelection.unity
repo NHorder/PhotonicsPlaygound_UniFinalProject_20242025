@@ -678,6 +678,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7fcf267ec352a4fba94e4a46ba58c9, type: 3}
+--- !u!114 &372404474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1002384425560273662, guid: 26898a5d1e5909a4f87fa1ecc6664930, type: 3}
+  m_PrefabInstance: {fileID: 628479690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13163297db1cef46a229a876781cec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &387124453
 GameObject:
   m_ObjectHideFlags: 0
@@ -11516,9 +11527,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsPanel, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
+      - m_Target: {fileID: 372404474}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ToggleSettingsVisible
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12313,6 +12324,10 @@ PrefabInstance:
     - target: {fileID: 1120482877144863309, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
+      propertyPath: thisLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8246850707657699121, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: m_Name
@@ -13474,7 +13489,7 @@ GameObject:
   - component: {fileID: 1135487939}
   - component: {fileID: 1135487938}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SettingsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

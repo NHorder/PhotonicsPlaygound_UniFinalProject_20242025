@@ -275,7 +275,7 @@ MonoBehaviour:
   satellite_Movement_Info:
     intialMovementMultiplier: 4
     intialRotationMultiplier: 0.25
-    maxMovementMultiplier: 60
+    maxMovementMultiplier: 35
     maxRotationMultiplier: 2
   satellite_Shop_Info:
     IsShopItem: 0

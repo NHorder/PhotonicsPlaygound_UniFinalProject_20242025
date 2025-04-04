@@ -217,6 +217,7 @@ public class TeachingPanel : MonoBehaviour
 
     public void DisplayTeachingPanelFromSettings()
     {
+        _currentTeachingElement = 0;
         DisplayTeachingElement();
     }
 

@@ -7,7 +7,7 @@ public class OriginSatellite : MonoBehaviour
 {
 
     public LayerMask layersToHit;
-    public float maxDistance = 50f;
+    public float maxDistance = 200f;
 
     public LaserColour laserColour;
 

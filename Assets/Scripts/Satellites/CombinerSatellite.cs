@@ -19,6 +19,9 @@ public class CombinerSatellite : SatelliteParent
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_outputLaserColour);
+        
+
         if (_incomingLasers.Count > 0)
         {
             float energyPerLaser = _incomingLasers[0].laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
@@ -88,6 +91,7 @@ public class CombinerSatellite : SatelliteParent
 
 
         // Reset values.
+        _whiteLaser = false;
         _redLaser = false;
         _blueLaser = false;
         _greenLaser = false;

@@ -159,7 +159,7 @@ public class CommunicationsPanel : MonoBehaviour
         _language = newLanguage;
         UpdateSuccessText();
 
-        _uiController.ToggleVisibleCommunicationsIfClosed();
+        if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
 
         LogCommunications("Overseer",-1,"Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");
         LogCommunications("Overseer",-1,"(NOT TRANSLATED) Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");

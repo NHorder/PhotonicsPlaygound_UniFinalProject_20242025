@@ -76,7 +76,7 @@ public class SatelliteCreator : MonoBehaviour
 
         if (!_canCreateNewSatellite)
         {
-            _uiController.ToggleVisibleCommunicationsIfClosed();
+            if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
             // Notify comns panel about text
             _communicationsPanel.LogCommunications("Elysia",-1,_occupiedText);
 
@@ -268,11 +268,13 @@ public class SatelliteCreator : MonoBehaviour
                 newSatellite.transform.SetParent(_satWithUIElements.transform);
             }
 
+            newSatellite.transform.eulerAngles = this.transform.eulerAngles;
+
             _lastCreatedSatellite = newSatellite;
         }
         else if (_delayedCreation)
         {
-            _uiController.ToggleVisibleCommunicationsIfClosed();
+            if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
             _communicationsPanel.LogCommunications("Elysia",-1,_satDelayed);
         }
         else

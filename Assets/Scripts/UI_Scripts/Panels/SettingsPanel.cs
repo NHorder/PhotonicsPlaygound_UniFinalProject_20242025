@@ -224,7 +224,6 @@ public class SettingsPanel : MonoBehaviour
     {
         UpdateSettings();
 
-
         _gameController.UpdateSettings();
         _uiController.UpdateSettings(_language != _savedLanguage);
 
@@ -242,7 +241,6 @@ public class SettingsPanel : MonoBehaviour
     {
         if (_teachingPanel != null)
         {
-            _teachingPanel.teachingElements = PersistenceController.GetSavedTeachingElements();
             _teachingPanel.DisplayTeachingPanelFromSettings();
             Return();
 

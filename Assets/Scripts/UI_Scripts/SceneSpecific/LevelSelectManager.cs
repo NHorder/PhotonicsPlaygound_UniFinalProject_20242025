@@ -43,7 +43,7 @@ public class LevelSelectManage: MonoBehaviour
 
     public void ToLevelTwo()
     {
-        if (unlockedLevels.Contains(Level.LevelTwo_Refractions)) SceneController.ToLevelOneReflections();
+        if (unlockedLevels.Contains(Level.LevelTwo_Refractions)) SceneController.ToLevelTwoRefractions();
     }
 
     public void ToLevelThree()

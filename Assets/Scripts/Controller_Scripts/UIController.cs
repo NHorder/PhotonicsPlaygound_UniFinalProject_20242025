@@ -378,6 +378,16 @@ public class UIController : MonoBehaviour
         return false;
     }
 
+    public bool CloseShopIfOpen()
+    {
+        if (_movingPanels.shopPanelVisible)
+        {
+            ToggleVisibleShop();
+            return true;
+        }
+        return false;
+    }
+
     public void ToggleVisibleSatelliteInformation()
     {
         // Set the opposite of current
@@ -406,6 +416,7 @@ public class UIController : MonoBehaviour
 
     public void UpdateSettings(bool languageChanged)
     {
+
         _language = PersistenceController.GetLanguage();
 
         advancedSettings.overwriteCommunicationMovement = PersistenceController.GetForceNoChangeWhenReceivingCommunications();
@@ -433,6 +444,10 @@ public class UIController : MonoBehaviour
 
                 foreach (LevelSelectButton levelSelectButton in levelButtons) levelSelectButton.UpdateLanguage();
 
+
+                var foundLevelSelectText = false;
+                var foundSettings = false;
+
                 var childTextList = levelSelectManager.gameObject.GetComponentsInChildren<TMP_Text>();
                 foreach (TMP_Text childText in childTextList)
                 {
@@ -440,12 +455,27 @@ public class UIController : MonoBehaviour
                     if (childText.gameObject.name == "LevelSelectText" && _language == Language.English)
                     {
                         childText.text = "Level Select";
-                        break;
+                        foundLevelSelectText = true;
                     }
 
                     else if (childText.gameObject.name == "LevelSelectText" && _language == Language.Welsh)
                     {
                         childText.text = "Dewis Lefel";
+                        foundLevelSelectText = true;
+                    }
+                    else if (childText.gameObject.name == "SettingsText" && _language == Language.English)
+                    {
+                        childText.text = "Settings";
+                        foundSettings = true;
+                    }
+                    else if (childText.gameObject.name == "SettingsText" && _language == Language.Welsh)
+                    {
+                        childText.text = "Gosodiadau";
+                        foundSettings = true;
+                    }
+
+                    if (foundLevelSelectText && foundSettings)
+                    {
                         break;
                     }
                 }

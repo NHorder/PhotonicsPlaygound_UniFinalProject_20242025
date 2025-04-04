@@ -133,6 +133,7 @@ public class SatelliteController : MonoBehaviour
                         selectedSatelliteInfo.canbeMoved && selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
                         {
                             selectedSatelliteInfo.statelliteParticleSystem.Play();
+                            _uiController.ToggleVisibleShop();
                         }
 
                         // If the selected satellite can be moved, then present the movement panel, else hide it.

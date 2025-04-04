@@ -217,7 +217,7 @@ MonoBehaviour:
   satellite_Movement_Info:
     intialMovementMultiplier: 35
     intialRotationMultiplier: 2
-    maxMovementMultiplier: 40
+    maxMovementMultiplier: 45
     maxRotationMultiplier: 20
   satellite_Shop_Info:
     IsShopItem: 0
@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeOfZetaAutomaticDroneSettings:
-    movementSpeed: 10
+    movementSpeed: 40
     minimumMovementSpeed: 1
     intialDrag: 8
-    xRange: 1
-    yRange: 1
+    xRange: 1.2
+    yRange: 1.2

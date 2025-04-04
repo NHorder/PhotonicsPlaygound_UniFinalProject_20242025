@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84313ae309748a4aad13bac658caea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satelliteType: 13
+  satelliteType: 14
   interaction: 0
   isDebris: 0
   satelliteName: 
@@ -269,7 +269,7 @@ MonoBehaviour:
   satellite_Movement_Info:
     intialMovementMultiplier: 4
     intialRotationMultiplier: 0.25
-    maxMovementMultiplier: 60
+    maxMovementMultiplier: 35
     maxRotationMultiplier: 2
   satellite_Shop_Info:
     IsShopItem: 0

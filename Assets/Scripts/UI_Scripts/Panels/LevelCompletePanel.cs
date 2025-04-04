@@ -105,12 +105,10 @@ public class LevelCompletePanel : MonoBehaviour
 
 
         float budgetScore = 500f * (currentBudget / expectedBudget);
-        float satelliteScore = 500f * ((float)expectedSatellites / numSatellites) * (1 - (numSatellitesDestroyed / numSatellites));
+        float satelliteScore = 500f * (1 - (numSatellitesDestroyed / numSatellites));
 
 
         Debug.Log("Budget: "+budgetScore + " | Current: "+currentBudget + " | Expected: "+expectedBudget);
-
-        Debug.Log("Satellite: "+satelliteScore + " | Num Sats: "+numSatellites + " | Expected: "+expectedSatellites + " | Destroyed: "+numSatellitesDestroyed);
 
         // Calculate score using an equation
         _score = (int)(budgetScore + satelliteScore);
