@@ -2184,7 +2184,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 934018285}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: ToggleSettingsIfClosed
+        m_MethodName: ToggleSettingsVisible
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
