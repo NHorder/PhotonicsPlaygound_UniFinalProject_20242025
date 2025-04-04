@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Satellites\ColourFilterSatellite.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\LevelInformationPanel.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Atheneum\Record.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\SceneSpecific\Acknowledgements.cs" />
     <Compile Include="Assets\Scripts\Satellites\SplitterSatellite.cs" />
   </ItemGroup>
   <ItemGroup>

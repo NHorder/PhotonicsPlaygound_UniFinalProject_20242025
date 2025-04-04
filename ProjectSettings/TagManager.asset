@@ -28,6 +28,7 @@ TagManager:
   - Canvas
   - Satellites_WithUIElements
   - Athenaeum
+  - BrokenSatellite
   layers:
   - Default
   - TransparentFX

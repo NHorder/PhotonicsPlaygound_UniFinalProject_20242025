@@ -124,9 +124,9 @@ public class SettingsPanel : MonoBehaviour
             _forceNoChangeWhenReceivingCommunicationsToggleText.text = "Force No Change When Receiving Communications";
 
             _viewTeachingTransmissionText.text = "View Teaching Transmissions";
-            _resetButtonText.text = "Reset";
+            if (_resetButtonText != null) _resetButtonText.text = "Reset";
             _returnButtonText.text = "Return";
-            _exitLevelText.text = "Exit Level";
+            if (_exitLevelButton != null) _exitLevelText.text = "Exit Level";
 
             _welshButtonAnimator.SetBool("Selected",false);
             _englishButtonAnimator.SetBool("Selected",true);
@@ -144,9 +144,9 @@ public class SettingsPanel : MonoBehaviour
             _disableConfirmationsToggleText.text = "Analluogi Cadarnhad";
             _forceNoChangeWhenReceivingCommunicationsToggleText.text = "Gorfodi dim newid wrth dderbyn cyfathrebiadau";
 
-            _resetButtonText.text = "Ailosod";
+            if (_resetButtonText != null) _resetButtonText.text = "Ailosod";
             _returnButtonText.text = "Dychwelyd";
-            _exitLevelText.text = "Gadael Lefel";
+            if (_exitLevelButton != null) _exitLevelText.text = "Gadael Lefel";
 
             _welshButtonAnimator.SetBool("Selected",true);
             _englishButtonAnimator.SetBool("Selected",false);

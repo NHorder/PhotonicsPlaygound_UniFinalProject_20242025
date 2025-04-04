@@ -12,12 +12,39 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelection.unity
     guid: 5685a52e6b27ce0488f53e625b33ce8d
   - enabled: 1
+    path: Assets/Scenes/Acknowledgements.unity
+    guid: 0235390b51464fa4f96319a7eee78a85
+  - enabled: 1
     path: Assets/Scenes/TestLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/LightDemo.unity
-    guid: bd212762b01501c459114fdcf9d7851e
+    path: Assets/Scenes/Levels/Level1_Reflections.unity
+    guid: 180470fed2841514ba383d975b77ef8f
   - enabled: 1
-    path: Assets/Scenes/Levels/LevelOne_Reflections.unity
-    guid: 91d3233cd3d3de84bb7dcbaa6574a696
+    path: Assets/Scenes/Levels/Level2_Refraction.unity
+    guid: 4a43dfa8284f5664199a2c576387a71a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level3_Colour.unity
+    guid: 225d924f28489014ba7f0db6b030ba2c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level4_ColourSplitting.unity
+    guid: 0bbed365873529044ab8f76b5657d055
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level5_ColourCombinations.unity
+    guid: 387059e54e1edd742b657680c3a5b2f5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level6_PromotionPrerequisite.unity
+    guid: e96b1be0ef718f946bb3fdb9a9155691
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level7_PromotionExam.unity
+    guid: b38b665451166c746b0041b3b16b9a2c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level8_AHarderChallenge.unity
+    guid: 44a1c8076d2457745827ef020b0c7f46
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level9_GravitationalAnomalies.unity
+    guid: a422a0bd6cdb4084eb3c98aa6bb773b7
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level10_GravitationalCollapse.unity
+    guid: d5b6398a1eabb9845b5a7bcaca372a42
   m_configObjects: {}

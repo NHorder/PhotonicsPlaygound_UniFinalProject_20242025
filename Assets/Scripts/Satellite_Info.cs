@@ -50,6 +50,7 @@ public enum SatelliteTypeModifier
     Middle,
     SlightStrong,
     Strong,
+    ReallyStrong,
     Indestructible
 }
 
@@ -153,8 +154,9 @@ public class Satellite_Info : MonoBehaviour
         if (_remainingImmunityFrames > 0) _remainingImmunityFrames -= 1;
 
         // if the satellite health falls below or equal to 0, destroy the satellite in a flashy animation
-        if (satelliteHealth <= 0)
+        if (satelliteHealth <= 0 && satelliteTypeModifier != SatelliteTypeModifier.Indestructible && !satellite_Shop_Info.IsShopItem)
         {
+
             // Play satellite destruction animation
             // The animation contains a destroy trigger - which when reached will call this DestroyObject function.
             // Forcing a animation delay before destruction.
@@ -179,7 +181,7 @@ public class Satellite_Info : MonoBehaviour
 
         // Collect active language - important for defining descriptions
         if (_language == null) _language = _gameController.activeLanguage;
-
+        satelliteHealth = 100;
 
         if (satelliteType == SatelliteType.Origin)
         {
@@ -222,7 +224,7 @@ public class Satellite_Info : MonoBehaviour
             satelliteTypeModifier = SatelliteTypeModifier.Indestructible;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
             if (satelliteSellPrice == 0) satelliteSellPrice = 50;
-            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0.1f;
+            if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0.05f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
             interaction = Interaction.Destination;
         }
@@ -294,7 +296,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 200;
             if (satelliteSellPrice == 0) satelliteSellPrice = 100;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.05f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Reflection;
             
@@ -317,7 +319,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 225;
             if (satelliteSellPrice == 0) satelliteSellPrice = 150;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.05f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Reflection;
 
@@ -436,7 +438,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 100;
             if (satelliteSellPrice == 0) satelliteSellPrice = 75;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.05f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.ColourFilter;
 
@@ -510,7 +512,7 @@ public class Satellite_Info : MonoBehaviour
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 350;
             if (satelliteSellPrice == 0) satelliteSellPrice = 200;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
-            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.1f;
+            if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.05f;
 
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.ColourFilter; 
         }
@@ -626,7 +628,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
-            satelliteTypeModifier = SatelliteTypeModifier.SlightStrong;
+            satelliteTypeModifier = SatelliteTypeModifier.ReallyStrong;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
@@ -653,7 +655,7 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
-            satelliteTypeModifier = SatelliteTypeModifier.Middle;
+            satelliteTypeModifier = SatelliteTypeModifier.Strong;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
@@ -680,13 +682,13 @@ public class Satellite_Info : MonoBehaviour
                 if (satelliteShortDescription == "") satelliteShortDescription = "";
             }
 
-            satelliteTypeModifier = SatelliteTypeModifier.Middle;
+            satelliteTypeModifier = SatelliteTypeModifier.Strong;
             if (satellitePurchasePrice == 0) satellitePurchasePrice = 0;
             if (satelliteSellPrice == 0) satelliteSellPrice = 0;
             if (advanced_Satellite_Info.refractiveIndex == 0f) advanced_Satellite_Info.refractiveIndex = 0f;
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0.8f;
 
-            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
+            if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Splitter;
         }
 
         else if (satelliteType == SatelliteType.GravitationalAnomaly)
@@ -744,6 +746,13 @@ public class Satellite_Info : MonoBehaviour
             if (advanced_Satellite_Info.absorbance == 0) advanced_Satellite_Info.absorbance = 0;
             if (interaction == null || interaction == Interaction.SelfDetermine) interaction = Interaction.Absorb;
         }
+
+
+
+        if (isDebris && satelliteType != SatelliteType.GravitationalAnomaly)
+        {
+            this.transform.eulerAngles = new Vector3(0f,0f,Random.Range(0f,360f));
+        }
     }
 
 
@@ -796,8 +805,11 @@ public class Satellite_Info : MonoBehaviour
     {
         _gameController.DestroyedSatellite();
 
-        var satelliteScript = gameObject.GetComponent<SatelliteParent>();
-        satelliteScript.DeleteLasers();
+        if (interaction != null && interaction != Interaction.Absorb)
+        {
+            var satelliteScript = gameObject.GetComponent<SatelliteParent>();
+            satelliteScript.DeleteLasers();
+        }
 
         // Check to see if the satellite being destroyed has the Eye of Zeta attached, if so remove the attachment
         CameraDrone eyeOfZeta = gameObject.GetComponentInChildren<CameraDrone>();
@@ -826,7 +838,6 @@ public class Satellite_Info : MonoBehaviour
         // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
         if (_remainingImmunityFrames <= 0 && opposingSatellite != null)
         {
-
             var baseDamage = _gameController.baseDamage;
 
             var typeModifier = 1.0f;
@@ -836,9 +847,11 @@ public class Satellite_Info : MonoBehaviour
             else if (satelliteTypeModifier == SatelliteTypeModifier.Middle) typeModifier = 1.0f;
             else if (satelliteTypeModifier == SatelliteTypeModifier.SlightStrong) typeModifier = 0.75f;
             else if (satelliteTypeModifier == SatelliteTypeModifier.Strong) typeModifier = 0.5f;
-
+            else if (satelliteTypeModifier == SatelliteTypeModifier.ReallyStrong) typeModifier = 0.1f;
             // This prevents damage from destinations, creators, origins, etc
             else typeModifier = 0.0f;
+
+            if (opposingSatellite.tag == "BrokenSatellite") typeModifier = 0.0f;
 
 
             var speedModifier = 1.0f;
