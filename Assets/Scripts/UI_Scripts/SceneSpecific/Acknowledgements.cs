@@ -27,9 +27,9 @@ public class Acknowledgements : MonoBehaviour
                     childText.text = "Acknowledgements";
                     _foundTitle = true;
                 }
-                else if (childText.name == "Acknowledgements")
+                else if (childText.name == "AcknowledgementsText")
                 {
-                    childText.text = "Developer: Nathan Horder\n\nArtist: Nathan Horder\n\nTranslator: Helen Miles\n\nPlayTesters:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n";
+                    childText.text = "Developer: Nathan Horder\n\nArtist: Nathan Horder\n\nTranslator: Helen Miles\n\nPlay Testers:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n- Michael McRae\n- Jamie Stammers\n";
                     _foundAcknowledgements = true;
                 }
 

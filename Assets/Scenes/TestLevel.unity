@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &34294384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8966835895276612131, guid: 26898a5d1e5909a4f87fa1ecc6664930, type: 3}
+  m_PrefabInstance: {fileID: 875422320668473437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &261511884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -465,6 +470,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5282194894853788750, guid: 4a5ca703136ccf945af5c28a0b07ad62, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 34294384}
+    - target: {fileID: 5282194894853788750, guid: 4a5ca703136ccf945af5c28a0b07ad62, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -600,7 +613,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1002384425560273662, guid: 26898a5d1e5909a4f87fa1ecc6664930, type: 3}
   m_PrefabInstance: {fileID: 875422320668473437}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 34294384}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d13163297db1cef46a229a876781cec4, type: 3}
@@ -1361,11 +1374,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1969062617067241681, guid: 64e79b150694220419e77548549929cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.03
+      value: 4.64
       objectReference: {fileID: 0}
     - target: {fileID: 1969062617067241681, guid: 64e79b150694220419e77548549929cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.25
+      value: -5.57
       objectReference: {fileID: 0}
     - target: {fileID: 1969062617067241681, guid: 64e79b150694220419e77548549929cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2032,11 +2045,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9124197264471511446, guid: ff623619c7df28b4bbce928f59071332, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.99
+      value: 11.71
       objectReference: {fileID: 0}
     - target: {fileID: 9124197264471511446, guid: ff623619c7df28b4bbce928f59071332, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.61
+      value: -2.66
       objectReference: {fileID: 0}
     - target: {fileID: 9124197264471511446, guid: ff623619c7df28b4bbce928f59071332, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2089,7 +2102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 329230314428367394, guid: aa2a5ab2af1187f4dbc4e47fa56e5412, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.59
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 329230314428367394, guid: aa2a5ab2af1187f4dbc4e47fa56e5412, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2363,34 +2376,6 @@ PrefabInstance:
       propertyPath: eyeOfZetaAutomaticDroneSettings.yRange
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
-      propertyPath: eyeOfZetaAutomaticDroneSettings.intialDrag
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
-      propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
-      value: 8.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
-      propertyPath: eyeOfZetaCameraDroneSettings.maximumYPosition
-      value: 4.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
-      propertyPath: eyeOfZetaCameraDroneSettings.minimumXPosition
-      value: -3.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
-      propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition
-      value: -4.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
-      propertyPath: eyeOfZetaAutomaticDroneSettings.offsetFromObjectX
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
-      propertyPath: eyeOfZetaAutomaticDroneSettings.offsetFromObjectY
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1576753308454094203, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Name
       value: EyeOfZeta
@@ -2585,11 +2570,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.14
+      value: 4.65
       objectReference: {fileID: 0}
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8
+      value: 1.89
       objectReference: {fileID: 0}
     - target: {fileID: 1347399840791997488, guid: 40162991e6d78d946bff03efc873628f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3069,11 +3054,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643892780293205000, guid: 3c60f82d7ddac424495e9ad4aa1ab103, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.48
+      value: 11.14
       objectReference: {fileID: 0}
     - target: {fileID: 6643892780293205000, guid: 3c60f82d7ddac424495e9ad4aa1ab103, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.42
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 6643892780293205000, guid: 3c60f82d7ddac424495e9ad4aa1ab103, type: 3}
       propertyPath: m_LocalPosition.z

@@ -69,7 +69,7 @@ public class SatelliteCreator : MonoBehaviour
     }
 
     public bool CreateSatellite(SatelliteType satelliteType)
-    {
+    { 
         // As each colour filter is a different type, and doesn't have different animations, then only run the one filter animaton
         // if the input type is a colour filter (prefabs are different, hence need for the else if statements)
         var bFilter = false;
@@ -82,179 +82,178 @@ public class SatelliteCreator : MonoBehaviour
 
             return false;
         }
-
-        if (satelliteType == SatelliteType.SingleSideReflector)
+        else
         {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.singlePanelReflectionSatellite;
+            if (satelliteType == SatelliteType.SingleSideReflector)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.singlePanelReflectionSatellite;
 
-            _canCreateNewSatellite = false;
+                _canCreateNewSatellite = false;
 
-            _animator.SetBool("Animating",true);
-            _animator.Play("SingleReflector");
-        }
-        
-        else if (satelliteType == SatelliteType.DoubleSideReflector)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.doublePanelReflectionSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("DoubleReflector");
-        }
-        
-        else if (satelliteType == SatelliteType.GlassRefractor)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.glassRefractionSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Refractor");
-        }
-        else if (satelliteType == SatelliteType.SapphireRefractor)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.sapphireRefractionSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Refractor");
-        }
-        else if (satelliteType == SatelliteType.SiliconRefractor)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.siliconRefractionSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Refractor");
-        }
-        else if (satelliteType == SatelliteType.WaterRefractor)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.waterRefractionSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Refractor");
-        }
-
-
-        else if (satelliteType == SatelliteType.WhiteBasicColourFilter)
-        {
+                _animator.SetBool("Animating",true);
+                _animator.Play("SingleReflector");
+            }
             
-            bFilter = true;
-            _chosenPrefab = satellitePrefabs.whiteFilterSatellite;
-        }
-        else if (satelliteType == SatelliteType.RedBasicColourFilter)
-        {
-            bFilter = true;
-            _chosenPrefab = satellitePrefabs.redFilterSatellite;
-        }
-        else if (satelliteType == SatelliteType.BlueBasicColourFilter)
-        {
-            bFilter = true;
-            _chosenPrefab = satellitePrefabs.blueFilterSatellite;
-        }
-        else if (satelliteType == SatelliteType.GreenBasicColourFilter)
-        {
-            bFilter = true;
-            _chosenPrefab = satellitePrefabs.greenFilterSatellite;
-        }
-        else if (satelliteType == SatelliteType.YellowBasicColourFilter)
-        {
-            bFilter = true;
-            _chosenPrefab = satellitePrefabs.yellowFilterSatellite;
-        }
-        else if (satelliteType == SatelliteType.CyanBasicColourFilter)
-        {
-            bFilter = true;
-            _chosenPrefab = satellitePrefabs.cyanFilterSatellite;
-        }
-        else if (satelliteType == SatelliteType.MagentaBasicColourFilter)
-        {
-            bFilter = true;
-            _chosenPrefab = satellitePrefabs.magentaFilterSatellite;
-        }
+            else if (satelliteType == SatelliteType.DoubleSideReflector)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.doublePanelReflectionSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("DoubleReflector");
+            }
+            
+            else if (satelliteType == SatelliteType.GlassRefractor)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.glassRefractionSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Refractor");
+            }
+            else if (satelliteType == SatelliteType.SapphireRefractor)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.sapphireRefractionSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Refractor");
+            }
+            else if (satelliteType == SatelliteType.SiliconRefractor)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.siliconRefractionSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Refractor");
+            }
+            else if (satelliteType == SatelliteType.WaterRefractor)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.waterRefractionSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Refractor");
+            }
+
+
+            else if (satelliteType == SatelliteType.WhiteBasicColourFilter)
+            {
+                
+                bFilter = true;
+                _chosenPrefab = satellitePrefabs.whiteFilterSatellite;
+            }
+            else if (satelliteType == SatelliteType.RedBasicColourFilter)
+            {
+                bFilter = true;
+                _chosenPrefab = satellitePrefabs.redFilterSatellite;
+            }
+            else if (satelliteType == SatelliteType.BlueBasicColourFilter)
+            {
+                bFilter = true;
+                _chosenPrefab = satellitePrefabs.blueFilterSatellite;
+            }
+            else if (satelliteType == SatelliteType.GreenBasicColourFilter)
+            {
+                bFilter = true;
+                _chosenPrefab = satellitePrefabs.greenFilterSatellite;
+            }
+            else if (satelliteType == SatelliteType.YellowBasicColourFilter)
+            {
+                bFilter = true;
+                _chosenPrefab = satellitePrefabs.yellowFilterSatellite;
+            }
+            else if (satelliteType == SatelliteType.CyanBasicColourFilter)
+            {
+                bFilter = true;
+                _chosenPrefab = satellitePrefabs.cyanFilterSatellite;
+            }
+            else if (satelliteType == SatelliteType.MagentaBasicColourFilter)
+            {
+                bFilter = true;
+                _chosenPrefab = satellitePrefabs.magentaFilterSatellite;
+            }
+            
+
+
+            else if (satelliteType == SatelliteType.CustomColourFilter)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.customFilterSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("CustomFilter");
+            }
+
+            else if (satelliteType == SatelliteType.Combiner)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.combinerSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Combiner");
+            }
+            
+            else if (satelliteType == SatelliteType.DuelSplitter) 
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.duelSplitterSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Splitter");
+            }
+            else if (satelliteType == SatelliteType.TrioSplitter)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.trioSplitterSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Splitter_3Node");
+            }
+            else if (satelliteType == SatelliteType.HexSplitter)
+            {
+                _animating = true;
+                _chosenPrefab = satellitePrefabs.hexSplitterSatellite;
+                _canCreateNewSatellite = false;
+
+                _animator.SetBool("Animating",true);
+                _animator.Play("Splitter_6Node");
+            }
         
+            else{
+                _uiController.ToggleVisibleCommunicationsIfClosed();
+                if (!_uiController.advancedSettings.overwriteCommunicationMovement) _communicationsPanel.LogCommunications("Elysia",-1,_satNotRecognised);
+                Debug.LogWarning("WARNING: Satellite type not recognised");
+                return false;
+            }
 
 
-        else if (satelliteType == SatelliteType.CustomColourFilter)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.customFilterSatellite;
-            _canCreateNewSatellite = false;
+            if (bFilter)
+            {
+                _animating = true;
+                _canCreateNewSatellite = false;
 
-            _animator.SetBool("Animating",true);
-            _animator.Play("CustomFilter");
+                _animator.SetBool("Animating",true);
+                _animator.Play("Filter");
+            }
+
         }
-
-        else if (satelliteType == SatelliteType.Combiner)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.combinerSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Combiner");
-        }
-        
-        else if (satelliteType == SatelliteType.DuelSplitter) 
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.duelSplitterSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Splitter");
-        }
-        else if (satelliteType == SatelliteType.TrioSplitter)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.trioSplitterSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Splitter_3Node");
-        }
-        else if (satelliteType == SatelliteType.HexSplitter)
-        {
-            _animating = true;
-            _chosenPrefab = satellitePrefabs.hexSplitterSatellite;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Splitter_6Node");
-        }
-    
-        else{
-            _uiController.ToggleVisibleCommunicationsIfClosed();
-            if (!_uiController.advancedSettings.overwriteCommunicationMovement) _communicationsPanel.LogCommunications("Elysia",-1,_satNotRecognised);
-            Debug.LogWarning("WARNING: Satellite type not recognised");
-            return false;
-        }
-
-
-        if (bFilter)
-        {
-            _animating = true;
-            _canCreateNewSatellite = false;
-
-            _animator.SetBool("Animating",true);
-            _animator.Play("Filter");
-        }
-
-
         return true;
     }
 
     public void InstantiateSatellite()
     {
         _animating = false;
-        Debug.Log(_numberSatellitesInLoadingBay);
-
         if (_chosenPrefab != null && _numberSatellitesInLoadingBay == 0)
         {
             if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
@@ -280,6 +279,7 @@ public class SatelliteCreator : MonoBehaviour
         else
         {
             Debug.Log("No satellite made");
+            _canCreateNewSatellite = true;
         }
 
         _animator.SetBool("Animating",false);

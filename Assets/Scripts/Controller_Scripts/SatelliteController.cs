@@ -134,7 +134,6 @@ public class SatelliteController : MonoBehaviour
                         selectedSatelliteInfo.canbeMoved && selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
                         {
                             selectedSatelliteInfo.statelliteParticleSystem.Play();
-                            _uiController.ToggleVisibleShop();
                         }
 
                         // If the selected satellite can be moved, then present the movement panel, else hide it.
@@ -307,7 +306,7 @@ public class SatelliteController : MonoBehaviour
             if (eyeOfZeta != null)
             {
                 var eyeOfZetaRigidbody = eyeOfZeta.GetComponent<Rigidbody2D>();
-                
+
                 // Retrieve the rigidbody2d
                 eyeOfZetaRigidbody.AddForce(new Vector2(horizontalMovement * currentMovementMultiplier, verticalMovement * currentMovementMultiplier));
 

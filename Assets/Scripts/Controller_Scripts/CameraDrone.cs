@@ -53,7 +53,7 @@ public class CameraDrone : MonoBehaviour
     {
         Vector3 dronePosition = this.transform.position;
         
-        if (_attached && _linkedSatelliteTransform != null && !_parented)
+        if (_attached && _linkedSatelliteTransform != null)
         {
             Vector3 linkedSatelliteLocation = _linkedSatelliteTransform.position;
 
@@ -67,6 +67,12 @@ public class CameraDrone : MonoBehaviour
             var canParentY = false;
 
             var allowedRange = eyeOfZetaAutomaticDroneSettings.allowedRange;
+
+            if (_linkedSatelliteTransform.GetComponent<Satellite_Info>().satelliteType == SatelliteType.SatelliteCreator)
+            {
+                Debug.Log("Elysia!");
+                allowedRange *= 8;
+            }
 
 
             // Set a desired position which will be a slight offset to the bottom left of the select satellite
