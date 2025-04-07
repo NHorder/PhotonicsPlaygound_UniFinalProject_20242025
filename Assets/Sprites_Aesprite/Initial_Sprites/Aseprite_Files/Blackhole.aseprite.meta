@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.496063, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 256
+      width: 254
       height: 256
     spriteID: 7b8439560d121a04e812bfa90848d24c
     spriteBone: []
@@ -143,14 +143,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.496063, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 268
-      width: 256
+      width: 254
       height: 256
     spriteID: 89453bc51f7d7474cb34fcdca8e6adae
     spriteBone: []
@@ -174,18 +174,18 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 256
+        width: 254
         height: 256
       spriteId: 7b8439560d121a04e812bfa90848d24c
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 256
+        width: 254
         height: 256
       spriteId: 89453bc51f7d7474cb34fcdca8e6adae
     linkedCells: []

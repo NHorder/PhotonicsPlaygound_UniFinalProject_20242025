@@ -69,13 +69,13 @@
     <Compile Include="Assets\Scripts\Controller_Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Atheneum\RecordSelection.cs" />
     <Compile Include="Assets\Scripts\Singularity\Singularity.cs" />
+    <Compile Include="Assets\Scripts\SatelliteInfo.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\SceneSpecific\LevelSelectButton.cs" />
     <Compile Include="Assets\Scripts\Satellites\DestinationSatellite.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\UIController.cs" />
     <Compile Include="Assets\Scripts\Satellites\SatelliteCreator.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Panels\CommunicationsPanel.cs" />
     <Compile Include="Assets\Scripts\Laser_Scripts\InteractionMethods.cs" />
-    <Compile Include="Assets\Scripts\Satellite_Info.cs" />
     <Compile Include="Assets\Scripts\Singularity\SingularityLaser.cs" />
     <Compile Include="Assets\Scripts\Controller_Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Shop\ShopPanel.cs" />

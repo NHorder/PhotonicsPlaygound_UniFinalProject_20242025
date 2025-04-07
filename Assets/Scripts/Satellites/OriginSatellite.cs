@@ -5,18 +5,26 @@ using UnityEngine;
 
 public class OriginSatellite : MonoBehaviour
 {
+    /// <summary>
+    /// This class handles origin interaction with the laser
+    /// </summary>
 
+    // Determines which layers the laser can hit
     public LayerMask layersToHit;
+
+    // Determines the maximum distance the laser can extend to
     public float maxDistance = 200f;
 
+    // Determines the laser colour
     public LaserColour laserColour;
 
     // First laser is placed manually, then attached
     public GameObject prefabLaser;
 
-
+    // The update delay between laser creation
+    // This is needed to allow the laser time to render before it is deleted
+    // Otherwise it flickers noticibly
     private int _updateDelay = 1;
-
     private int _currentUpdateCount = 0;
 
     // Laser list is created from connections to 
@@ -29,10 +37,13 @@ public class OriginSatellite : MonoBehaviour
     private Animator _animator;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Inialisation method
+    /// </summary>
     void Start()
     {
+        // Determine the colour ID an update animator
         var colourID = 0;
-
         _animator = gameObject.GetComponent<Animator>();
         if (laserColour == LaserColour.Red) colourID = 1;
         else if (laserColour == LaserColour.Blue) colourID = 2;
@@ -40,11 +51,7 @@ public class OriginSatellite : MonoBehaviour
         else if (laserColour == LaserColour.Yellow) colourID = 4;
         else if (laserColour == LaserColour.Cyan) colourID = 5;
         else if (laserColour == LaserColour.Magenta) colourID = 6; 
-        
-
         _animator.SetInteger("ColourID",colourID);
-
-
 
         // Collect game controller and update delay settings
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
@@ -62,8 +69,10 @@ public class OriginSatellite : MonoBehaviour
 
 
     }
- 
-    // Update is called once per frame
+    
+    /// <summary>
+    /// Method called once per frame
+    /// </summary>
     void Update()
     {
 
@@ -91,6 +100,9 @@ public class OriginSatellite : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to create the initial laser
+    /// </summary>
     private void Fire_Initial_Laser()
     {
 
@@ -123,6 +135,12 @@ public class OriginSatellite : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method to add a laser to the origin
+    /// Results in the ability to track laser progress within a scene from a single origin
+    /// </summary>
+    /// <param name="newLaser"></param>
+    /// <param name="newLaserOrigin"></param>
     public void AddLaser(GameObject newLaser,Vector2 newLaserOrigin)
     {
         // Method to add laser to lists
@@ -146,6 +164,10 @@ public class OriginSatellite : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method to get game controller
+    /// </summary>
+    /// <returns></returns>
     public GameController GetGameController()
     {
         return _gameController;

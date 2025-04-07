@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SingularityLaser : MonoBehaviour
 {
+    /// <summary>
+    /// Class used to handle the "internal" lasers of a Singularity
+    /// </summary>
+
     private GravitationalAnomalySettings anomalySettings;
     private Singularity _singularity;
     private Vector2 _singularityPosition;
-    private Transform _helper;
     private bool _bendRight;
 
 
@@ -20,22 +23,21 @@ public class SingularityLaser : MonoBehaviour
 
     private bool _hitEdge = false;
     private bool _hitEventHorizon = false;
-
-
-
     private OutgoingLaserInfo _laserInfo;
-    public Vector3 _firstPosition;
-    public Vector3 _firstPosAfterChanges;
-
-
-    private float laserOffset = 0.05f;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
+        // Retrieve line renderer component
         _lineRenderer = gameObject.GetComponent<LineRenderer>();
     }
 
+    /// <summary>
+    /// Method is called once per frame
+    /// </summary>
     void Update()
     {
         // If the laser has hit and edge and it's not the event horizon
@@ -65,6 +67,9 @@ public class SingularityLaser : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to fire the laser
+    /// </summary>
     private void FireLaser()
     {
 
@@ -83,10 +88,11 @@ public class SingularityLaser : MonoBehaviour
             // Check if determining bend during loop
             if (_determineBendDuringLoop)
             {
+
                 // Re-prepare the helper (need angle from current position, instead of entry position)
                 // Then determine angle and direction to bend
-                float helperAngle = _singularity.PrepareHelper(angularDeflection,currentPoint);
-                if (helperAngle < angularDeflection) _bendRight = true;
+                float helperAngle = _singularity.PrepareHelper((transform.eulerAngles.z + angularDeflection),currentPoint);
+                if (helperAngle < 0) _bendRight = true;
                 else _bendRight = false;
 
             }
@@ -157,6 +163,13 @@ public class SingularityLaser : MonoBehaviour
         _lineRenderer.SetPositions(points);
     }
 
+    /// <summary>
+    /// Method to create interaction between singularity and singularity laser
+    /// </summary>
+    /// <param name="singularity"></param>
+    /// <param name="laserInfo"></param>
+    /// <param name="helperAngle"></param>
+    /// <param name="settings"></param>
     public void Activate(Singularity singularity,OutgoingLaserInfo laserInfo, float helperAngle, GravitationalAnomalySettings settings)
     {
         // Main Method
@@ -167,7 +180,6 @@ public class SingularityLaser : MonoBehaviour
 
         // Save laser info and set approprite information
         _laserInfo = laserInfo;
-        _firstPosition = laserInfo.raycastPosition;
 
         // Locate the line renderer and determine the colour
         _lineRenderer = gameObject.GetComponent<LineRenderer>();
@@ -180,15 +192,15 @@ public class SingularityLaser : MonoBehaviour
         else if (laserInfo.laserColour == LaserColour.Cyan) newColour = Color.cyan;
         else if (laserInfo.laserColour == LaserColour.Magenta) newColour = Color.magenta;
 
+        newColour.a = _laserInfo.laserTransparency;
+
         // Set colour - LineRender can do fades between colours (might be an interesting idea for later use)
         _lineRenderer.startColor = newColour;
         _lineRenderer.endColor = newColour;
 
         // Save settings and set appropriate information
         anomalySettings = settings;
-        this.laserOffset = settings.laserOffset;
         _specifiedLimit = settings.distanceFromEventHorizonToChangeAngleSign;
-
 
         
         // Retreive the starting point, then apply an offset, calculated with a ray to maintain correct positioning - this is to prevent the laser from 
@@ -216,13 +228,16 @@ public class SingularityLaser : MonoBehaviour
         // This object will move as it creates the line
         this.transform.eulerAngles = new Vector3(0f,0f,laserInfo.angle);
 
-        // Set first pos (for later use)
-        _firstPosAfterChanges = point;
-
         // Fire the laser!
         FireLaser();
     }
 
+    /// <summary>
+    /// Method to calculate the angular deflection
+    /// It's present here instead of InteractionMethods due to it's complexity and reliance on various internal variables
+    /// </summary>
+    /// <param name="point"></param>
+    /// <returns></returns>
     private float CalculateAngularDeflection(Vector2 point)
     {
         // Angular Deflection - The Maths!

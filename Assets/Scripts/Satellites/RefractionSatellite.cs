@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class RefractionSatellite : SatelliteParent
 {
+    /// <summary>
+    /// Class to handle refraction interactions
+    /// </summary>
+    
 
+    /// <summary>
+    /// Overwritten inherited method to handle interaction
+    /// </summary>
+    /// <param name="incomingLaser"></param>
     override public void Interaction(IncomingLaser incomingLaser)
     {
         var yOffset = 0.02f;
@@ -14,8 +22,8 @@ public class RefractionSatellite : SatelliteParent
         var point = incomingLaser.raycast.point;
         Vector3 normal;
 
-        Satellite_Info newSatelliteInfo = null;
-        Satellite_Info refractionSatelliteInfo = incomingLaser.laser.refractionSatelliteInfo;
+        SatelliteInfo newSatelliteInfo = null;
+        SatelliteInfo refractionSatelliteInfo = incomingLaser.laser.refractionSatelliteInfo;
 
         if (refractionSatelliteInfo == null)
         {
@@ -56,12 +64,13 @@ public class RefractionSatellite : SatelliteParent
             else if (point.x > this.transform.position.x) point.y += yOffset;     
         }
 
-
+        // Determine the refracted angle from the interaction functions
         var refractedAngle = InteractionFunctions.RefractionInteraction(incidentIndex,refractiveIndex,incomingLaser.raycast.normal,incomingLaser.laser);
 
-
+        // Set expected refraction energy (if no Fresnel Equations)
         var refractedEnergy = incomingLaser.laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
 
+        // If using Fresnel Equations
         if (_gameController.specializedInteractionSettings.allowReflectionDuringRefraction)
         {
             ReflectionSatellite reflectionSatellite = null;
@@ -89,18 +98,17 @@ public class RefractionSatellite : SatelliteParent
             }
         }
 
+        // If the angle is not NaN (which it will be for cases of complete internal reflection)
         if (!float.IsNaN(refractedAngle))
         {
-
+            // Create a new outgoing laser, update it's variables then add it to the protected outgoing laser list
             OutgoingLaserInfo newOutgoingLaser = new OutgoingLaserInfo();
             newOutgoingLaser.origin = point;
             newOutgoingLaser.angle = refractedAngle;
             newOutgoingLaser.raycastPosition = incomingLaser.raycast.point;
             newOutgoingLaser.satelliteInfo = newSatelliteInfo;
             newOutgoingLaser.laserColour = incomingLaser.laser.GetLaserColour();
-
             newOutgoingLaser.laserTransparency = refractedEnergy;
-
             _outgoingLaserInfo.Add(newOutgoingLaser);
 
         }

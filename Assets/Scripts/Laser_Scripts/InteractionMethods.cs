@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Enum to restrict possible light interactions 
+/// </summary>
 public enum Interaction
 {
     SelfDetermine,
@@ -23,6 +26,16 @@ public enum Interaction
 
 class InteractionFunctions
 {
+    /// <summary>
+    /// Class used to contain the functions for Reflection and Refraction maths
+    /// </summary>
+
+    /// <summary>
+    /// Method to determine angle of reflection
+    /// </summary>
+    /// <param name="laserTransform"></param>
+    /// <param name="raycast"></param>
+    /// <returns></returns>
     public static float ReflectionInteraction(Transform laserTransform, RaycastHit2D raycast)
     {
 
@@ -42,6 +55,14 @@ class InteractionFunctions
         return angleOfNormal - angle;
     }
 
+    /// <summary>
+    /// Method to determine angle of refraction
+    /// </summary>
+    /// <param name="incidentIndex"></param>
+    /// <param name="refractedIndex"></param>
+    /// <param name="normal"></param>
+    /// <param name="laser"></param>
+    /// <returns></returns>
     public static float RefractionInteraction(float incidentIndex,float refractedIndex,Vector2 normal, Laser laser)
     {
 

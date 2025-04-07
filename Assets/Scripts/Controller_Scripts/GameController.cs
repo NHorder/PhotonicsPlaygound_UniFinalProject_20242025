@@ -2,54 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Language settings, currently only English and Welsh are supported
+/// Note: Support is hard coded, no files are used.
+/// </summary>
 public enum Language{
     English,
     Welsh
 }
 
 
-
-
 public class GameController : MonoBehaviour
 {
+    /// <summary>
+    /// Core Game Controller, manages the level
+    /// </summary>
 
+    // Active Language
     public Language activeLanguage = Language.English;
 
+    // Which level this is, used for resetting the level
     public Level thisLevel;
 
+
+    // Level Information in both English and Welsh
     public string levelNameEnglish = " ";
     public string levelNameWelsh = " ";
 
     public string levelDescriptionEnglish = " ";
     public string levelDescriptionWelsh = " ";
 
-
+    // Budgets for the level. 
+    // Note the current budget is overwritten intially to the starting budget, it's 
+    // public to allow other systems to check if a purchase can be made.
     public float startingBudget = 1000;
     public float currentBudget = 1000;
 
     public float minimumBudget = -300;
 
     public float expectedBudgetOnCompletion;
-    public int expectedNumSatellitesUsed;
 
-
+    // Base damage applied to all satellites
     public int baseDamage = 20;
 
-
+    // Hidden are the number of active destinations, as this determines when the game is won
+    // Hidden to prevent developers from modifying this value, as it may cause issues in level completion
     [HideInInspector]
     public int activeDestinations = 0;
-    
+
+    // Mark to end the game, hidden to prevent developers from toggling it too early. 
     [HideInInspector]
     public bool gameEnd = false;
 
-
     private bool _canPurchaseSatellite = true;
 
-
+    
+    // WorldInfo contains the number of satellites, origin, destinations and satellites destroyed.
     public WorldInfo worldInfo = new WorldInfo();
 
+    // Framerate related settings
+    // Mainly used for developer assistence, as this project is designed for WebGL - which provides a
+    // default of 60 fps, hence it can greatly assist if the developer has the same fps.
     public FramerateRelatedSettings framerateRelatedSettings;
 
+    // Minor settings for 'unique' interactions, I.e Fresnel Equations (See Refraction Satellite)
     public SpecializedInteractionSettings specializedInteractionSettings;
 
     private UIController _uiController;
@@ -57,14 +73,16 @@ public class GameController : MonoBehaviour
     private SatelliteCreator _satelliteCreatorElysia;
     private CameraDrone _cameraDroneEyeOfZeta;
 
-
+    /// <summary>
+    /// Initalisation Method
+    /// </summary>
     void Start()
     {
+        // Retrieve the active language from the persistence controller
         activeLanguage = PersistenceController.GetLanguage();
-        
 
+        // Make sure there is an expected budget for score calclulation later on
         if (expectedBudgetOnCompletion == null || expectedBudgetOnCompletion == 0) expectedBudgetOnCompletion = (float)(0.5 * startingBudget);
-        if (expectedNumSatellitesUsed == null || expectedNumSatellitesUsed == 0) expectedNumSatellitesUsed = 5;
 
         // Check to make sure the desired framerate is not less than or equal to 0. 
         if (framerateRelatedSettings.desiredFramerate <= 0) 
@@ -80,7 +98,6 @@ public class GameController : MonoBehaviour
 
         if (framerateRelatedSettings.counterToHoldForLevelCompletion < 0)
         {
-
             // Necessary checks to prevent users from potentially having a 0 division error.
 
             if (framerateRelatedSettings.laserCycleDelay <= 0)
@@ -122,27 +139,40 @@ public class GameController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Method to set the UI controller.
+    /// Needed in order to cascade updates, GameController is created before UI Controller, hence a search cannot be made
+    /// </summary>
+    /// <param name="providedUIController"></param>
     public void SetUIController(UIController providedUIController)
     {
         _uiController = providedUIController;
     }
 
+    /// <summary>
+    /// Method to get the UI Controller
+    /// Used to reduce unneccary links / find methods to access the UI controller.
+    /// </summary>
+    /// <returns></returns>
     public UIController GetUIController()
     {
         return _uiController;
     }
 
-    public void PurchaseSatellite(Satellite_Info satelliteInfo)
+    /// <summary>
+    /// Method to purchase a satellite of a specific type. This is called from the Shop Panel.
+    /// </summary>
+    /// <param name="satelliteInfo"></param>
+    public void PurchaseSatellite(SatelliteInfo satelliteInfo)
     {
         // Collect the satellite type and find it's price
         SatelliteType satType = satelliteInfo.satelliteType;
         var satPrice = satelliteInfo.satellitePurchasePrice;
 
-
-
+        // Check that the satellite creator "Elysia" exists and the Eye of Zeta exists
         if (_satelliteCreatorElysia == null || _cameraDroneEyeOfZeta == null)
         {
+            // Retrieve both game objects
             _satelliteCreatorElysia = GameObject.FindGameObjectsWithTag("SatelliteCreator")[0].GetComponent<SatelliteCreator>();
             _cameraDroneEyeOfZeta = GameObject.FindGameObjectsWithTag("EyeOfZeta")[0].GetComponent<CameraDrone>();
         }
@@ -150,12 +180,15 @@ public class GameController : MonoBehaviour
         // If the price is more than 0 (meaning it can be purchased) identify which satellite to purchase.
         if (satPrice > 0 && _canPurchaseSatellite)
         {
-            bool purchased = false;
+            // Request Elysia to create a satellite
+            bool purchased = _satelliteCreatorElysia.CreateSatellite(satType);
+            // If it can it will update Purchased to True;
 
-            if (_satelliteCreatorElysia != null) purchased = _satelliteCreatorElysia.CreateSatellite(satType);
-
+            // Attach drone to Elysia
             _cameraDroneEyeOfZeta.AttachDroneToSatellite(_satelliteCreatorElysia.gameObject.GetComponent<Transform>());
 
+            // If successfuly, reduce curernt budget.
+            // means if a satellite fails to be created, no budget is lost
             if (purchased)
             {
                 // Decrease budget
@@ -164,11 +197,18 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to notify game controller of satellite destuction
+    /// </summary>
     public void DestroyedSatellite()
     {
         worldInfo.numSatellitesDestroyed += 1;
     }
 
+    /// <summary>
+    /// Method to end the level.
+    /// Includes unlocking of the next level and cascade of ending the level
+    /// </summary>
     public void LevelEnd()
     {
         // Notify persistence controller to unlock the next level
@@ -189,11 +229,18 @@ public class GameController : MonoBehaviour
         else Debug.LogError("ERROR: Level cannot be completed. GameManager does not have link to UI controller");
     }
 
+    /// <summary>
+    /// Method to reset the level, this is called from the ConfirmationController
+    /// </summary>
     public void ResetLevel()
     {
         SceneController.ToLevel(thisLevel);
     }
 
+    /// <summary>
+    /// Method to notify gamecontroller of destination unlock, when all destinations are unlocked, end the level
+    /// </summary>
+    /// <param name="active"></param>
     public void DestinationTrigger(bool active)
     {
 
@@ -206,11 +253,15 @@ public class GameController : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Method to begin settings update cascade
+    /// </summary>
     public void UpdateSettings()
     {
+        // Update active language
         activeLanguage = PersistenceController.GetLanguage();
 
+        // Update specialised interractions
         specializedInteractionSettings.allowReflectionDuringRefraction = PersistenceController.GetAllowAdvancedInteractions();
         specializedInteractionSettings.allowSatelliteParticleEffects = PersistenceController.GetAllowSatelliteMovementParticles();
 
@@ -218,7 +269,10 @@ public class GameController : MonoBehaviour
 }
 
 
-
+/// <summary>
+/// Framerate related settings, includes desttination lock time
+/// Default of lock time is 3 seconds (I.e hold light beam over destination for 3 seconds to unlock it)
+/// </summary>
 [System.Serializable]
 public class FramerateRelatedSettings
 {
@@ -234,7 +288,10 @@ public class FramerateRelatedSettings
 
 }
 
-
+/// <summary>
+/// Specialised interaction settings: Particle effects, Fresnel Equations
+/// and minimum light strength to trigger Fresnel Equations and destinations
+/// </summary>
 [System.Serializable]
 public class SpecializedInteractionSettings
 {
@@ -245,18 +302,14 @@ public class SpecializedInteractionSettings
 }
 
 
-
+/// <summary>
+/// World information, to track number of satellites, origins and destinations
+/// </summary>
 public class WorldInfo
 {
     public int numOrigins = 0;
     public int numDestinations = 0;
     public int numSatellites = 0;
     public int numSatellitesDestroyed = 0;
-
-
-    public float newSatelliteLocationX;
-    public float newSatelliteLocationY;
-    
-    public GameObject satelliteBuilder;
 }
 

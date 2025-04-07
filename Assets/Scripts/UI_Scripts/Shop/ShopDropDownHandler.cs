@@ -51,22 +51,22 @@ public class ShopDropDownHandler : MonoBehaviour
     }
     
 
-    public void Called(Satellite_Info satellite_Info)
+    public void Called(SatelliteInfo satelliteInfo)
     {
         if (currentIndex < shopItems.Count)
         {
-            satellite_Info.satelliteType = shopItems[currentIndex].satelliteType;
-            satellite_Info.satelliteName = "";
-            satellite_Info.satelliteDescription = "";
-            satellite_Info.satelliteShortDescription = "";
-            satellite_Info.satellitePurchasePrice = 0;
+            satelliteInfo.satelliteType = shopItems[currentIndex].satelliteType;
+            satelliteInfo.satelliteName = "";
+            satelliteInfo.satelliteDescription = "";
+            satelliteInfo.satelliteShortDescription = "";
+            satelliteInfo.satellitePurchasePrice = 0;
 
-            satellite_Info.RetreiveSatelliteText();
-            satellite_Info.satellite_Shop_Info.satelliteSprite = shopItems[currentIndex].shopItemSprite;
-            satellite_Info.CreateShopItem();
+            satelliteInfo.RetreiveSatelliteText();
+            satelliteInfo.satellite_Shop_Info.satelliteSprite = shopItems[currentIndex].shopItemSprite;
+            satelliteInfo.CreateShopItem();
             
 
-            var variantHandler = satellite_Info.gameObject.GetComponent<ShopItem>();
+            var variantHandler = satelliteInfo.gameObject.GetComponent<ShopItem>();
             variantHandler.variants = shopItems[currentIndex].variants;
 
             currentIndex += 1;
@@ -74,7 +74,7 @@ public class ShopDropDownHandler : MonoBehaviour
         else
         {
             currentIndex = 0;
-            Called(satellite_Info);
+            Called(satelliteInfo);
         }
     }
 }

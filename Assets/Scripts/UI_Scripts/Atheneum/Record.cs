@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
+/// <summary>
+/// Enum to restrict record type
+/// </summary>
 public enum RecordType
 {
     GeneralInformation,
@@ -17,6 +21,9 @@ public enum RecordType
 
 public class Record : MonoBehaviour
 {
+    /// <summary>
+    /// Class to create and hold text for records within the Atheneaum
+    /// </summary>
 
     public RecordType recordType;
     private string _englishTitle;
@@ -25,7 +32,11 @@ public class Record : MonoBehaviour
     private string _welshText;
 
     private TMP_Text[] _contentElements;
+
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _contentElements = gameObject.GetComponentsInChildren<TMP_Text>();
@@ -33,6 +44,9 @@ public class Record : MonoBehaviour
         UpdateLanguage(PersistenceController.GetLanguage());
     }
 
+    /// <summary>
+    /// Method to update text based on record type and language
+    /// </summary>
     private void GetText()
     {
 
@@ -87,11 +101,16 @@ public class Record : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to update language
+    /// </summary>
+    /// <param name="language"></param>
     public void UpdateLanguage(Language language)
     {
-
+        // Determine which text to use
         GetText();
 
+        // Loop through all text components and update their text
         foreach (TMP_Text contentText in _contentElements)
         {
             if (language == Language.English)

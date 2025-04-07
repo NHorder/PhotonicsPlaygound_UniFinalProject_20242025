@@ -54,7 +54,7 @@ public enum SatelliteTypeModifier
     Indestructible
 }
 
-public class Satellite_Info : MonoBehaviour
+public class SatelliteInfo : MonoBehaviour
 {
     public SatelliteType satelliteType = SatelliteType.Unknown;
     public Interaction interaction;
@@ -831,10 +831,10 @@ public class Satellite_Info : MonoBehaviour
         else colliderObject = collider.gameObject;
 
         // Prepare variable in case satellite on satellite collision occurred.
-        Satellite_Info opposingSatellite = null;
+        SatelliteInfo opposingSatellite = null;
 
         // Try to get satellite info of the object, may not be possible if it's an asteroid or boundary
-        colliderObject.TryGetComponent<Satellite_Info>(out opposingSatellite);
+        colliderObject.TryGetComponent<SatelliteInfo>(out opposingSatellite);
 
         // If the remainingImmunityDuration is more 0, negate one from it. Otherwise take damage
         if (_remainingImmunityFrames <= 0 && opposingSatellite != null && !isDestroyedDebris)

@@ -55,13 +55,12 @@ public class LevelCompletePanel : MonoBehaviour
         // Collect information from game controller needed to clacualte the score
         var currentBudget = _gameController.currentBudget;
         var expectedBudget = _gameController.expectedBudgetOnCompletion;
-        var expectedSatellites = _gameController.expectedNumSatellitesUsed;
 
         var numSatellites = _gameController.worldInfo.numSatellites;
         var numSatellitesDestroyed = _gameController.worldInfo.numSatellitesDestroyed;
 
         // Calculate score and rank - score is saved as private variable
-        CalculateScore(currentBudget,expectedBudget,numSatellites,expectedSatellites,numSatellitesDestroyed);
+        CalculateScore(currentBudget,expectedBudget,numSatellites,numSatellitesDestroyed);
         CalculateRank();
 
         if (_language == Language.English)
@@ -100,10 +99,8 @@ public class LevelCompletePanel : MonoBehaviour
 
     }
 
-    public void CalculateScore(float currentBudget,float expectedBudget,int numSatellites,int expectedSatellites,int numSatellitesDestroyed)
+    public void CalculateScore(float currentBudget,float expectedBudget,int numSatellites,int numSatellitesDestroyed)
     {   
-
-
         float budgetScore = 500f * (currentBudget / expectedBudget);
         float satelliteScore = 500f * (1 - (numSatellitesDestroyed / numSatellites));
 

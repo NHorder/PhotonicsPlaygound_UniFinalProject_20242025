@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/// <summary>
+/// Enum to restrict splitter types
+/// </summary>
 public enum SplitterType
 {
     TwoOutput,
@@ -13,6 +16,11 @@ public enum SplitterType
 
 public class SplitterSatellite : SatelliteParent
 {
+    /// <summary>
+    /// Class used for splitter sastellites
+    /// Inherits Satellite Parent
+    /// </summary>
+
     public SplitterType splitterType;
     private int _numExpectedOutput;
 
@@ -34,9 +42,12 @@ public class SplitterSatellite : SatelliteParent
     public SixOutputSplitterSettings sixOutputSplitterSettings;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Inialisation Method
+    /// </summary>
     void Start()
     {
-
+        // Call inherited Start
         base.Start();
 
         _laserColours = new List<LaserColour>();
@@ -84,11 +95,15 @@ public class SplitterSatellite : SatelliteParent
         }
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update method is called once per frame
+    /// </summary>
     void Update()
     {
+        // If there are more than one laser colour
         if (_laserColours.Count != 0)
         {
+            // Loop through and create an outgoing laser before clearing the list
             for (int i = 0; i < _laserColours.Count;i++)
             {
                 Vector3 raycastPoint = _raycast.point;
@@ -110,9 +125,16 @@ public class SplitterSatellite : SatelliteParent
             _laserColours.Clear();
         }
 
+        // Call inherited updates
         base.Update();
     }
 
+    /// <summary>
+    /// Method used to begin light interaction
+    /// This was overwritten in order to handle the information differently
+    /// </summary>
+    /// <param name="laser"></param>
+    /// <param name="raycast"></param>
     override public void SetActive(Laser laser, RaycastHit2D raycast)
     {
 
@@ -123,13 +145,13 @@ public class SplitterSatellite : SatelliteParent
         // Restricts input to only one laser
         if (_incomingLasers.Count == 0)
         {
+            // Create new incoming laser
             IncomingLaser newIncomingLaser = new IncomingLaser();
             newIncomingLaser.laser = laser;
             newIncomingLaser.raycast = raycast;
-
             _incomingLasers.Add(newIncomingLaser);
 
-
+            // Determine which function to call to create number of outputs
             LaserColour laserOriginColour = laser.GetLaserColour();
 
             if (_numExpectedOutput == 2) DetermineTwoOutputs(laserOriginColour);
@@ -139,7 +161,11 @@ public class SplitterSatellite : SatelliteParent
         }
     }
 
-    
+    /// <summary>
+    /// Method to split the incoming light beam into two outputs
+    /// </summary>
+    /// <param name="laserOriginColour"></param>
+    /// <param name="allocatedEnergyPerLaser"></param>
     private void DetermineTwoOutputs(LaserColour laserOriginColour, bool allocatedEnergyPerLaser = false)
     {
         // If the energy has not been already allocated, then calcualte it for two outputs
@@ -190,6 +216,10 @@ public class SplitterSatellite : SatelliteParent
 
     }
 
+    /// <summary>
+    /// Method to split the incoming light beam into three outputs
+    /// </summary>
+    /// <param name="laserOriginColour"></param>
     private void DetermineThreeOutputs(LaserColour laserOriginColour)
     {
         // Calcualte energy per laser for three outputs
@@ -206,6 +236,10 @@ public class SplitterSatellite : SatelliteParent
 
     }
 
+    /// <summary>
+    /// Method to split the incoming light beam into six outputs
+    /// </summary>
+    /// <param name="laserOriginColour"></param>
     private void DetermineSixOutputs(LaserColour laserOriginColour)
     {
 
@@ -245,7 +279,9 @@ public class SplitterSatellite : SatelliteParent
 
 
 
-
+/// <summary>
+/// Two Output settings, includes start locations for split lasers
+/// </summary>
 [System.Serializable]
 public class TwoOutputSplitterSettings
 {
@@ -254,6 +290,9 @@ public class TwoOutputSplitterSettings
 
 }
 
+/// <summary>
+/// Three Output settings, includes start locations for split lasers
+/// </summary>
 [System.Serializable]
 public class ThreeOutputSplitterSettings
 {
@@ -262,6 +301,9 @@ public class ThreeOutputSplitterSettings
     public float angleGamma = -45f;
 }
 
+/// <summary>
+/// Six Output settings, includes start locations for split lasers
+/// </summary>
 [System.Serializable]
 public class SixOutputSplitterSettings
 {

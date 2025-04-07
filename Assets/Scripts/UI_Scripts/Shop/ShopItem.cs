@@ -10,7 +10,7 @@ public class ShopItem : MonoBehaviour
     private TMP_Dropdown _dropdown;
     private Image _shopSprite;
 
-    private Satellite_Info _satelliteInfo;
+    private SatelliteInfo _satelliteInfo;
 
 
     public List<Variant> variants;
@@ -19,7 +19,7 @@ public class ShopItem : MonoBehaviour
     {
         var shopitemHandler = gameObject.GetComponentInParent<ShopDropDownHandler>();
 
-        _satelliteInfo = gameObject.GetComponent<Satellite_Info>();
+        _satelliteInfo = gameObject.GetComponent<SatelliteInfo>();
         shopitemHandler.Called(_satelliteInfo);
 
 

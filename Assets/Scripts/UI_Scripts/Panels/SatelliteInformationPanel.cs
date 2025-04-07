@@ -13,7 +13,7 @@ public class SatelliteInformationPanel : MonoBehaviour
     private SatelliteController _satelliteController;
 
 
-    private Satellite_Info _selectedSatelliteInfo;
+    private SatelliteInfo _selectedSatelliteInfo;
 
     private TMP_Text _titleText;
     private TMP_Text _descriptionText;

@@ -1917,6 +1917,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.allowedRange
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaAutomaticDroneSettings.movementSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
       value: 0
       objectReference: {fileID: 0}
@@ -1932,9 +1940,21 @@ PrefabInstance:
       propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.cameraDroneMovementSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1576753308454094203, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Name
       value: EyeOfZeta
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310357092971192620, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: satellite_Movement_Info.maxMovementMultiplier
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3310357092971192620, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: satellite_Movement_Info.intialMovementMultiplier
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3537930732422198724, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Enabled

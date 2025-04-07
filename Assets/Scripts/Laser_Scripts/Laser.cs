@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Enum to restrict the number of colours the laser can be
+/// </summary>
 public enum LaserColour{
     Null,
     White,
@@ -15,27 +17,47 @@ public enum LaserColour{
 
 }
 
+
 public class Laser : MonoBehaviour
 {
+    /// <summary>
+    /// Class used to create the laser visual and object. It also handles interactions with Satellites
+    /// </summary>
+    /// 
+    
+
+    // Determine the true origin of the satellite, connected to manually by developer
     public OriginSatellite origin;
+
+    // The laser colour
     public LaserColour _laserColour;
 
+    // The maximum distance the laser sprite can be extended to
     public float maxDistance;
 
+    // Which layers the laser can be hit
+    // Hidden in the Inspector, as this is copied from the Origin satellite
     [HideInInspector]
     public LayerMask layersToHit;
 
-
+    // Transparency of the laser
     public float _transparency = 1;
-    
+
+    // Raycast that is saved for convienience
     private RaycastHit2D _raycast;
 
-    public Satellite_Info refractionSatelliteInfo;
+    // Refraction satellite information, in cases where light is within an object
+    public SatelliteInfo refractionSatelliteInfo;
+
+    // Settings for Frensel Equations
     private bool _allowReflectionDuringRefraction;
 
+    // Settings for minimum for reflection to occur during refraction
     private float _minimumTransparencyForReflectionDuringRefraction;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// 
+    /// </summary>
     void Start()
     {
         // Laser requires an origin in order to function, complete a check or throw error.
@@ -69,7 +91,9 @@ public class Laser : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Method to fire the laser into the scene, includes code taken and adapted from a tutorial. Expand method to see more
+    /// </summary>
     public void FireLaser()
     {
 
@@ -101,6 +125,9 @@ public class Laser : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Method to send a raycast into the scene to find a polygon collider (after a minimum distance)
+    /// </summary>
     private void Raycast()
     {
         // Cast a ray and determine what objects (if any) are hit
@@ -127,6 +154,12 @@ public class Laser : MonoBehaviour
         Debug.DrawRay(transform.position, transform.up, Color.black, 0.01f, true);
     }
 
+    /// <summary>
+    /// Method to determine light interaction
+    /// Has parameters (with impossible defaults) for repeated calls - I.e Frensel Equations has refraction then call reflection
+    /// </summary>
+    /// <param name="remainingLightStrength"></param>
+    /// <param name="interaction"></param>
     private void HitObject(float remainingLightStrength = -1, Interaction interaction = Interaction.SelfDetermine)
     {
         // Has defaults in order to allow for more complex interactions to occur, I.e Fresnel Equations (refraction and reflection)
@@ -137,11 +170,11 @@ public class Laser : MonoBehaviour
         var hitObject = _raycast.collider.gameObject;
 
         // Prepare satellite information
-        Satellite_Info satelliteInfo = null;
+        SatelliteInfo satelliteInfo = null;
 
         // Try and retrieve the satellite infomation - not all collided objects have them
         try{
-            satelliteInfo = hitObject.GetComponent<Satellite_Info>();
+            satelliteInfo = hitObject.GetComponent<SatelliteInfo>();
         }
         catch
         {
@@ -175,6 +208,8 @@ public class Laser : MonoBehaviour
                 // Do Nothing, as the light is completly absorbed
             }
 
+
+            // If an satellite specific interaction, locate the related script and calls it's SetActive script
             else if (interaction == Interaction.Reflection)
             {
                 ReflectionSatellite reflectionSatellite = _raycast.collider.gameObject.GetComponent<ReflectionSatellite>();
