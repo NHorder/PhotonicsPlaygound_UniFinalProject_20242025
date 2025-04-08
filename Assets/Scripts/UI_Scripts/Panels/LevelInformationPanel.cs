@@ -7,6 +7,10 @@ using TMPro;
 
 public class LevelInformationPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Class to display and handle level information
+    /// </summary>
+    
     private Language _language = Language.English;
 
     private GameController _gameController;
@@ -18,6 +22,9 @@ public class LevelInformationPanel : MonoBehaviour
     private TMP_Text _resetLevelText;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _language = PersistenceController.GetLanguage();
@@ -26,6 +33,8 @@ public class LevelInformationPanel : MonoBehaviour
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
 
+
+        /// Find needed child components, break loop once found
         var childTextList = gameObject.GetComponentsInChildren<TMP_Text>();
         foreach (TMP_Text childText in childTextList)
         {
@@ -43,6 +52,9 @@ public class LevelInformationPanel : MonoBehaviour
         UpdateText();
     }
 
+    /// <summary>
+    /// Method to update relevant text to the correcct language
+    /// </summary>
     private void UpdateText()
     {
 
@@ -60,18 +72,26 @@ public class LevelInformationPanel : MonoBehaviour
         }
     }
 
-
-
+    /// <summary>
+    /// Method to present the settings menu
+    /// Called by UI component
+    /// </summary>
     public void SettingsInteract()
     {
         _uiController.PresentFixedPanel(FixedUIPanel.Settings, true);
     }
 
+    /// <summary>
+    /// Method to present the Athenaeum
+    /// </summary>
     public void AthenaeumInteract()
     {
         _uiController.ToggleAthenaeum();
     }
 
+    /// <summary>
+    /// Method to reset the level
+    /// </summary>
     public void ResetLevelInteract()
     {
 
@@ -84,7 +104,10 @@ public class LevelInformationPanel : MonoBehaviour
         
     }
 
-
+    /// <summary>
+    /// Method to update the language
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;

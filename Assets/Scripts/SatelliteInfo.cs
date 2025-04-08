@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Enum to strict how many types of satellites can exist
+/// </summary>
 public enum SatelliteType{
     Unknown,
     SingleSideReflector,
@@ -43,6 +46,9 @@ public enum SatelliteType{
 
 }
 
+/// <summary>
+/// Enum to determine how much damage a satellite can take before destruction
+/// </summary>
 public enum SatelliteTypeModifier
 {
     Weak,
@@ -54,6 +60,10 @@ public enum SatelliteTypeModifier
     Indestructible
 }
 
+
+/// <summary>
+/// Main class for all satellite related information
+/// </summary>
 public class SatelliteInfo : MonoBehaviour
 {
     public SatelliteType satelliteType = SatelliteType.Unknown;
@@ -70,31 +80,28 @@ public class SatelliteInfo : MonoBehaviour
     public bool canBeSold = true;
     public bool isDestroyedDebris = false;
     public int satelliteSellPrice = 0;
-
-
     public bool canbeMoved = true;
-
+    private int _numberImmunityFrames = 0;
+    private int _remainingImmunityFrames = 0;
     
+
     public AdvancedSatelliteInfo advanced_Satellite_Info;
     public SatelliteMovementInfo satellite_Movement_Info;
     public SatelliteShopInfo satellite_Shop_Info;
-
-    private GameController _gameController;
-
-    private Language _language = Language.English;
-
-    private int _numberImmunityFrames = 0;
-    private int _remainingImmunityFrames = 0;
-
     private SatelliteTypeModifier satelliteTypeModifier;
 
     public ParticleSystem statelliteParticleSystem;
 
 
+    private GameController _gameController;
     private SatelliteController _satelliteControlsPanel;
+    private Language _language = Language.English;
 
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _language = PersistenceController.GetLanguage(); 
@@ -137,8 +144,12 @@ public class SatelliteInfo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method called once per frame
+    /// </summary>
     void Update()
     {
+        // Constantly compare language to game controllers language, update as needed
         if (_language != _gameController.activeLanguage)
         {
             _language = _gameController.activeLanguage;
@@ -152,12 +163,12 @@ public class SatelliteInfo : MonoBehaviour
 
         }
 
+        // Decrement immunity frames if more than zero
         if (_remainingImmunityFrames > 0) _remainingImmunityFrames -= 1;
 
         // if the satellite health falls below or equal to 0, destroy the satellite in a flashy animation
         if (satelliteHealth <= 0 && satelliteTypeModifier != SatelliteTypeModifier.Indestructible && !satellite_Shop_Info.IsShopItem)
         {
-
             // Play satellite destruction animation
             // The animation contains a destroy trigger - which when reached will call this DestroyObject function.
             // Forcing a animation delay before destruction.
@@ -165,17 +176,16 @@ public class SatelliteInfo : MonoBehaviour
             var animator = this.gameObject.GetComponent<Animator>();
             animator.SetBool("Destroy",true);
 
-
             // If the animation has not already triggered by this point, destroy the satellite and skip the animation
             // This should only occur when satellites do not yet have a destruction animation. 
-            if (satelliteHealth <= -100)
-            {
-                DestroyObject();
-            }
-
+            if (satelliteHealth <= -100) DestroyObject();
         }
     }
 
+    /// <summary>
+    /// Method to retrieve satellite information text
+    /// This method serves as a "database" where all satellites have their related information
+    /// </summary>
     public void RetreiveSatelliteText()
     {
         //// This method serves as the "database" where all satellites have their related information
@@ -756,7 +766,10 @@ public class SatelliteInfo : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Method used to updat relevant information and functions if a satellite in the shop
+    /// This is done so that other algorithms don't need to access the RetrieveSatelliteText for all information
+    /// </summary>
     public void CreateShopItem()
     {
         // Get common component across children
@@ -766,11 +779,6 @@ public class SatelliteInfo : MonoBehaviour
         foreach(RectTransform childTransform in childrenTransformList)
         {
             var childObject = childTransform.gameObject;
-
-            
-            // Remove Clone brackets from the new child objects - more of a personal preference thing
-            //childObject.name = childObject.name.Replace("(Clone)","");
-
 
             // Retrieve text component
             var textComponent = childObject.GetComponent<TMP_Text>();
@@ -797,15 +805,23 @@ public class SatelliteInfo : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method to purchase a given satellite
+    /// </summary>
     public void PurchaseSatellite()
     {
         _gameController.PurchaseSatellite(this);
     }
 
+    /// <summary>
+    /// Method to destroy the object
+    /// </summary>
     public void DestroyObject()
     {
+        // Notify game controller
         _gameController.DestroyedSatellite();
 
+        // Get the satellite information and notify it to delete lasers
         if (interaction != null && interaction != Interaction.Absorb)
         {
             var satelliteScript = gameObject.GetComponent<SatelliteParent>();
@@ -815,10 +831,16 @@ public class SatelliteInfo : MonoBehaviour
         // Check to see if the satellite being destroyed has the Eye of Zeta attached, if so remove the attachment
         CameraDrone eyeOfZeta = gameObject.GetComponentInChildren<CameraDrone>();
         if (eyeOfZeta != null) eyeOfZeta.DetachDroneFromSatellite();
-    
+
+        // Finally destroy the game object
         Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Method to damage a satellite
+    /// </summary>
+    /// <param name="collision"></param>
+    /// <param name="collider"></param>
     private void DamageSatellite(Collision2D collision = null, Collider2D collider = null)
     {  
 
@@ -844,6 +866,7 @@ public class SatelliteInfo : MonoBehaviour
 
             var typeModifier = 1.0f;
 
+            // Type modifier will change how much damage the satellite with take
             if (satelliteTypeModifier == SatelliteTypeModifier.Weak) typeModifier = 3.0f;
             else if (satelliteTypeModifier == SatelliteTypeModifier.SlightlyWeak) typeModifier = 2.0f; 
             else if (satelliteTypeModifier == SatelliteTypeModifier.Middle) typeModifier = 1.0f;
@@ -868,7 +891,7 @@ public class SatelliteInfo : MonoBehaviour
                 _satelliteControlsPanel = GameObject.FindGameObjectsWithTag("SatelliteControlsPanel")[0].GetComponent<SatelliteController>();
             }
 
-
+            // Speed will also be taken into account when damaging a satellite
             if (currentSpeed / maxSpeed  == 1) speedModifier = 1.75f;
             else if (currentSpeed / maxSpeed  >= 80) speedModifier = 1.5f;
             else if (currentSpeed / maxSpeed  >= 60) speedModifier = 1.25f;
@@ -882,24 +905,38 @@ public class SatelliteInfo : MonoBehaviour
                 satelliteHealth = (int)(satelliteHealth - (baseDamage * typeModifier * speedModifier));
             }
 
-
+            // Set immunity frames
             _remainingImmunityFrames = _numberImmunityFrames;
         }
         
     }
 
+    /// <summary>
+    /// Method to handle intial collisions between satellites
+    /// </summary>
+    /// <param name="collision"></param>
     public void OnCollisionEnter2D(Collision2D collision)
     {
         DamageSatellite(collision);
     }
 
+    /// <summary>
+    /// Method to handle continued collisions between satellites (I.e pushing an asteroid)
+    /// </summary>
+    /// <param name="collision"></param>
     public void OnCollisionStay2D(Collision2D collision)
     {
         DamageSatellite(collision);
     }
 
+
+    /// <summary>
+    /// Method to handle blackhole collisions
+    /// </summary>
+    /// <param name="collider"></param>
     public void OnTriggerEnter2D(Collider2D collider)
     {
+        // IF hitting a blackhole, then immediately destroy the object
         if (collider.tag == "Singularity" && this.gameObject.tag != "Singularity" && !(collider is BoxCollider2D))
         {
             var animator = this.gameObject.GetComponent<Animator>();
@@ -909,20 +946,22 @@ public class SatelliteInfo : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Method to handle continued blackhole collisions
+    /// </summary>
+    /// <param name="collider"></param>
     public void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.tag == "Singularity" && this.gameObject.tag != "Singularity" && !(collider is BoxCollider2D))
-        {
-            // Do nothing, it should be either in the process of being destroyed, or has been destroyed
-        }
-        else DamageSatellite(null,collider);
+        OnTriggerEnter2D(collider);
     }
 
 }
 
 
 
-
+/// <summary>
+/// Advanced information incldues information such as absorbance, refractive index, etc
+/// </summary>
 [System.Serializable]
 public class AdvancedSatelliteInfo
 {
@@ -940,6 +979,9 @@ public class AdvancedSatelliteInfo
 
 }
 
+/// <summary>
+/// Satellite movement information focuses on movement and rotation multipliers
+/// </summary>
 [System.Serializable]
 public class SatelliteMovementInfo
 {
@@ -950,6 +992,9 @@ public class SatelliteMovementInfo
     public float maxRotationMultiplier = 20f;
 }
 
+/// <summary>
+/// Shop Info contains information relevant to displaying a satellite within the shop
+/// </summary>
 [System.Serializable]
 public class SatelliteShopInfo
 {

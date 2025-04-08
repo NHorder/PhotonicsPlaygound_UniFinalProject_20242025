@@ -6,6 +6,9 @@ using TMPro;
 
 public class Titlescreen : MonoBehaviour
 {
+    /// <summary>
+    /// Class to handle titlescreen interactions
+    /// </summary>
 
     private TMP_Text _titleText;
     private TMP_Text _startGameText;
@@ -13,10 +16,14 @@ public class Titlescreen : MonoBehaviour
     private TMP_Text _acknowledgementsText;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         var childrenText = gameObject.GetComponentsInChildren<TMP_Text>();
 
+        /// Loop through children and find needed text
         foreach (TMP_Text childText in childrenText)
         {
             if (childText.name == "GameTitle") _titleText = childText;
@@ -26,6 +33,10 @@ public class Titlescreen : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to update language
+    /// </summary>
+    /// <param name="language"></param>
     public void UpdateLanguage(Language language)
     {
 

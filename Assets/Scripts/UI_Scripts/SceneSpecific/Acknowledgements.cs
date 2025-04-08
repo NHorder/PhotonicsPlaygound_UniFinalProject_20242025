@@ -6,11 +6,19 @@ using TMPro;
 
 public class Acknowledgements : MonoBehaviour
 {
+    /// <summary>
+    /// Method to display Acknoledgements Screen
+    /// Note: Does not have UpdateLanguage as the settings menu cannot be displayed in this scene
+    /// </summary>
+
 
     private bool _foundTitle = false;
     private bool _foundAcknowledgements = false;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         var _childTexts = gameObject.GetComponentsInChildren<TMP_Text>();
@@ -19,7 +27,7 @@ public class Acknowledgements : MonoBehaviour
 
         if (_language == Language.English)
         {
-
+            // Loop through all elements and update language, once all found break loop
             foreach (TMP_Text childText in _childTexts)
             {
                 if (childText.name == "Title")
@@ -42,6 +50,7 @@ public class Acknowledgements : MonoBehaviour
         }
         else if (_language == Language.Welsh)
         {
+            // Loop through all elements and update language, once all found break loop
             foreach (TMP_Text childText in _childTexts)
             {
                 if (childText.name == "Title")

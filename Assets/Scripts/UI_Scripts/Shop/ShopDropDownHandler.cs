@@ -7,8 +7,13 @@ using TMPro;
 
 public class ShopDropDownHandler : MonoBehaviour
 {
+    /// <summary>
+    /// Class to handle shop drop down menus
+    /// </summary>
     public string dropDownName = "";
     public string dropDownNameWelsh = "";
+
+    // List contianining all shop items for the given dropdown
     public List<ShopItemInfomation> shopItems;
 
 
@@ -17,14 +22,17 @@ public class ShopDropDownHandler : MonoBehaviour
     private TMP_Dropdown _tmpDropdown;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         
         _tmpDropdown = gameObject.GetComponent<TMP_Dropdown>();
         _tmpDropdown.transform.SetAsLastSibling();
 
+        // Identify and locate needed information
         List<TMP_Dropdown.OptionData> list = new List<TMP_Dropdown.OptionData>();
-
         foreach (ShopItemInfomation shopItem in shopItems)
         {
             TMP_Dropdown.OptionData temp = new TMP_Dropdown.OptionData();
@@ -37,6 +45,10 @@ public class ShopDropDownHandler : MonoBehaviour
         UpdateLanguage(PersistenceController.GetLanguage());
     }
 
+    /// <summary>
+    /// Method to update language - this only counts for the dropdown title, I.e Splitters and Combiners
+    /// </summary>
+    /// <param name="language"></param>
     public void UpdateLanguage(Language language)
     {
         if (language == Language.English)
@@ -50,8 +62,14 @@ public class ShopDropDownHandler : MonoBehaviour
         
     }
     
-
-    public void Called(SatelliteInfo satelliteInfo)
+    /// <summary>
+    /// Method used to create shop items, and display their correct information
+    /// This is typically used to handle variants of a type of item
+    /// Note: Variants are not fully implemented due to issue where the dropdown appeared below 
+    /// a certain UI element making it hard to select a given variant type
+    /// </summary>
+    /// <param name="satelliteInfo"></param>
+    public void DetermineInformation(SatelliteInfo satelliteInfo)
     {
         if (currentIndex < shopItems.Count)
         {
@@ -74,11 +92,15 @@ public class ShopDropDownHandler : MonoBehaviour
         else
         {
             currentIndex = 0;
-            Called(satelliteInfo);
+            DetermineInformation(satelliteInfo);
         }
     }
 }
 
+
+/// <summary>
+/// Class to store shop item information, includes satellite type, shop item sprite and variants 
+/// </summary>
 [System.Serializable]
 public class ShopItemInfomation
 {

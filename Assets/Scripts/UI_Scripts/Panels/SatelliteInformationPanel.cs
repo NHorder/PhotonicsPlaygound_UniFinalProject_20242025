@@ -7,6 +7,11 @@ using TMPro;
 
 public class SatelliteInformationPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Class to present satellite information
+    /// </summary>
+    
+
     private Language _language = Language.English;
 
 
@@ -26,13 +31,16 @@ public class SatelliteInformationPanel : MonoBehaviour
 
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _language = PersistenceController.GetLanguage();
         
         _satelliteController = GameObject.FindGameObjectsWithTag("MouseController")[0].GetComponent<SatelliteController>();
 
-
+        // Locate all text children - these will be updated to contain the selected satellite information
         var childTextList = gameObject.GetComponentsInChildren<TMP_Text>();
         foreach (TMP_Text childText in childTextList)
         {
@@ -48,11 +56,12 @@ public class SatelliteInformationPanel : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Update Method called once per frame
+    /// </summary>
     void Update()
     {
-        // Update information if applicable
-        // Doing this on update to avoid the link between controller and this
-
+        // Update linked information with relevant selected information
         if (_selectedSatelliteInfo != _satelliteController.selectedSatelliteInfo || _forceTrigger)
         {
             _forceTrigger = false;
@@ -64,6 +73,8 @@ public class SatelliteInformationPanel : MonoBehaviour
                 _titleText.text = _selectedSatelliteInfo.satelliteName;
                 _descriptionText.text = _selectedSatelliteInfo.satelliteDescription;
 
+
+                // Cost of the satellite is presented, else it's shown as "Not for Sale"
                 if (_selectedSatelliteInfo.canBeSold)
                 {
                     _sellText.text = "£"+_selectedSatelliteInfo.satelliteSellPrice;
@@ -74,7 +85,7 @@ public class SatelliteInformationPanel : MonoBehaviour
                     else if (_language == Language.Welsh) _sellText.text = "Ddim Ar Werth";
                 }
 
-
+                // If destination is selected, include the "Status" of the satellite within the information tab
                 if (_selectedSatelliteInfo.satelliteType == SatelliteType.Destination)
                 {
                     var destinationSat = _selectedSatelliteInfo.gameObject.GetComponent<DestinationSatellite>();
@@ -92,6 +103,7 @@ public class SatelliteInformationPanel : MonoBehaviour
             }
             else
             {
+                // If there is no item selected, set default to nothing selected
                 if (_language == Language.English)
                 {
                     _titleText.text = "Nothing";
@@ -113,6 +125,10 @@ public class SatelliteInformationPanel : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to update language
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;

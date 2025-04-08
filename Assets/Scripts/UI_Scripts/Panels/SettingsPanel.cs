@@ -6,6 +6,11 @@ using TMPro;
 
 public class SettingsPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Class to handle settings panel
+    /// </summary>
+    
+     
     private Language _language = Language.English;
     private TMP_Text _languageText;
     private TMP_Text _englishButtonText;
@@ -55,6 +60,9 @@ public class SettingsPanel : MonoBehaviour
     private TeachingPanel _teachingPanel;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _language = PersistenceController.GetLanguage();
@@ -64,6 +72,8 @@ public class SettingsPanel : MonoBehaviour
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _confirmationPanel = GameObject.FindGameObjectsWithTag("ConfirmationPanel")[0].GetComponent<ConfirmationPanel>();
 
+
+        // Locate all needed information from child objects
         var childRectTransformList = gameObject.GetComponentsInChildren<RectTransform>();
 
         // Loop through all children and filter for wanted objects
@@ -100,15 +110,48 @@ public class SettingsPanel : MonoBehaviour
             else if (childObject.name == "WelshButton") _welshButtonAnimator = childObject.GetComponent<Animator>();
         }
 
-
-        //if (!_uiController.uiExpectations.expectConfirmationPanel) _exitLevelButton.active = false;
         if (!_uiController.uiExpectations.expectTeachingPanel)_viewTeachingTransmissionButton.active = false;
         else _teachingPanel = GameObject.FindGameObjectsWithTag("TeachingPanel")[0].GetComponent<TeachingPanel>();
 
+
+        // Call read settings to update to current information
         ReadSettings();
     }
 
+    /// <summary>
+    /// Method to read all settings from the Persistence Controller
+    /// </summary>
+    private void ReadSettings()
+    {
+        _language = PersistenceController.GetLanguage();
+        _savedLanguage = PersistenceController.GetLanguage();
+        ChangeLanguage();
 
+        _forceNoChangeWhenReceivingCommunications = PersistenceController.GetForceNoChangeWhenReceivingCommunications();
+        _forceNoChangeWhenReceivingCommunicationsToggle.isOn = _forceNoChangeWhenReceivingCommunications;
+
+        _disableConfirmations = PersistenceController.GetDisableConfirmations();
+        _disableConfirmmationsToggle.isOn = _disableConfirmations;
+
+        _allowAdvancedInteractions = PersistenceController.GetAllowAdvancedInteractions();
+        _allowAdvancedInteractionsToggle.isOn = _allowAdvancedInteractions;
+
+        _allowSatelliteMovementParticles = PersistenceController.GetAllowSatelliteMovementParticles();
+        _allowSatelliteMovementParticlesToggle.isOn = _allowSatelliteMovementParticles;
+    }
+
+    /// <summary>
+    /// Method to update settings in Persistence Controller
+    /// </summary>
+    private void UpdateSettings()
+    {
+        PersistenceController.UpdateSettings(_language,_forceNoChangeWhenReceivingCommunications,_disableConfirmations,_allowAdvancedInteractions,_allowSatelliteMovementParticles);
+    }
+
+    
+    /// <summary>
+    /// Method to change the language of the components within the settings menu
+    /// </summary>
     private void ChangeLanguage()
     {
         if (_language == Language.English)
@@ -154,72 +197,84 @@ public class SettingsPanel : MonoBehaviour
 
     }
     
-    private void ReadSettings()
-    {
-        _language = PersistenceController.GetLanguage();
-        _savedLanguage = PersistenceController.GetLanguage();
-        ChangeLanguage();
-
-        _forceNoChangeWhenReceivingCommunications = PersistenceController.GetForceNoChangeWhenReceivingCommunications();
-        _forceNoChangeWhenReceivingCommunicationsToggle.isOn = _forceNoChangeWhenReceivingCommunications;
-
-        _disableConfirmations = PersistenceController.GetDisableConfirmations();
-        _disableConfirmmationsToggle.isOn = _disableConfirmations;
-
-        _allowAdvancedInteractions = PersistenceController.GetAllowAdvancedInteractions();
-        _allowAdvancedInteractionsToggle.isOn = _allowAdvancedInteractions;
-
-        _allowSatelliteMovementParticles = PersistenceController.GetAllowSatelliteMovementParticles();
-        _allowSatelliteMovementParticlesToggle.isOn = _allowSatelliteMovementParticles;
-    }
-
-    private void UpdateSettings()
-    {
-        PersistenceController.UpdateSettings(_language,_forceNoChangeWhenReceivingCommunications,_disableConfirmations,_allowAdvancedInteractions,_allowSatelliteMovementParticles);
-    }
-
+    /// <summary>
+    /// Method to set language to English
+    /// Called by UI component
+    /// </summary>
     public void SetLanguageEnglish()
     {
         _language = Language.English;
         ChangeLanguage();
     }
 
+    /// <summary>
+    /// Method to set language to Welsh
+    /// Called by UI component
+    /// </summary>
     public void SetLanguageWelsh()
     {
         _language = Language.Welsh;
         ChangeLanguage();
     }
 
+    /// <summary>
+    /// Method to toggle communication overwrite setting
+    /// Called by UI component
+    /// </summary>
     public void ToggleCommunicationOverwrite()
     {
         _forceNoChangeWhenReceivingCommunications = !_forceNoChangeWhenReceivingCommunications;
     }
 
+    /// <summary>
+    /// Method to toggle disable confirmations setting
+    /// Called by UI component
+    /// </summary>
     public void ToggleDisableConfirmations()
     {
         _disableConfirmations = !_disableConfirmations;
     }
 
+    /// <summary>
+    /// Method to toggle Advanced Interaction setting
+    /// Called by UI component
+    /// </summary>
     public void ToggleAdvancedInteractions()
     {
         _allowAdvancedInteractions = !_allowAdvancedInteractions;
     }
 
+    /// <summary>
+    /// Method to toggle satellite particle setting
+    /// Called by UI Component
+    /// </summary>
     public void ToggleSatelliteParticles()
     {
         _allowSatelliteMovementParticles = !_allowSatelliteMovementParticles;
     }
 
+    /// <summary>
+    /// Method to present the settings panel
+    /// Called by UI Component
+    /// </summary>
     public void ShowSettingsPanel()
     {
         _uiController.PresentFixedPanel(FixedUIPanel.Settings,true);
     }
 
+    /// <summary>
+    /// Method to reset the settings panel information
+    /// Called by UI Component
+    /// </summary>
     public void Reset()
     {
         ReadSettings();
     }
 
+    /// <summary>
+    /// Method to close and save changed setttings
+    /// Called by UI Component
+    /// </summary>
     public void Return()
     {
         UpdateSettings();
@@ -230,6 +285,10 @@ public class SettingsPanel : MonoBehaviour
         _uiController.PresentFixedPanel(FixedUIPanel.Settings,false);
     }
 
+    /// <summary>
+    /// Method to leave the level
+    /// Called by UI Component
+    /// </summary>
     public void LeaveLevel()
     {
         Return();
@@ -237,6 +296,10 @@ public class SettingsPanel : MonoBehaviour
         _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,true);
     }
 
+    /// <summary>
+    /// Method to show the teaching transmissions - saves the settings in the process
+    /// Called by UI Component
+    /// </summary>
     public void ViewTeachingTransmissions()
     {
         if (_teachingPanel != null)

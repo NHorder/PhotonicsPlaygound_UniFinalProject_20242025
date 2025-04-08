@@ -6,11 +6,17 @@ using TMPro;
 
 public class LevelSelectButton : MonoBehaviour
 {
+    /// <summary>
+    /// Class to handle Level Select buttons in the Level Selection Screen
+    /// </summary>
 
     public Level level;
 
     private TMP_Text _buttonText;
 
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _buttonText = gameObject.GetComponentInChildren<TMP_Text>();
@@ -18,6 +24,9 @@ public class LevelSelectButton : MonoBehaviour
         UpdateLanguage();
     }
 
+    /// <summary>
+    /// Method to update the language of the button based on language and level
+    /// </summary>
     public void UpdateLanguage()
     {
         var _language = PersistenceController.GetLanguage();
@@ -53,6 +62,9 @@ public class LevelSelectButton : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method to progress call animation when a level has been unlocked prior
+    /// </summary>
     public void UnlockLevel()
     {
         // Play an unlock animation, cause why not.
@@ -60,6 +72,9 @@ public class LevelSelectButton : MonoBehaviour
         if (animator != null) animator.SetBool("AlreadyUnlocked",true);
     }
 
+    /// <summary>
+    /// Method to play the unlock animation
+    /// </summary>
     public void PlayUnlockAnimation()
     { 
         // Play an unlock animation, cause why not.
