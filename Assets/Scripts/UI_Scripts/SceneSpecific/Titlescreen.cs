@@ -52,7 +52,7 @@ public class Titlescreen : MonoBehaviour
             _titleText.text = "Maes Chwarae Ffotoneg";
             _startGameText.text = "Dechrau Gêm";
             _settingsText.text = "Gosodiadau";
-            _acknowledgementsText.text = "";
+            _acknowledgementsText.text = "Cydnabyddiaethau";
 
         }
 

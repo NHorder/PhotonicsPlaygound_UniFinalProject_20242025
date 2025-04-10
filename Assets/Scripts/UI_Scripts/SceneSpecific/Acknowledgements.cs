@@ -38,6 +38,7 @@ public class Acknowledgements : MonoBehaviour
                 else if (childText.name == "AcknowledgementsText")
                 {
                     childText.text = "Developer: Nathan Horder\n\nArtist: Nathan Horder\n\nTranslator: Helen Miles\n\nPlay Testers:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n- Michael McRae\n- Jamie Stammers\n";
+                    
                     _foundAcknowledgements = true;
                 }
 
@@ -50,17 +51,19 @@ public class Acknowledgements : MonoBehaviour
         }
         else if (_language == Language.Welsh)
         {
+            Debug.Log("????");
+
             // Loop through all elements and update language, once all found break loop
             foreach (TMP_Text childText in _childTexts)
             {
                 if (childText.name == "Title")
                 {
-                    childText.text = "";
+                    childText.text = "Cydnabyddiaethau";
                     _foundTitle = true;
                 }
-                else if (childText.name == "Acknowledgements")
+                else if (childText.name == "AcknowledgementsText")
                 {
-                    childText.text = ": Nathan Horder\n\n: Nathan Horder\n\n: Helen Miles\n\n:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n";
+                    childText.text = "Datblygwr: Nathan Horder\n\nArlunydd: Nathan Horder\n\nCyfieithydd: Helen Miles\n\nProfwyr Chwarae:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n-Michael McRae\n- Jamie Stammers\n";
                     _foundAcknowledgements = true;
                 }
 

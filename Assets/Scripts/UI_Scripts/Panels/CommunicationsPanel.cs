@@ -187,7 +187,7 @@ public class CommunicationsPanel : MonoBehaviour
 
         // Log communicatitons notifying the user of translation change
         LogCommunications("Overseer",-1,"Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");
-        LogCommunications("Overseer",-1,"(NOT TRANSLATED) Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");
+        LogCommunications("Overseer",-1,"Bydd Cyfieithu Testun yn cyfrif o hyn ymlaen. Mae Elysium Industries yn ymddiheuro am unrhyw anghyfleustra a achoswyd\n");
     }
 
 }

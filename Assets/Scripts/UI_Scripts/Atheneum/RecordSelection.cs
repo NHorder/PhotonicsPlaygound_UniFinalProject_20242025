@@ -55,42 +55,42 @@ public class RecordSelection : MonoBehaviour
         if (recordType == RecordType.GeneralInformation)
         {
             _englishTitle = "General Information";
-            _welshTitle = "";
+            _welshTitle = "Gwybodaeth Gyffredinol";
         }
         else if (recordType == RecordType.Light)
         {
             _englishTitle = "Light";
-            _welshTitle = "";
+            _welshTitle = "Golau";
         }
         else if (recordType == RecordType.Reflection)
         {
             _englishTitle = "Reflection";
-            _welshTitle = "";
+            _welshTitle = "Adlewyrchiad";
         }
         else if (recordType == RecordType.Refraction)
         {
             _englishTitle = "Refraction";
-            _welshTitle = "";
+            _welshTitle = "Plygiant";
         }
         else if (recordType == RecordType.FresnelEquations)
         {
             _englishTitle = "Fresnel Equations";
-            _welshTitle = "";
+            _welshTitle = "Hafaliadau Fresnel";
         }
         else if (recordType == RecordType.Colour)
         {
             _englishTitle = "Colour";
-            _welshTitle = "";
+            _welshTitle = "Lliw";
         }
         else if (recordType == RecordType.Blackholes)
         {
             _englishTitle = "Gravitational Anomalies";
-            _welshTitle = "";
+            _welshTitle = "Anghysondebau Disgyrchiant";
         }
         else
         {
             _englishTitle = "Silver Athenaeum";
-            _welshTitle = "";
+            _welshTitle = "Athenaeum Arian";
         }
     }
 
