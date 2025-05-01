@@ -917,6 +917,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.0009761294
       objectReference: {fileID: 0}
+    - target: {fileID: 5567805103826967933, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
+      propertyPath: m_Value
+      value: 1.0000079
+      objectReference: {fileID: 0}
     - target: {fileID: 6906775603354227730, guid: 5e31b885f5aa86347acdce905b413161, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1376,7 +1380,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.12, y: -1.15, z: -10}
+  m_LocalPosition: {x: -4.7, y: -4.71, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2313,7 +2317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5630586396751054098, guid: ccf8f09e044a2e64a8c34ac38fe947fa, type: 3}
       propertyPath: m_Size
-      value: 0.425
+      value: 0.28333333
       objectReference: {fileID: 0}
     - target: {fileID: 5651751906678204022, guid: ccf8f09e044a2e64a8c34ac38fe947fa, type: 3}
       propertyPath: m_Name
@@ -4324,9 +4328,6 @@ PrefabInstance:
       addedObject: {fileID: 1532940408}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 581433288}
-    - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 699716489}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
@@ -4339,10 +4340,13 @@ PrefabInstance:
       addedObject: {fileID: 965551116}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1261703897}
+    - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2109308679}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1261703897}
+      addedObject: {fileID: 581433288}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 597307815}
@@ -4369,7 +4373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -10.36
       objectReference: {fileID: 0}
     - target: {fileID: 8324513611047590706, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -61984,7 +61988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: eyeOfZetaCameraDroneSettings.minimumXPosition
-      value: 0.45
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 1886432564005381183, guid: cba42a409734e8c43a132e74d241ef7c, type: 3}
       propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition

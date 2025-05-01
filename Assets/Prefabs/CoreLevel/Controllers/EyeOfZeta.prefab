@@ -123,8 +123,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 8
-  m_AngularDrag: 8
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -203,6 +203,7 @@ MonoBehaviour:
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   canBeSold: 1
+  isDestroyedDebris: 0
   satelliteSellPrice: 0
   canbeMoved: 1
   advanced_Satellite_Info:
@@ -215,9 +216,9 @@ MonoBehaviour:
     lightColor: 1
     IsSatelliteReceivedCorrectLaser: 0
   satellite_Movement_Info:
-    intialMovementMultiplier: 35
+    intialMovementMultiplier: 4
     intialRotationMultiplier: 2
-    maxMovementMultiplier: 40
+    maxMovementMultiplier: 8
     maxRotationMultiplier: 20
   satellite_Shop_Info:
     IsShopItem: 0
@@ -239,9 +240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222a3b7bd22b224498de1c11ed7ac9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyeOfZetaCameraDroneSettings:
+    minimumXPosition: -4.7
+    maximumXPosition: 8.6
+    minimumYPosition: -4.87
+    maximumYPosition: 30.8
+    cameraDroneMovementSpeed: 6
   eyeOfZetaAutomaticDroneSettings:
-    movementSpeed: 10
-    minimumMovementSpeed: 1
-    intialDrag: 8
-    xRange: 1
-    yRange: 1
+    movementSpeed: 6
+    allowedRange: 3
+    minimumDistanceFromSatellite: 1.5

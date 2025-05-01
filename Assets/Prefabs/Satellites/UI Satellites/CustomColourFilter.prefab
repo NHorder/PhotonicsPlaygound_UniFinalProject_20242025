@@ -186,10 +186,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.8, y: -0.094052315}
-      - {x: 0.8, y: 0.03382969}
-      - {x: -0.85, y: 0.027677774}
-      - {x: -0.85, y: -0.09199619}
+    - - {x: 1.6425369, y: -0.05261588}
+      - {x: 1.6425388, y: 0.06145382}
+      - {x: -1.7569939, y: 0.07371807}
+      - {x: -1.7569939, y: -0.045955896}
   m_UseDelaunayMesh: 0
 --- !u!61 &3686804094087317371
 BoxCollider2D:
@@ -257,6 +257,7 @@ MonoBehaviour:
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   canBeSold: 1
+  isDestroyedDebris: 0
   satelliteSellPrice: 0
   canbeMoved: 1
   advanced_Satellite_Info:
@@ -271,7 +272,7 @@ MonoBehaviour:
   satellite_Movement_Info:
     intialMovementMultiplier: 4
     intialRotationMultiplier: 0.25
-    maxMovementMultiplier: 60
+    maxMovementMultiplier: 35
     maxRotationMultiplier: 2
   satellite_Shop_Info:
     IsShopItem: 0

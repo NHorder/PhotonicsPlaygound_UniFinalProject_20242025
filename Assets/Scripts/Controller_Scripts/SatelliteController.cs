@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
+/// <summary>
+/// Enumerator for satellite control keys (Up, down, left, right, rotate left, rotate right)
+/// Used for UI elements of the satellite control panel
+/// </summary>
 public enum Key{
     None,
     Vertical,
@@ -12,81 +16,90 @@ public enum Key{
     Rotation
 }
 
+
 public class SatelliteController : MonoBehaviour
 {
+    /// <summary>
+    /// Method to apply force and torque to satellites and display related information
+    /// Note: This class is attached to a gameObject continaing a Trigger collider
+    /// </summary>
+    
+
+    // When key is held, increment movement and rotation by amount
     public float heldMovementSpeedIncrease = 0.01f;
     public float heldRotationSpeedIncrease = 0.01f;
 
 
-
     private UIController _uiController;
 
+    // Movement multipliers
     public float currentMovementMultiplier;
     public float currentRotationMultiplier;
+
+    // Movement counters for when to increment satellite speed
     private int _movementCounter = 0;
     private int _rotationCounter = 0;
 
 
-
+    // Last found rigidbody for selection of satellites
     private Rigidbody2D _lastFoundRigidBody2D = null;
 
+    // Selected saved information
     private Rigidbody2D _selectedRigidbody2D = null;
-    public Satellite_Info selectedSatelliteInfo = null;
+    public SatelliteInfo selectedSatelliteInfo = null;
 
 
-
+    // Which key is pressed - Indicated pressed key from the UI elements, does not apply to keyboard interaction
     private Key _keyPressed = Key.None;
 
-    private bool _panelVisible = false;
+    // Is the  information panel visible
+    private bool _satInfoPanelVisible = false;
+
+    // If first selection of a satellite
     private bool _firstSelection = true;
 
-
+    // Link to Eye of Zeta drone
     private CameraDrone _eyeOfZeta;
 
-
+    /// <summary>
+    /// Initalisation Method
+    /// </summary>
     void Start()
     {
-        // Retrieve UI controller
+        // Retrieve UI controller and Eye of Zeta
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
         _eyeOfZeta = GameObject.FindGameObjectsWithTag("EyeOfZeta")[0].GetComponent<CameraDrone>();
+
+        // Set the intial selected item to the Eye of Zeta
+        // Makes movement more intuitive
+        _selectedRigidbody2D = _eyeOfZeta.GetComponent<Rigidbody2D>();
+        _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
+        selectedSatelliteInfo = _eyeOfZeta.GetComponent<SatelliteInfo>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Method called once per system tick - 1 per frame for 60fps
+    /// </summary>
     void Update()
     {
-        // Check that interaction is enabled
-        var interactionEnabled = true;
+        // Check to see if an mouse has been clicked
+        SelectInteraction();
 
-
-        if (interactionEnabled)
+        // If there is a linked object (through it's rigidbody) then allow interaction
+        if (_selectedRigidbody2D != null && selectedSatelliteInfo.canbeMoved)
         {
-            // Check to see if an mouse has been clicked
-            SelectInteraction();
+            // Allow for keyboard interactions
+            KeyboardInteraction();
 
-            // If there is a linked object (through it's rigidbody) then allow interaction
-            if (_selectedRigidbody2D != null && selectedSatelliteInfo.canbeMoved)
-            {
-                // Allow for keyboard interactions
-                KeyboardInteraction();
-
-                // Allow for control panel interactions if the panel is expeccted
-                if (_uiController.uiExpectations.expectSatelliteControlPanel) ControlPanelInteraction();
-            }
+            // Allow for control panel interactions if the panel is expeccted
+            if (_uiController.uiExpectations.expectSatelliteControlPanel) ControlPanelInteraction();
         }
 
-        // If interaction is disabled, but the selected rigid body is not null
-        else if (!interactionEnabled && _selectedRigidbody2D != null) 
-        {
-            // Update the items animator to show unselected
-            _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
-
-            // Disconnect from the selected satellite
-            _selectedRigidbody2D = null;
-            selectedSatelliteInfo = null;
-            
-        }
     }
 
+    /// <summary>
+    /// Method to handle the selection of satellites
+    /// </summary>
     private void SelectInteraction()
     {
         // Calculate the mouse location in world position - Note: Input.mousePosition defaults to screen space, hence a conversion is needed using the main camera
@@ -108,14 +121,14 @@ public class SatelliteController : MonoBehaviour
                 if (selectedSatelliteInfo != null) _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
 
                 // Collect the satellite info for the last found rigid body.
-                Satellite_Info lastFoundSatelliteInfo = _lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
+                SatelliteInfo lastFoundSatelliteInfo = _lastFoundRigidBody2D.gameObject.GetComponent<SatelliteInfo>();
 
                 // If this satellite info says that it's a selectable object, then proceed.
                 // This is checked, as some satellites may not be selectable.
                 if (lastFoundSatelliteInfo.advanced_Satellite_Info.isSelectable)
                 {
                     _selectedRigidbody2D = _lastFoundRigidBody2D;
-                    selectedSatelliteInfo = _lastFoundRigidBody2D.gameObject.GetComponent<Satellite_Info>();
+                    selectedSatelliteInfo = _lastFoundRigidBody2D.gameObject.GetComponent<SatelliteInfo>();
 
                     // Update multipliers - Mutipliers are used to increase speed of rotation or movement based on how long 
                     // they are held down to a maximum limit (defined in objects satellite information)
@@ -129,6 +142,7 @@ public class SatelliteController : MonoBehaviour
                     if (_uiController.uiExpectations.expectSatelliteControlPanel)
                     {
 
+                        // If Particle effects are allowed, activate the particle system of that satellite
                         if (_uiController.GetGameController().specializedInteractionSettings.allowSatelliteParticleEffects &&
                         selectedSatelliteInfo.canbeMoved && selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
                         {
@@ -136,30 +150,30 @@ public class SatelliteController : MonoBehaviour
                         }
 
                         // If the selected satellite can be moved, then present the movement panel, else hide it.
-                        if (selectedSatelliteInfo.canbeMoved && !_panelVisible)
+                        if (selectedSatelliteInfo.canbeMoved && !_satInfoPanelVisible)
                         {
                             _uiController.ToggleVisibleSatelliteControls();
-                            _panelVisible = true;
+                            _satInfoPanelVisible = true;
                         }
                         else if (!selectedSatelliteInfo.canbeMoved && _uiController.CloseSatelliteControlsIfOpen())
                         {
-                            _panelVisible = false;
+                            _satInfoPanelVisible = false;
                         }
 
+                        // Prevent the Eye of Zeta drone from attaching to itself
                         if (selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
                         {
                             _eyeOfZeta.AttachDroneToSatellite(selectedSatelliteInfo.gameObject.GetComponent<Transform>());
                         }
                         else _eyeOfZeta.DetachDroneFromSatellite();
 
-
+                        // Open the shop when the satellite creator is selected
                         if (selectedSatelliteInfo.satelliteType == SatelliteType.SatelliteCreator)
                         {
                             _uiController.ToggleVisibleShopIfClosed();
                         }
                         
-
-                        // Present the satellite info panel
+                        // Present the satellite info panel if opened for the first time
                         if (_firstSelection)
                         {
                             _uiController.ToggleVisibleSatelliteInformation();
@@ -168,6 +182,8 @@ public class SatelliteController : MonoBehaviour
                     }
                 }
             }
+            
+            
             // If it's null, set selected to null - this assumes an object that can't be rotated has been selected or empty space has been selected.
             else if (!uiObjectFound)
             {    
@@ -177,27 +193,39 @@ public class SatelliteController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to deselect items - close the information for hte selected satellite
+    /// </summary>
     private void CloseInformation()
     {
         if (_selectedRigidbody2D != null)
         {
+            // If the satellite is not the camera drone and can be move, stop it's particle system
+            // Results in particle systems only being active when selected and moved by users
             if (selectedSatelliteInfo.canbeMoved && selectedSatelliteInfo.satelliteType != SatelliteType.CameraDrone)
             {
                 selectedSatelliteInfo.statelliteParticleSystem.Stop();
             }
 
+            // Disconnect previous selected and set selected to eye of Zeta
+            // More intuitive for camera movement
             _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",false);
-            _selectedRigidbody2D = null;
-            selectedSatelliteInfo = null;
-            
-            
+            _selectedRigidbody2D = _eyeOfZeta.GetComponent<Rigidbody2D>();
+            _selectedRigidbody2D.gameObject.GetComponent<Animator>().SetBool("Selected",true);
+            selectedSatelliteInfo = _eyeOfZeta.GetComponent<SatelliteInfo>();
+
 
             // Check if expecting panels
             // If so, check if they're open, then close them
-            if (_uiController.CloseSatelliteControlsIfOpen()) _panelVisible = false;
+            if (_uiController.CloseSatelliteControlsIfOpen()) _satInfoPanelVisible = false;
         }
     }
 
+    /// <summary>
+    /// Method to raycast for UI elements
+    /// This methods code has been taken and adapted by a user in Unity discussion (Expand method for more information)
+    /// </summary>
+    /// <returns></returns>
     private List<RaycastResult> MouseOverUIObject()
     {
         // Code taken and adapted from Krishx007  (last viewed 2025/02/12)
@@ -220,6 +248,9 @@ public class SatelliteController : MonoBehaviour
         return raycastResults;
     }
 
+    /// <summary>
+    /// Method for keyboard satellite interaction
+    /// </summary>
     private void KeyboardInteraction()
     {
         // Method to handle keyboard interactions
@@ -240,6 +271,9 @@ public class SatelliteController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to handle UI control panel interactions
+    /// </summary>
     private void ControlPanelInteraction()
     {
         var horizontalMovement = 0;
@@ -283,6 +317,12 @@ public class SatelliteController : MonoBehaviour
         InteractWithSatellite(horizontalMovement,verticalMovement,rotationMovement);
     }
 
+    /// <summary>
+    /// Method to apply force and torque to the selected satellite
+    /// </summary>
+    /// <param name="horizontalMovement"></param>
+    /// <param name="verticalMovement"></param>
+    /// <param name="rotationMovement"></param>
     private void InteractWithSatellite(float horizontalMovement, float verticalMovement, float rotationMovement)
     {
         // if the selected body is not null
@@ -304,12 +344,11 @@ public class SatelliteController : MonoBehaviour
             if (eyeOfZeta != null)
             {
                 var eyeOfZetaRigidbody = eyeOfZeta.GetComponent<Rigidbody2D>();
-                
+
                 // Retrieve the rigidbody2d
                 eyeOfZetaRigidbody.AddForce(new Vector2(horizontalMovement * currentMovementMultiplier, verticalMovement * currentMovementMultiplier));
 
-                // Torque or no Torque that is the question
-
+                // Apply torque to Eye of Zeta
                 eyeOfZetaRigidbody.AddTorque(rotationMovement * currentRotationMultiplier);
             }
 
@@ -358,20 +397,25 @@ public class SatelliteController : MonoBehaviour
         else Debug.LogError("ERROR: An error has occurred with control over selected satellites");
     }
 
-
-
+    /// <summary>
+    /// Method to sell a satellite
+    /// </summary>
     public void SellSatellite()
     {
+        // Check if the satellite can be sold
         if (selectedSatelliteInfo.canBeSold)
         {
+            // Retrieve it's price
             int price = selectedSatelliteInfo.satelliteSellPrice;
 
+            // Retrive the current budget and increase by the sell price of the satellite
             var gameController = _uiController.GetGameController();
-
             gameController.currentBudget += price;
-            
 
+            // Destroy the satellite
             selectedSatelliteInfo.DestroyObject();
+
+            // Disconnect from the sold satellite
             CloseInformation();
 
         }
@@ -379,7 +423,10 @@ public class SatelliteController : MonoBehaviour
 
 
 
-
+    /// <summary>
+    /// Methods for identifying which satellite is being hovered over.
+    /// </summary>
+    /// <param name="collider"></param>
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // When passing through another collider, set last rigid body found.

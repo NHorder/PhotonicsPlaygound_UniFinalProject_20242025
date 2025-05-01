@@ -6,6 +6,12 @@ using TMPro;
 
 public class TeachingPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Main Teaching class, used to handle teaching panel interactions
+    /// </summary>
+
+
+    /// Contains a set of teaching elements customisable by the developer - unique on a per level basis
     public List<TeachingElement> teachingElements;
     public TeachingSettings teachingSettings;
 
@@ -35,11 +41,15 @@ public class TeachingPanel : MonoBehaviour
 
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _language = PersistenceController.GetLanguage();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
+        // find needed components from children
         var childTransformList = gameObject.GetComponentsInChildren<RectTransform>();
         foreach (RectTransform childTransform in childTransformList)
         {
@@ -60,11 +70,18 @@ public class TeachingPanel : MonoBehaviour
         DisplayTeachingElement();
     }
 
+    /// <summary>
+    /// Method to update language
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;
     }
 
+    /// <summary>
+    /// Method to display a teaching element based on current teaching index
+    /// </summary>
     private void DisplayTeachingElement()
     {
         if (teachingElements.Count <= 0)
@@ -176,7 +193,11 @@ public class TeachingPanel : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    ///  Method to change visibility of previous teaching element button
+    /// This is to prevent a user at index 0 from going back
+    /// </summary>
+    /// <param name="visible"></param>
     private void TogglePreviousTeachingElementAppearence(bool visible)
     {
         if (visible)
@@ -192,7 +213,10 @@ public class TeachingPanel : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Method to transistion to the next teaching element or close the teaching panel (if no more teaching elements)
+    /// Called by UI element
+    /// </summary>
     public void NextTeachingElement()
     {
         _currentTeachingElement += 1;
@@ -201,6 +225,10 @@ public class TeachingPanel : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method to transitiion of the previous teaching element
+    /// Called by UI element
+    /// </summary>
     public void PreviousTeachingElement()
     {
         _currentTeachingElement -=1;
@@ -208,20 +236,33 @@ public class TeachingPanel : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method to close the teaching panel
+    /// Called by UI element
+    /// </summary>
     public void CloseTeachingPanel()
     {
         _currentTeachingElement = 0;
         _uiController.PresentFixedPanel(FixedUIPanel.Teaching,false);
     }
 
-
+    /// <summary>
+    /// Method to display teaching panel when requested in settings panel
+    /// </summary>
     public void DisplayTeachingPanelFromSettings()
     {
+        // Reset index and display the teaching elements
+        _currentTeachingElement = 0;
         DisplayTeachingElement();
     }
 
 }
 
+
+/// <summary>
+/// Class containing elements for a specific teaching element
+/// Includes title, info, and a possible of two images alongside figure names
+/// </summary>
 [System.Serializable]
 public class TeachingElement
 {
@@ -242,6 +283,9 @@ public class TeachingElement
     public string spriteNameBWelsh = "Not Translated";
 }
 
+/// <summary>
+/// Class for teaching settings, includes next element and previous element button locations
+/// </summary>
 [System.Serializable]
 public class TeachingSettings
 {

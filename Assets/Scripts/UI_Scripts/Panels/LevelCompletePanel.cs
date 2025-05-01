@@ -4,8 +4,12 @@ using UnityEngine;
 using UnityEngine.UI; 
 using TMPro;
 
+
 public class LevelCompletePanel : MonoBehaviour
 {
+    /// <summary>
+    /// Class to handle the level complete panel interactions
+    /// </summary>
 
     private int _score = 0;
     private int _rank = 7;
@@ -25,6 +29,9 @@ public class LevelCompletePanel : MonoBehaviour
 
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _language = PersistenceController.GetLanguage();
@@ -50,20 +57,23 @@ public class LevelCompletePanel : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Main call method to trigger game end
+    /// </summary>
     public void GameComplete()
     {
         // Collect information from game controller needed to clacualte the score
         var currentBudget = _gameController.currentBudget;
         var expectedBudget = _gameController.expectedBudgetOnCompletion;
-        var expectedSatellites = _gameController.expectedNumSatellitesUsed;
 
         var numSatellites = _gameController.worldInfo.numSatellites;
         var numSatellitesDestroyed = _gameController.worldInfo.numSatellitesDestroyed;
 
         // Calculate score and rank - score is saved as private variable
-        CalculateScore(currentBudget,expectedBudget,numSatellites,expectedSatellites,numSatellitesDestroyed);
+        CalculateScore(currentBudget,expectedBudget,numSatellites,numSatellitesDestroyed);
         CalculateRank();
 
+        // Update text depending on language
         if (_language == Language.English)
         {
             _levelCompleteText.text = "Level Complete!";
@@ -100,22 +110,25 @@ public class LevelCompletePanel : MonoBehaviour
 
     }
 
-    public void CalculateScore(float currentBudget,float expectedBudget,int numSatellites,int expectedSatellites,int numSatellitesDestroyed)
+    /// <summary>
+    /// Method to calculate the score of the user
+    /// </summary>
+    /// <param name="currentBudget"></param>
+    /// <param name="expectedBudget"></param>
+    /// <param name="numSatellites"></param>
+    /// <param name="numSatellitesDestroyed"></param>
+    public void CalculateScore(float currentBudget,float expectedBudget,int numSatellites,int numSatellitesDestroyed)
     {   
-
-
+        // Score = (500 * (current Budget / expected budget)) + (500 * (1 - (num satellites destroyed / num satellites)))
         float budgetScore = 500f * (currentBudget / expectedBudget);
-        float satelliteScore = 500f * ((float)expectedSatellites / numSatellites) * (1 - (numSatellitesDestroyed / numSatellites));
-
-
-        Debug.Log("Budget: "+budgetScore + " | Current: "+currentBudget + " | Expected: "+expectedBudget);
-
-        Debug.Log("Satellite: "+satelliteScore + " | Num Sats: "+numSatellites + " | Expected: "+expectedSatellites + " | Destroyed: "+numSatellitesDestroyed);
-
+        float satelliteScore = 500f * (1 - (numSatellitesDestroyed / numSatellites));
         // Calculate score using an equation
         _score = (int)(budgetScore + satelliteScore);
     }
 
+    /// <summary>
+    /// Method to calculate rank based on score
+    /// </summary>
     private void CalculateRank()
     {
         // Calcualte rank based on score
@@ -128,20 +141,30 @@ public class LevelCompletePanel : MonoBehaviour
         else _rank = 7;
     }
 
+    /// <summary>
+    /// Method to transfer the user to level selection scene
+    /// Called by UI element
+    /// </summary>
     public void ToLevelSelect()
     {
         // Transition to level selection scene - called by button
         SceneController.ToLevelSelection();
     }
 
+    /// <summary>
+    /// Method to reset the level
+    /// Called by UI element
+    /// </summary>
     public void Retry()
     {
         // Call to game controller to reset the level - called by a button
         _gameController.ResetLevel();
     }
 
-
-
+    /// <summary>
+    /// Method to update language
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;

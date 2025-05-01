@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CombinerSatellite : SatelliteParent
 {
+    /// <summary>
+    /// Class to handle combiner satellite interactions
+    /// Inherits Satellite Parent
+    /// </summary>
+    
+
+    //  Boolean for each laser colour, used to determine output colour
     private bool _whiteLaser = false;
 
     private bool _redLaser = false;
@@ -16,43 +23,54 @@ public class CombinerSatellite : SatelliteParent
     private LaserColour _outputLaserColour;
 
 
-    // Update is called once per frame
+    /// <summary>
+    /// Method called once per frame
+    /// </summary>
     void Update()
     {
+
+        // If there are incoming lasers
         if (_incomingLasers.Count > 0)
         {
+            // Calcualte the energy remaining
             float energyPerLaser = _incomingLasers[0].laser.GetTransparency() - _thisSatelliteInfo.advanced_Satellite_Info.absorbance;
 
+            // If there is more than one laser
             if (_incomingLasers.Count > 1)
             {
+                //re-calculate the energy
                 energyPerLaser = Mathf.Clamp01(_incomingLasers[0].laser.GetTransparency() + _incomingLasers[1].laser.GetTransparency());
 
+                // Calcualte the output laser colour, passing in both lasers
                 CalculateOutputLaserColour(_incomingLasers[0].laser,_incomingLasers[1].laser);
             }
+            // Else calculate the output laser colour, passing in one laser
             else CalculateOutputLaserColour(_incomingLasers[0].laser,null);
 
+            // Create an outgoing laser object, then add it to the protected list of outgoing lasers
             OutgoingLaserInfo newOutgoingLaser = new OutgoingLaserInfo();
             newOutgoingLaser.origin = this.transform.position;
-
             newOutgoingLaser.angle = this.transform.eulerAngles.z;
-
             newOutgoingLaser.raycastPosition = this.transform.position;
-
-
             newOutgoingLaser.satelliteInfo = null;
             newOutgoingLaser.laserTransparency = energyPerLaser;
             newOutgoingLaser.laserColour = _outputLaserColour;
 
-
             _outgoingLaserInfo.Add(newOutgoingLaser);
         }
 
+        // Call inherited Update, this related to the laser cycle 
         base.Update();
     }
 
-
+    /// <summary>
+    /// Method to determine output laser colour
+    /// </summary>
+    /// <param name="firstLaser"></param>
+    /// <param name="secondLaser"></param>
     private void CalculateOutputLaserColour(Laser firstLaser, Laser secondLaser = null)
     {
+        // Boolean checks
         if (_redLaser && _blueLaser) _outputLaserColour = LaserColour.Magenta;
         else if (_redLaser && _greenLaser) _outputLaserColour = LaserColour.Yellow;
         else if (_blueLaser && _greenLaser) _outputLaserColour = LaserColour.Cyan;
@@ -69,6 +87,7 @@ public class CombinerSatellite : SatelliteParent
         else if (_greenLaser && _magentaLaser) _outputLaserColour = LaserColour.White;
         else if (_greenLaser && _yellowLaser) _outputLaserColour = LaserColour.Yellow;
 
+        // If the second laser is not null
         else if (secondLaser != null)
         {
             // If they're equal to each other, then take the first laser colour
@@ -88,6 +107,7 @@ public class CombinerSatellite : SatelliteParent
 
 
         // Reset values.
+        _whiteLaser = false;
         _redLaser = false;
         _blueLaser = false;
         _greenLaser = false;
@@ -99,11 +119,14 @@ public class CombinerSatellite : SatelliteParent
 
     override public void SetActive(Laser laser, RaycastHit2D raycast)
     {
+        // Set protected value to true (this will trigger the laser cycle each update)
         _active = true;
 
         var assigned = false;
 
-        if (_incomingLasers.Count == 0)
+        // Set incoming laser based on the number of lasers received
+        // Used to prevent more than one laser output, and two laser inputs 
+        if (_incomingLasers.Count == 0 || _incomingLasers.Count == 1)
         {
             _trueOrigin = laser.origin;
             IncomingLaser newIncomingLaser = new IncomingLaser();
@@ -113,17 +136,8 @@ public class CombinerSatellite : SatelliteParent
 
             assigned = true;
         }
-        else if (_incomingLasers.Count == 1)
-        {
-            IncomingLaser newIncomingLaser = new IncomingLaser();
-            newIncomingLaser.laser = laser;
-            newIncomingLaser.raycast = raycast;
-            _incomingLasers.Add(newIncomingLaser);
-            
-            assigned = true;
-        }
-
-
+        
+        // If there is a laser, and this has not been activated on mistake, then set boolean based on laser colour
         if (assigned)
         {
             if (laser.GetLaserColour() == LaserColour.White) _whiteLaser = true;

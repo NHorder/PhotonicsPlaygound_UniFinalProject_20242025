@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Singularity : SatelliteParent
 {
+    /// <summary>
+    /// Method to handle 'Gravitational Anomalies' / 'Blackholes'
+    /// Inherits SatelliteParent
+    /// 
+    /// Note: This takes a slightly different take on Satellite Parent, 
+    /// and uses both "internal" and "external" laser concepts
+    /// </summary>
+    
 
+    /// Singularity Helper is present to assist in determining the bend angle
     private Transform _singularityHelper;
-
     public GameObject _singularityLaser;
 
     public GravitationalAnomalySettings gravitationalAnomalySettings;
@@ -14,9 +22,11 @@ public class Singularity : SatelliteParent
 
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
-
         // Singularities require helpers - this is in order to determine the "bend" direction of the light
         // As such the Singularity prefab comes with a dedicated helper, find the helper and set it's parent to null
         // This is done so the transform is world position instead of local.
@@ -27,6 +37,11 @@ public class Singularity : SatelliteParent
         base.Start();
     }
 
+    /// <summary>
+    /// Overwritten Inherited FireLaser method
+    /// overwritten to handle "external" and "internal" lasers - internal lasers use line rendering instead of sprite renderers
+    /// </summary>
+    /// <param name="laserInfo"></param>
     override public void FireLaser(OutgoingLaserInfo laserInfo)
     {
         // Override FireLaser, Singularities handle Internal and External lasers.
@@ -35,8 +50,8 @@ public class Singularity : SatelliteParent
         if (laserInfo.external) base.FireLaser(laserInfo);
 
         // Otherwise, use custom method to handle 'internal' lasers.
-        else {
-
+        else
+        {
             // Determine the helper angle, making use of this Singularities Helper
             float helperAngle = PrepareHelper(laserInfo.angle,laserInfo.raycastPosition);
 
@@ -66,7 +81,11 @@ public class Singularity : SatelliteParent
         
     }
 
-
+    /// <summary>
+    /// Overwritten method
+    /// Creates an internal laser to be used within the blackhole
+    /// </summary>
+    /// <param name="incomingLaser"></param>
     override public void Interaction(IncomingLaser incomingLaser)
     {
         // Create an outgoing laser
@@ -91,13 +110,23 @@ public class Singularity : SatelliteParent
         _outgoingLaserInfo.Add(newOutGoingLaserInfo);
     }
 
-
+    /// <summary>
+    /// Method to create a new external laser
+    /// This method is called from SingularityLasers (internal lasers) and is already preprepared
+    /// </summary>
+    /// <param name="outgoingLaser"></param>
     public void NewExternalLaser(OutgoingLaserInfo outgoingLaser)
     {
         // Method called by Internal Laser to create an external laser with given parameters
         _outgoingLaserInfo.Add(outgoingLaser);
     }
 
+    /// <summary>
+    /// Method to prepare helper, returns the angle difference between the laser and singularity
+    /// </summary>
+    /// <param name="laserAngle"></param>
+    /// <param name="raycastPosition"></param>
+    /// <returns></returns>
     public float PrepareHelper(float laserAngle, Vector3 raycastPosition)
     {
         // A method that uses the helper to determine the angle between the laser direction and the singularity centre.
@@ -113,13 +142,23 @@ public class Singularity : SatelliteParent
 
         float _blackholeHelperAngle = _singularityHelper.eulerAngles.z;
 
-        // Determine whether positive or negative angle.
-        if (_blackholeHelperAngle > 180) _blackholeHelperAngle = (_blackholeHelperAngle - 360);
+        // Set them about 0 degrees
+        if (laserAngle > 180) laserAngle -= 360;
+        if (_blackholeHelperAngle > 180) _blackholeHelperAngle -= 360;
 
-        return _blackholeHelperAngle;
+        // As the blackhole helper is the centre piece, we need to determine the difference between this and the laser angle
+        var angleDifference = _blackholeHelperAngle - laserAngle;
+
+        // Set about 0 degrees
+        if (angleDifference > 180) angleDifference -= 360;
+
+        return angleDifference;
     }
 }
 
+/// <summary>
+/// External method to modify mass, strength and distance from singularity centre
+/// </summary>
 [System.Serializable]
 public class GravitationalAnomalySettings
 {

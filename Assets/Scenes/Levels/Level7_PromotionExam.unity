@@ -3051,7 +3051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5630586396751054098, guid: ccf8f09e044a2e64a8c34ac38fe947fa, type: 3}
       propertyPath: m_Size
-      value: 0.425
+      value: 0.28333333
       objectReference: {fileID: 0}
     - target: {fileID: 5651751906678204022, guid: ccf8f09e044a2e64a8c34ac38fe947fa, type: 3}
       propertyPath: m_Name
@@ -6395,9 +6395,6 @@ PrefabInstance:
       addedObject: {fileID: 1532940408}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 581433288}
-    - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 699716489}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
@@ -6410,10 +6407,13 @@ PrefabInstance:
       addedObject: {fileID: 965551116}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1261703897}
+    - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2109308679}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1261703897}
+      addedObject: {fileID: 581433288}
     - targetCorrespondingSourceObject: {fileID: 6698308763881046336, guid: d485aafecebf044459485602e934bf2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 597307815}
@@ -6430,6 +6430,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumXPosition
+      value: 61.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.maximumYPosition
+      value: 10.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumXPosition
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376715465546290839, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
+      propertyPath: eyeOfZetaCameraDroneSettings.minimumYPosition
+      value: -11.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1576753308454094203, guid: 9c339f25885c50c478461ddd4b10ca5e, type: 3}
       propertyPath: m_Name
       value: EyeOfZeta

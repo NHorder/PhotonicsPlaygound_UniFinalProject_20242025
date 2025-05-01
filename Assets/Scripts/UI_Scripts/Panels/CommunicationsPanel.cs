@@ -7,6 +7,10 @@ using TMPro;
 
 public class CommunicationsPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Class used to display the communications panel
+    /// </summary>
+    
     private Language _language = Language.English;
 
     private bool _forceNoChangeOnNewCommunication = false;
@@ -26,13 +30,18 @@ public class CommunicationsPanel : MonoBehaviour
     private bool _panelOpen = false;
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
+        // Create links to relevant controllers
         _language = PersistenceController.GetLanguage();
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
         _uiController = GameObject.FindGameObjectsWithTag("UI_Controller")[0].GetComponent<UIController>();
 
 
+        // Retrieve needed information from game controllerr
         _numLocks = _gameController.framerateRelatedSettings.numLocksForLevelCompletion;
         _forceNoChangeOnNewCommunication = _uiController.advancedSettings.overwriteCommunicationMovement;
         _recordRetentionNumber = _uiController.advancedSettings.communicationRecordRetentionNumber;
@@ -57,6 +66,13 @@ public class CommunicationsPanel : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Method used to send communication logs to the panel
+    /// Called by Destination and Satellite Creator
+    /// </summary>
+    /// <param name="satelliteName"></param>
+    /// <param name="numUnlocks"></param>
+    /// <param name="otherText"></param>
     public void LogCommunications(string satelliteName, float numUnlocks, string otherText = "")
     {
         // If the user has not specified in settings that this should not appear each time communications are made
@@ -106,14 +122,16 @@ public class CommunicationsPanel : MonoBehaviour
         // Append the log text to the list
         _logTextList.Add(logText);
 
-        // Trims list to wanted size
+        // Tims list to size determined in settings
         if (_logTextList.Count > _recordRetentionNumber) _logTextList.RemoveAt(0);
 
         // Call UpdateUIComponents to trigger visual updates
         UpdateUIComponents();
     }
 
-
+    /// <summary>
+    /// Method to update visible Log Text
+    /// </summary>
     private void UpdateUIComponents()
     {
         // Following C# conventions (https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
@@ -133,6 +151,9 @@ public class CommunicationsPanel : MonoBehaviour
         UpdateSuccessText();
     }
 
+    /// <summary>
+    /// Method to update level progression text
+    /// </summary>
     public void UpdateSuccessText()
     {
         // This is within a separate function as it can be called from LaserDestination
@@ -153,16 +174,20 @@ public class CommunicationsPanel : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Method to update the language
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;
         UpdateSuccessText();
 
-        _uiController.ToggleVisibleCommunicationsIfClosed();
+        if (!_uiController.advancedSettings.overwriteCommunicationMovement) _uiController.ToggleVisibleCommunicationsIfClosed();
 
+        // Log communicatitons notifying the user of translation change
         LogCommunications("Overseer",-1,"Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");
-        LogCommunications("Overseer",-1,"(NOT TRANSLATED) Text Translation will occur henceforth. Elysium Industries apologies for any inconvenience caused\n");
+        LogCommunications("Overseer",-1,"Bydd Cyfieithu Testun yn cyfrif o hyn ymlaen. Mae Elysium Industries yn ymddiheuro am unrhyw anghyfleustra a achoswyd\n");
     }
 
 }

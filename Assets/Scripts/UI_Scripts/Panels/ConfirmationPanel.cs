@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Enum to restrict what actions can appear on the confirmation screen
+/// </summary>
 public enum ConfirmAction
 {
     ResetLevel,
@@ -12,7 +15,10 @@ public enum ConfirmAction
 
 public class ConfirmationPanel : MonoBehaviour
 {
-
+    /// <summary>
+    /// Class used to display the confirmation panel
+    /// </summary>
+    
     private Language _language = Language.English;
 
     private UIController _uiController;
@@ -27,6 +33,9 @@ public class ConfirmationPanel : MonoBehaviour
 
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _language = PersistenceController.GetLanguage();
@@ -51,6 +60,11 @@ public class ConfirmationPanel : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method to update UI components
+    /// This class has been designed such that it can support multiple actions
+    /// </summary>
+    /// <param name="confirmAction"></param>
     public void UpdateUIComponents(ConfirmAction confirmAction)
     {
 
@@ -117,22 +131,34 @@ public class ConfirmationPanel : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Method to close confirmation screen
+    /// </summary>
     public void CloseConfirmation()
     {
         _uiController.PresentFixedPanel(FixedUIPanel.ConfirmAction,false);
     }
 
+    /// <summary>
+    /// Method to reset the level (if this action is chosen)
+    /// </summary>
     public void ResetLevel()
     {
         _gameController.ResetLevel();
     }
 
+    /// <summary>
+    /// Method to head to the Level Selection scene (if this action is chosen)
+    /// </summary>
     public void LevelSelection()
     {
         SceneController.ToLevelSelection();
     }
 
+    /// <summary>
+    /// Method to update language
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;

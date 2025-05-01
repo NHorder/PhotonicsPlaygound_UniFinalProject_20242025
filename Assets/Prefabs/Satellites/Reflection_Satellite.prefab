@@ -33,13 +33,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3870250094815667028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.46, y: 4.56, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6677053015078306517
 Animator:
   serializedVersion: 5
@@ -221,7 +221,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01655984, y: -0.061352134}
+  m_Offset: {x: -0.013477087, y: -0.0829314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.4222591}
@@ -232,7 +232,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0637069, y: 1.5091627}
+  m_Size: {x: 1.687614, y: 1.4660041}
   m_EdgeRadius: 0
 --- !u!114 &1851263359188709260
 MonoBehaviour:
@@ -255,6 +255,7 @@ MonoBehaviour:
   satelliteShortDescription: 
   satellitePurchasePrice: 0
   canBeSold: 1
+  isDestroyedDebris: 0
   satelliteSellPrice: 0
   canbeMoved: 1
   advanced_Satellite_Info:
@@ -269,7 +270,7 @@ MonoBehaviour:
   satellite_Movement_Info:
     intialMovementMultiplier: 4
     intialRotationMultiplier: 0.25
-    maxMovementMultiplier: 60
+    maxMovementMultiplier: 35
     maxRotationMultiplier: 2
   satellite_Shop_Info:
     IsShopItem: 0

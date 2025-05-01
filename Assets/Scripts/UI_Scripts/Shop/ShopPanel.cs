@@ -7,6 +7,10 @@ using TMPro;
 
 public class ShopPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Class to handle shop panel interactions
+    /// </summary>
+    
     private Language _language = Language.English;
 
     private GameController _gameController;
@@ -20,10 +24,15 @@ public class ShopPanel : MonoBehaviour
 
 
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation Method
+    /// </summary>
     void Start()
     {
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
+
+        // Locate and find the budget text within child components
         var childTextList = gameObject.GetComponentsInChildren<TMP_Text>();
         foreach (TMP_Text childText in childTextList)
         {
@@ -43,9 +52,12 @@ public class ShopPanel : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Method called once per frame
+    /// </summary>
     void Update()
     {
+        // Check 
         if (_gameController.currentBudget != _currentBudget || _forceUpdate)
         {
             _forceUpdate = false;
@@ -57,6 +69,10 @@ public class ShopPanel : MonoBehaviour
         // Update budget whenever the game controller budget changes
     }
 
+    /// <summary>
+    /// Method to update language
+    /// </summary>
+    /// <param name="newLanguage"></param>
     public void UpdateLanguage(Language newLanguage)
     {
         _language = newLanguage;
@@ -64,6 +80,7 @@ public class ShopPanel : MonoBehaviour
 
         if (_dropdowns.Length > 0)
         {
+            // Loop through each dropdown and notify it to update language
             foreach (ShopDropDownHandler dropdown in _dropdowns)
             {
                 dropdown.UpdateLanguage(newLanguage);

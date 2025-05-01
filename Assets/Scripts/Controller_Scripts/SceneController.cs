@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+/// <summary>
+/// Enum to define scenes
+/// </summary>
 public enum Level{
     TestingLevel,
     Titlescreen,
@@ -23,6 +25,16 @@ public enum Level{
 
 public class SceneController: MonoBehaviour
 {   
+    /// <summary>
+    /// Class used to swap between different scenes
+    /// </summary>
+    /// <param name="level"></param>
+    
+    
+    /// <summary>
+    /// Method to transfer to a specific level. Used by Reset Level to reload a given level.
+    /// </summary>
+    /// <param name="level"></param>
     public static void ToLevel(Level level)
     {
         /// Reason for this function, is for resetting the level - which only the game controller knows what the level is
@@ -43,21 +55,33 @@ public class SceneController: MonoBehaviour
         else Debug.LogError("ERROR: Level not recognised");
     }
 
+    /// <summary>
+    /// Method to transfer to the test level, called by LevelSelect through use of a hidden code (project radiance)
+    /// </summary>
     public static void ToTestLevel() 
     {
         SceneManager.LoadScene("TestLevel");
     }
 
+    /// <summary>
+    /// Method to transfer to the titlescreen, called by Level Select and Acknoledgements
+    /// </summary>
     public static void ToTitleScreen() 
     {
         SceneManager.LoadScene("Titlescreen");
     }
 
+    /// <summary>
+    /// Method to transfer to the level select scene
+    /// </summary>
     public static void ToLevelSelection() 
     {
         SceneManager.LoadScene("LevelSelection");
     }
 
+    /// <summary>
+    /// Method to transfer to the acknoledgements scene
+    /// </summary>
     public static void ToAcknowledgementsScreen()
     {
         SceneManager.LoadScene("Acknowledgements");
