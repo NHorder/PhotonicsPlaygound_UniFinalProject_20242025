@@ -884,7 +884,7 @@ public class SatelliteInfo : MonoBehaviour
             if (_satelliteControlsPanel != null)
             {
                 currentSpeed = _satelliteControlsPanel.currentMovementMultiplier;
-                maxSpeed = satellite_Movement_Info.maxRotationMultiplier;
+                maxSpeed = satellite_Movement_Info.maxMovementMultiplier;
             }
             else if (_gameController.GetUIController().uiExpectations.expectSatelliteControlPanel) 
             {

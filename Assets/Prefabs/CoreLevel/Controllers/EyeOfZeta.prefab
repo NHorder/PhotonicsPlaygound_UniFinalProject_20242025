@@ -241,14 +241,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeOfZetaCameraDroneSettings:
-    minimumXPosition: -3.69
-    maximumXPosition: 8.51
-    minimumYPosition: -4.98
-    maximumYPosition: 4.06
+    minimumXPosition: -4.7
+    maximumXPosition: 8.6
+    minimumYPosition: -4.87
+    maximumYPosition: 30.8
     cameraDroneMovementSpeed: 6
   eyeOfZetaAutomaticDroneSettings:
     movementSpeed: 6
-    intialDrag: 1
-    allowedRange: 0.25
-    offsetFromObjectX: 1
-    offsetFromObjectY: 1
+    allowedRange: 3
+    minimumDistanceFromSatellite: 1.5

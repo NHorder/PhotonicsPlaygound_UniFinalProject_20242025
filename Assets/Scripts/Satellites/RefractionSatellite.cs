@@ -15,7 +15,7 @@ public class RefractionSatellite : SatelliteParent
     /// <param name="incomingLaser"></param>
     override public void Interaction(IncomingLaser incomingLaser)
     {
-        var yOffset = 0.02f;
+        var offset = 0.02f;
 
         float incidentIndex;
         float refractiveIndex; 
@@ -32,13 +32,13 @@ public class RefractionSatellite : SatelliteParent
 
             // If the point.y is different from what is known, apply an offset. 
             // This allows the point to consistently be within the refraction collider.
-            if (point.y < this.transform.position.y) point.y += yOffset;
-            else if (point.y > this.transform.position.y) point.y -= yOffset;
+            if (point.y < this.transform.position.y) point.y += offset;
+            else if (point.y > this.transform.position.y) point.y -= offset;
 
             // If the point.x is different from what is known, apply an offset. 
             // This allows the point to consistently be within the refraction collider.
-            if (point.x < this.transform.position.x) point.y += yOffset;
-            else if (point.x > this.transform.position.x) point.y -= yOffset;               
+            if (point.x < this.transform.position.x) point.x += offset;
+            else if (point.x > this.transform.position.x) point.x -= offset;               
 
             newSatelliteInfo = _thisSatelliteInfo;
         }
@@ -55,13 +55,13 @@ public class RefractionSatellite : SatelliteParent
 
             // If the point.y is different from what is known, apply an offset. 
             // This allows the point to consistently be within the refraction collider.
-            if (point.y < this.transform.position.y) point.y -= yOffset;
-            else if (point.y > this.transform.position.y) point.y +=yOffset;
+            if (point.y < this.transform.position.y) point.y -= offset;
+            else if (point.y > this.transform.position.y) point.y +=offset;
             
             // If the point.x is different from what is known, apply an offset. 
             // This allows the point to consistently be within the refraction collider.
-            if (point.x < this.transform.position.x) point.y -= yOffset;
-            else if (point.x > this.transform.position.x) point.y += yOffset;     
+            if (point.x < this.transform.position.x) point.x -= offset;
+            else if (point.x > this.transform.position.x) point.x += offset;     
         }
 
         // Determine the refracted angle from the interaction functions

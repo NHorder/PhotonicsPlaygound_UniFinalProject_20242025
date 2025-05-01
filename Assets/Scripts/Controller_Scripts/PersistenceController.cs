@@ -24,13 +24,16 @@ public class PersistenceController : MonoBehaviour
     // List of unlocked levels
     private List<Level> _unlockedLevels = new List<Level>();
 
-    // Save of instance
+    // Save of instance, this was taken and adapted from a Unity learn tutorial: https://learn.unity.com/tutorial/implement-data-persistence-between-scenes#634f8281edbc2a65c86270c8 
     public static PersistenceController Instance;
 
 
     /// <summary>
     /// Method to make sure only one instance of the Persistence Controller exists in a given scene.
     /// Results in settings remanining consistent across scenes
+    /// 
+    /// This method was taken and adapted from a Unity learn tutorial
+    /// https://learn.unity.com/tutorial/implement-data-persistence-between-scenes#634f8281edbc2a65c86270c8
     /// </summary>
     private void Awake()
     {

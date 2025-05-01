@@ -30,7 +30,6 @@ public class LevelSelectButton : MonoBehaviour
     public void UpdateLanguage()
     {
         var _language = PersistenceController.GetLanguage();
-        Debug.Log(_language);
 
         if (_language == Language.English)
         {

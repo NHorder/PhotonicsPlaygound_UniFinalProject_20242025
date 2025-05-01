@@ -51,8 +51,6 @@ public class Acknowledgements : MonoBehaviour
         }
         else if (_language == Language.Welsh)
         {
-            Debug.Log("????");
-
             // Loop through all elements and update language, once all found break loop
             foreach (TMP_Text childText in _childTexts)
             {

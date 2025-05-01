@@ -91,49 +91,51 @@ public class CameraDrone : MonoBehaviour
             var canParentY = false;
 
             // Easier access to allowedRange.
-            var allowedRange = eyeOfZetaAutomaticDroneSettings.allowedRange;
+            var allowedRange = eyeOfZetaAutomaticDroneSettings.allowedRange;        
 
-            /// If the drone is linking to Satellite Creator, increase the allowed range, this to prevent the drone
-            /// from covering the creation bay and making moving a newly created satellite more difficult
-            if (_linkedSatelliteTransform.GetComponent<SatelliteInfo>().satelliteType == SatelliteType.SatelliteCreator)
-            {
-                allowedRange *= 8;
-            }
-
-            /// Set a desired position which will be a slight offset to the bottom left of the select satellite
-            var wantedPosition = new Vector2(_linkedSatelliteTransform.position.x - eyeOfZetaAutomaticDroneSettings.offsetFromObjectX, 
-                                            _linkedSatelliteTransform.position.y - eyeOfZetaAutomaticDroneSettings.offsetFromObjectY);
+            /// Calculate distance from object
+            var distance = Vector2.Distance(dronePosition,linkedSatelliteLocation);
 
             
-            /// If the drone x position is within an allowed range of the wanted, then set canParentX to true. Concluding X is near the right place.
-            if (dronePosition.x > wantedPosition.x - allowedRange && dronePosition.x < wantedPosition.x + allowedRange) canParentX = true;
-            else
+            // If the distance between the object is less than the minimum then apply a smaller force to move it slightly away from the satellite centre
+            // Makes it easier to select satellites
+            if (distance < eyeOfZetaAutomaticDroneSettings.minimumDistanceFromSatellite) 
             {
-                /// Otherwise add force on the x axis dependent on which side of the object is from the drone.
-                if (dronePosition.x < wantedPosition.x) xForce = movementSpeedX;
-                else xForce = -movementSpeedX;
+                /// Otherwise add a small force away from the satellite
+                if (dronePosition.x < linkedSatelliteLocation.x) xForce = -movementSpeedX/4;
+                else xForce = movementSpeedX/4;
+            
+                /// Otherwise add a small force away from the satellite
+                if (dronePosition.y < linkedSatelliteLocation.y) yForce = -movementSpeedY/4;
+                else yForce = movementSpeedY / 4;
+
+                // Apply force to rigid body    
+                _droneRigidbody2D.AddForce(new Vector3(xForce,yForce,0));
             }
-
-            /// If the drone y position is within an allowed range of the wanted, then set canParentY to true. Conluding Y is near the right place.
-            if (dronePosition.y > wantedPosition.y - allowedRange && dronePosition.y < wantedPosition.y + allowedRange) canParentY = true;
-            else
-            {
-                /// Otherwise add force on the y axis depending on the drones location relative to the selected objects.
-                if (dronePosition.y < wantedPosition.y) yForce = movementSpeedY;
-                else yForce = -movementSpeedY;
-            }
-
-
+                
             /// If the X and Y of the drone are within the allowed range, then parent drone to object, such it will follow the object as it is moved.
-            if (canParentX && canParentY)
+            else if (distance < allowedRange)
             {
                 _parented = true;
                 this.transform.SetParent(_linkedSatelliteTransform);
             }
 
-            /// Otherwise apply preallocated force to the drone
-            else _droneRigidbody2D.AddForce(new Vector3(xForce,yForce,0));
+            /// Otherwise calculate and apply force to drone
+            else
+            {
+                /// Otherwise add force on the x axis dependent on which side of the object is from the drone.
+                if (dronePosition.x < linkedSatelliteLocation.x) xForce = movementSpeedX;
+                else xForce = -movementSpeedX;
             
+                /// Otherwise add force on the y axis depending on the drones location relative to the selected objects.
+                if (dronePosition.y < linkedSatelliteLocation.y) yForce = movementSpeedY;
+                else yForce = -movementSpeedY;
+
+                // Apply force to rigid body    
+                _droneRigidbody2D.AddForce(new Vector3(xForce,yForce,0));
+            }
+
+
         }
 
 
@@ -208,9 +210,8 @@ public class EyeOfZetaCameraDroneSettings
 public class EyeOfZetaAutomaticDroneSettings
 {
     public float movementSpeed = 10f;
-    public float allowedRange = 0.5f;
-    public float offsetFromObjectX = 0.5f;
-    public float offsetFromObjectY = 0.5f;
+    public float allowedRange = 3f;
+    public float minimumDistanceFromSatellite = 1.5f;
 
 
 }
