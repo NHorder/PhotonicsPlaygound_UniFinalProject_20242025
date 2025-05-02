@@ -30,12 +30,10 @@ public class SplitterSatellite : SatelliteParent
     private List<LaserColour> _laserColours;
     private List<float> _outputAngles;
 
-
     private LaserColour _twoOutputWhiteColourA;
     private LaserColour _twoOutputWhiteColourB;
     
     private float _energyPerLaser;
-
 
     public TwoOutputSplitterSettings twoOutputSplitterSettings;
     public ThreeOutputSplitterSettings threeOutputSplitterSettings;
@@ -61,15 +59,8 @@ public class SplitterSatellite : SatelliteParent
         if (splitterType == SplitterType.TwoOutput)
         {
             _numExpectedOutput = 2;
-
-            // Randomly select two colours to use if a white laser is to be split - with 2 nodes
-            //twoOutputWhiteColourA
-            //twoOutputWhiteColourB
-
             _outputAngles.Add(twoOutputSplitterSettings.angleAlpha);
             _outputAngles.Add(twoOutputSplitterSettings.angleBeta);
-
-
         }
 
         else if (splitterType == SplitterType.ThreeOutput)
@@ -177,9 +168,6 @@ public class SplitterSatellite : SatelliteParent
         {
             _laserColours.Add(laserOriginColour);
             _laserColours.Add(laserOriginColour);
-
-            //_laserColours.Add(_twoOutputWhiteColourA);
-            //_laserColours.Add(_twoOutputWhiteColourB);
         }
 
 
@@ -233,7 +221,6 @@ public class SplitterSatellite : SatelliteParent
 
         // Results in [Red, Magenta, Blue] from a Magenta origin. If the user only wants Red and Blue, they should have bought a two splitter
         // Instead of a three. 
-
     }
 
     /// <summary>
@@ -242,7 +229,6 @@ public class SplitterSatellite : SatelliteParent
     /// <param name="laserOriginColour"></param>
     private void DetermineSixOutputs(LaserColour laserOriginColour)
     {
-
         // This type of 6 origin laser 
         if (laserOriginColour == LaserColour.White)
         {
@@ -270,14 +256,9 @@ public class SplitterSatellite : SatelliteParent
             // Example of output [Red,Red,Red, Blue,Blue,Blue] instead of [Red,Blue,Red,Blue,Red,Blue] - mainly done by developer preference
             _laserColours.Insert(1,_laserColours[0]);
             _laserColours.Insert(1,_laserColours[0]);
-
         }
-
     }
-
 }
-
-
 
 /// <summary>
 /// Two Output settings, includes start locations for split lasers
@@ -287,7 +268,6 @@ public class TwoOutputSplitterSettings
 {
     public float angleAlpha = 38f;
     public float angleBeta = -38f;
-
 }
 
 /// <summary>

@@ -94,7 +94,7 @@ public class LevelInformationPanel : MonoBehaviour
     /// </summary>
     public void ResetLevelInteract()
     {
-
+        // Check if confirmation are disabled
         if (PersistenceController.GetDisableConfirmations()) _gameController.ResetLevel();
         else
         {

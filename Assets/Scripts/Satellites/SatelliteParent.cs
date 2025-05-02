@@ -8,8 +8,6 @@ public class SatelliteParent : MonoBehaviour
     /// Parent class for satellites interactions
     /// Inherited by most satellite interactions
     /// </summary>
-     
-     
     
     protected int _numLaser = 0;
 
@@ -33,8 +31,6 @@ public class SatelliteParent : MonoBehaviour
     protected List<OutgoingLaserInfo> _outgoingLaserInfo;
 
     protected SatelliteInfo _thisSatelliteInfo;
-
-
 
     // Start is called before the first frame update
     /// <summary>
@@ -72,7 +68,6 @@ public class SatelliteParent : MonoBehaviour
             // Clear list
             _outgoingLaserObjects.Clear();
             _outgoingLaserOrigins.Clear();
-
 
             // If active
             if (_active)
@@ -154,8 +149,6 @@ public class SatelliteParent : MonoBehaviour
         }
         // Otherwise destroy it
         else Destroy(newLaser);
-        
-
     }
 
     /// <summary>
@@ -191,6 +184,8 @@ public class SatelliteParent : MonoBehaviour
     virtual public void Interaction(IncomingLaser incomingLaser)
     {
         // Do laser interaction, there should be enough information to do so
+
+        // Interactions should result in the creation of an outgoing laser, which can be added to the outgoing laser list.
         
     }
 

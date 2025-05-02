@@ -340,8 +340,6 @@ public class SatelliteCreator : MonoBehaviour
                 _delayedCreation = true;
             }
         }
-
-        
     }
 
     /// <summary>

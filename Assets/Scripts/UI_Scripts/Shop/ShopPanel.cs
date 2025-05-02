@@ -31,7 +31,6 @@ public class ShopPanel : MonoBehaviour
     {
         _gameController = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameController>();
 
-
         // Locate and find the budget text within child components
         var childTextList = gameObject.GetComponentsInChildren<TMP_Text>();
         foreach (TMP_Text childText in childTextList)
@@ -44,12 +43,9 @@ public class ShopPanel : MonoBehaviour
                 _budgetText = childText;
                 break;
             }
-
         }
    
         _dropdowns = gameObject.GetComponentsInChildren<ShopDropDownHandler>();
-
-
     }
 
     /// <summary>

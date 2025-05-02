@@ -265,7 +265,6 @@ public class GameController : MonoBehaviour
         specializedInteractionSettings.allowReflectionDuringRefraction = PersistenceController.GetAllowAdvancedInteractions();
         specializedInteractionSettings.allowSatelliteParticleEffects = PersistenceController.GetAllowSatelliteMovementParticles();
 
-
         if (_satelliteCreatorElysia == null && thisLevel != Level.Titlescreen && thisLevel != Level.LevelSelection)
         {
             _satelliteCreatorElysia = GameObject.FindGameObjectsWithTag("SatelliteCreator")[0].GetComponent<SatelliteCreator>();

@@ -74,16 +74,21 @@ public class ShopDropDownHandler : MonoBehaviour
         if (currentIndex < shopItems.Count)
         {
             satelliteInfo.satelliteType = shopItems[currentIndex].satelliteType;
+
+            // Reset information
             satelliteInfo.satelliteName = "";
             satelliteInfo.satelliteDescription = "";
             satelliteInfo.satelliteShortDescription = "";
             satelliteInfo.satellitePurchasePrice = 0;
 
+            // Force text update
             satelliteInfo.RetreiveSatelliteText();
+
+            // Update shop sprite
             satelliteInfo.satellite_Shop_Info.satelliteSprite = shopItems[currentIndex].shopItemSprite;
             satelliteInfo.CreateShopItem();
             
-
+            // Update current value
             var variantHandler = satelliteInfo.gameObject.GetComponent<ShopItem>();
             variantHandler.variants = shopItems[currentIndex].variants;
 

@@ -260,31 +260,45 @@ public class Laser : MonoBehaviour
         }
     }
 
-    
+    /// <summary>
+    /// Method to get transparency of the laser
+    /// </summary>
+    /// <returns></returns>
     public float GetTransparency()
     {
         return _transparency;
     }
 
+    /// <summary>
+    /// Method to set transparency of the lasser
+    /// </summary>
+    /// <param name="transparency"></param>
     public void SetTransparency(float transparency)
     {
         _transparency = transparency;
 
+        // Retrieve sprite renders colour, and modify the alpha value to that of the transparency
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-
         Color modifiedColour = spriteRenderer.color;
-
         modifiedColour.a = transparency;
 
+        // Update the renderes colour
         spriteRenderer.color = modifiedColour;
-
     }
 
+    /// <summary>
+    /// Method to get laser colour
+    /// </summary>
+    /// <returns></returns>
     public LaserColour GetLaserColour()
     {
         return _laserColour;
     }
 
+    /// <summary>
+    /// Method to set laser colour
+    /// </summary>
+    /// <param name="laserColour"></param>
     public void SetLaserColour(LaserColour laserColour)
     {
         _laserColour = laserColour;
@@ -303,8 +317,5 @@ public class Laser : MonoBehaviour
 
         Animator animator = gameObject.GetComponent<Animator>();
         animator.SetInteger("colourID",colourID);
-
-
     }
-
 }

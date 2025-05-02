@@ -70,7 +70,6 @@ public class PersistenceController : MonoBehaviour
         Instance._disableConfirmations = disableConfirmations;
         Instance._allowAdvancedInteractions = allowAdvancedInteractions;
         Instance._allowSatelliteMovementParticles = allowSatelliteMovementParticles;
-
     }
 
     /// <summary>
@@ -136,6 +135,5 @@ public class PersistenceController : MonoBehaviour
     {
         return Instance._allowSatelliteMovementParticles;
     }
-
 
 }

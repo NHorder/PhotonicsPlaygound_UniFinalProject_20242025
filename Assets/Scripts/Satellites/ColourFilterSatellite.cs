@@ -84,7 +84,6 @@ public class ColourFilterSatellite : SatelliteParent
             changeColour = incomingLaserColour;
         }
 
-
         // If a new laser is needed, then create a new outgoing laser
         if (makeNewLaser)
         {

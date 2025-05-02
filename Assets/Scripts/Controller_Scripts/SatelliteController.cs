@@ -417,10 +417,8 @@ public class SatelliteController : MonoBehaviour
 
             // Disconnect from the sold satellite
             CloseInformation();
-
         }
     }
-
 
 
     /// <summary>
@@ -446,6 +444,5 @@ public class SatelliteController : MonoBehaviour
         // Specifically set to watch for box colliders, as all light interactions interact with polygon colliders
         if (collider is BoxCollider2D) _lastFoundRigidBody2D = null;
     }
-
 
 }

@@ -9,10 +9,8 @@ public class ReflectionSatellite : SatelliteParent
     /// Inherits Satellite Parent
     /// </summary>
     
-
     // Used for Fresnel Equations, where the power of reflected light is changed
     private float _advancedInteractionEnergy = 0f;
-
 
     /// <summary>
     /// Method to allow for advanced interaction updates

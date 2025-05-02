@@ -8,7 +8,6 @@ public class RefractionSatellite : SatelliteParent
     /// Class to handle refraction interactions
     /// </summary>
     
-
     /// <summary>
     /// Overwritten inherited method to handle interaction
     /// </summary>

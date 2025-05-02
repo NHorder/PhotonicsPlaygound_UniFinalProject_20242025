@@ -134,11 +134,8 @@ public class CameraDrone : MonoBehaviour
                 // Apply force to rigid body    
                 _droneRigidbody2D.AddForce(new Vector3(xForce,yForce,0));
             }
-
-
         }
-
-
+        
         // Retreive Camera position
         Vector3 cameraPosition = _camera.transform.position;
         float newCameraX = cameraPosition.x;
@@ -184,7 +181,6 @@ public class CameraDrone : MonoBehaviour
 
         // Note this is called by the parent satellite just before the satellite is destroyed.
     }
-
 
 }
 

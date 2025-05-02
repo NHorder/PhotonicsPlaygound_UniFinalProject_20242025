@@ -295,6 +295,3 @@ public class SingularityLaser : MonoBehaviour
         return angularDeflection;
     }
 }
-
-
-

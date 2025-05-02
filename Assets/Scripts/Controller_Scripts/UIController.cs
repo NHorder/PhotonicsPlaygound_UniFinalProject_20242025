@@ -216,8 +216,6 @@ public class UIController : MonoBehaviour
         // Fixed Panels have a single location and instead work by handling their 'active' state
         // As such they only appear in one location or not appear in said location. They don't move.
 
-
-        
         if (panel == FixedUIPanel.Settings)
         {
             // Retrieve the settings transform
@@ -314,7 +312,6 @@ public class UIController : MonoBehaviour
     /// <param name="newPosition"></param>
     private void MovePanel(RectTransform rectTransform,Vector3 currentPosition,Vector2 newPosition)
     {
-
         if (this.panelMovementSpeed <= 0) this.panelMovementSpeed = 1;
 
         // Check Y positions, move if needed
@@ -369,7 +366,6 @@ public class UIController : MonoBehaviour
     /// </summary>
     public void ToggleVisibleLevelInfomation()
     {
-
         // Set the opposite of current
         _movingPanels.levelInformationVisible = !_movingPanels.levelInformationVisible;
 
@@ -524,7 +520,6 @@ public class UIController : MonoBehaviour
     /// <param name="languageChanged"></param>
     public void UpdateSettings(bool languageChanged)
     {
-
         // Retrieve language
         _language = PersistenceController.GetLanguage();
 

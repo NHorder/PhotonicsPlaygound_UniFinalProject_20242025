@@ -66,8 +66,6 @@ public class OriginSatellite : MonoBehaviour
             _updateDelay = 32;
             Debug.LogWarning("WARNING: Laser Origin updateDelay cannot be less than 0. Setting to default");
         }   
-
-
     }
     
     /// <summary>
