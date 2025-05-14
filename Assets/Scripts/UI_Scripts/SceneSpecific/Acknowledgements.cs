@@ -37,7 +37,7 @@ public class Acknowledgements : MonoBehaviour
                 }
                 else if (childText.name == "AcknowledgementsText")
                 {
-                    childText.text = "Developer: Nathan Horder\n\nArtist: Nathan Horder\n\nTranslator: Helen Miles\n\nPlay Testers:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n- Michael McRae\n- Jamie Stammers\n";
+                    childText.text = "Developer: Nathan Horder\n\nArtist: Nathan Horder\n\nTranslator: Dr Helen Miles\n\nPlay Testers:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n- Michael McRae\n- Jamie Stammers\n";
                     
                     _foundAcknowledgements = true;
                 }
@@ -61,7 +61,7 @@ public class Acknowledgements : MonoBehaviour
                 }
                 else if (childText.name == "AcknowledgementsText")
                 {
-                    childText.text = "Datblygwr: Nathan Horder\n\nArlunydd: Nathan Horder\n\nCyfieithydd: Helen Miles\n\nProfwyr Chwarae:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n-Michael McRae\n- Jamie Stammers\n";
+                    childText.text = "Datblygwr: Nathan Horder\n\nArlunydd: Nathan Horder\n\nCyfieithydd: Dr Helen Miles\n\nProfwyr Chwarae:\n- Leo Lange\n- John Callaghan\n- Mark Williamson\n-Michael McRae\n- Jamie Stammers\n";
                     _foundAcknowledgements = true;
                 }
 

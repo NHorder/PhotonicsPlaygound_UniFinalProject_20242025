@@ -72,6 +72,11 @@ public class PersistenceController : MonoBehaviour
         Instance._allowSatelliteMovementParticles = allowSatelliteMovementParticles;
     }
 
+    public static void UpdateLanguage(Language language)
+    {
+        Instance._language = language;
+    }
+
     /// <summary>
     /// Method to unlock a specific level
     /// </summary>

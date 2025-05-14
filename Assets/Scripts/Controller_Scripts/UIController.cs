@@ -113,6 +113,8 @@ public class UIController : MonoBehaviour
             _fixedPanels.teachingPanel = GameObject.FindGameObjectsWithTag("TeachingPanel")[0].GetComponent<TeachingPanel>();
             PresentFixedPanel(FixedUIPanel.Teaching,true);
         }
+    
+        UpdateSettings(true);
     }
 
 

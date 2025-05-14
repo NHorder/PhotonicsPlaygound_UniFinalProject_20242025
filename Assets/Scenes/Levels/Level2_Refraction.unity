@@ -1297,11 +1297,11 @@ PrefabInstance:
     - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
       propertyPath: teachingElements.Array.data[1].spriteA
       value: 
-      objectReference: {fileID: -131190350, guid: 5101ddd79ec779f41a80fffd2e14a6b2, type: 3}
+      objectReference: {fileID: -1777447134, guid: 88e13f2b863b5a34a98bd6560145cb2e, type: 3}
     - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
       propertyPath: teachingElements.Array.data[1].spriteB
       value: 
-      objectReference: {fileID: -361493908, guid: 5101ddd79ec779f41a80fffd2e14a6b2, type: 3}
+      objectReference: {fileID: 1600877155, guid: 88e13f2b863b5a34a98bd6560145cb2e, type: 3}
     - target: {fileID: 7544388290579987951, guid: eafc6440e8a55484db4d89c2bfcd8739, type: 3}
       propertyPath: teachingElements.Array.data[2].spriteA
       value: 

@@ -330,7 +330,7 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
-    PRODUCT_DESCRIPTION: 
+    PRODUCT_DESCRIPTION: Photonics Playground
   mobileMTRendering:
     Android: 1
     iPhone: 1
