@@ -12,6 +12,8 @@ The outcome of this project will include:
 - Further documentation
 - A Citation document
 
+A final build of the game can be found at: https://outreach-hub.aber.ac.uk/Physics/PhotonicsGame/WebGL_Build/index.html
+This will be available until 2027.
 
 ## Software and Hardware requirements
 
